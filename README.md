@@ -1,3 +1,4 @@
+<img width="1324" height="720" alt="Screenshot 2026-07-30 144746" src="https://github.com/user-attachments/assets/fbaa1c2f-936c-487c-988a-e9ced1d9eb34" />
 # Monster Catcher
 
 A tiny Game Boy-style monster-catching game built with plain HTML, CSS, and
