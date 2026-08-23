@@ -55,3 +55,19 @@ function drawMap(ctx) {
     }
   }
 }
+
+// NPCs are simple colored figures, same silhouette style as the player,
+// just tinted per-NPC via their "sprite" color from story.js
+function drawNpcs(ctx) {
+  NPCS.forEach(npc => {
+    if (npc.defeated && npc.isTrainer) return; // trainers stay put but could be hidden/greyed if desired
+    const px = npc.col * TILE;
+    const py = npc.row * TILE;
+
+    ctx.fillStyle = PALETTE.black;
+    ctx.fillRect(px + 4, py + 2, 8, 12);
+
+    ctx.fillStyle = npc.sprite || PALETTE.light;
+    ctx.fillRect(px + 6, py + 4, 4, 4);
+  });
+}
