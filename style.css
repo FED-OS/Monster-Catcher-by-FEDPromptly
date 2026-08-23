@@ -1,0 +1,33 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  color: #9bbc0f;
+}
+
+#screen-wrap {
+  border: 8px solid #333;
+  border-radius: 6px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+
+#game {
+  width: 480px;
+  height: 432px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  display: block;
+  background: #9bbc0f;
+}
+
+#hint {
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}

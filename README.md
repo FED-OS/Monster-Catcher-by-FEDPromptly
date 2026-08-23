@@ -1,4 +1,3 @@
-<img width="1324" height="720" alt="Screenshot 2026-07-30 144746" src="https://github.com/user-attachments/assets/fbaa1c2f-936c-487c-988a-e9ced1d9eb34" />
 # Monster Catcher
 
 A tiny Game Boy-style monster-catching game built with plain HTML, CSS, and
@@ -41,26 +40,44 @@ git push -u origin main
 
 ## Free hosting with GitHub Pages
 
+This repo includes `.github/workflows/deploy.yml`, a GitHub Actions
+workflow that automatically deploys the site to GitHub Pages every time
+you push to `main`. To turn it on (one-time setup):
+
 1. Push this repo to GitHub (steps above).
 2. Go to your repo's **Settings > Pages**.
-3. Under "Build and deployment", set Source to **Deploy from a branch**,
-   branch `main`, folder `/ (root)`.
-4. Save. Your game will be live at
+3. Under "Build and deployment", set Source to **GitHub Actions**
+   (not "Deploy from a branch").
+4. Push any commit to `main` (or go to the **Actions** tab and run the
+   "Deploy to GitHub Pages" workflow manually).
+5. Your game will be live at
    `https://<your-username>.github.io/<your-repo>/` within a minute or two.
+
+No build step actually runs — the workflow just uploads the plain HTML/CSS/JS
+files as-is and publishes them. You don't need Node, npm, or anything
+installed for this to work.
 
 ## Project structure
 
 ```
 monster-game/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml   # auto-deploys to GitHub Pages on push to main
+├── assets/
+│   └── sprites/
+│       └── README.md    # how to drop in real pixel art PNGs later
 ├── index.html          # entry point, loads canvas + scripts
 ├── style.css            # page shell styling around the canvas
 ├── js/
 │   ├── constants.js      # palette, tile size, game states
-│   ├── monsters.js        # species data, moves, damage/catch formulas
-│   ├── world.js            # map data + tile rendering
-│   ├── player.js            # player movement, procedural sprite
-│   ├── battle.js              # battle state machine + battle rendering
-│   └── main.js                  # game loop, input handling, wiring
+│   ├── monsters.js        # species, moves, types, XP/leveling, evolution
+│   ├── sprites.js          # procedural monster shapes + real-PNG loader
+│   ├── story.js             # world/NPC/trainer data and dialogue text
+│   ├── world.js               # map data + tile/NPC rendering
+│   ├── player.js                # movement, collision, interact, dialogue box
+│   ├── battle.js                  # wild + trainer battle state machine
+│   └── main.js                      # game loop, input handling, wiring
 └── README.md
 ```
 
@@ -69,9 +86,16 @@ monster-game/
 - Tile-based overworld movement with collision (trees/water block you)
 - Tall grass encounter zones with a random encounter rate
 - Turn-based battles: Fight / Catch / Run menu
-- Type effectiveness (fire/water/grass triangle + normal)
+- 7 types with a full effectiveness chart (fire/water/grass/electric/ground/flying/poison + normal)
 - Classic-style catch chance formula based on remaining HP
-- 4 original species to encounter and catch
+- 13 original species across 5 evolution lines, plus 3 single-stage species
+- XP, leveling, and automatic evolution at set levels
+- NPCs you can talk to (walk up, face them, press Z)
+- Trainer battles with fixed teams, multi-monster fights, and no catching
+- A tiny intro story (professor greeting) and a rival battle
+- A sprite system that draws distinct procedural shapes per species now,
+  and automatically switches to a real PNG if you drop one in
+  `assets/sprites/` later — see `assets/sprites/README.md`
 
 ## Ideas for extending it
 
