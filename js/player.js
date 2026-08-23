@@ -17,6 +17,7 @@ function tryMove(dCol, dRow) {
   const newCol = player.col + dCol;
   const newRow = player.row + dRow;
   if (isBlocked(newCol, newRow)) return;
+  if (getNpcAt(newCol, newRow)) return; // NPCs block movement, talk to them instead
 
   player.col = newCol;
   player.row = newRow;
@@ -27,6 +28,57 @@ function tryMove(dCol, dRow) {
       startRandomEncounter();
     }
   }
+}
+
+// Returns the tile coordinate the player is currently facing
+function tileInFrontOfPlayer() {
+  const deltas = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+  const [dc, dr] = deltas[player.facing];
+  return { col: player.col + dc, row: player.row + dr };
+}
+
+// Called when the player presses confirm while in the overworld
+function interact() {
+  const { col, row } = tileInFrontOfPlayer();
+  const npc = getNpcAt(col, row);
+  if (!npc) return;
+
+  if (npc.isTrainer && !npc.defeated) {
+    startTrainerBattle(npc);
+    return;
+  }
+
+  const lines = (npc.isTrainer && npc.defeated && npc.defeatedDialogue)
+    ? npc.defeatedDialogue
+    : npc.dialogue;
+  startDialogue(lines);
+}
+
+// ---- Dialogue box state (used for NPC talk + intro text) ----
+let dialogue = null; // { lines, index } or null when not showing
+
+function startDialogue(lines) {
+  dialogue = { lines, index: 0 };
+}
+
+function advanceDialogue() {
+  if (!dialogue) return;
+  dialogue.index++;
+  if (dialogue.index >= dialogue.lines.length) {
+    dialogue = null;
+  }
+}
+
+function drawDialogue(ctx) {
+  if (!dialogue) return;
+  ctx.fillStyle = PALETTE.black;
+  ctx.fillRect(2, 104, SCREEN_W - 4, 38);
+  ctx.fillStyle = PALETTE.light;
+  ctx.fillRect(4, 106, SCREEN_W - 8, 34);
+
+  ctx.fillStyle = PALETTE.black;
+  ctx.font = "6px monospace";
+  wrapText(ctx, dialogue.lines[dialogue.index], 8, 116, SCREEN_W - 16, 7);
 }
 
 function drawPlayer(ctx) {
