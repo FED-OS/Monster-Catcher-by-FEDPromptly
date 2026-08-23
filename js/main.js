@@ -28,9 +28,16 @@ window.addEventListener("keydown", (e) => {
   e.preventDefault();
 
   if (game.state === GAME_STATE.OVERWORLD) {
+    if (dialogue) {
+      if (key === "confirm") advanceDialogue();
+      return;
+    }
     if (dirDelta[key]) {
       const [dc, dr] = dirDelta[key];
       tryMove(dc, dr);
+    }
+    if (key === "confirm") {
+      interact();
     }
   } else if (game.state === GAME_STATE.BATTLE) {
     battleInput(key);
@@ -39,7 +46,9 @@ window.addEventListener("keydown", (e) => {
 
 function drawOverworld() {
   drawMap(ctx);
+  drawNpcs(ctx);
   drawPlayer(ctx);
+  drawDialogue(ctx);
 }
 
 function render() {
@@ -52,4 +61,6 @@ function render() {
   requestAnimationFrame(render);
 }
 
+preloadAllSprites();
+startDialogue(STORY_INTRO); // greet the player on first load
 render();
