@@ -1,0 +1,196 @@
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.water3;
+  ctx.fillRect(px, py + 4, TILE, 2);
+  ctx.fillRect(px, py + 11, TILE, 2);
+  const off = (worldAnimFrame >> 3) % 16;
+  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
+  const wy1 = py + 5 + (off > 8 ? 1 : 0);
+  ctx.fillRect(px + ((off + 0) % TILE), wy1, 4, 1);
+  ctx.fillRect(px + ((off + 8) % TILE), py + 9, 5, 1);
+  ctx.fillStyle = "#a8e8ff";
+  ctx.fillRect(px + ((off + 3) % TILE), py + 6, 1, 1);
+  ctx.fillRect(px + ((off + 11) % TILE), py + 12, 1, 1);
+}
+
+// ---- 4: Sand (walkable) ----
+function drawSandTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.sandLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.sandMid;
+  ctx.fillRect(px, py + 8, TILE, 8);
+  ctx.fillStyle = COLOR.pathDark;
+  ctx.fillRect(px + 3, py + 3, 1, 1);
+  ctx.fillRect(px + 11, py + 6, 1, 1);
+  ctx.fillRect(px + 6, py + 12, 1, 1);
+  ctx.fillRect(px + 13, py + 14, 1, 1);
+  ctx.fillRect(px + 1, py + 10, 1, 1);
+}
+
+// ---- 5: Cave floor (walkable, encounters) ----
+function drawCaveFloorTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.caveFloor1;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.caveFloor2;
+  ctx.fillRect(px, py + 9, TILE, 7);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 2, py + 3, 2, 2);
+  ctx.fillRect(px + 11, py + 6, 2, 2);
+  ctx.fillRect(px + 6, py + 12, 3, 1);
+  ctx.fillStyle = COLOR.rock2;
+  ctx.fillRect(px + 8, py + 2, 1, 1);
+  ctx.fillRect(px + 4, py + 11, 1, 1);
+}
+
+// ---- 6: Cave wall / rock wall (blocked) ----
+function drawCaveWallTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.caveWall1;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.caveWall2;
+  ctx.fillRect(px, py + 1, TILE, 6);
+  ctx.fillRect(px, py + 9, TILE, 6);
+  ctx.fillStyle = COLOR.caveWall3;
+  ctx.fillRect(px, py, 1, TILE);
+  ctx.fillRect(px + 8, py, 1, TILE);
+  ctx.fillRect(px + 15, py, 1, TILE);
+  ctx.fillRect(px, py + 8, TILE, 1);
+  ctx.fillStyle = COLOR.rock2;
+  ctx.fillRect(px + 2, py + 2, 4, 1);
+  ctx.fillRect(px + 10, py + 3, 4, 1);
+  ctx.fillRect(px + 4, py + 11, 3, 1);
+}
+
+// ---- 7: Snow (walkable, encounters) ----
+function drawSnowTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.snow1;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.snow2;
+  ctx.fillRect(px, py + 8, TILE, 8);
+  const sparkle = (worldAnimFrame >> 4) % 3;
+  ctx.fillStyle = COLOR.ice1;
+  ctx.fillRect(px + 3, py + 2, 1, 1);
+  ctx.fillRect(px + 11, py + 5, 1, 1);
+  ctx.fillRect(px + 7, py + 12, 1, 1);
+  ctx.fillStyle = "#ffffff";
+  if (sparkle === 0) ctx.fillRect(px + 3, py + 2, 1, 1);
+  else if (sparkle === 1) ctx.fillRect(px + 11, py + 5, 1, 1);
+  else ctx.fillRect(px + 7, py + 12, 1, 1);
+  ctx.fillStyle = COLOR.snowShade;
+  ctx.fillRect(px, py + 14, TILE, 2);
+}
+
+// ---- 8: Ledge (one-way down) ----
+function drawLedgeTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, 10);
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, 4);
+  ctx.fillStyle = COLOR.rock1;
+  ctx.fillRect(px, py + 10, TILE, 6);
+  ctx.fillStyle = COLOR.rock2;
+  ctx.fillRect(px, py + 10, TILE, 2);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px, py + 14, TILE, 2);
+  ctx.fillStyle = COLOR.rock3;
+  ctx.fillRect(px + 3, py + 12, 2, 1);
+  ctx.fillRect(px + 10, py + 12, 3, 1);
+  ctx.fillStyle = COLOR.grassDark;
+  ctx.fillRect(px, py + 9, TILE, 2);
+}
+
+// ---- 9: Door / warp ----
+function drawDoorTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(px + 3, py + 1, 10, 15);
+  ctx.fillStyle = COLOR.doorLight;
+  ctx.fillRect(px + 4, py + 2, 8, 13);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(px + 3, py + 1, 10, 1);
+  ctx.fillRect(px + 2, py + 2, 1, 2);
+  ctx.fillRect(px + 13, py + 2, 1, 2);
+  ctx.fillStyle = "#f8d868";
+  ctx.fillRect(px + 10, py + 8, 1, 1);
+  ctx.fillStyle = COLOR.wallCream;
+  ctx.fillRect(px + 2, py + 14, 12, 2);
+}
+
+// ---- 10: Sign post ----
+function drawSignTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, 4);
+  ctx.fillStyle = COLOR.signWoodD;
+  ctx.fillRect(px + 7, py + 9, 2, 7);
+  ctx.fillStyle = COLOR.signWood;
+  ctx.fillRect(px + 3, py + 3, 10, 7);
+  ctx.fillStyle = COLOR.signWoodD;
+  ctx.fillRect(px + 3, py + 3, 10, 1);
+  ctx.fillRect(px + 3, py + 9, 10, 1);
+  ctx.fillRect(px + 3, py + 3, 1, 7);
+  ctx.fillRect(px + 12, py + 3, 1, 7);
+  ctx.fillStyle = COLOR.treeBarkD;
+  ctx.fillRect(px + 5, py + 5, 6, 1);
+  ctx.fillRect(px + 5, py + 8, 4, 1);
+}
+
+// ---- 11: Heal center mat (red cross) ----
+function drawHealMatTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.matHealW;
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 1, py + 1, 14, 1);
+  ctx.fillRect(px + 1, py + 14, 14, 1);
+  ctx.fillRect(px + 1, py + 1, 1, 14);
+  ctx.fillRect(px + 14, py + 1, 1, 14);
+  ctx.fillStyle = COLOR.matHealR;
+  ctx.fillRect(px + 7, py + 4, 2, 8);
+  ctx.fillRect(px + 4, py + 7, 8, 2);
+}
+
+// ---- 12: Shop mat (blue M) ----
+function drawShopMatTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 1, py + 1, 14, 1);
+  ctx.fillRect(px + 1, py + 14, 14, 1);
+  ctx.fillRect(px + 1, py + 1, 1, 14);
+  ctx.fillRect(px + 14, py + 1, 1, 14);
+  ctx.fillStyle = COLOR.matShopB;
+  ctx.fillRect(px + 4, py + 4, 8, 8);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(px + 5, py + 5, 6, 6);
+  ctx.fillStyle = COLOR.matShopB;
+  ctx.fillRect(px + 6, py + 6, 1, 4);
+  ctx.fillRect(px + 9, py + 6, 1, 4);
+  ctx.fillRect(px + 7, py + 7, 2, 1);
+}
+
+// ---- 13: Gym mat (special floor) ----
+function drawGymMatTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.matGym2;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.matGym1;
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = COLOR.matGym2;
+  ctx.fillRect(px + 6, py + 3, 4, 2);
+  ctx.fillRect(px + 4, py + 5, 8, 2);
+  ctx.fillRect(px + 3, py + 7, 10, 2);
+  ctx.fillRect(px + 4, py + 9, 8, 2);
+  ctx.fillRect(px + 6, py + 11, 4, 2);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(px + 7, py + 7, 2, 2);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 1, py + 1, 14, 1);
+  ctx.fillRect(px + 1, py + 14, 14, 1);
+  ctx.fillRect(px + 1, py + 1, 1, 14);
+  ctx.fillRect(px + 14, py + 1, 1, 14);
+}
+
+function drawMap(ctx, map) {

@@ -1,0 +1,100 @@
+// ============================================================
+//  Monster Catcher — World (multi-map system)
+//  Tile legend:
+//   0 = path/grass (walkable, no encounter)
+//   1 = tall grass (walkable, encounters)
+//   2 = tree/wall (blocked)
+//   3 = water (blocked unless surfing)
+//   4 = sand (walkable, no encounter)
+//   5 = cave floor (walkable, encounters)
+//   6 = rock wall (blocked)
+//   7 = snow (walkable, encounters)
+//   8 = ledge-down (walkable only downward; one-way exit south)
+//   9 = door/warp tile (walkable, triggers a warp)
+//  10 = sign (blocked, interactable)
+//  11 = heal-center floor marker
+//  12 = shop floor marker
+//  13 = gym floor marker
+//  14 = deep water (blocked unless surfing; surf encounters here)
+// ============================================================
+
+// Each map: id, name, grid, encounter table, encounters rate,
+// npcs (local), warps (tile -> destination), signs, ambient palette override.
+const MAPS = {
+  mossmere: {
+    name: "Mossmere Hollow",
+    grid: [
+      [2,2,2,2,2,2,2,2,2,2],
+      [2,0,0,0,1,1,0,0,9,2],
+      [2,0,0,1,1,1,1,0,0,2],
+      [2,0,1,1,1,1,1,1,0,2],
+      [2,0,0,1,1,1,1,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,1,1,0,1,1,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,2,2,2,8,2,2,2,2,2]
+    ],
+    encounters: ["emberit","aquip","leafon","rattick","rattick","sparkit"],
+    rate: 0.14,
+    warps: {
+      // door at (8,1) -> lab interior
+      "8,1": { dest: "lab", col: 4, row: 6 },
+      // ledge at (4,8) -> route 1 (south exit)
+      "4,8": { dest: "route1", col: 4, row: 0 }
+    },
+    signs: {
+      "1,7": "Mossmere Hollow — A quiet village at the forest's edge."
+    }
+  },
+
+  lab: {
+    name: "Thorne Lab",
+    grid: [
+      [6,6,6,6,6,6,6,6,6,6],
+      [6,0,0,2,0,0,2,0,0,6],
+      [6,0,0,2,0,0,2,0,0,6],
+      [6,0,0,0,0,0,0,0,0,6],
+      [6,0,0,2,0,0,2,0,0,6],
+      [6,0,0,0,0,0,0,0,0,6],
+      [6,0,0,0,9,0,0,0,0,6],
+      [6,0,0,0,0,0,0,0,0,6],
+      [6,6,6,6,6,6,6,6,6,6]
+    ],
+    encounters: [],
+    rate: 0,
+    warps: {
+      "4,6": { dest: "mossmere", col: 8, row: 2 }
+    },
+    signs: {}
+  },
+
+  route1: {
+    name: "Route 1",
+    grid: [
+      [2,2,2,2,8,2,2,2,2,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,1,1,0,0,1,1,0,0,2],
+      [2,1,0,0,0,0,1,1,0,2],
+      [2,0,0,0,1,1,0,0,0,2],
+      [2,0,1,1,1,0,0,0,0,2],
+      [2,0,1,0,0,0,1,1,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,2,2,2,8,2,2,2,2,2]
+    ],
+    encounters: ["rattick","rattick","breezel","sparkit","leafon"],
+    rate: 0.16,
+    warps: {
+      "4,0": { dest: "mossmere", col: 4, row: 7 },
+      "4,8": { dest: "verdantown", col: 4, row: 0 }
+    },
+    signs: {
+      "0,2": "Route 1 — South to Mossmere, North to Verdantown."
+    }
+  },
+
+  verdantown: {
+    name: "Verdantown",
+    grid: [
+      [2,2,2,2,8,2,2,2,2,2],
+      [2,0,0,0,9,0,0,0,9,2],
+      [2,0,0,0,0,0,0,0,0,2],

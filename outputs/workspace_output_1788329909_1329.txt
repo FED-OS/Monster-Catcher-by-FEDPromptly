@@ -1,0 +1,7 @@
+  43 game/index.html
+  97 game/style.css
+ 140 total
+---
+  30 extracted/Monster-Catcher-GBA-Edition-v3/index.html
+  97 extracted/Monster-Catcher-GBA-Edition-v3/style.css
+ 127 total

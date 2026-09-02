@@ -1,0 +1,1 @@
+Result: JS result: battle started: yes state=battle enemy=Aquip player=Emberit

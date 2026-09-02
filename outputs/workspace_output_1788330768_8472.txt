@@ -1,0 +1,47 @@
+# Monster Catcher — GBA Graphics Upgrade to "Nintendo Level"
+
+## Goal
+Upgrade the existing Monster Catcher game's graphics to match the polished GBA/Pokémon-style aesthetic shown in the two reference screenshots (gba-overworld-preview.png and gba-battle-preview.png), and package it as a desktop app.
+
+## Analysis Complete
+- Current game: ~12,800 lines, 19 JS modules, 240×160 GBA canvas, procedural pixel art
+- Target: Rich layered battle backgrounds (mountains/forest/lake), detailed shaded buildings, lush tilesets, polished monster sprites, authentic GBA UI
+
+## Tasks
+
+### Phase 1: Copy game to working directory & set up project
+- [x] Extract and understand existing game
+- [ ] Copy game files to /workspace/monstercatcher/ working dir
+- [ ] Set up Electron desktop app wrapper structure
+
+### Phase 2: Upgrade overworld graphics (match gba-overworld-preview.png)
+- [x] Upgrade grass tiles (richer texture, multiple shades, scattered detail)
+- [x] Upgrade tree tiles (larger rounded foliage, shading, dithering)
+- [x] Upgrade path/dirt tiles (textured crossroads)
+- [x] Upgrade water tiles (animated, shoreline edges, pond bordering)
+- [x] Add building rendering (detailed houses with roofs, doors, windows, Pokémon Center with emblem, Mart, Gym, Lab)
+- [ ] Upgrade flowers, fences, signs, ledges detail
+- [x] Upgrade player & NPC overworld sprites (more detail, shading)
+
+### Phase 3: Upgrade battle graphics (match gba-battle-preview.png)
+- [ ] Rich layered battle background (sky, clouds, distant mountains, forest, lake, foreground rocks)
+- [ ] Detailed battle platforms (textured circular arena pads)
+- [ ] Polish HP info boxes (GBA-style bordered panels, type badges)
+- [ ] Upgrade monster battle sprites (larger, more detailed, shaded)
+
+### Phase 4: Upgrade monster sprites (detailed pixel art)
+- [ ] Enhance procedural sprite designs for key species (starter lines + common encounters)
+- [ ] Improve sprite shading/outlines for GBA-quality look
+
+### Phase 5: Package as desktop app (Electron)
+- [ ] Create Electron main process + package.json
+- [ ] Test the app launches
+- [ ] Build/verify the desktop app
+
+### Phase 6: Verify & deliver
+- [ ] Screenshot the upgraded game (overworld + battle) and compare to targets
+- [ ] Final verification and packaging
+---SERVER CHECK---
+200
+---PROC CHECK---
+root        2411  0.0  0.4 451872 19916 ?        S    06:23   0:00 python3 -m http.server 9090

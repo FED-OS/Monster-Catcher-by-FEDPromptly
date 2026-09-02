@@ -1,0 +1,22 @@
+71:    battleInput(key);
+===
+js/audio.js:114:function sfxEncounter() { arp([330,392,523,659], 0.06, "square", 0.07); }
+js/audio.js:668:      if (map && (map.id === "lab" || map.id === "verdantown" || (map.encounters && map.encounters.length === 0 && map.rate === 0))) {
+js/battle.js:13:function startRandomEncounter() {
+js/battle.js:15:  if (!map || !map.encounters || !map.encounters.length) return;
+js/battle.js:19:  const speciesKey = map.encounters[Math.floor(Math.random() * map.encounters.length)];
+js/battle.js:49:  sfxEncounter();
+js/battle.js:81:  sfxEncounter();
+js/battle.js:1474:function applyQuirkTurnStart(monster, isWildBattle) {
+js/battle.js:1476:  const event = quirkOnTurnStart(monster, isWildBattle);
+js/biomes.js:29:    encounterRate: 0.16,
+js/biomes.js:54:    encounterRate: 0.14,
+js/biomes.js:79:    encounterRate: 0.13,
+js/biomes.js:103:    encounterRate: 0.18,
+js/biomes.js:129:    encounterRate: 0.12,
+js/biomes.js:155:    encounterRate: 0.11,
+js/biomes.js:180:    encounterRate: 0.17,
+js/biomes.js:205:    encounterRate: 0.15,
+js/biomes.js:270:// These are added to the encounter pool for their biomes and have basic stats.
+js/biomes.js:304:// Get the encounter list for a biome (mix of biome creatures + base species)
+js/biomes.js:305:function biomeEncounterList(biomeId) {

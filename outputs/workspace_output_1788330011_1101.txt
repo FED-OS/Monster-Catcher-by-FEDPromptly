@@ -1,0 +1,6 @@
+js/world.js:512:function drawTile(ctx, tile, px, py) {
+js/world.js:792:function drawTreeTile(ctx, px, py) {
+js/world.js:1015:function drawMap(ctx, map) {
+js/player.js:375:function drawPlayer(ctx) {
+js/sprites.js:1600:function drawPlayerOverworld(ctx, px, py, facing, walkFrame, palette) {
+js/main.js:109:function drawOverworld() {

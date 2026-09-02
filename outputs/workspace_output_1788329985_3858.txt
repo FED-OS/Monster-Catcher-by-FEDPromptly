@@ -1,0 +1,3 @@
+Result: Screenshot saved to /workspace/.screenshots/gameplay1.png
+Screenshot: /workspace/.screenshots/step_004.png
+Use see-image to view: /workspace/.screenshots/step_004.png

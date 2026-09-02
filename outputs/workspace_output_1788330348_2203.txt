@@ -1,0 +1,3 @@
+46:      "1,7": "Mossmere Hollow M-bM-^@M-^T A quiet village at the forest's edge."$
+329:  crystalforest: {$
+331:    biome: "crystalforest",$

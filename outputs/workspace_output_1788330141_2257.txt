@@ -1,0 +1,5 @@
+755:function drawGrassTile(ctx, px, py) {
+784:function drawTallGrassTile(ctx, px, py) {
+817:function drawTreeTile(ctx, px, py) {
+867:function drawWaterTile(ctx, px, py, deep) {
+891:function drawSandTile(ctx, px, py) {

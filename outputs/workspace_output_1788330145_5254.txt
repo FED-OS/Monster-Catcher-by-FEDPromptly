@@ -1,0 +1,6 @@
+23:const MAPS = {
+95:  verdantown: {
+474:  verdantown: {
+503:};
+--- total lines ---
+1159 js/world.js

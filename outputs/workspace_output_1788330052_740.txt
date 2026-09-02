@@ -1,0 +1,28 @@
+total 44
+drwxr-xr-x  4 root root  4096 Sep  2 06:20 .
+drwxr-xr-x 10 user user  4096 Sep  2 06:20 ..
+-rw-r--r--  1 root root 20006 Sep  2 06:20 README.md
+drwxr-xr-x  3 root root  4096 Sep  2 06:20 assets
+-rw-r--r--  1 root root  1634 Sep  2 06:20 index.html
+drwxr-xr-x  2 root root  4096 Sep  2 06:20 js
+-rw-r--r--  1 root root  2248 Sep  2 06:20 style.css
+--- JS files ---
+audio.js
+battle.js
+biomes.js
+boss.js
+characters.js
+constants.js
+dialogue.js
+elements.js
+main.js
+menu.js
+monsters.js
+palettes.js
+player.js
+powerups.js
+quirks.js
+sprites.js
+story.js
+world.js
+worldcreatures.js

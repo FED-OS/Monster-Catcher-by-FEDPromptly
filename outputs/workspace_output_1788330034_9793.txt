@@ -1,0 +1,90 @@
+const SPECIES = {
+
+  // ================= FIRE =================
+  emberit: {
+    name: "Emberit", type: "fire", color: "#e0763f", shape: "quad",
+    baseHp: 39, baseAtk: 52, baseDef: 43, baseSpd: 65,
+    moves: ["scratch", "ember"],
+    learnset: { 7: "growl", 10: "firefang", 16: "flamerush" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "blaze",
+    evolvesTo: "infernyx", evolvesAt: 16,
+    dex: "A timid spark-creature that flickers like a candle when calm."
+  },
+  infernyx: {
+    name: "Infernyx", type: "fire", color: "#c9481f", shape: "spiky",
+    baseHp: 58, baseAtk: 78, baseDef: 62, baseSpd: 90,
+    moves: ["scratch", "ember", "firefang", "flamerush"],
+    learnset: { 20: "flameburst", 28: "inferno", 36: "fireworks" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "blaze",
+    evolvesTo: "pyrothorn", evolvesAt: 36,
+    dex: "Its mane of living flame can scorch a forest when it loses its temper."
+  },
+  pyrothorn: {
+    name: "Pyrothorn", type: ["fire", "dragon"], color: "#a32f1c", shape: "spiky",
+    baseHp: 78, baseAtk: 108, baseDef: 78, baseSpd: 100,
+    moves: ["flamerush", "firefang", "flameburst", "dragonclaw"],
+    learnset: { 40: "fireworks", 48: "outrage", 56: "flameburst" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "blaze",
+    dex: "A volcanic dragon whose roar can melt stone. Trainers approach with caution."
+  },
+
+  // ================= WATER =================
+  aquip: {
+    name: "Aquip", type: "water", color: "#4f8fd6", shape: "round",
+    baseHp: 44, baseAtk: 48, baseDef: 65, baseSpd: 43,
+    moves: ["tackle", "bubble"],
+    learnset: { 7: "watergun", 10: "tailwhip", 16: "aquajet" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "torrent",
+    evolvesTo: "tidalon", evolvesAt: 16,
+    dex: "It paddles in cold streams, the fin on its back sensing currents."
+  },
+  tidalon: {
+    name: "Tidalon", type: "water", color: "#2f6bb0", shape: "finned",
+    baseHp: 63, baseAtk: 70, baseDef: 88, baseSpd: 60,
+    moves: ["tackle", "bubble", "watergun", "aquajet"],
+    learnset: { 20: "waterfall", 28: "surf", 36: "hydropump" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "torrent",
+    evolvesTo: "leviathorn", evolvesAt: 36,
+    dex: "Tidalon's body is a living wave; sailors treat its surf as a weather warning."
+  },
+  leviathorn: {
+    name: "Leviathorn", type: ["water", "dragon"], color: "#1f4a80", shape: "finned",
+    baseHp: 88, baseAtk: 95, baseDef: 108, baseSpd: 78,
+    moves: ["aquajet", "waterfall", "surf", "dragonclaw"],
+    learnset: { 40: "hydropump", 48: "outrage", 56: "dracometeor" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "torrent",
+    dex: "An ancient sea leviathan. Whole harbors hush when its spire breaks the water."
+  },
+
+  // ================= GRASS =================
+  leafon: {
+    name: "Leafon", type: "grass", color: "#5fb04f", shape: "round",
+    baseHp: 45, baseAtk: 49, baseDef: 49, baseSpd: 45,
+    moves: ["tackle", "vinewhip"],
+    learnset: { 7: "growl", 10: "absorb", 16: "leafblade" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "overgrow",
+    evolvesTo: "florahn", evolvesAt: 16,
+    dex: "A sproutling that photosynthesizes through the leaf on its head."
+  },
+  florahn: {
+    name: "Florahn", type: "grass", color: "#3f8a35", shape: "spiky",
+    baseHp: 65, baseAtk: 72, baseDef: 68, baseSpd: 58,
+    moves: ["tackle", "vinewhip", "absorb", "leafblade"],
+    learnset: { 20: "seedbomb", 28: "megadrain", 36: "solarbeam" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "overgrow",
+    evolvesTo: "thornheart", evolvesAt: 36,
+    dex: "Florahn blooms only in spring; its petals are prized by herbalists."
+  },
+  thornheart: {
+    name: "Thornheart", type: ["grass", "fairy"], color: "#2f7a25", shape: "spiky",
+    baseHp: 85, baseAtk: 90, baseDef: 88, baseSpd: 70,
+    moves: ["leafblade", "seedbomb", "megadrain", "moonblast"],
+    learnset: { 40: "solarbeam", 48: "drainingkiss", 56: "spore" },
+    catchRate: 45, xpGroup: "mediumSlow", ability: "overgrow",
+    dex: "Said to be the guardian of old forests. Its heart-shaped core glows at dusk."
+  },
+
+  // ================= NORMAL (early route) =================
+  rattick: {
+    name: "Rattick", type: "normal", color: "#a8a29e", shape: "round",
+    baseHp: 30, baseAtk: 56, baseDef: 35, baseSpd: 72,

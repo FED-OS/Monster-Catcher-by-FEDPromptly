@@ -1,0 +1,6 @@
+44 '    },\n'
+45 '    signs: {\n'
+46 '      "1,7": "Mossmere Hollow — A quiet village at the forest\'s edge."\n'
+47 '    }\n'
+48 '  },\n'
+49 '\n'

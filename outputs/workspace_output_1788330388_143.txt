@@ -1,0 +1,27 @@
+  gymtown: {
+    name: "Icicle City",
+    grid: [
+      [2,2,2,2,8,2,2,2,2,2],
+      [2,0,0,0,9,0,0,0,9,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,7,7,0,0,0,7,7,0,2],
+      [2,7,0,0,13,0,0,7,0,2],
+      [2,7,0,0,0,0,0,7,0,2],
+      [2,7,7,0,0,0,7,7,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,2,2,2,2,2,2,2,2,2]
+    ],
+    encounters: [],
+    rate: 0,
+    warps: {
+      "4,0": { dest: "frostcave", col: 4, row: 7 },
+      "4,1": { dest: "gym", col: 4, row: 6 },
+      "8,1": { dest: "gymcenter", col: 4, row: 6 }
+    },
+    signs: {
+      "3,1": "Icicle City Gym — Leader: Frostine",
+      "7,1": "Icicle City Healing Center"
+    }
+  },
+
+  gym: {

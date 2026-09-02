@@ -1,0 +1,1 @@
+Result: JS result: {"map":"verdantown","buildings":[{"type":"house","col":2,"row":4,"w":3,"roof":"red"},{"type":"house","col":6,"row":4,"w":3,"roof":"blue"}]}

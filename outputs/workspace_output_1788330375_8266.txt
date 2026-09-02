@@ -1,0 +1,8 @@
+      "4,7": { dest: "route1", col: 4, row: 7 },
+      "4,8": { dest: "route2", col: 4, row: 0 }
+    },
+    signs: { "1,7": "Verdantown — Hub of the region. Biome portals to the north!" }
+  }
+};
+
+// ---- Global animation frame (incremented each render tick) ----

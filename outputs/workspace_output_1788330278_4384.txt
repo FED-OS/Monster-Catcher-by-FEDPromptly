@@ -1,0 +1,21 @@
+function drawGymMatTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.matGym2;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.matGym1;
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = COLOR.matGym2;
+  ctx.fillRect(px + 6, py + 3, 4, 2);
+  ctx.fillRect(px + 4, py + 5, 8, 2);
+  ctx.fillRect(px + 3, py + 7, 10, 2);
+  ctx.fillRect(px + 4, py + 9, 8, 2);
+  ctx.fillRect(px + 6, py + 11, 4, 2);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(px + 7, py + 7, 2, 2);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 1, py + 1, 14, 1);
+  ctx.fillRect(px + 1, py + 14, 14, 1);
+  ctx.fillRect(px + 1, py + 1, 1, 14);
+  ctx.fillRect(px + 14, py + 1, 1, 14);
+}
+
+function drawMap(ctx, map) {

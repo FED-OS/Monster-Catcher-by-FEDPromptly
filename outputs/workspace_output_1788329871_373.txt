@@ -1,0 +1,11 @@
+total 26240
+drwxr-xr-x  6 user user     4096 Sep  2 06:17 .
+drwxr-xr-x 20 root root     4096 Jun 22 03:39 ..
+drwxr-xr-x  4 user user     4096 Jun 19 10:20 .agent_hooks
+drwxr-xr-x 10 root root     4096 Sep  2 06:17 .browser_data
+drwxr-xr-x  3 root root     4096 Jun 22 03:37 .psiphon_data
+-rw-r--r--  1 root root  5267757 Sep  2 06:17 5ba7dfea-579a-44f5-b89c-87bc767607cb.zip
+-rw-r--r--  1 root root 17772728 Sep  2 06:17 9fbe9c4f-ec3f-447d-b333-686d506dbd91.zip
+-rw-r--r--  1 root root  1623797 Sep  2 06:17 gba-battle-preview.png
+-rw-r--r--  1 root root  2168780 Sep  2 06:17 gba-overworld-preview.png
+drwxr-xr-x  2 root root     4096 Sep  2 06:17 outputs

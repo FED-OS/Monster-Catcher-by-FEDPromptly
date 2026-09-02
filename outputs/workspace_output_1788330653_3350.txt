@@ -1,0 +1,6 @@
+1019:function drawBattleBackground(ctx) {
+1103:function drawBattlePlatform(ctx, x, y, w, h, isPlayer) {
+1128:function drawHpBox(ctx, x, y, name, hp, maxHp, level, monster, isEnemy) {
+1182:function drawBattleTextBox(ctx) {
+1303:function drawHpBar(ctx, x, y, name, hp, maxHp, level, monster) {
+1309:function drawTypeBadges(ctx, monster, x, y) {

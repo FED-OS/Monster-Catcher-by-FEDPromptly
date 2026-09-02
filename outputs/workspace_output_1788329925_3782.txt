@@ -1,0 +1,141 @@
+// A tiny pixel painter: sets a single pixel on the 32x32 context.
+function px(c, x, y, color) {
+  if (x < 0 || y < 0 || x >= 32 || y >= 32) return;
+  c.fillStyle = color;
+  c.fillRect(x, y, 1, 1);
+}
+// Filled rect of pixels
+function pxr(c, x, y, w, h, color) {
+  if (x < 0 || y < 0) return;
+  c.fillStyle = color;
+  c.fillRect(x, y, w, h);
+}
+// Outline helper: draw a 1px outline around a filled region defined by a predicate
+function outlineRegion(c, isFilled, color) {
+  for (let y = 0; y < 32; y++) {
+    for (let x = 0; x < 32; x++) {
+      if (isFilled(x, y)) continue;
+      const neighbor =
+        (isFilled(x - 1, y) || isFilled(x + 1, y) ||
+         isFilled(x, y - 1) || isFilled(x, y + 1));
+      if (neighbor) px(c, x, y, color);
+    }
+  }
+}
+// Draw a filled ellipse-ish blob using a predicate list, then return the set
+function fillBlob(c, cx0, cy0, rx, ry, color) {
+  const set = [];
+  for (let y = -ry; y <= ry; y++) {
+    for (let x = -rx; x <= rx; x++) {
+      const v = (x * x) / (rx * rx) + (y * y) / (ry * ry);
+      if (v <= 1.05) {
+        const X = cx0 + x, Y = cy0 + y;
+        if (X >= 0 && Y >= 0 && X < 32 && Y < 32) {
+          px(c, X, Y, color);
+          set.push([X, Y]);
+        }
+      }
+    }
+  }
+  return set;
+}
+// Two eyes at given centers
+function eyes(c, lx, ly, rx, ry, pal, size) {
+  size = size || 3;
+  pxr(c, lx, ly, size, size, pal.eye);
+  pxr(c, rx, ry, size, size, pal.eye);
+  px(c, lx + size - 1, ly, pal.eyeShine);
+  px(c, rx + size - 1, ry, pal.eyeShine);
+}
+
+// ===============================================================
+//  DEFAULT BODY DESIGNS (by shape key — used when no species-
+//  specific design exists). Each draws a cute, readable creature.
+// ===============================================================
+const DEFAULT_DESIGNS = {
+  // ROUND: a chubby blob creature (e.g. Pikachu-ish / Jigglypuff-ish body)
+  round(c, pal, sp) {
+    const body = fillBlob(c, 16, 19, 11, 9, pal.base);
+    // shade bottom
+    for (let y = 22; y < 29; y++)
+      for (let x = 7; x < 26; x++)
+        if ((x - 16) * (x - 16) / 121 + (y - 19) * (y - 19) / 81 <= 1.05)
+          px(c, x, y, pal.shade);
+    // belly
+    fillBlob(c, 16, 23, 5, 4, pal.belly);
+    // ears (two nubs on top)
+    pxr(c, 10, 4, 3, 4, pal.base); pxr(c, 9, 3, 2, 2, pal.base);
+    pxr(c, 19, 4, 3, 4, pal.base); pxr(c, 21, 3, 2, 2, pal.base);
+    pxr(c, 10, 4, 3, 2, pal.dark); pxr(c, 19, 4, 3, 2, pal.dark);
+    // feet
+    pxr(c, 10, 27, 4, 2, pal.shade); pxr(c, 18, 27, 4, 2, pal.shade);
+    // eyes + smile
+    eyes(c, 12, 16, 19, 16, pal, 3);
+    pxr(c, 14, 22, 4, 1, pal.outline); // mouth
+    px(c, 14, 23, pal.outline); px(c, 17, 23, pal.outline);
+    // cheeks
+    px(c, 9, 20, pal.hl); px(c, 22, 20, pal.hl);
+    outlineRegion(c, (x, y) => body.some(([bx, by]) => bx === x && by === y), pal.outline);
+  },
+
+  // QUAD: four-legged creature (Charmander-ish / Growlithe-ish)
+  quad(c, pal, sp) {
+    // body
+    fillBlob(c, 16, 20, 10, 6, pal.base);
+    for (let y = 22; y < 27; y++)
+      for (let x = 7; x < 26; x++)
+        if ((x - 16) * (x - 16) / 100 + (y - 20) * (y - 20) / 36 <= 1.05)
+          px(c, x, y, pal.shade);
+    // head
+    fillBlob(c, 22, 14, 6, 5, pal.base);
+    for (let y = 16; y < 20; y++)
+      for (let x = 17; x < 29; x++)
+        if ((x - 22) * (x - 22) / 36 + (y - 14) * (y - 14) / 25 <= 1.05)
+          px(c, x, y, pal.shade);
+    // belly stripe
+    fillBlob(c, 16, 23, 6, 2, pal.belly);
+    // legs
+    pxr(c, 9, 25, 3, 4, pal.shade);
+    pxr(c, 14, 25, 3, 4, pal.shade);
+    pxr(c, 20, 25, 3, 4, pal.shade);
+    pxr(c, 25, 25, 3, 4, pal.shade);
+    pxr(c, 9, 28, 3, 1, pal.dark);
+    pxr(c, 14, 28, 3, 1, pal.dark);
+    pxr(c, 20, 28, 3, 1, pal.dark);
+    pxr(c, 25, 28, 3, 1, pal.dark);
+    // tail
+    pxr(c, 4, 17, 4, 2, pal.base); pxr(c, 3, 15, 3, 3, pal.base);
+    pxr(c, 3, 15, 2, 2, pal.light);
+    // ears
+    pxr(c, 19, 8, 2, 4, pal.base); pxr(c, 25, 8, 2, 4, pal.base);
+    pxr(c, 19, 8, 2, 2, pal.dark); pxr(c, 25, 8, 2, 2, pal.dark);
+    // eyes + snout
+    eyes(c, 20, 13, 25, 13, pal, 2);
+    pxr(c, 27, 16, 2, 1, pal.outline); // nose
+    // outline
+    const filled = (x, y) => {
+      const a = (x - 16) * (x - 16) / 100 + (y - 20) * (y - 20) / 36 <= 1.05;
+      const b = (x - 22) * (x - 22) / 36 + (y - 14) * (y - 14) / 25 <= 1.05;
+      return a || b;
+    };
+    outlineRegion(c, filled, pal.outline);
+  },
+
+  // SPIKY: a creature with back spikes / flame mane (Charmeleon-ish)
+  spiky(c, pal, sp) {
+    fillBlob(c, 16, 20, 10, 7, pal.base);
+    for (let y = 23; y < 28; y++)
+      for (let x = 7; x < 26; x++)
+        if ((x - 16) * (x - 16) / 100 + (y - 20) * (y - 20) / 49 <= 1.05)
+          px(c, x, y, pal.shade);
+    // head
+    fillBlob(c, 16, 13, 7, 5, pal.base);
+    for (let y = 15; y < 19; y++)
+      for (let x = 10; x < 23; x++)
+        if ((x - 16) * (x - 16) / 49 + (y - 13) * (y - 13) / 25 <= 1.05)
+          px(c, x, y, pal.shade);
+    // belly
+    fillBlob(c, 16, 23, 5, 3, pal.belly);
+    // back spikes (3 triangles)
+    function spike(x) {
+      pxr(c, x, 11, 3, 1, pal.light);
