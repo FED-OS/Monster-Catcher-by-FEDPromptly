@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-validate:
+    name: Lint & validate static site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check files exist
+        run: |
+          test -f fedmon/index.html || { echo "missing index.html"; exit 1; }
+          test -f fedmon/style.css  || { echo "missing style.css"; exit 1; }
+          test -f fedmon/script.js  || { echo "missing script.js"; exit 1; }
+
+      - name: Check HTML structure
+        run: |
+          grep -q "<!DOCTYPE html>" fedmon/index.html || { echo "missing doctype"; exit 1; }
+          [ "$(grep -c '</html>' fedmon/index.html)" -eq 1 ] || { echo "html closing tag count != 1"; exit 1; }
+          [ "$(grep -c '</body>' fedmon/index.html)" -eq 1 ] || { echo "body closing tag count != 1"; exit 1; }
+          echo "HTML structure OK"
+
+      - name: Check CSS brace balance
+        run: |
+          python3 -c "s=open('fedmon/style.css').read(); o,c=s.count('{'),s.count('}'); print(f'css braces open={o} close={c}'); assert o==c, 'CSS braces unbalanced'"
+
+      - name: Check JS brace balance & syntax
+        run: |
+          python3 -c "s=open('fedmon/script.js').read(); o,c=s.count('{'),s.count('}'); print(f'js braces open={o} close={c}'); assert o==c, 'JS braces unbalanced'"
+          node --check fedmon/script.js && echo "JS syntax OK"
+
+      - name: Check for external CDN / asset URLs in core files
+        run: |
+          ! grep -rniE "https?://(cdn\.|unpkg\.|cdnjs\.|jsdelivr\.)" fedmon/index.html fedmon/style.css fedmon/script.js \
+            || { echo "found external CDN references in core files (not allowed)"; exit 1; }
+          echo "No external CDN refs in core files"
+
+      - name: Secret scan
+        run: |
+          if grep -rniE "(api[_-]?key|secret[_-]?key|BEGIN.{0,5}PRIVATE KEY|password\s*=\s*['\"][^'\"]{6,})" \
+             fedmon/ --include="*.html" --include="*.css" --include="*.js" --include="*.yml" --include="*.json"; then
+            echo "potential secret found"
+            exit 1
+          fi
+          echo "No secrets detected"
+
+      - name: Check relative asset references
+        run: |
+          grep -oE '(href|src)="[^"]*"' fedmon/index.html | grep -vE '(href|src)="(style\.css|script\.js|#|mailto:|https://ko-fi\.com[^"]*githubbutton[^"]*)"' \
+            && { echo "found non-relative/non-allowed reference"; exit 1; } || echo "Asset references OK"
+
+      - name: Report
+        run: echo "CI checks passed ✅"

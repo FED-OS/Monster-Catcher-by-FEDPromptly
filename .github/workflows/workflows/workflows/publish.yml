@@ -1,0 +1,48 @@
+name: Publish (artifact)
+
+# "Publish" = upload a distributable artifact of the static site,
+# distinct from "release" (tagged GitHub Release) and "deploy" (Pages).
+# Useful for producing a downloadable build on every push to main.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'fedmon/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish-artifact:
+    name: Publish distributable artifact
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate
+        run: |
+          test -f fedmon/index.html
+          test -f fedmon/style.css
+          test -f fedmon/script.js
+
+      - name: Build distributable zip
+        run: |
+          cd fedmon
+          zip -r ../fedmon-no-mercy-latest.zip index.html style.css script.js README.md LICENSE .gitattributes assets
+          cd ..
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fedmon-no-mercy-dist
+          path: fedmon-no-mercy-latest.zip
+          retention-days: 30
+
+      - name: Summary
+        run: echo "Distributable artifact published ✅ (retained 30 days)"
