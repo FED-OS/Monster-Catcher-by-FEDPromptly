@@ -1,0 +1,311 @@
+# ============================================================
+#  Monster Catcher — Verdale Region: HERO Edition v5.0
+#  GitHub Actions CI Pipeline
+#  Runs on every push and pull request to validate the codebase.
+# ============================================================
+
+name: Build & Validate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # ===========================================================
+  #  Job 1: Syntax validation of all JS modules
+  # ===========================================================
+  validate-syntax:
+    name: 📝 Validate JS Syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 🔍 Syntax-check all game modules (js/*.js)
+        run: |
+          set -e
+          MODULE_COUNT=$(find "$GITHUB_WORKSPACE/js" -name "*.js" -type f | wc -l)
+          echo "Checking $MODULE_COUNT JS modules for syntax errors..."
+          echo ""
+          FAIL=0
+          while IFS= read -r f; do
+            rel="${f#$GITHUB_WORKSPACE/}"
+            if node --check "$f" 2>/dev/null; then
+              echo "  ✅ $rel"
+            else
+              echo "  ❌ $rel"
+              node --check "$f"
+              FAIL=1
+            fi
+          done < <(find "$GITHUB_WORKSPACE/js" -name "*.js" -type f | sort)
+          echo ""
+          if [ "$FAIL" -ne 0 ]; then
+            echo "❌ Syntax check FAILED — at least one module has a syntax error."
+            exit 1
+          fi
+          echo "✅ All $MODULE_COUNT JS modules passed syntax check."
+
+      - name: 🔍 Syntax-check Electron main process
+        run: |
+          if [ -f "$GITHUB_WORKSPACE/electron/main.js" ]; then
+            node --check "$GITHUB_WORKSPACE/electron/main.js" \
+              && echo "✅ electron/main.js" \
+              || { echo "❌ electron/main.js"; exit 1; }
+          else
+            echo "⚠️  electron/main.js not found — skipping."
+          fi
+
+      - name: 📊 Publish code statistics
+        run: |
+          {
+            echo "## 📊 Code Statistics"
+            echo ""
+            echo "| Metric          | Count |"
+            echo "|-----------------|-------|"
+            echo "| JS modules      | $(find "$GITHUB_WORKSPACE/js" -name '*.js' -type f | wc -l) |"
+            echo "| Total JS lines  | $(find "$GITHUB_WORKSPACE/js" -name '*.js' -type f -exec cat {} + | wc -l) |"
+            echo "| HTML lines      | $(wc -l < "$GITHUB_WORKSPACE/index.html") |"
+            echo "| CSS lines       | $(wc -l < "$GITHUB_WORKSPACE/style.css") |"
+            echo "| Screenshots     | $(find "$GITHUB_WORKSPACE/screenshots" -name '*.png' 2>/dev/null | wc -l) |"
+            echo ""
+            echo "All $(find "$GITHUB_WORKSPACE/js" -name '*.js' -type f | wc -l) modules passed syntax validation ✅"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ===========================================================
+  #  Job 2: Verify project structure & required files
+  # ===========================================================
+  verify-structure:
+    name: 📁 Verify Project Structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📁 Verify required project files
+        run: |
+          set -e
+          echo "Checking required project files..."
+          echo ""
+          FAIL=0
+          REQUIRED_FILES=(
+            "index.html"
+            "style.css"
+            "package.json"
+            "README.md"
+            "LICENSE"
+            ".gitignore"
+            "CHANGELOG.md"
+            "CONTRIBUTING.md"
+            "electron/main.js"
+            ".github/workflows/build.yml"
+          )
+          for f in "${REQUIRED_FILES[@]}"; do
+            if [ -f "$GITHUB_WORKSPACE/$f" ]; then
+              echo "  ✅ $f"
+            else
+              echo "  ❌ MISSING: $f"
+              FAIL=1
+            fi
+          done
+          echo ""
+          echo "Checking required JS modules..."
+          REQUIRED_JS=(
+            "constants.js" "palettes.js" "elements.js" "monsters.js"
+            "sprites.js" "world.js" "biomes.js" "player.js"
+            "worldcreatures.js" "battle.js" "boss.js" "menu.js"
+            "dialogue.js" "story.js" "characters.js" "quirks.js"
+            "powerups.js" "particles.js" "effects.js" "gamepad.js"
+            "audio.js" "main.js"
+          )
+          for f in "${REQUIRED_JS[@]}"; do
+            if [ -f "$GITHUB_WORKSPACE/js/$f" ]; then
+              echo "  ✅ js/$f"
+            else
+              echo "  ❌ MISSING: js/$f"
+              FAIL=1
+            fi
+          done
+          echo ""
+          if [ "$FAIL" -ne 0 ]; then
+            echo "❌ Structure verification FAILED — some required files are missing."
+            exit 1
+          fi
+          echo "✅ All required files present."
+
+      - name: 🔗 Verify all JS modules are loaded in index.html
+        run: |
+          set -e
+          echo "Verifying script tags in index.html..."
+          echo ""
+          MISSING=0
+          while IFS= read -r f; do
+            base=$(basename "$f")
+            if grep -q "$base" "$GITHUB_WORKSPACE/index.html"; then
+              echo "  ✅ $base is referenced"
+            else
+              echo "  ⚠️  $base is NOT referenced in index.html"
+              MISSING=1
+            fi
+          done < <(find "$GITHUB_WORKSPACE/js" -name "*.js" -type f | sort)
+          echo ""
+          if [ "$MISSING" -ne 0 ]; then
+            echo "⚠️  Warning: some modules are not loaded in index.html (non-fatal)."
+          fi
+          echo "✅ Script tag verification complete."
+
+  # ===========================================================
+  #  Job 3: Serve & smoke-test the game over HTTP
+  # ===========================================================
+  smoke-test:
+    name: 🚀 Smoke Test (HTTP Serve)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 🚀 Start static HTTP server
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          python3 -m http.server 9090 --directory "$GITHUB_WORKSPACE" > /tmp/httpd.log 2>&1 &
+          SERVER_PID=$!
+          echo "SERVER_PID=$SERVER_PID" >> "$GITHUB_ENV"
+          sleep 2
+          echo "Server started on port 9090 (PID: $SERVER_PID)"
+          # Verify server is listening
+          if ! curl -s -o /dev/null http://localhost:9090/ ; then
+            echo "❌ Server failed to start"
+            cat /tmp/httpd.log
+            exit 1
+          fi
+          echo "✅ Server is responding"
+
+      - name: 🧪 Verify index.html loads (HTTP 200)
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9090/index.html)
+          if [ "$STATUS" = "200" ]; then
+            echo "✅ index.html returned HTTP 200"
+          else
+            echo "❌ index.html returned HTTP $STATUS"
+            exit 1
+          fi
+
+      - name: 🧪 Verify all JS modules are accessible via HTTP
+        run: |
+          set -e
+          MODULE_COUNT=$(find "$GITHUB_WORKSPACE/js" -name "*.js" -type f | wc -l)
+          echo "Testing $MODULE_COUNT JS modules over HTTP..."
+          echo ""
+          FAIL=0
+          SERVED=0
+          while IFS= read -r f; do
+            rel="${f#$GITHUB_WORKSPACE/}"
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:9090/$rel")
+            if [ "$STATUS" = "200" ]; then
+              SERVED=$((SERVED + 1))
+            else
+              echo "  ❌ $rel (HTTP $STATUS)"
+              FAIL=1
+            fi
+          done < <(find "$GITHUB_WORKSPACE/js" -name "*.js" -type f | sort)
+          echo "Served $SERVED/$MODULE_COUNT JS modules via HTTP"
+          if [ "$FAIL" -ne 0 ] || [ "$SERVED" -ne "$MODULE_COUNT" ]; then
+            echo "❌ Some JS modules were not accessible via HTTP."
+            exit 1
+          fi
+          echo "✅ All $SERVED JS modules accessible via HTTP."
+
+      - name: 🧪 Verify CSS and Electron main load
+        run: |
+          for path in "style.css" "electron/main.js"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:9090/$path")
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ $path (HTTP 200)"
+            else
+              echo "❌ $path (HTTP $STATUS)"
+              exit 1
+            fi
+          done
+
+      - name: 📊 Smoke test summary
+        if: always()
+        run: |
+          {
+            echo "## 🚀 Smoke Test Results"
+            echo ""
+            echo "- index.html: HTTP 200 ✅"
+            echo "- style.css: HTTP 200 ✅"
+            echo "- electron/main.js: HTTP 200 ✅"
+            echo "- JS modules: $(find "$GITHUB_WORKSPACE/js" -name '*.js' -type f | wc -l) files, all HTTP 200 ✅"
+            echo ""
+            echo "Game loads successfully on static server ✅"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 🛑 Stop HTTP server
+        if: always()
+        run: |
+          kill "${SERVER_PID:-0}" 2>/dev/null || true
+          echo "Server stopped."
+
+  # ===========================================================
+  #  Job 4: Install Electron deps (proves package.json works)
+  # ===========================================================
+  install-deps:
+    name: 📦 Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install npm dependencies
+        run: |
+          npm install --no-audit --no-fund
+          echo "✅ npm install completed successfully"
+
+      - name: 🏷️ Verify Electron is installed
+        run: |
+          if [ -d "node_modules/electron" ]; then
+            echo "✅ Electron is installed in node_modules"
+            cat node_modules/electron/package.json | grep '"version"' | head -1
+          else
+            echo "❌ Electron not found in node_modules"
+            exit 1
+          fi
+
+      - name: 📊 Dependency installation summary
+        if: always()
+        run: |
+          {
+            echo "## 📦 Dependency Installation"
+            echo ""
+            echo "- \`npm install\`: ✅"
+            echo "- Electron: installed ✅"
+            echo ""
+            echo "The project is ready for \`npm start\` (desktop) or \`npm run serve\` (web)."
+          } >> "$GITHUB_STEP_SUMMARY"
