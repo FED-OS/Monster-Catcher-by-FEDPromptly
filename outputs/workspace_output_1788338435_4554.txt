@@ -1,0 +1,11 @@
+  adding: monstercatcher/assets/sprites/ (stored 0%)
+  adding: monstercatcher/assets/sprites/README.md (deflated 45%)
+  adding: monstercatcher/README.md (deflated 58%)
+-rw-r--r-- 1 root root 1.7M Sep  2 08:40 monstercatcher-hero-edition-v5.zip
+=== Git log ===
+2c7f419 Extra polish: CONTRIBUTING.md, CHANGELOG.md, README badges, story section, particle screenshot
+979699e Monster Catcher — Verdale Region: HERO Edition v5.0
+=== Total files in zip ===
+    16527  2026-09-02 08:40   monstercatcher/README.md
+---------                     -------
+  2219846                     193 files
