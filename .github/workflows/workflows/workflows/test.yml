@@ -1,0 +1,82 @@
+name: Test
+
+# Lightweight "tests" for the static site. Since there's no build step
+# and no runtime backend, tests are structural: file integrity, link
+# integrity, and served-content assertions. Real lint lives in ci.yml.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  structural-tests:
+    name: Structural tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Doctype & charset
+        run: |
+          grep -q "<!DOCTYPE html>" fedmon/index.html
+          grep -q 'charset="UTF-8"' fedmon/index.html
+          grep -q 'name="viewport"' fedmon/index.html
+          echo "Doctype/charset/viewport OK"
+
+      - name: Title present
+        run: |
+          grep -q "<title>FEDMON: NO MERCY</title>" fedmon/index.html
+          echo "Title OK"
+
+      - name: Six sections present
+        run: |
+          for id in boot combat mech starters econ drop; do
+            grep -q "id=\"$id\"" fedmon/index.html || { echo "missing section #$id"; exit 1; }
+          done
+          echo "All 6 sections present"
+
+      - name: Rail readouts present
+        run: |
+          for r in rHP rCash rHeat rStam rProg; do
+            grep -q "id=\"$r\"" fedmon/index.html || { echo "missing readout #$r"; exit 1; }
+          done
+          echo "All rail readouts present"
+
+      - name: Combat buttons present
+        run: |
+          for m in jab dodge tackle strike ult; do
+            grep -q "data-move=\"$m\"" fedmon/index.html || { echo "missing move $m"; exit 1; }
+          done
+          echo "All combat moves present"
+
+      - name: Starters present
+        run: |
+          grep -q "EMBERHOUND" fedmon/index.html
+          grep -q "VOLTHEDGE" fedmon/index.html
+          grep -q "SLICKLIZ" fedmon/index.html
+          echo "All 3 starters present"
+
+      - name: IIFE wrap in JS
+        run: |
+          grep -q "'use strict'" fedmon/script.js
+          echo "JS uses strict mode"
+
+      - name: No external CDN in core files
+        run: |
+          ! grep -rniE "https?://(cdn\.|unpkg\.|cdnjs\.|jsdelivr\.)" fedmon/index.html fedmon/style.css fedmon/script.js
+          echo "No external CDN in core files"
+
+      - name: Easter eggs present
+        run: |
+          grep -q "glitch\|GLITCH\|sync" fedmon/script.js
+          grep -q "console" fedmon/script.js
+          echo "Easter egg hooks present"

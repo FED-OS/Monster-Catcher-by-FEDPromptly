@@ -1,0 +1,45 @@
+name: Stale
+
+# Mark inactive issues and PRs as stale, then close them if still inactive.
+# Keeps the tracker focused. Excludes pinned items and the security label.
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Mark & close stale
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 60
+          days-before-close: 14
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: pinned,security,needs-triage,blocked
+          exempt-pr-labels: pinned,security,blocked
+          exempt-assignees: true
+          exempt-milestones: true
+          stale-issue-message: |
+            This issue has been inactive for 60 days and is marked **stale**.
+            It will be closed in 14 days unless there's new activity or it's
+            pinned / labelled `needs-triage` / `blocked`.
+            Comment to keep it open. Thanks.
+          stale-pr-message: |
+            This PR has been inactive for 60 days and is marked **stale**.
+            It will be closed in 14 days unless there's new activity or it's
+            pinned / labelled `blocked`. Rebase and push to keep it alive.
+          close-issue-message: |
+            Closing as stale. Reopen with new info if still relevant.
+          close-pr-message: |
+            Closing as stale. Reopen or rebase if you'd like to resume.
+          operations-per-run: 40

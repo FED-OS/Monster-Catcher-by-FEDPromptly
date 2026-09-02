@@ -1,0 +1,51 @@
+# .github/labeler.yml
+# Map file paths to labels for the labeler workflow.
+# Docs: https://github.com/actions/labeler
+
+page:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'fedmon/index.html'
+          - 'fedmon/style.css'
+          - 'fedmon/script.js'
+
+assets:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'fedmon/assets/**'
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'fedmon/*.md'
+          - 'fedmon/wiki/**'
+          - 'fedmon/prompts/**'
+          - 'fedmon/discussion/**'
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/workflows/**'
+          - 'fedmon/.github/workflows/**'
+
+templates:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'fedmon/.github/**'
+          - 'fedmon/PULL_REQUEST_TEMPLATE.md'
+          - 'fedmon/bug_report.md'
+          - 'fedmon/feature_request.md'
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'fedmon/.gitignore'
+          - 'fedmon/.gitattributes'
+          - 'fedmon/LICENSE'
+          - 'fedmon/styles.css'
+
+accessibility:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'fedmon/style.css'
+          - 'fedmon/script.js'

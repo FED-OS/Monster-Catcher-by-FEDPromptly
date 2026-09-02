@@ -1,0 +1,78 @@
+name: PR checks
+
+# Aggregator workflow that gates PRs on the core checks.
+# Runs lint, structural tests, and a build probe on pull requests.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Brace balance & syntax
+        run: |
+          python3 -c "s=open('fedmon/style.css').read(); o,c=s.count('{'),s.count('}'); print(f'css {o}/{c}'); assert o==c"
+          python3 -c "s=open('fedmon/script.js').read(); o,c=s.count('{'),s.count('}'); print(f'js {o}/{c}'); assert o==c"
+          node --check fedmon/script.js
+
+  structural:
+    name: Structural tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sections & readouts
+        run: |
+          for id in boot combat mech starters econ drop; do grep -q "id=\"$id\"" fedmon/index.html; done
+          for r in rHP rCash rHeat rStam rProg; do grep -q "id=\"$r\"" fedmon/index.html; done
+          grep -q "<title>FEDMON: NO MERCY</title>" fedmon/index.html
+
+  no-external-cdn:
+    name: No external CDN in core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan
+        run: |
+          ! grep -rniE "https?://(cdn\.|unpkg\.|cdnjs\.|jsdelivr\.)" fedmon/index.html fedmon/style.css fedmon/script.js
+          echo "Clean"
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan for secrets
+        run: |
+          if grep -rniE "(api[_-]?key|secret[_-]?key|BEGIN.{0,5}PRIVATE KEY)" \
+             fedmon/ --include="*.html" --include="*.css" --include="*.js" --include="*.yml"; then
+            exit 1
+          fi
+          echo "No secrets"
+
+  serve-probe:
+    name: Serve probe
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe
+        run: |
+          cd fedmon && python3 -m http.server 8765 &
+          sleep 2
+          [ "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8765/index.html)" = "200" ]
+          curl -s http://localhost:8765/index.html | grep -q "FEDMON: NO MERCY"
+          echo "Probe OK"
