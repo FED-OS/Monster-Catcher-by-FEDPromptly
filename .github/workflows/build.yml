@@ -1,20 +1,27 @@
 # ============================================================
 #  Monster Catcher — Verdale Region: HERO Edition v5.0
-#  GitHub Actions CI Pipeline
-#  Runs on every push and pull request to validate the codebase.
+#  GitHub Actions CI/CD Pipeline
+#
+#  Runs on every push/PR: validates code, verifies structure,
+#  smoke-tests the HTTP server, and installs dependencies.
+#
+#  On version tags (v*.*.*): builds distributable desktop apps
+#  (Windows .exe installer + portable, macOS .dmg, Linux AppImage)
+#  and publishes them as GitHub Release artifacts.
 # ============================================================
 
-name: Build & Validate
+name: Build & Release
 
 on:
   push:
     branches: [main, master]
+    tags: ["v*.*.*"]
   pull_request:
     branches: [main, master]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # needed for creating GitHub Releases
 
 jobs:
   # ===========================================================
@@ -108,6 +115,8 @@ jobs:
             "CHANGELOG.md"
             "CONTRIBUTING.md"
             "electron/main.js"
+            "assets/icon.png"
+            "assets/icon.ico"
             ".github/workflows/build.yml"
           )
           for f in "${REQUIRED_FILES[@]}"; do
@@ -174,11 +183,6 @@ jobs:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🟢 Set up Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
       - name: 🐍 Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -186,13 +190,11 @@ jobs:
 
       - name: 🚀 Start static HTTP server
         run: |
-          cd "$GITHUB_WORKSPACE"
           python3 -m http.server 9090 --directory "$GITHUB_WORKSPACE" > /tmp/httpd.log 2>&1 &
           SERVER_PID=$!
           echo "SERVER_PID=$SERVER_PID" >> "$GITHUB_ENV"
           sleep 2
           echo "Server started on port 9090 (PID: $SERVER_PID)"
-          # Verify server is listening
           if ! curl -s -o /dev/null http://localhost:9090/ ; then
             echo "❌ Server failed to start"
             cat /tmp/httpd.log
@@ -268,7 +270,7 @@ jobs:
           echo "Server stopped."
 
   # ===========================================================
-  #  Job 4: Install Electron deps (proves package.json works)
+  #  Job 4: Install npm dependencies (proves package.json)
   # ===========================================================
   install-deps:
     name: 📦 Install Dependencies
@@ -288,13 +290,20 @@ jobs:
           npm install --no-audit --no-fund
           echo "✅ npm install completed successfully"
 
-      - name: 🏷️ Verify Electron is installed
+      - name: 🏷️ Verify Electron + electron-builder installed
         run: |
           if [ -d "node_modules/electron" ]; then
-            echo "✅ Electron is installed in node_modules"
-            cat node_modules/electron/package.json | grep '"version"' | head -1
+            echo "✅ Electron is installed"
+            node -p "require('electron/package.json').version"
           else
             echo "❌ Electron not found in node_modules"
+            exit 1
+          fi
+          if [ -d "node_modules/electron-builder" ]; then
+            echo "✅ electron-builder is installed"
+            npx electron-builder --version
+          else
+            echo "❌ electron-builder not found in node_modules"
             exit 1
           fi
 
@@ -306,6 +315,152 @@ jobs:
             echo ""
             echo "- \`npm install\`: ✅"
             echo "- Electron: installed ✅"
+            echo "- electron-builder: installed ✅"
             echo ""
-            echo "The project is ready for \`npm start\` (desktop) or \`npm run serve\` (web)."
+            echo "The project is ready for \`npm start\` (desktop) or \`npm run dist\` (build .exe)."
           } >> "$GITHUB_STEP_SUMMARY"
+
+  # ===========================================================
+  #  Job 5: Build Windows .exe (installer + portable)
+  #  Runs on PRs/pushes (uploads artifact) AND on tags (release)
+  # ===========================================================
+  build-windows:
+    name: 🪟 Build Windows .exe
+    runs-on: windows-latest
+    needs: [validate-syntax, verify-structure, smoke-test]
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: 🔨 Build Windows installer + portable .exe
+        run: npx electron-builder --win --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📋 List built artifacts
+        run: |
+          echo "=== Built Windows artifacts ==="
+          Get-ChildItem -Path release -Recurse -File | ForEach-Object {
+            $sizeMB = [math]::Round($_.Length / 1MB, 2)
+            Write-Host "  $($_.Name) — $sizeMB MB"
+          }
+
+      - name: 📤 Upload .exe artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: monster-catcher-windows-${{ github.ref_name }}
+          path: |
+            release/*.exe
+            release/*.yml
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: 🚀 Publish to GitHub Release (on tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: npx electron-builder --win --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ===========================================================
+  #  Job 6: Build macOS .dmg (Intel + Apple Silicon)
+  # ===========================================================
+  build-macos:
+    name: 🍎 Build macOS .dmg
+    runs-on: macos-latest
+    needs: [validate-syntax, verify-structure, smoke-test]
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: 🔨 Build macOS .dmg
+        run: npx electron-builder --mac --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: false   # skip code signing in CI
+
+      - name: 📋 List built artifacts
+        run: |
+          echo "=== Built macOS artifacts ==="
+          find release -type f -exec ls -lh {} \; | awk '{print "  "$NF" — "$5}'
+
+      - name: 📤 Upload .dmg artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: monster-catcher-macos-${{ github.ref_name }}
+          path: |
+            release/*.dmg
+            release/*.yml
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: 🚀 Publish to GitHub Release (on tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: npx electron-builder --mac --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+
+  # ===========================================================
+  #  Job 7: Build Linux AppImage + tar.gz
+  # ===========================================================
+  build-linux:
+    name: 🐧 Build Linux AppImage
+    runs-on: ubuntu-latest
+    needs: [validate-syntax, verify-structure, smoke-test]
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: 🔨 Build Linux AppImage + tar.gz
+        run: npx electron-builder --linux --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📋 List built artifacts
+        run: |
+          echo "=== Built Linux artifacts ==="
+          find release -type f -exec ls -lh {} \; | awk '{print "  "$NF" — "$5}'
+
+      - name: 📤 Upload AppImage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: monster-catcher-linux-${{ github.ref_name }}
+          path: |
+            release/*.AppImage
+            release/*.tar.gz
+            release/*.yml
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: 🚀 Publish to GitHub Release (on tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: npx electron-builder --linux --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
