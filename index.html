@@ -2,22 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Monster Catcher</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monster Catcher — Verdale Region: GBA Edition v4.0 MEGA</title>
 <link rel="stylesheet" href="style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
   <div id="screen-wrap">
-    <canvas id="game" width="160" height="144"></canvas>
+    <canvas id="game" width="240" height="160"></canvas>
+    <div class="crt-overlay"></div>
   </div>
   <p id="hint">Arrow keys / WASD to move &middot; Z or Enter to confirm &middot; X to cancel</p>
+  <p id="brand">Verdale Region &mdash; GBA Edition v4.0 MEGA</p>
 
-  <script src="js/constants.js"></script>
-  <script src="js/monsters.js"></script>
-  <script src="js/sprites.js"></script>
-  <script src="js/story.js"></script>
-  <script src="js/world.js"></script>
-  <script src="js/player.js"></script>
-  <script src="js/battle.js"></script>
-  <script src="js/main.js"></script>
+  <!-- Core engine (load order matters) -->
+  <script src="js/constants.js?v=4"></script>
+  <script src="js/palettes.js?v=4"></script>
+  <script src="js/monsters.js?v=4"></script>
+  <script src="js/sprites.js?v=4"></script>
+  <script src="js/story.js?v=4"></script>
+  <script src="js/world.js?v=4"></script>
+  <script src="js/audio.js?v=4"></script>
+
+  <!-- Mega Expansion modules (depend on core) -->
+  <script src="js/elements.js?v=4"></script>
+  <script src="js/powerups.js?v=4"></script>
+  <script src="js/biomes.js?v=4"></script>
+  <script src="js/characters.js?v=4"></script>
+  <script src="js/quirks.js?v=4"></script>
+  <script src="js/dialogue.js?v=4"></script>
+  <script src="js/worldcreatures.js?v=4"></script>
+  <script src="js/boss.js?v=4"></script>
+
+  <!-- Game logic (depends on all systems) -->
+  <script src="js/player.js?v=4"></script>
+  <script src="js/battle.js?v=4"></script>
+  <script src="js/menu.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>

@@ -1,33 +1,97 @@
+/* Monster Catcher — Verdale Region: GBA Edition
+   Native canvas resolution: 240x160 (Game Boy Advance)
+   Displayed at 3x scale → 720x480, crisp pixelated upscaling. */
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #0f0f0f;
+  background: #1a1a2e;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: monospace;
-  color: #9bbc0f;
+  color: #c8c8d0;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
 }
 
+/* GBA-style handheld console frame */
 #screen-wrap {
-  border: 8px solid #333;
-  border-radius: 6px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #6c3b8c 0%, #4a2570 50%, #3a1d58 100%);
+  box-shadow:
+    0 0 0 4px #2a1540,
+    0 0 0 6px #5a3a7a,
+    0 12px 40px rgba(0,0,0,0.7),
+    inset 0 2px 6px rgba(255,255,255,0.12);
+  position: relative;
 }
 
+/* Decorative "GBA" corner accents */
+#screen-wrap::before,
+#screen-wrap::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #b8b8c8, #5a5a6a);
+  box-shadow: inset 0 -1px 2px rgba(0,0,0,0.5);
+}
+#screen-wrap::before { top: 6px; left: 6px; }
+#screen-wrap::after  { top: 6px; right: 6px; }
+
+/* The canvas — 240x160 scaled to 720x480 (3x) */
 #game {
-  width: 480px;
-  height: 432px;
+  width: 720px;
+  height: 480px;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
   display: block;
-  background: #9bbc0f;
+  background: #000;
+  border-radius: 4px;
+  /* subtle screen glare */
+  box-shadow:
+    inset 0 0 4px rgba(0,0,0,0.6),
+    inset 0 0 60px rgba(20,20,60,0.25);
+}
+
+/* CRT scanline overlay — sits on top of the canvas only */
+#screen-wrap::marker { display: none; }
+.crt-overlay {
+  pointer-events: none;
+  position: absolute;
+  top: 14px; left: 14px;
+  width: 720px; height: 480px;
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.0) 0px,
+      rgba(0,0,0,0.0) 2px,
+      rgba(0,0,0,0.12) 3px,
+      rgba(0,0,0,0.0) 4px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.55;
 }
 
 #hint {
-  margin-top: 12px;
+  margin-top: 16px;
   font-size: 12px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
+  color: #8a8aa0;
+  text-align: center;
+}
+
+#brand {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #6a4a8a;
+  text-transform: uppercase;
 }
