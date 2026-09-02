@@ -1,0 +1,56 @@
+    const options = hasCatch
+      ? ["FIGHT", "BAG", "PARTY", "CATCH", "RUN"]
+      : ["FIGHT", "BAG", "PARTY", "RUN"];
+    const maxIdx = options.length - 1;
+    if (key === "down") battle.cursor = (battle.cursor + 1) % (maxIdx + 1);
+    if (key === "up") battle.cursor = (battle.cursor + maxIdx) % (maxIdx + 1);
+    if (key === "confirm") {
+      const opt = options[battle.cursor];
+      if (opt === "FIGHT") { battle.menu = "fight"; battle.cursor = 0; }
+      else if (opt === "BAG") { battle.menu = "bag"; battle.cursor = 0; buildBagList(); }
+      else if (opt === "PARTY") { battle.menu = "party"; battle.cursor = 0; }
+      else if (opt === "CATCH") { battle.menu = "catchball"; battle.cursor = 0; buildBallList(); }
+      else if (opt === "RUN") attemptRun();
+    }
+    return;
+  }
+}
+
+// ---------------------------------------------------------------
+//  BAG (in battle)
+// ---------------------------------------------------------------
+let bagList = []; // array of itemKeys available
+
+function buildBagList() {
+  bagList = Object.keys(player.bag).filter(k => player.bag[k] > 0 && ITEMS[k]);
+  if (!bagList.length) {
+    queueMessage("Your bag is empty!");
+  }
+}
+
+function handleBagInput(key) {
+  if (!bagList.length) {
+    if (key === "cancel" || key === "confirm") { battle.menu = "main"; battle.cursor = 0; }
+    return;
+  }
+  if (key === "down") battle.cursor = (battle.cursor + 1) % bagList.length;
+  if (key === "up") battle.cursor = (battle.cursor + bagList.length - 1) % bagList.length;
+  if (key === "cancel") { battle.menu = "main"; battle.cursor = 0; }
+  if (key === "confirm") {
+    const itemKey = bagList[battle.cursor];
+    useItemInBattle(itemKey);
+  }
+}
+
+function useItemInBattle(itemKey) {
+  const item = ITEMS[itemKey];
+  if (!item) return;
+  if (bagCount(itemKey) <= 0) { queueMessage("You don't have any left!"); return; }
+
+  if (item.use === "ball") {
+    // shouldn't reach here from bag; balls handled via CATCH menu
+    queueMessage("Use CATCH to throw a ball.");
+    return;
+  }
+
+  if (item.use === "heal") {

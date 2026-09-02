@@ -1,0 +1,31 @@
+js/effects.js:221:  tickAreaPopup();
+js/effects.js:229:  drawAreaPopup(ctx);
+js/effects.js:233:const areaPopup = {
+js/effects.js:242:function showAreaPopup(name) {
+js/effects.js:243:  areaPopup.active = true;
+js/effects.js:244:  areaPopup.name = name || "";
+js/effects.js:245:  areaPopup.timer = areaPopup.duration;
+js/effects.js:248:function tickAreaPopup() {
+js/effects.js:249:  if (areaPopup.active) {
+js/effects.js:250:    areaPopup.timer--;
+js/effects.js:251:    if (areaPopup.timer <= 0) areaPopup.active = false;
+js/effects.js:255:function drawAreaPopup(ctx) {
+js/effects.js:256:  if (!areaPopup.active) return;
+js/effects.js:257:  const t = areaPopup.timer;
+js/effects.js:258:  const dur = areaPopup.duration;
+js/effects.js:260:  if (t > dur - areaPopup.fadeIn) {
+js/effects.js:261:    alpha = (dur - t) / areaPopup.fadeIn;
+js/effects.js:262:  } else if (t < areaPopup.fadeOut) {
+js/effects.js:263:    alpha = t / areaPopup.fadeOut;
+js/effects.js:290:  ctx.fillText(areaPopup.name, SCREEN_W / 2, py + 11);
+js/player.js:184:    if (newMap && newMap.name && typeof showAreaPopup === "function") {
+js/player.js:185:      showAreaPopup(newMap.name);
+---README---
+107 README.md
+# Monster Catcher — Verdale Region: GBA Edition (Nintendo-Level Graphics Upgrade)
+
+A polished Game Boy Advance-style monster catching RPG, upgraded with rich layered
+pixel-art graphics and packaged as a desktop application via Electron.
+
+---LICENSE---
+---exist check done---

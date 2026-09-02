@@ -1,0 +1,5 @@
+ create mode 100644 screenshots/06_menu.png
+ create mode 100644 screenshots/07_party.png
+ create mode 100644 screenshots/08_badges.png
+ create mode 100644 screenshots/09_pokedex.png
+ create mode 100644 style.css

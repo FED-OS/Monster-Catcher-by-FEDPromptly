@@ -1,0 +1,13 @@
+Total JS lines:
+15616
+Total project lines (js+html+css):
+15813
+JS files:
+22
+=== Assets ===
+total 12
+drwxr-xr-x 3 root root 4096 Sep  2 06:20 .
+drwxr-xr-x 7 root root 4096 Sep  2 07:56 ..
+drwxr-xr-x 2 root root 4096 Sep  2 06:20 sprites
+=== Electron files ===
+main.js

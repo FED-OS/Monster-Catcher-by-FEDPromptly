@@ -1,0 +1,1 @@
+690:function createMonsterInstance(speciesKey, level) {

@@ -1,0 +1,65 @@
+// ============================================================
+//  Monster Catcher — Gamepad / Controller Support (v5.0 HERO)
+//  Full Gamepad API integration: D-pad, analog sticks, and
+//  face buttons mapped to the same game actions as keyboard.
+//  Supports Xbox, PlayStation, and Switch Pro controllers.
+// ============================================================
+
+// ---- Button mapping (standard gamepad layout) ----
+// Standard mapping: buttons[0]=A, [1]=B, [2]=X, [3]=Y,
+// [12]=D-Up, [13]=D-Down, [14]=D-Left, [15]=D-Right,
+// [7]=Start, [6]=Back/Select, [4]=LB, [5]=RB
+const GAMEPAD_BUTTONS = {
+  A: 0,       // confirm
+  B: 1,       // cancel
+  X: 2,       // menu / quick action
+  Y: 3,       // bag
+  LB: 4,
+  RB: 5,
+  SELECT: 6,  // settings
+  START: 7,   // menu
+  D_UP: 12,
+  D_DOWN: 13,
+  D_LEFT: 14,
+  D_RIGHT: 15
+};
+
+// ---- Gamepad state ----
+const gamepadState = {
+  connected: false,
+  index: null,
+  // Track button press edges (pressed this frame, not held)
+  pressed: {},
+  held: {},
+  // Analog stick deadzone
+  deadzone: 0.35,
+  // Repeat timer for movement (analog/dpad held)
+  moveRepeatTimer: 0,
+  moveRepeatDelay: 9, // frames between auto-repeat steps
+  // Last polled direction for edge detection
+  lastDir: null
+};
+
+// ---- Connection events ----
+window.addEventListener("gamepadconnected", (e) => {
+  gamepadState.connected = true;
+  gamepadState.index = e.gamepad.index;
+  console.log("Gamepad connected:", e.gamepad.id);
+});
+
+window.addEventListener("gamepaddisconnected", (e) => {
+  if (gamepadState.index === e.gamepad.index) {
+    gamepadState.connected = false;
+    gamepadState.index = null;
+    gamepadState.pressed = {};
+    gamepadState.held = {};
+  }
+  console.log("Gamepad disconnected:", e.gamepad.id);
+});
+
+// ---- Poll the gamepad each frame ----
+// Returns an object of actions that should fire this frame.
+function pollGamepad() {
+  const result = {
+    directions: [],  // ["up","down","left","right"] — directions pressed this frame
+    confirm: false,

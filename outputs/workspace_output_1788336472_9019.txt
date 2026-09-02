@@ -1,0 +1,4 @@
+Result: JS result: particles:30 texts:1
+Screenshot: /workspace/.screenshots/step_303.png
+Use see-image to view: /workspace/.screenshots/step_303.png
+=== END ===

@@ -1,0 +1,15 @@
+163:        battle.menu = "message";
+182:  if (battle.menu === "fight") {
+394:        battle.menu = "message";
+423:        battle.menu = "message";
+435:  battle.menu = "message";
+576:    battle.menu = "message";
+800:  battle.menu = "message";
+854:    battle.menu = "message";
+892:      battle.menu = "message";
+920:    battle.menu = "message";
+944:      battle.menu = "message";
+953:      battle.menu = "message";
+963:function queueMessage(msg) {
+967:    battle.menu = "message";
+1471:  if (battle.menu === "fight") {

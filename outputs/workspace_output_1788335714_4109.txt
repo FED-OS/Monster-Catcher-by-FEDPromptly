@@ -1,0 +1,45 @@
+audio.js
+battle.js
+biomes.js
+boss.js
+characters.js
+constants.js
+dialogue.js
+effects.js
+elements.js
+gamepad.js
+main.js
+menu.js
+monsters.js
+palettes.js
+particles.js
+player.js
+powerups.js
+quirks.js
+sprites.js
+story.js
+world.js
+worldcreatures.js
+---
+OK: js/audio.js
+OK: js/battle.js
+OK: js/biomes.js
+OK: js/boss.js
+OK: js/characters.js
+OK: js/constants.js
+OK: js/dialogue.js
+OK: js/effects.js
+OK: js/elements.js
+OK: js/gamepad.js
+OK: js/main.js
+OK: js/menu.js
+OK: js/monsters.js
+OK: js/palettes.js
+OK: js/particles.js
+OK: js/player.js
+OK: js/powerups.js
+OK: js/quirks.js
+OK: js/sprites.js
+OK: js/story.js
+OK: js/world.js
+OK: js/worldcreatures.js

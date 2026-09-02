@@ -1,0 +1,7 @@
+979699e Monster Catcher — Verdale Region: HERO Edition v5.0
+=== Files in commit ===
+ screenshots/07_party.png        |  Bin 0 -> 52041 bytes
+ screenshots/08_badges.png       |  Bin 0 -> 56240 bytes
+ screenshots/09_pokedex.png      |  Bin 0 -> 61312 bytes
+ style.css                       |   97 ++
+ 41 files changed, 17096 insertions(+)

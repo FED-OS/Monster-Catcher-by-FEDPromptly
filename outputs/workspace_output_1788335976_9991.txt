@@ -1,0 +1,5 @@
+Use see-image to view: /workspace/.screenshots/step_219.png
+=== END ===
+Screenshot: /workspace/.screenshots/step_220.png
+Use see-image to view: /workspace/.screenshots/step_220.png
+=== END ===

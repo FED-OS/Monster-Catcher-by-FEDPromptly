@@ -1,0 +1,46 @@
+  adding: monstercatcher/assets/sprites/ (stored 0%)
+  adding: monstercatcher/assets/sprites/README.md (deflated 45%)
+  adding: monstercatcher/README.md (deflated 58%)
+-rw-r--r-- 1 root root 1.5M Sep  2 08:10 monstercatcher-hero-edition-v5.zip
+=== Final project tree ===
+./.gitignore
+./LICENSE
+./README.md
+./assets/sprites/README.md
+./electron/main.js
+./index.html
+./js/audio.js
+./js/battle.js
+./js/biomes.js
+./js/boss.js
+./js/characters.js
+./js/constants.js
+./js/dialogue.js
+./js/effects.js
+./js/elements.js
+./js/gamepad.js
+./js/main.js
+./js/menu.js
+./js/monsters.js
+./js/palettes.js
+./js/particles.js
+./js/player.js
+./js/powerups.js
+./js/quirks.js
+./js/sprites.js
+./js/story.js
+./js/world.js
+./js/worldcreatures.js
+./package-lock.json
+./package.json
+./screenshots/01_title_screen.png
+./screenshots/02_save_slots.png
+./screenshots/03_overworld.png
+./screenshots/04_battle.png
+./screenshots/04b_battle_menu.png
+./screenshots/05_area_popup.png
+./screenshots/06_menu.png
+./screenshots/07_party.png
+./screenshots/08_badges.png
+./screenshots/09_pokedex.png
+./style.css

@@ -1,0 +1,75 @@
+// ============================================================
+//  Monster Catcher — Battle System
+//  Wild + trainer battles with:
+//   - status effects (burn/poison/paralysis/sleep/freeze/confusion/toxic)
+//   - stat stages, critical hits, STAB
+//   - party switching, items in battle, multiple ball types
+//   - XP share across party, level-ups, evolution, move learning
+//   - battle animations (shake, flash, slide)
+// ============================================================
+
+let battle = null;
+
+function startRandomEncounter() {
+  const map = currentMapData();
+  if (!map || !map.encounters || !map.encounters.length) return;
+  // Guard: don't start a wild battle if the player has no usable party monsters
+  if (!player.party || player.party.length === 0) return;
+  if (!player.party.find(m => m.hp > 0)) return;
+  const speciesKey = map.encounters[Math.floor(Math.random() * map.encounters.length)];
+  // wild level scales a bit with player progress
+  const avgLvl = partyAverageLevel();
+  const level = Math.max(2, avgLvl - 3 + Math.floor(Math.random() * 5));
+  const wild = createMonsterInstance(speciesKey, level);
+  markSeen(speciesKey);
+
+  battle = {
+    isTrainerBattle: false,
+    trainerNpc: null,
+    enemyTeam: [wild],
+    enemyIndex: 0,
+    enemy: wild,
+    player: firstUsableParty(),
+    menu: "main",
+    cursor: 0,
+    subCursor: 0,
+    message: `A wild ${wild.name} appeared!`,
+    outcome: null,
+    turnBusy: false,
+    flashTimer: 0,
+    shakeTimer: 0,
+    ballAnim: 0,
+    pendingPlayerMove: null,
+    switching: false,
+    messageQueue: [],
+    afterMessage: null,
+    awaitingContinue: true
+  };
+  game.state = GAME_STATE.BATTLE;
+  sfxEncounter();
+}
+
+function startTrainerBattle(npc) {
+  const team = npc.team.map(m => createMonsterInstance(m.speciesKey, m.level));
+  team.forEach(m => markSeen(m.speciesKey));
+
+  battle = {
+    isTrainerBattle: true,
+    trainerNpc: npc,
+    enemyTeam: team,
+    enemyIndex: 0,
+    enemy: team[0],
+    player: firstUsableParty(),
+    menu: "main",
+    cursor: 0,
+    subCursor: 0,
+    message: (npc.dialogue && npc.dialogue.length)
+      ? npc.dialogue[npc.dialogue.length - 1].replace(/__\w+__/g, "").trim()
+      : `${npc.id} wants to battle!`,
+    outcome: null,
+    turnBusy: false,
+    flashTimer: 0,
+    shakeTimer: 0,
+    ballAnim: 0,
+    pendingPlayerMove: null,
+    switching: false,

@@ -1,0 +1,15 @@
+=== Current screenshots ===
+01_title_screen.png
+02_save_slots.png
+03_overworld.png
+04_battle.png
+04b_battle_menu.png
+05_area_popup.png
+06_menu.png
+07_party.png
+08_badges.png
+09_pokedex.png
+
+=== Game features to verify in browser ===
+Checking if game is still running...
+200

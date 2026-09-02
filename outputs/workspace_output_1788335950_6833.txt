@@ -1,0 +1,4 @@
+13:function startRandomEncounter() {
+26:  battle = {
+52:function startTrainerBattle(npc) {
+56:  battle = {

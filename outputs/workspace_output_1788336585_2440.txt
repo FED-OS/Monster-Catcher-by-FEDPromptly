@@ -1,0 +1,41 @@
+=== Screenshots referenced in README ===
+screenshots/            # Game screenshots for this README
+screenshots/01_title_screen.png
+screenshots/02_save_slots.png
+screenshots/03_overworld.png
+screenshots/04_battle.png
+screenshots/05_area_popup.png
+screenshots/06_menu.png
+screenshots/07_party.png
+screenshots/08_badges.png
+screenshots/09_pokedex.png
+
+=== Screenshots on disk ===
+01_title_screen.png
+02_save_slots.png
+03_overworld.png
+04_battle.png
+04b_battle_menu.png
+05_area_popup.png
+06_menu.png
+07_party.png
+08_badges.png
+09_pokedex.png
+
+=== Verify all referenced screenshots exist ===
+✗ MISSING: screenshots/
+✗ MISSING: #
+✗ MISSING: Game
+✗ MISSING: screenshots
+✗ MISSING: for
+✗ MISSING: this
+✗ MISSING: README
+✓ screenshots/01_title_screen.png
+✓ screenshots/02_save_slots.png
+✓ screenshots/03_overworld.png
+✓ screenshots/04_battle.png
+✓ screenshots/05_area_popup.png
+✓ screenshots/06_menu.png
+✓ screenshots/07_party.png
+✓ screenshots/08_badges.png
+✓ screenshots/09_pokedex.png

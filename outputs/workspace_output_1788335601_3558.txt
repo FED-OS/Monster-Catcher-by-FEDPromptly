@@ -1,0 +1,12 @@
+function healParty() {
+  player.party.forEach(m => {
+    m.hp = m.maxHp;
+    cureStatus(m);
+    resetStatStages(m);
+    // restore PP
+    if (m.maxPp) {
+      Object.keys(m.maxPp).forEach(mk => { m.pp[mk] = m.maxPp[mk]; });
+    } else {
+      // fallback: restore PP to move base values
+      Object.keys(m.pp || {}).forEach(mk => {
+        if (MOVES[mk]) m.pp[mk] = MOVES[mk].pp;

@@ -1,0 +1,27 @@
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /workspace/monstercatcher/.git/
+=== Git status ===
+A  .gitignore
+A  LICENSE
+A  README.md
+A  assets/sprites/README.md
+A  electron/main.js
+A  index.html
+A  js/audio.js
+A  js/battle.js
+A  js/biomes.js
+A  js/boss.js
+A  js/characters.js
+A  js/constants.js
+A  js/dialogue.js
+A  js/effects.js
+A  js/elements.js
+A  js/gamepad.js
+A  js/main.js
+A  js/menu.js
+A  js/monsters.js
+A  js/palettes.js
+...
+41
+files staged

@@ -1,0 +1,39 @@
+  if (battle.menu === "fight") {
+    const moves = battle.player.moves;
+    // Check if ultimate is available as an extra option
+    const ultReady = (typeof ultimateReady === "function") && ultimateReady(battle.player);
+    const ultIdx = moves.length; // ultimate is listed after regular moves
+    const total = moves.length + (ultReady ? 1 : 0);
+    if (key === "down") battle.cursor = (battle.cursor + 1) % total;
+    if (key === "up") battle.cursor = (battle.cursor + total - 1) % total;
+    if (key === "cancel") { battle.menu = "main"; battle.cursor = 0; }
+    if (key === "confirm") {
+      if (ultReady && battle.cursor === ultIdx) {
+        // Use ultimate move — commitPlayerMove handles the full flow
+        commitPlayerMove("__ULT__");
+        return;
+      }
+      if ((battle.player.pp[moves[battle.cursor]] || 0) <= 0) {
+        queueMessage("No PP left for that move!");
+        return;
+      }
+      commitPlayerMove(moves[battle.cursor]);
+    }
+    return;
+  }
+
+  if (battle.menu === "bag") {
+    handleBagInput(key);
+    return;
+  }
+
+  if (battle.menu === "party") {
+    handlePartyInput(key);
+    return;
+  }
+
+  if (battle.menu === "catchball") {
+    handleBallSelectInput(key);
+    return;
+  }
+

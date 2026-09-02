@@ -1,0 +1,12 @@
+    22773  2026-09-02 06:20   monstercatcher/js/audio.js
+    21660  2026-09-02 07:43   monstercatcher/js/worldcreatures.js
+        0  2026-09-02 06:21   monstercatcher/electron/
+     1672  2026-09-02 06:44   monstercatcher/electron/main.js
+        0  2026-09-02 06:20   monstercatcher/assets/
+        0  2026-09-02 06:20   monstercatcher/assets/sprites/
+     2114  2026-09-02 06:20   monstercatcher/assets/sprites/README.md
+    13387  2026-09-02 08:09   monstercatcher/README.md
+---------                     -------
+  1260066                     47 files
+=== Total files ===
+47

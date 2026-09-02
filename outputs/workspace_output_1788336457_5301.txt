@@ -1,0 +1,12 @@
+total 548
+drwxr-xr-x 2 root root  4096 Sep  2 08:07 .
+drwxr-xr-x 7 root root  4096 Sep  2 07:56 ..
+-rw-r--r-- 1 root root 64762 Sep  2 07:56 01_title_screen.png
+-rw-r--r-- 1 root root 60376 Sep  2 07:56 02_save_slots.png
+-rw-r--r-- 1 root root 59186 Sep  2 07:57 03_overworld.png
+-rw-r--r-- 1 root root 63486 Sep  2 08:00 04_battle.png
+-rw-r--r-- 1 root root 60441 Sep  2 08:05 05_area_popup.png
+-rw-r--r-- 1 root root 63762 Sep  2 08:06 06_menu.png
+-rw-r--r-- 1 root root 52041 Sep  2 08:06 07_party.png
+-rw-r--r-- 1 root root 56240 Sep  2 08:07 08_badges.png
+-rw-r--r-- 1 root root 61312 Sep  2 08:07 09_pokedex.png
