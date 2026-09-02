@@ -687,7 +687,8 @@ function drawEnvParticles(ctx) {
 // When the player faces a sleeping creature and presses confirm,
 // initiate a staring contest (mini encounter choice)
 function tryStaringContest() {
-  const [tc, tr] = tileInFrontOfPlayer();
+  const tile = tileInFrontOfPlayer();
+  const tc = tile.col, tr = tile.row;
   for (const wc of worldCreatures) {
     if (wc.col === tc && wc.row === tr && wc.state === WC_STATE.SLEEP) {
       // Wake it up — it becomes alert

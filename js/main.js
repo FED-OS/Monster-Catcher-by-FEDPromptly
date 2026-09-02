@@ -13,7 +13,11 @@ const game = {
   flags: {},
   titleCursor: 0,
   titleTime: 0,
-  hasSaveOnBoot: hasSave()
+  hasSaveOnBoot: hasSave(),
+  // HERO: save slot selection state
+  titleMode: "main",     // "main" or "slots"
+  slotCursor: 0,
+  slotAction: "load"     // "load" or "save" or "newgame"
 };
 
 const keyMap = {
@@ -75,6 +79,56 @@ window.addEventListener("keydown", (e) => {
 
 // ---- Title screen input ----
 function titleInput(key) {
+  // ---- HERO: Save slot selection mode ----
+  if (game.titleMode === "slots") {
+    if (key === "down") game.slotCursor = (game.slotCursor + 1) % (NUM_SAVE_SLOTS + 1);
+    if (key === "up") game.slotCursor = (game.slotCursor + NUM_SAVE_SLOTS) % (NUM_SAVE_SLOTS + 1);
+    if (key === "cancel") {
+      game.titleMode = "main";
+      sfxMenu();
+      return;
+    }
+    if (key === "confirm") {
+      sfxTitle();
+      if (game.slotCursor === NUM_SAVE_SLOTS) {
+        // "Back" option
+        game.titleMode = "main";
+        return;
+      }
+      const slot = game.slotCursor;
+      if (game.slotAction === "newgame") {
+        initNewGame();
+        game.state = GAME_STATE.OVERWORLD;
+        world.currentMap = "lab";
+        player.col = 4;
+        player.row = 6;
+        player.facing = "up";
+        startDialogue(STORY_INTRO.concat(["__GO_TO_PROF__"]));
+        // Save the new game to the selected slot
+        saveToSlot(slot);
+        game.titleMode = "main";
+      } else if (game.slotAction === "load") {
+        if (loadFromSlot(slot)) {
+          game.state = GAME_STATE.OVERWORLD;
+          game.titleMode = "main";
+        } else {
+          // slot is empty — start new game in this slot
+          initNewGame();
+          game.state = GAME_STATE.OVERWORLD;
+          world.currentMap = "lab";
+          player.col = 4;
+          player.row = 6;
+          player.facing = "up";
+          startDialogue(STORY_INTRO.concat(["__GO_TO_PROF__"]));
+          saveToSlot(slot);
+          game.titleMode = "main";
+        }
+      }
+    }
+    return;
+  }
+
+  // ---- Main title menu ----
   const options = game.hasSaveOnBoot ? ["NEW GAME", "CONTINUE", "MUTE"] : ["NEW GAME", "MUTE"];
   if (key === "down") game.titleCursor = (game.titleCursor + 1) % options.length;
   if (key === "up") game.titleCursor = (game.titleCursor + options.length - 1) % options.length;
@@ -82,23 +136,15 @@ function titleInput(key) {
     const opt = options[game.titleCursor];
     sfxTitle();
     if (opt === "NEW GAME") {
-      initNewGame();
-      game.state = GAME_STATE.OVERWORLD;
-      // send player into the lab to get a starter
-      world.currentMap = "lab";
-      player.col = 4;
-      player.row = 6;
-      player.facing = "up";
-      startDialogue(STORY_INTRO.concat(["__GO_TO_PROF__"]));
-      // after intro, the professor gives starter — we trigger by heading up
+      // Enter slot selection to pick where to save
+      game.titleMode = "slots";
+      game.slotCursor = 0;
+      game.slotAction = "newgame";
     } else if (opt === "CONTINUE") {
-      if (loadGame()) {
-        game.state = GAME_STATE.OVERWORLD;
-      } else {
-        // fallback
-        initNewGame();
-        game.state = GAME_STATE.OVERWORLD;
-      }
+      // Enter slot selection to pick which save to load
+      game.titleMode = "slots";
+      game.slotCursor = 0;
+      game.slotAction = "load";
     } else if (opt === "MUTE") {
       settings.muted = !settings.muted;
     }
@@ -131,6 +177,9 @@ function drawOverworld() {
 
   ctx.restore();
 
+  // ---- Particles (drawn above world but below UI overlays) ----
+  if (typeof drawParticles === "function") drawParticles(ctx);
+
   // ---- Time-of-day overlay (day/evening/night/dawn) ----
   if (typeof getTimeTint === "function") {
     const tint = getTimeTint();
@@ -157,6 +206,9 @@ function drawOverworld() {
     ctx.fillStyle = `rgba(8,24,32,${a})`;
     ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
   }
+
+  // ---- Full-screen effects (flash, battle wipe, floating text) ----
+  if (typeof drawAllEffects === "function") drawAllEffects(ctx);
 }
 
 // Draw animated weather particles (rain streaks / snow flakes).
@@ -261,7 +313,20 @@ function drawTitleScreen() {
   // ---- Version tag ----
   ctx.fillStyle = "rgba(255,255,255,0.7)";
   ctx.font = "6px monospace";
-  ctx.fillText("v4.0 MEGA", SCREEN_W - 44, SCREEN_H - 6);
+  ctx.fillText("v5.0 HERO", SCREEN_W - 40, SCREEN_H - 6);
+
+  // ---- HERO: controller indicator ----
+  if (typeof isControllerConnected === "function" && isControllerConnected()) {
+    ctx.fillStyle = "#48d858";
+    ctx.font = "6px monospace";
+    ctx.fillText("🎮 Connected", 4, SCREEN_H - 6);
+  }
+
+  // ---- HERO: ambient title particles (sparkles drifting) ----
+  if (typeof drawParticles === "function") drawParticles(ctx);
+  if (game.titleTime % 20 === 0 && typeof burstSparkles === "function") {
+    burstSparkles(Math.random() * SCREEN_W, 20 + Math.random() * 80, 1, "#f8f8c0");
+  }
 
   // ---- Press start hint (blink) ----
   if ((Math.floor(game.titleTime / 500) % 2) === 0 && game.titleCursor === 0 && !game.hasSaveOnBoot) {
@@ -271,6 +336,99 @@ function drawTitleScreen() {
     ctx.fillText("Press Z to begin", SCREEN_W / 2, my + mh + 12);
     ctx.textAlign = "left";
   }
+
+  // ---- HERO: Save slot selection overlay ----
+  if (game.titleMode === "slots") {
+    drawSaveSlotSelect(ctx);
+  }
+}
+
+// ---- HERO: Draw the save slot selection screen ----
+function drawSaveSlotSelect(ctx) {
+  // Darken background
+  ctx.fillStyle = "rgba(8,24,32,0.7)";
+  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+
+  // Title
+  ctx.textAlign = "center";
+  ctx.fillStyle = COLOR.winBorder;
+  ctx.font = "bold 9px monospace";
+  ctx.fillText(game.slotAction === "newgame" ? "SELECT SLOT" : "LOAD GAME", SCREEN_W / 2, 18);
+  ctx.textAlign = "left";
+
+  // Slot list
+  const mw = 180, mh = (NUM_SAVE_SLOTS + 1) * 28 + 10;
+  const mx = SCREEN_W / 2 - mw / 2;
+  const my = 28;
+
+  // Panel background
+  ctx.fillStyle = "rgba(0,0,0,0.4)";
+  ctx.fillRect(mx + 2, my + 2, mw, mh);
+  ctx.fillStyle = COLOR.winBorder;
+  ctx.fillRect(mx, my, mw, mh);
+  ctx.fillStyle = COLOR.winBg;
+  ctx.fillRect(mx + 2, my + 2, mw - 4, mh - 4);
+
+  // Each slot
+  for (let i = 0; i < NUM_SAVE_SLOTS; i++) {
+    const sy = my + 8 + i * 28;
+    const hasData = slotHasSave(i);
+    const meta = getSlotMeta(i);
+
+    // Slot highlight
+    if (game.slotCursor === i) {
+      ctx.fillStyle = COLOR.winBorderLight;
+      ctx.fillRect(mx + 4, sy, mw - 8, 24);
+    }
+
+    // Cursor arrow
+    if (game.slotCursor === i) {
+      ctx.fillStyle = COLOR.shirtRed;
+      ctx.font = "bold 7px monospace";
+      ctx.fillText(">", mx + 8, sy + 10);
+    }
+
+    // Slot label
+    ctx.fillStyle = COLOR.textDark;
+    ctx.font = "bold 7px monospace";
+    ctx.fillText("SLOT " + (i + 1), mx + 18, sy + 10);
+
+    if (hasData && meta) {
+      ctx.font = "6px monospace";
+      ctx.fillStyle = COLOR.textDark;
+      ctx.fillText("Lead: " + meta.partyLead + " Lv" + meta.partyLeadLevel, mx + 18, sy + 18);
+      ctx.fillText("Badges: " + meta.badges + "  Dex: " + meta.dexCaught, mx + 100, sy + 18);
+      // Playtime
+      const mins = Math.floor(meta.playtime / 60);
+      const hrs = Math.floor(mins / 60);
+      ctx.fillStyle = COLOR.textShadow;
+      ctx.fillText("Time: " + hrs + "h " + (mins % 60) + "m", mx + 100, sy + 10);
+    } else {
+      ctx.font = "6px monospace";
+      ctx.fillStyle = COLOR.textShadow;
+      ctx.fillText("— Empty —", mx + 18, sy + 18);
+    }
+  }
+
+  // Back option
+  const backY = my + 8 + NUM_SAVE_SLOTS * 28;
+  if (game.slotCursor === NUM_SAVE_SLOTS) {
+    ctx.fillStyle = COLOR.winBorderLight;
+    ctx.fillRect(mx + 4, backY, mw - 8, 20);
+    ctx.fillStyle = COLOR.shirtRed;
+    ctx.font = "bold 7px monospace";
+    ctx.fillText(">", mx + 8, backY + 12);
+  }
+  ctx.fillStyle = COLOR.textDark;
+  ctx.font = "bold 7px monospace";
+  ctx.fillText("BACK", mx + 18, backY + 12);
+
+  // Hint
+  ctx.fillStyle = COLOR.textShadow;
+  ctx.font = "6px monospace";
+  ctx.textAlign = "center";
+  ctx.fillText("Z to select  ·  X to go back", SCREEN_W / 2, my + mh + 10);
+  ctx.textAlign = "left";
 }
 
 function render() {
@@ -288,7 +446,13 @@ function render() {
     if (typeof tickWorldCreatures === "function") tickWorldCreatures();
     if (typeof tickEnvParticles === "function") tickEnvParticles();
     if (typeof tickScreenShake === "function") tickScreenShake();
+    if (typeof tickAmbient === "function") tickAmbient();
   }
+  // ---- HERO: tick particles & screen effects every frame ----
+  if (typeof tickParticles === "function") tickParticles();
+  if (typeof tickAllEffects === "function") tickAllEffects();
+  // ---- HERO: poll gamepad every frame ----
+  if (typeof dispatchGamepadInput === "function") dispatchGamepadInput();
   // Stealth minigame tick (runs in MENU state)
   if (game.state === GAME_STATE.MENU && typeof stealthMinigameTick === "function") {
     stealthMinigameTick();
