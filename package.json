@@ -1,0 +1,22 @@
+{
+  "name": "monster-catcher-verdale",
+  "version": "5.0.0",
+  "description": "Monster Catcher — Verdale Region: GBA Edition. A polished Game Boy Advance-style monster catching RPG.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "dev": "electron . --no-sandbox --dev",
+    "start:headless": "electron . --no-sandbox --disable-gpu --software-rendering",
+    "check": "for f in js/*.js; do node --check \"$f\" && echo \"OK: $f\" || { echo \"FAIL: $f\"; exit 1; }; done",
+    "lint": "node --check electron/main.js && for f in js/*.js; do node --check \"$f\" || exit 1; done && echo \"All modules pass syntax check\"",
+    "serve": "python3 -m http.server 9090"
+  },
+  "author": "Verdale Studios",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.0"
+  },
+  "allowScripts": {
+    "electron@30.5.1": true
+  }
+}
