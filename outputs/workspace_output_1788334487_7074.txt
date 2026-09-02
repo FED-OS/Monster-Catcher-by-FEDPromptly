@@ -1,0 +1,126 @@
+=== CURRENT GAME STATE ===
+// ============================================================
+//  Monster Catcher — Main
+//  Canvas setup, game loop, input, state machine wiring for:
+//  TITLE / OVERWORLD / BATTLE / MENU. Includes map transitions.
+// ============================================================
+
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+
+const game = {
+  state: GAME_STATE.TITLE,
+  flags: {},
+  titleCursor: 0,
+  titleTime: 0,
+  hasSaveOnBoot: hasSave()
+};
+
+const keyMap = {
+  ArrowUp: "up", KeyW: "up",
+  ArrowDown: "down", KeyS: "down",
+  ArrowLeft: "left", KeyA: "left",
+  ArrowRight: "right", KeyD: "right",
+  KeyZ: "confirm", Enter: "confirm",
+  KeyX: "cancel", Escape: "cancel"
+};
+
+const dirDelta = {
+  up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0]
+};
+
+// ---- Input dispatch ----
+window.addEventListener("keydown", (e) => {
+  const key = keyMap[e.code];
+  if (!key) return;
+  e.preventDefault();
+  ensureAudio(); // unlock audio on first keypress
+
+  if (game.state === GAME_STATE.TITLE) {
+    titleInput(key);
+...
+=== MODULES ===
+total 592
+drwxr-xr-x 2 root root   4096 Sep  2 07:16 .
+drwxr-xr-x 6 root root   4096 Sep  2 07:23 ..
+-rw-r--r-- 1 root root  22773 Sep  2 06:20 audio.js
+-rw-r--r-- 1 root root  66555 Sep  2 07:21 battle.js
+-rw-r--r-- 1 root root  17317 Sep  2 06:20 biomes.js
+-rw-r--r-- 1 root root  17852 Sep  2 06:20 boss.js
+-rw-r--r-- 1 root root  19353 Sep  2 06:20 characters.js
+-rw-r--r-- 1 root root   7500 Sep  2 06:40 constants.js
+-rw-r--r-- 1 root root  14431 Sep  2 06:20 dialogue.js
+-rw-r--r-- 1 root root  11894 Sep  2 06:20 elements.js
+-rw-r--r-- 1 root root  10146 Sep  2 06:20 main.js
+-rw-r--r-- 1 root root  37547 Sep  2 06:20 menu.js
+-rw-r--r-- 1 root root  55881 Sep  2 06:20 monsters.js
+-rw-r--r-- 1 root root   3835 Sep  2 06:20 palettes.js
+-rw-r--r-- 1 root root  24837 Sep  2 06:20 player.js
+-rw-r--r-- 1 root root  19180 Sep  2 06:20 powerups.js
+-rw-r--r-- 1 root root  19595 Sep  2 06:20 quirks.js
+-rw-r--r-- 1 root root 112842 Sep  2 07:16 sprites.js
+-rw-r--r-- 1 root root  21835 Sep  2 06:20 story.js
+-rw-r--r-- 1 root root  53593 Sep  2 07:19 world.js
+-rw-r--r-- 1 root root  21626 Sep  2 06:20 worldcreatures.js
+=== CONSTANTS ===
+// ============================================================
+//  Monster Catcher — Constants  (GBA Edition v3.0)
+//  Upgraded to Game Boy Advance native resolution (240x160),
+//  a rich 15-bit-style color system, and expanded game constants.
+// ============================================================
+
+// ---- GBA NATIVE RESOLUTION ----
+// The real Game Boy Advance display is 240x160 px (15-bit color).
+// We render at native res and upscale via CSS (pixelated) for crispness.
+const SCREEN_W = 240;
+const SCREEN_H = 160;
+const TILE = 16;                 // 16x16 px tiles (same as before, more on screen)
+const COLS = SCREEN_W / TILE;    // 15 columns visible
+const ROWS = SCREEN_H / TILE;    // 10 rows visible
+
+// ---- CORE 4-SHADE PALETTE (kept for legacy / classic theme) ----
+// Still used as the "ink" ramp for text & UI outlines. Themes in
+// palettes.js can swap these. Default = a GBA-friendly green.
+const PALETTE = {
+  light:  "#e0f8d0",
+  mid:    "#88c070",
+  dark:   "#346856",
+  black:  "#081820"
+};
+
+// ---- GBA COLOR SYSTEM ----
+// A broad palette of named colors inspired by GBA-era pixel art
+// (Pokémon Ruby/Sapphire / FireRed era). Used by sprites, tiles, UI.
+const COLOR = {
+  // UI inks (kept compatible with PALETTE)
+  inkLight:  "#e0f8d0",
+  inkMid:    "#88c070",
+  inkDark:   "#346856",
+  inkBlack:  "#081820",
+
+  // Window / panel
+  winBg:     "#f8f8f8",
+  winBgDark: "#c0c0d0",
+  winBorder: "#3858a0",
+  winBorderLight: "#6890d8",
+  winShadow: "#787878",
+
+  // Text
+  textDark:  "#383830",
+  textLight: "#ffffff",
+  textShadow:"#586870",
+
+  // Health bar
+  hpGreen:   "#48d858",
+  hpYellow:  "#f8c018",
+  hpRed:     "#f84038",
+  hpBg:      "#484848",
+
+  // XP bar
+  xpBlue:    "#48a8f8",
+
+  // Terrain / nature — upgraded richer GBA palette
+  grassLight:"#90d868",
+  grassMid:  "#60b048",
+  grassDark: "#3c8838",

@@ -1,0 +1,56 @@
+total 76
+drwxr-xr-x  6 root root  4096 Sep  2 07:23 .
+drwxr-xr-x 11 user user  4096 Sep  2 07:33 ..
+-rw-r--r--  1 root root  4247 Sep  2 06:51 README.md
+drwxr-xr-x  3 root root  4096 Sep  2 06:20 assets
+drwxr-xr-x  2 root root  4096 Sep  2 06:21 electron
+-rw-r--r--  1 root root  1634 Sep  2 06:20 index.html
+drwxr-xr-x  2 root root  4096 Sep  2 07:16 js
+drwxr-xr-x 66 root root  4096 Sep  2 06:42 node_modules
+-rw-r--r--  1 root root 30794 Sep  2 06:42 package-lock.json
+-rw-r--r--  1 root root   562 Sep  2 06:43 package.json
+-rw-r--r--  1 root root  2248 Sep  2 06:20 style.css
+---JS FILES---
+total 592
+drwxr-xr-x 2 root root   4096 Sep  2 07:16 .
+drwxr-xr-x 6 root root   4096 Sep  2 07:23 ..
+-rw-r--r-- 1 root root  22773 Sep  2 06:20 audio.js
+-rw-r--r-- 1 root root  66555 Sep  2 07:21 battle.js
+-rw-r--r-- 1 root root  17317 Sep  2 06:20 biomes.js
+-rw-r--r-- 1 root root  17852 Sep  2 06:20 boss.js
+-rw-r--r-- 1 root root  19353 Sep  2 06:20 characters.js
+-rw-r--r-- 1 root root   7500 Sep  2 06:40 constants.js
+-rw-r--r-- 1 root root  14431 Sep  2 06:20 dialogue.js
+-rw-r--r-- 1 root root  11894 Sep  2 06:20 elements.js
+-rw-r--r-- 1 root root  10146 Sep  2 06:20 main.js
+-rw-r--r-- 1 root root  37547 Sep  2 06:20 menu.js
+-rw-r--r-- 1 root root  55881 Sep  2 06:20 monsters.js
+-rw-r--r-- 1 root root   3835 Sep  2 06:20 palettes.js
+-rw-r--r-- 1 root root  24837 Sep  2 06:20 player.js
+-rw-r--r-- 1 root root  19180 Sep  2 06:20 powerups.js
+-rw-r--r-- 1 root root  19595 Sep  2 06:20 quirks.js
+-rw-r--r-- 1 root root 112842 Sep  2 07:16 sprites.js
+-rw-r--r-- 1 root root  21835 Sep  2 06:20 story.js
+-rw-r--r-- 1 root root  53593 Sep  2 07:19 world.js
+-rw-r--r-- 1 root root  21626 Sep  2 06:20 worldcreatures.js
+---LINE COUNTS---
+   112 js/palettes.js
+   266 js/constants.js
+   294 js/characters.js
+   315 js/biomes.js
+   317 js/dialogue.js
+   323 js/main.js
+   345 js/elements.js
+   392 js/quirks.js
+   473 js/powerups.js
+   536 js/boss.js
+   544 js/story.js
+   688 js/audio.js
+   714 js/worldcreatures.js
+   772 js/player.js
+  1010 js/monsters.js
+  1015 js/menu.js
+  1644 js/world.js
+  1939 js/battle.js
+  2569 js/sprites.js
+ 14268 total

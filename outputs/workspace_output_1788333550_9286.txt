@@ -1,0 +1,136 @@
+function drawBuildings(ctx, map) {
+  map = map || currentMapData();
+  if (!map || !map.buildings) return;
+  const list = map.buildings.slice().sort((a, b) => (a.row - b.row));
+  for (const b of list) {
+    const x = b.col * TILE;
+    const y = b.row * TILE;
+    switch (b.type) {
+      case "house":    drawHouseBuilding(ctx, x, y, b.w || 3, b.roof || "red"); break;
+      case "center":   drawCenterBuilding(ctx, x, y, b.w || 3); break;
+      case "mart":     drawMartBuilding(ctx, x, y, b.w || 3); break;
+      case "gym":      drawGymBuilding(ctx, x, y, b.w || 3); break;
+      case "lab":      drawLabBuilding(ctx, x, y, b.w || 3); break;
+      default:         drawHouseBuilding(ctx, x, y, b.w || 3, b.roof || "red"); break;
+    }
+  }
+}
+
+// ---- Helper: roof colors ----
+function roofColors(style) {
+  if (style === "blue") return { lite: "#78a8e8", mid: COLOR.roofBlue, dark: COLOR.roofBlueD, edge: "#1c4890" };
+  if (style === "green") return { lite: "#78d878", mid: "#48b048", dark: "#287828", edge: "#185818" };
+  // red (default)
+  return { lite: "#e87868", mid: COLOR.roofRed, dark: COLOR.roofRedD, edge: "#801818" };
+}
+
+// ---- Generic house: 3-wide, 2-tall (roof row + wall/door row) ----
+// (x,y) = top-left of the building's footprint. The door is centered.
+function drawHouseBuilding(ctx, x, y, w, roofStyle) {
+  const W = w * TILE;
+  const rc = roofColors(roofStyle);
+  // ROOF (top tile row) — triangular peaked roof
+  // dark base band
+  ctx.fillStyle = rc.edge;
+  ctx.fillRect(x, y + 4, W, 2);
+  // roof fill
+  ctx.fillStyle = rc.dark;
+  ctx.fillRect(x, y, W, 5);
+  ctx.fillStyle = rc.mid;
+  ctx.fillRect(x + 1, y, W - 2, 4);
+  ctx.fillStyle = rc.lite;
+  ctx.fillRect(x + 2, y + 1, W - 4, 2);
+  // roof peak (center triangle) for 3-wide
+  if (w >= 3) {
+    const cx = x + W / 2;
+    ctx.fillStyle = rc.dark;
+    ctx.fillRect(cx - 4, y - 3, 8, 4);
+    ctx.fillStyle = rc.mid;
+    ctx.fillRect(cx - 3, y - 3, 6, 3);
+    ctx.fillStyle = rc.lite;
+    ctx.fillRect(cx - 2, y - 2, 4, 1);
+    // chimney
+    ctx.fillStyle = "#888070";
+    ctx.fillRect(x + W - 6, y - 4, 3, 4);
+    ctx.fillStyle = "#585048";
+    ctx.fillRect(x + W - 6, y - 4, 3, 1);
+  }
+  // roof shingle lines
+  ctx.fillStyle = rc.dark;
+  for (let i = 0; i < w; i++) {
+    ctx.fillRect(x + i * TILE + 6, y + 2, 4, 1);
+  }
+  // WALLS (bottom tile row = the door tile row)
+  const wy = y + TILE;
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(x, wy, W, TILE);
+  ctx.fillStyle = COLOR.wallCream;
+  ctx.fillRect(x + 1, wy + 1, W - 2, TILE - 2);
+  // wall base shadow
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(x, wy + TILE - 3, W, 3);
+  // door (centered)
+  const dw = 8, dh = 12;
+  const dx = x + (W - dw) / 2;
+  const dy = wy + TILE - dh - 1;
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx - 1, dy - 1, dw + 2, dh + 2);
+  ctx.fillStyle = COLOR.doorLight;
+  ctx.fillRect(dx, dy, dw, dh);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx + dw / 2, dy, 1, dh); // center seam
+  ctx.fillStyle = "#f8d868";
+  ctx.fillRect(dx + dw - 2, dy + dh / 2, 1, 1); // knob
+  // windows (left & right of door, if room)
+  if (w >= 3) {
+    drawWindow(ctx, x + 3, wy + 3);
+    drawWindow(ctx, x + W - 11, wy + 3);
+  }
+}
+
+// ---- Small blue window with lit pane ----
+function drawWindow(ctx, x, y) {
+  ctx.fillStyle = "#383840";
+  ctx.fillRect(x - 1, y - 1, 9, 9);
+  ctx.fillStyle = COLOR.windowLit;
+  ctx.fillRect(x, y, 7, 7);
+  ctx.fillStyle = "#c8a838";
+  ctx.fillRect(x, y, 7, 1);
+  ctx.fillStyle = "#383840";
+  ctx.fillRect(x + 3, y, 1, 7);
+  ctx.fillRect(x, y + 3, 7, 1);
+  // highlight
+  ctx.fillStyle = "#f8f0a0";
+  ctx.fillRect(x + 1, y + 1, 1, 1);
+}
+
+// ---- Pok\u00e9mon Center style: red roof + red cross emblem on sign ----
+function drawCenterBuilding(ctx, x, y, w) {
+  const W = w * TILE;
+  const rc = roofColors("red");
+  // ROOF
+  ctx.fillStyle = rc.edge;
+  ctx.fillRect(x, y + 5, W, 2);
+  ctx.fillStyle = rc.dark;
+  ctx.fillRect(x, y, W, 6);
+  ctx.fillStyle = rc.mid;
+  ctx.fillRect(x + 1, y, W - 2, 5);
+  ctx.fillStyle = rc.lite;
+  ctx.fillRect(x + 2, y + 1, W - 4, 2);
+  // center peak
+  if (w >= 3) {
+    const cx = x + W / 2;
+    ctx.fillStyle = rc.dark;
+    ctx.fillRect(cx - 5, y - 4, 10, 5);
+    ctx.fillStyle = rc.mid;
+    ctx.fillRect(cx - 4, y - 4, 8, 4);
+    ctx.fillStyle = rc.lite;
+    ctx.fillRect(cx - 3, y - 3, 6, 1);
+  }
+  // roof shingles
+  ctx.fillStyle = rc.dark;
+  for (let i = 0; i < w; i++) ctx.fillRect(x + i * TILE + 6, y + 3, 4, 1);
+  // WALLS (white/cream)
+  const wy = y + TILE;
+  ctx.fillStyle = "#d0d0d8";
+  ctx.fillRect(x, wy, W, TILE);

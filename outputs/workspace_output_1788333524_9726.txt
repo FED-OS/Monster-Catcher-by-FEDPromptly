@@ -1,0 +1,25 @@
+# Monster Catcher — 300% Graphics Upgrade
+
+## Goal
+Major visual quality jump. Creatures currently "look like shit" — rewrite sprite system for richer, larger, properly-shaded pixel art. Overall scene needs to look far more polished.
+
+## Tasks
+
+### Creatures (biggest problem) — NEW APPROACH: explicit pixel-grid art
+- [x] Upgrade sprite canvas from 32x32 to 64x64 for 4x the detail room
+- [x] Build helper infrastructure (shadeBody, spriteShadow, eyes, fillBlob, outlineRegion)
+- [x] Write blob-based 64x64 designs (first pass — still too blobby)
+- [ ] **NEW: Build pixel-grid pattern renderer** (string rows → pixels, crisp deliberate art)
+- [ ] **NEW: Hand-craft pixel-grid art for emberit/infernyx/pyrothorn (fire line)**
+- [ ] **NEW: Hand-craft pixel-grid art for aquip/tidalon/leviathorn (water line)**
+- [ ] **NEW: Hand-craft pixel-grid art for leafon/florahn/thornheart (grass line)**
+- [ ] **NEW: Hand-craft pixel-grid art for rattick (normal)**
+- [ ] **NEW: Hand-craft pixel-grid art for 5 default shapes (round/quad/spiky/finned/winged)**
+- [ ] Verify all sprites render cleanly (no errors)
+
+### Overall scene polish
+- [ ] Add subtle dithering/shading to grass tiles for depth
+- [ ] Improve building rendering (better roof gradients, window glows, shadows)
+- [ ] Add cast shadows under buildings and trees
+- [ ] Improve battle background layering (more depth, atmospheric perspective)
+

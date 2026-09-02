@@ -1,0 +1,67 @@
+function drawGrassTile(ctx, px, py) {
+  // base
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, TILE);
+  // lighter top-left bias
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, 6);
+  ctx.fillRect(px, py + 6, 8, 4);
+  // darker bottom-right
+  ctx.fillStyle = COLOR.grassDark;
+  ctx.fillRect(px + 8, py + 10, 8, 6);
+  ctx.fillRect(px, py + 12, 8, 4);
+  // individual grass blade clumps (deterministic per tile position)
+  const h = ((px * 7 + py * 13) >> 2);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px + 2 + (h % 4), py + 3, 1, 2);
+  ctx.fillRect(px + 11 + (h % 3), py + 5, 1, 2);
+  ctx.fillStyle = COLOR.tallGrass1;
+  ctx.fillRect(px + 5 + (h % 5), py + 8, 1, 2);
+  ctx.fillRect(px + 13 - (h % 4), py + 11, 1, 2);
+  ctx.fillStyle = COLOR.grassDeep;
+  ctx.fillRect(px + 1 + (h % 6), py + 13, 1, 1);
+  ctx.fillRect(px + 9 + (h % 4), py + 14, 1, 1);
+  // tiny highlight speck
+  ctx.fillStyle = COLOR.tallGrassLite;
+  ctx.fillRect(px + 3 + (h % 5), py + 2, 1, 1);
+}
+
+// ---- 1: Tall grass (walkable, encounters) — animated lush rustle ----
+function drawTallGrassTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.tallGrass2;
+  ctx.fillRect(px, py, TILE, TILE);
+  // ground hint at very bottom
+  ctx.fillStyle = COLOR.tallGrass3;
+  ctx.fillRect(px, py + 14, TILE, 2);
+  const sway = Math.sin(worldAnimFrame / 24 + (px + py) * 0.1) > 0.6 ? 1 : 0;
+  // blade clusters — taller, multi-shade
+  ctx.fillStyle = COLOR.tallGrass3;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 1 + i * 3;
+    ctx.fillRect(bx, py + 3 - sway, 1, 12);
+    ctx.fillRect(bx + 1, py + 4, 1, 11);
+  }
+  ctx.fillStyle = COLOR.tallGrass2;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 2 + i * 3;
+    ctx.fillRect(bx, py + 5 - sway, 1, 10);
+  }
+  ctx.fillStyle = COLOR.tallGrass1;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 1 + i * 3;
+    ctx.fillRect(bx, py + 3 - sway, 1, 3);
+    ctx.fillRect(bx + 1, py + 4, 1, 2);
+  }
+  // bright tips
+  ctx.fillStyle = COLOR.tallGrassLite;
+  ctx.fillRect(px + 2, py + 3 - sway, 1, 1);
+  ctx.fillRect(px + 11, py + 3 - sway, 1, 1);
+  ctx.fillRect(px + 14, py + 4, 1, 1);
+}
+
+// ---- 2: Tree / wall (blocked) — large rounded shaded canopy ----
+function drawTreeTile(ctx, px, py) {
+  // grass base
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.grassLight;

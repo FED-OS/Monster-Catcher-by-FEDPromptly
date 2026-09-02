@@ -1,0 +1,21 @@
+function badgesInput(key) {
+  if (key === "cancel" || key === "confirm") { menu = { type: "start", cursor: 4 }; }
+}
+
+// ---- Save ----
+function saveMenuInput(key) {
+  if (key === "cancel") { menu = { type: "start", cursor: 5 }; return; }
+  if (key === "confirm") {
+    const ok = saveGame();
+    menu = { type: "message", text: ok ? "Game saved!" : "Save failed!", returnTo: { type: "start", cursor: 5 } };
+  }
+}
+
+// ---- Settings ----
+function settingsInput(key) {
+  if (key === "cancel" || key === "confirm") { menu = { type: "start", cursor: 6 }; return; }
+  if (key === "down" || key === "up") {
+    settings.muted = !settings.muted;
+  }
+  if (key === "left" || key === "right") {
+    // cycle palette themes

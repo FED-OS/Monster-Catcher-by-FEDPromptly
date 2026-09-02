@@ -1,0 +1,24 @@
+  // ---- HERO: ambient title particles (sparkles drifting) ----
+  if (typeof drawParticles === "function") drawParticles(ctx);
+  if (game.titleTime % 20 === 0 && typeof burstSparkles === "function") {
+    burstSparkles(Math.random() * SCREEN_W, 20 + Math.random() * 80, 1, "#f8f8c0");
+  }
+
+  // ---- Press start hint (blink) ----
+  if ((Math.floor(game.titleTime / 500) % 2) === 0 && game.titleCursor === 0 && !game.hasSaveOnBoot) {
+    ctx.fillStyle = COLOR.winBorder;
+    ctx.font = "6px monospace";
+    ctx.textAlign = "center";
+    ctx.fillText("Press Z to begin", SCREEN_W / 2, my + mh + 12);
+    ctx.textAlign = "left";
+  }
+}
+
+function render() {
+  ctx.clearRect(0, 0, SCREEN_W, SCREEN_H);
+  game.titleTime = Date.now();
+
+  // advance world animation frame (for water/trees/grass/snow)
+  if (typeof tickWorldAnim === "function") tickWorldAnim();
+
+  // ---- Mega Expansion: update biome/state music ----

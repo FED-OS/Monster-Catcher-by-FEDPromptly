@@ -1,0 +1,36 @@
+13:function startRandomEncounter() {
+39:    flashTimer: 0,
+40:    shakeTimer: 0,
+52:function startTrainerBattle(npc) {
+71:    flashTimer: 0,
+72:    shakeTimer: 0,
+120:  // Blackout: if the player lost (all monsters fainted), heal the party
+278:    // heal active monster (or pick if multiple fainted? simplest: active)
+280:    if (m.hp <= 0) { queueMessage("It fainted — use a Revive!"); return; }
+291:    // pick first fainted in party
+292:    const fainted = player.party.find(p => p.hp <= 0);
+293:    if (!fainted) { queueMessage("No fainted monsters to revive!"); return; }
+295:    fainted.hp = Math.floor(fainted.maxHp * item.amount);
+296:    cureStatus(fainted);
+297:    queueMessage(`Used ${item.name}! ${fainted.name} is revived!`);
+355:    if (chosen.hp <= 0) { queueMessage("It's fainted!"); return; }
+583:function executeMove(attacker, defender, moveKey, isPlayer, cb) {
+627:  battle.shakeTimer = 8;
+628:  battle.flashTimer = 4;
+749:  // Direct inflict handled in secondary; here we call the shared applier with no damage
+832:  queueMessage(`${battle.isTrainerBattle ? "" : "Wild "}${defeatedName} fainted!`);
+833:  battle.shakeTimer = 6;
+888:  queueMessage(`${battle.player.name} fainted!`);
+901:    // all fainted
+945:  if (battle.shakeTimer > 0) {
+948:    battle.shakeTimer--;
+957:  if (battle.flashTimer > 0) {
+960:    battle.flashTimer--;
+1586:    // Apply a random bonus: extra damage, heal, or status
+1589:      // Extra damage will be applied via a flag
+1648:    if (result.damage) {
+1649:      defender.hp = Math.max(0, defender.hp - result.damage);
+1650:      battle.shakeTimer = 25;
+1651:      battle.flashTimer = 20;
+1654:      queueMessage(`${defender.name} took ${result.damage} damage!`);
+1710:// ---- Check boss phase transition after damage ----

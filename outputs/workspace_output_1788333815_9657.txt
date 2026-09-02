@@ -1,0 +1,4 @@
+  ✓ js/sprites.js
+  ✓ js/world.js
+  ✓ js/battle.js
+  ✓ js/constants.js

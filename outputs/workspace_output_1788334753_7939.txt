@@ -1,0 +1,94 @@
+function drawBattle(ctx) {
+  // shake offset
+  let sx = 0, sy = 0;
+  if (battle.shakeTimer > 0) {
+    sx = (Math.random() - 0.5) * 4;
+    sy = (Math.random() - 0.5) * 4;
+    battle.shakeTimer--;
+  }
+  ctx.save();
+  ctx.translate(sx, sy);
+
+  // ---- Battle background (themed by current map) ----
+  drawBattleBackground(ctx);
+
+  // flash overlay (hit flash)
+  if (battle.flashTimer > 0) {
+    ctx.fillStyle = "rgba(255,255,255,0.55)";
+    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+    battle.flashTimer--;
+  }
+
+  // ---- Enemy (top-right) on a platform ----
+  drawBattlePlatform(ctx, 96, 48, 60, 16, false);
+  // idle bob (subtle vertical oscillation)
+  const eBob = Math.sin(Date.now() / 380) * 1;
+  drawMonsterShadow(ctx, 128, 60, 22, 5);
+  drawElementalAura(ctx, battle.enemy, 104, 12 + eBob, 48, 48);
+  drawMonsterSprite(ctx, battle.enemy, 104, 12 + eBob, 48);
+  drawStatusComicEyes(ctx, battle.enemy, 104, 12 + eBob, false);
+
+  // ball animation
+  if (battle.ballAnim > 0) {
+    const progress = (30 - battle.ballAnim) / 30;
+    const bx = 28 + (124 - 28) * progress;
+    const by = 88 - Math.sin(progress * Math.PI) * 50;
+    drawBall(ctx, bx, by, 7);
+    if (battle.ballAnim < 20) {
+      drawBall(ctx, 128 + Math.sin(battle.ballAnim) * 3, 40, 7);
+    }
+    battle.ballAnim--;
+  }
+
+  // enemy HP box (top-left)
+  drawHpBox(ctx, 6, 6, battle.enemy.name, battle.enemy.hp, battle.enemy.maxHp, battle.enemy.level, battle.enemy, true);
+  drawTypeBadges(ctx, battle.enemy, 10, 30);
+
+  // ---- Player (bottom-left) on a platform ----
+  drawBattlePlatform(ctx, 8, 120, 64, 18, true);
+  const pBob = Math.sin(Date.now() / 360 + 1.2) * 1;
+  drawMonsterShadow(ctx, 40, 124, 24, 5);
+  drawElementalAura(ctx, battle.player, 16, 80 + pBob, 48, 48);
+  drawMonsterSprite(ctx, battle.player, 16, 80 + pBob, 48);
+  drawStatusComicEyes(ctx, battle.player, 16, 80 + pBob, true);
+
+  // player HP box (bottom-right)
+  drawHpBox(ctx, 120, 76, battle.player.name, battle.player.hp, battle.player.maxHp, battle.player.level, battle.player, false);
+  drawTypeBadges(ctx, battle.player, 124, 100);
+
+  // Draw quirk emoji indicator next to player name area
+  if (typeof quirkEmoji === 'function') {
+    const qe = quirkEmoji(battle.player);
+    if (qe) {
+      ctx.save();
+      ctx.font = "8px monospace";
+      ctx.fillText(qe, 118, 86);
+      ctx.restore();
+    }
+  }
+
+  // ---- Bottom textbox (GBA-style command window) ----
+  drawBattleTextBox(ctx);
+
+  // Mega-expansion: boss UI overlay
+  if (battle.isBossBattle && typeof drawBossUI === 'function') {
+    drawBossUI(ctx);
+  }
+
+  ctx.restore();
+
+  // Mega-expansion: impact frames (drawn after restore so they cover everything)
+  drawImpactFrame(ctx);
+
+  // Mega-expansion: boss phase flash
+  if (battle.isBossBattle && typeof drawBossPhaseFlash === 'function') {
+    drawBossPhaseFlash(ctx);
+  }
+
+  // Mega-expansion: evolution sequence overlay (drawn on top of everything)
+  if (tickEvolutionSequence()) {
+    drawEvolutionSequence(ctx);
+  }
+}
+
+// ---- Battle background (themed by map terrain) ----

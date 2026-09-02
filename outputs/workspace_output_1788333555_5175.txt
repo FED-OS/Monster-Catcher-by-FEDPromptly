@@ -1,0 +1,3 @@
+1205:function drawBuildings(ctx, map) {
+1540:function drawMap(ctx, map) {
+1548:  drawBuildings(ctx, map);

@@ -1,0 +1,3 @@
+Screenshot captured
+0
+---LOG TAIL---

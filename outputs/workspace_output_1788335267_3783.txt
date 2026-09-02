@@ -1,0 +1,15 @@
+js/main.js:16:  hasSaveOnBoot: hasSave()
+js/main.js:78:  const options = game.hasSaveOnBoot ? ["NEW GAME", "CONTINUE", "MUTE"] : ["NEW GAME", "MUTE"];
+js/main.js:95:      if (loadGame()) {
+js/main.js:236:  const options = game.hasSaveOnBoot ? ["NEW GAME", "CONTINUE", "MUTE"] : ["NEW GAME", "MUTE"];
+js/main.js:286:  if ((Math.floor(game.titleTime / 500) % 2) === 0 && game.titleCursor === 0 && !game.hasSaveOnBoot) {
+js/menu.js:148:    const ok = saveGame();
+js/player.js:493:const SAVE_KEY = "monsterCatcher_save_v1";
+js/player.js:495:function saveGame() {
+js/player.js:522:    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+js/player.js:530:function loadGame() {
+js/player.js:532:    const raw = localStorage.getItem(SAVE_KEY);
+js/player.js:573:function hasSave() {
+js/player.js:574:  try { return !!localStorage.getItem(SAVE_KEY); } catch (e) { return false; }
+js/player.js:577:function deleteSave() {
+js/player.js:578:  try { localStorage.removeItem(SAVE_KEY); } catch (e) {}

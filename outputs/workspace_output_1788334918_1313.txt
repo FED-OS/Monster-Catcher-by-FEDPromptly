@@ -1,0 +1,5 @@
+Page text: Arrow keys / WASD / D-pad to move · Z or A-button to confirm · X or B-button to cancel · Controller supported VERDALE REGION — HERO EDITION V5.0
+
+Screenshot: /workspace/.screenshots/step_118.png
+Use see-image to view: /workspace/.screenshots/step_118.png
+=== END ===

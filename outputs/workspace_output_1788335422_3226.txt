@@ -1,0 +1,3 @@
+495:const SAVE_KEY = "monsterCatcher_save_v1";
+500:const SAVE_KEY_PREFIX = "monsterCatcher_save_v5_slot_";
+645:const SAVE_KEY = "monsterCatcher_save_v1"; // kept for old code references

@@ -1,0 +1,19 @@
+931:function drawMonsterShadow(ctx, cx, baseY, rx, ry) {
+942:function drawBattle(ctx) {
+959:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1036:function drawBattleBackground(ctx) {
+1053:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1063:    ctx.fillRect(0, 60, SCREEN_W, SCREEN_H - 60);
+1065:    ctx.fillRect(0, 100, SCREEN_W, SCREEN_H - 100);
+1074:    ctx.fillRect(0, 70, SCREEN_W, SCREEN_H - 70);
+1076:    ctx.fillRect(0, 110, SCREEN_W, SCREEN_H - 110);
+1092:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1095:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1165:  ctx.fillRect(0, 72, SCREEN_W, SCREEN_H - 72);
+1169:  ctx.fillRect(0, 120, SCREEN_W, SCREEN_H - 120);
+1241:function drawBattlePlatform(ctx, x, y, w, h, isPlayer) {
+1721:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1731:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1873:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1879:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+1895:    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);

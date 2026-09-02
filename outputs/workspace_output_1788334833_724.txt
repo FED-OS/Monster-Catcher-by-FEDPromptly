@@ -1,0 +1,12 @@
+20:  walkTimer: 0,   // ticks to alternate step frames while moving
+36:  stepCount: 0             // for tracking world creature spawns & random events
+65:  player.stepCount = 0;
+72:function tryMove(dCol, dRow) {
+93:  player.moving = true;
+95:  player.walkTimer = 0;
+139:  player.stepCount = (player.stepCount || 0) + 1;
+381:    player.walkTimer++;
+382:    if (player.walkTimer > 5) {
+384:      player.walkTimer = 0;
+500:      stepCount: player.stepCount || 0
+537:    player.stepCount = data.stepCount || 0;

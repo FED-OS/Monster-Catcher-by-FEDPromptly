@@ -1,0 +1,3 @@
+js/player.js:183:function tileInFrontOfPlayer() {
+js/player.js:191:  const { col, row } = tileInFrontOfPlayer();
+js/worldcreatures.js:690:  const [tc, tr] = tileInFrontOfPlayer();

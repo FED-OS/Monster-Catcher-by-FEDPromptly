@@ -1,0 +1,3 @@
+particles OK
+effects OK
+gamepad OK

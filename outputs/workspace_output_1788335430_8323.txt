@@ -1,0 +1,11 @@
+  player.lastHealMap = world.currentMap;
+  player.lastHealPos = { col: player.col, row: player.row };
+}
+
+// ---- Save / Load ----
+const SAVE_KEY = "monsterCatcher_save_v1";
+
+// ---- HERO: Multi-slot save system (v5.0) ----
+// Supports 3 save slots + auto-save. Each slot stores the full game state
+// plus metadata (playtime, badges, location, party lead) for the slot-select screen.
+const SAVE_KEY_PREFIX = "monsterCatcher_save_v5_slot_";

@@ -1,0 +1,13 @@
+  }
+
+  // ---- HERO: ambient title particles (sparkles drifting) ----
+  if (typeof drawParticles === "function") drawParticles(ctx);
+  if (game.titleTime % 20 === 0 && typeof burstSparkles === "function") {
+    burstSparkles(Math.random() * SCREEN_W, 20 + Math.random() * 80, 1, "#f8f8c0");
+  }
+
+  // ---- Press start hint (blink) ----
+  if ((Math.floor(game.titleTime / 500) % 2) === 0 && game.titleCursor === 0 && !game.hasSaveOnBoot) {
+    ctx.fillStyle = COLOR.winBorder;
+    ctx.font = "6px monospace";
+    ctx.textAlign = "center";

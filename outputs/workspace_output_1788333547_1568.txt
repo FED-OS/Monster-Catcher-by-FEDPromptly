@@ -1,0 +1,85 @@
+function drawTreeTile(ctx, px, py) {
+  // grass base
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, 4);
+  // trunk
+  ctx.fillStyle = COLOR.treeBark;
+  ctx.fillRect(px + 6, py + 11, 4, 5);
+  ctx.fillStyle = COLOR.treeBarkD;
+  ctx.fillRect(px + 6, py + 11, 1, 5);
+  ctx.fillRect(px + 9, py + 11, 1, 5);
+  ctx.fillStyle = "#987048";
+  ctx.fillRect(px + 7, py + 11, 2, 1);
+  // canopy — large rounded blob with multiple shade rings
+  // dark outline/base
+  ctx.fillStyle = COLOR.treeLeaf4;
+  ctx.fillRect(px + 1, py + 2, 14, 9);
+  ctx.fillRect(px + 2, py + 1, 12, 11);
+  // mid green
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px + 2, py + 3, 12, 7);
+  ctx.fillRect(px + 3, py + 2, 10, 9);
+  // light green
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 3, py + 4, 10, 5);
+  ctx.fillRect(px + 4, py + 3, 8, 7);
+  // highlight (upper-left)
+  ctx.fillStyle = COLOR.treeLeaf1;
+  ctx.fillRect(px + 4, py + 4, 7, 3);
+  ctx.fillRect(px + 5, py + 3, 5, 5);
+  // bright spot
+  ctx.fillStyle = COLOR.treeLeafLite;
+  ctx.fillRect(px + 5, py + 4, 3, 2);
+  ctx.fillRect(px + 6, py + 5, 1, 1);
+  // side bumps for rounder look
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px, py + 5, 2, 3);
+  ctx.fillRect(px + 14, py + 5, 2, 3);
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 1, py + 6, 1, 1);
+  ctx.fillRect(px + 14, py + 6, 1, 1);
+  // top bump
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px + 6, py, 4, 2);
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 7, py + 1, 2, 1);
+}
+
+// ---- 3 / 14: Water (blocked) — animated layered shimmer ----
+function drawWaterTile(ctx, px, py, deep) {
+  ctx.fillStyle = deep ? COLOR.waterDeep : COLOR.water3;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = deep ? COLOR.water3 : COLOR.water2;
+  ctx.fillRect(px, py + 2, TILE, 6);
+  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
+  ctx.fillRect(px, py + 2, TILE, 2);
+  // animated wave bands
+  const off = (worldAnimFrame >> 3) % 16;
+  ctx.fillStyle = deep ? COLOR.water3 : COLOR.water2;
+  const wy1 = py + 6 + (off > 8 ? 1 : 0);
+  ctx.fillRect(px + ((off + 0) % TILE), wy1, 4, 1);
+  ctx.fillRect(px + ((off + 8) % TILE), py + 11, 5, 1);
+  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
+  ctx.fillRect(px + ((off + 2) % TILE), py + 7, 3, 1);
+  ctx.fillRect(px + ((off + 10) % TILE), py + 12, 4, 1);
+  // foam highlights
+  ctx.fillStyle = COLOR.waterFoam;
+  ctx.fillRect(px + ((off + 3) % TILE), py + 6, 1, 1);
+  ctx.fillRect(px + ((off + 11) % TILE), py + 11, 1, 1);
+  ctx.fillRect(px + ((off + 6) % TILE), py + 8, 1, 1);
+}
+
+// ---- 4: Sand (walkable) — textured dirt path edge ----
+function drawSandTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.sandLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.sandMid;
+  ctx.fillRect(px, py + 7, TILE, 9);
+  ctx.fillStyle = COLOR.sandDark;
+  ctx.fillRect(px, py + 13, TILE, 3);
+  // pebbles & grit
+  ctx.fillStyle = COLOR.pathDark;
+  ctx.fillRect(px + 3, py + 3, 1, 1);
+  ctx.fillRect(px + 11, py + 6, 1, 1);

@@ -1,0 +1,21 @@
+function drawMap(ctx, map) {
+  map = map || currentMapData();
+  for (let row = 0; row < map.grid.length; row++) {
+    for (let col = 0; col < map.grid[row].length; col++) {
+      drawTile(ctx, map.grid[row][col], col * TILE, row * TILE);
+    }
+  }
+  // Overlay decorative buildings (drawn after tiles, before entities)
+  drawBuildings(ctx, map);
+}
+
+// ---- Helpers for the current map ----
+function currentMapData() {
+  return MAPS[world.currentMap];
+}
+
+function isBlocked(col, row) {
+  const map = currentMapData();
+  if (!map) return true;
+  if (row < 0 || col < 0 || row >= map.grid.length || col >= map.grid[0].length) return true;
+  const t = map.grid[row][col];

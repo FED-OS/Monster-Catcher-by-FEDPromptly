@@ -1,0 +1,86 @@
+function saveGame() {
+  try {
+    const data = {
+      currentMap: world.currentMap,
+      col: player.col,
+      row: player.row,
+      facing: player.facing,
+      party: player.party,
+      bag: player.bag,
+      money: player.money,
+      badges: player.badges,
+      flags: player.flags,
+      dex: player.dex,
+      starterChosen: player.starterChosen,
+      playtime: player.playtime,
+      box: player.box || [],
+      lastHealMap: player.lastHealMap || "mossmere",
+      lastHealPos: player.lastHealPos || { col: 4, row: 7 },
+      defeatedNpcs: NPCS.filter(n => n.defeated).map(n => n.id),
+      // Mega-expansion fields
+      heroId: player.heroId || "kael",
+      toolBag: player.toolBag || {},
+      equippedTools: player.equippedTools || {},
+      friendship: player.friendship || {},
+      visitedBiomes: player.visitedBiomes || {},
+      stepCount: player.stepCount || 0
+    };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+    return true;
+  } catch (e) {
+    console.error("Save failed:", e);
+    return false;
+  }
+}
+
+function loadGame() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    world.currentMap = data.currentMap || "mossmere";
+    player.col = data.col ?? 4;
+    player.row = data.row ?? 4;
+    player.facing = data.facing || "down";
+    player.party = data.party || [];
+    player.bag = data.bag || { basicball: 10, potion: 5 };
+    player.money = data.money ?? 1500;
+    player.balls = player.bag.basicball || 0;
+    player.badges = data.badges || [];
+    player.flags = data.flags || {};
+    player.dex = data.dex || { seen: {}, caught: {} };
+    player.starterChosen = !!data.starterChosen;
+    player.playtime = data.playtime || 0;
+    player.box = data.box || [];
+    player.lastHealMap = data.lastHealMap || "mossmere";
+    player.lastHealPos = data.lastHealPos || { col: 4, row: 7 };
+    // Mega-expansion restore
+    player.heroId = data.heroId || "kael";
+    player.toolBag = data.toolBag || {};
+    player.equippedTools = data.equippedTools || {};
+    player.friendship = data.friendship || {};
+    player.visitedBiomes = data.visitedBiomes || {};
+    player.stepCount = data.stepCount || 0;
+    game.flags = player.flags;
+    // Ensure party unique IDs
+    ensurePartyUniqueIds();
+    // Restore defeated trainer flags
+    (data.defeatedNpcs || []).forEach(id => {
+      const n = NPCS.find(x => x.id === id);
+      if (n) n.defeated = true;
+    });
+    return true;
+  } catch (e) {
+    console.error("Load failed:", e);
+    return false;
+  }
+}
+
+function hasSave() {
+  try { return !!localStorage.getItem(SAVE_KEY); } catch (e) { return false; }
+}
+
+function deleteSave() {
+  try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+}
+

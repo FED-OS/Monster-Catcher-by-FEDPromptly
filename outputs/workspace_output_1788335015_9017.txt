@@ -1,0 +1,16 @@
+
+// ---- Staring contest mechanic ----
+// When the player faces a sleeping creature and presses confirm,
+// initiate a staring contest (mini encounter choice)
+function tryStaringContest() {
+  const [tc, tr] = tileInFrontOfPlayer();
+  for (const wc of worldCreatures) {
+    if (wc.col === tc && wc.row === tr && wc.state === WC_STATE.SLEEP) {
+      // Wake it up — it becomes alert
+      wc.state = WC_STATE.ALERT;
+      wc.stateTimer = 0;
+      spawnAlert(wc, "!!");
+      triggerScreenShake(4, 12);
+      // Could trigger a special "staring contest" encounter or normal battle
+      // For now, it just wakes up and chases
+      return true;
