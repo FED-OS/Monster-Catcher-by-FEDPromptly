@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monster Catcher — Verdale Region: HERO Edition v5.0</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <div id="screen-wrap">
+    <canvas id="game" width="240" height="160"></canvas>
+    <div class="crt-overlay"></div>
+  </div>
+  <p id="hint">Arrow keys / WASD / D-pad to move &middot; Z or A-button to confirm &middot; X or B-button to cancel &middot; Controller supported</p>
+  <p id="brand">Verdale Region &mdash; HERO Edition v5.0</p>
+
+  <!-- Core engine (load order matters) -->
+  <script src="js/constants.js?v=5"></script>
+  <script src="js/palettes.js?v=5"></script>
+  <script src="js/particles.js?v=5"></script>
+  <script src="js/effects.js?v=5"></script>
+  <script src="js/gamepad.js?v=5"></script>
+  <script src="js/monsters.js?v=5"></script>
+  <script src="js/sprites.js?v=5"></script>
+  <script src="js/story.js?v=5"></script>
+  <script src="js/world.js?v=5"></script>
+  <script src="js/audio.js?v=5"></script>
+
+  <!-- Mega Expansion modules (depend on core) -->
+  <script src="js/elements.js?v=5"></script>
+  <script src="js/powerups.js?v=5"></script>
+  <script src="js/biomes.js?v=5"></script>
+  <script src="js/characters.js?v=5"></script>
+  <script src="js/quirks.js?v=5"></script>
+  <script src="js/dialogue.js?v=5"></script>
+  <script src="js/worldcreatures.js?v=5"></script>
+  <script src="js/boss.js?v=5"></script>
+
+  <!-- Game logic (depends on all systems) -->
+  <script src="js/player.js?v=5"></script>
+  <script src="js/battle.js?v=5"></script>
+  <script src="js/menu.js?v=5"></script>
+  <script src="js/main.js?v=5"></script>
+</body>
+</html>
