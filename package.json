@@ -3,20 +3,98 @@
   "version": "5.0.0",
   "description": "Monster Catcher — Verdale Region: GBA Edition. A polished Game Boy Advance-style monster catching RPG.",
   "main": "electron/main.js",
+  "author": "Verdale Studios",
+  "license": "MIT",
   "scripts": {
     "start": "electron . --no-sandbox",
     "dev": "electron . --no-sandbox --dev",
     "start:headless": "electron . --no-sandbox --disable-gpu --software-rendering",
     "check": "for f in js/*.js; do node --check \"$f\" && echo \"OK: $f\" || { echo \"FAIL: $f\"; exit 1; }; done",
     "lint": "node --check electron/main.js && for f in js/*.js; do node --check \"$f\" || exit 1; done && echo \"All modules pass syntax check\"",
-    "serve": "python3 -m http.server 9090"
+    "serve": "python3 -m http.server 9090",
+    "dist": "electron-builder --publish never",
+    "dist:win": "electron-builder --win --publish never",
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:linux": "electron-builder --linux --publish never",
+    "dist:all": "electron-builder -mwl --publish never"
   },
-  "author": "Verdale Studios",
-  "license": "MIT",
   "devDependencies": {
-    "electron": "^30.0.0"
+    "electron": "30.5.1",
+    "electron-builder": "25.1.8"
   },
   "allowScripts": {
     "electron@30.5.1": true
+  },
+  "build": {
+    "appId": "com.verdalestudios.monstercatcher",
+    "productName": "Monster Catcher",
+    "copyright": "Copyright © 2025 Verdale Studios",
+    "electronVersion": "30.5.1",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "index.html",
+      "style.css",
+      "js/**/*",
+      "electron/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "MonsterCatcher-Verdale-${version}-Setup-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Monster Catcher",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "installerSidebar": null
+    },
+    "portable": {
+      "artifactName": "MonsterCatcher-Verdale-${version}-Portable-${arch}.${ext}"
+    },
+    "mac": {
+      "icon": "assets/icon.png",
+      "category": "public.app-category.games",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "artifactName": "MonsterCatcher-Verdale-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "category": "Game",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "tar.gz",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "MonsterCatcher-Verdale-${version}-${arch}.${ext}"
+    }
   }
 }
