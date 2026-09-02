@@ -1,0 +1,1759 @@
+127.0.0.1 - - [02/Sep/2026 06:23:30] "GET /js/constants.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/constants.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/palettes.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/monsters.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/story.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/world.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/elements.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/sprites.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/audio.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/powerups.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/biomes.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/dialogue.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/boss.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/characters.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/quirks.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/player.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/battle.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/menu.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:41] "GET /js/main.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:23:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:23:47] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/constants.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/palettes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/monsters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/sprites.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/story.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/world.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/audio.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/elements.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/powerups.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/biomes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/characters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/quirks.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/dialogue.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/boss.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/player.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/battle.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/menu.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:37] "GET /js/main.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:26:42] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:26:42] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:32:48] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/constants.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/palettes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/monsters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/sprites.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/world.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/audio.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/elements.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/story.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/powerups.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/biomes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/dialogue.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/characters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/quirks.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/boss.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/player.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/battle.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/menu.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:42] "GET /js/main.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:47] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:47] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:33:48] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:33:48] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/constants.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/palettes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/monsters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/sprites.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/story.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/world.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/audio.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/elements.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/powerups.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/biomes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/characters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/quirks.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/dialogue.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/boss.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/player.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/battle.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/menu.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /js/main.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:36:58] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:36:58] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:24] "GET /js/world.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:38:24] "GET /js/battle.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:38:30] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:38:30] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/constants.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/palettes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/monsters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/sprites.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/story.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/world.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/elements.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/audio.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/powerups.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/biomes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/characters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/quirks.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/dialogue.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/boss.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/player.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/battle.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/menu.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:40:56] "GET /js/main.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:41:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:41:02] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:22] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/constants.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/palettes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/monsters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/sprites.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/story.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/world.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/audio.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/elements.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/powerups.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/biomes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/dialogue.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/characters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/quirks.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/boss.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/player.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/menu.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/main.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:38] "GET /js/battle.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 06:49:39] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 06:49:39] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:04:17] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:08:25] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/constants.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/palettes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/monsters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/sprites.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/story.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/world.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/audio.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/powerups.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/characters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/dialogue.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/player.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/menu.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/battle.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/main.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/elements.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/biomes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/quirks.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:38] "GET /js/boss.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:43] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:43] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:08:44] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:08:44] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:10:32] "GET /spritetest.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:10:33] "GET /js/constants.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:10:33] "GET /js/palettes.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:10:33] "GET /js/monsters.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:10:33] "GET /js/sprites.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:10:33] "GET /js/elements.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:16:12] "GET /spritetest.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:16:12] "GET /js/constants.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:16:12] "GET /js/palettes.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:16:12] "GET /js/monsters.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:16:12] "GET /js/sprites.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:16:12] "GET /js/elements.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:16:36] "GET /js/sprites.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:17:41] "GET /spritetest.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:17:41] "GET /js/sprites.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/constants.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/palettes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/monsters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/sprites.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/world.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/story.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/elements.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/audio.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/powerups.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/biomes.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/dialogue.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/worldcreatures.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/characters.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/quirks.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/boss.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/player.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/battle.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/menu.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /js/main.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:18:12] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:18:12] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /js/sprites.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:19:46] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:19:46] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:15] "GET /js/sprites.js?v=4 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:21:21] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:21:21] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:22:49] "GET /spritetest.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:22:49] "GET /js/constants.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:22:49] "GET /js/palettes.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:22:49] "GET /js/monsters.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:22:49] "GET /js/sprites.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:22:49] "GET /js/elements.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/constants.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/particles.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/palettes.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/effects.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/gamepad.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/monsters.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/sprites.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/story.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/world.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/audio.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/elements.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/biomes.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/powerups.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/characters.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/quirks.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/dialogue.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/worldcreatures.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/boss.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/player.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/battle.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/main.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:43] "GET /js/menu.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:41:49] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:41:49] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/constants.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/palettes.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/particles.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/effects.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/gamepad.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/sprites.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/world.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/monsters.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/audio.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/story.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/quirks.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/dialogue.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/worldcreatures.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/battle.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/menu.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/main.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/elements.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/powerups.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/biomes.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/characters.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/boss.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:50:46] "GET /js/player.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:50:51] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:50:51] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /js/player.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /js/battle.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /js/menu.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:51:13] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:51:13] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/particles.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/effects.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/gamepad.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/world.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/worldcreatures.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/player.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/battle.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/menu.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:58] "GET /js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:53:59] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:53:59] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:55:56] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/effects.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/gamepad.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/particles.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/sprites.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/worldcreatures.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/player.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/battle.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:55:57] "GET /js/menu.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 07:56:02] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 07:56:02] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:37:51] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 08:39:24] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/constants.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/palettes.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/particles.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/effects.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/gamepad.js?v=5 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/monsters.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/sprites.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/story.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/world.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/audio.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/elements.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/biomes.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/powerups.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/characters.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/quirks.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/dialogue.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/worldcreatures.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/boss.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/player.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/battle.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/menu.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:28] "GET /js/main.js?v=5 HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/emberit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/infernyx.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/pyrothorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/aquip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/tidalon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/leafon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/florahn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/rattick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/leviathorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/thornheart.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/rattigor.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/sparkit.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/voltagon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/stormoxen.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/digmole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/terramole.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/galewing.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/toxipod.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/venomoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/frostip.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/glaciorn.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/breezel.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/pebblix.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/bouldron.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/carpox.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/silkmoth.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/mindrill.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/oraculon.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/wispup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/spectral.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/shadepup.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/nightmere.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/drakeling.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/wyrmking.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/ironscale.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/adamantaur.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/pixiecap.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/glamora.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/monkick.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/grandfist.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/aurorion.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /assets/sprites/voidrath.png HTTP/1.1" 404 -
+127.0.0.1 - - [02/Sep/2026 08:39:29] code 404, message File not found
+127.0.0.1 - - [02/Sep/2026 08:39:29] "GET /favicon.ico HTTP/1.1" 404 -
