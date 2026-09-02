@@ -1,0 +1,89 @@
+function tryMove(dCol, dRow) {
+  if (player.moving || world.transitioning) return;
+  if (dialogue) return;
+  if (game.state !== GAME_STATE.OVERWORLD) return;
+
+  if (dCol === -1) player.facing = "left";
+  if (dCol === 1) player.facing = "right";
+  if (dRow === -1) player.facing = "up";
+  if (dRow === 1) player.facing = "down";
+
+  const newCol = player.col + dCol;
+  const newRow = player.row + dRow;
+
+  // Ledges: only allow stepping onto a ledge when moving DOWN into it.
+  if (isLedge(newCol, newRow) && dRow !== 1) return;
+
+  if (isBlocked(newCol, newRow)) return;
+  if (getNpcAt(newCol, newRow)) return;
+
+  player.col = newCol;
+  player.row = newRow;
+  player.moving = true;
+  player.walkFrame = 1; // begin stepping
+  player.walkTimer = 0;
+  setTimeout(() => { player.moving = false; player.walkFrame = 0; }, 90); // tiny step delay for feel
+
+  // Warp tile?
+  const warp = warpAt(newCol, newRow);
+  if (warp) {
+    doWarp(warp);
+    return;
+  }
+
+  // Heal / shop tiles
+  const map = currentMapData();
+  const tileKey = newCol + "," + newRow;
+  if (map.healTile === tileKey) {
+    openHealPrompt();
+    return;
+  }
+  if (map.shopTile === tileKey) {
+    openShopPrompt();
+    return;
+  }
+  if (map.gymLeaderTile === tileKey) {
+    // Trigger gym leader battle directly if not defeated
+    const leader = NPCS.find(n => n.map === world.currentMap && n.id === "gym_leader_frostine");
+    if (leader && !leader.defeated) {
+      startTrainerBattle(leader);
+    }
+    return;
+  }
+
+  // Encounter check
+  if (isTallGrass(newCol, newRow) && map.encounters && map.encounters.length) {
+    if (Math.random() < (map.rate || 0.12)) {
+      startRandomEncounter();
+      return;
+    }
+  }
+
+  // ---- Mega Expansion: world creature collision ----
+  if (typeof checkWorldCreatureCollision === "function") {
+    if (checkWorldCreatureCollision(newCol, newRow)) return;
+  }
+
+  // ---- Mega Expansion: Krax ambush on steps (rare) ----
+  player.stepCount = (player.stepCount || 0) + 1;
+  if (typeof maybeTriggerKraxAmbush === "function") {
+    maybeTriggerKraxAmbush();
+  }
+}
+
+function doWarp(warp) {
+  world.transitioning = true;
+  world.transitionAlpha = 0;
+  setTimeout(() => {
+    world.currentMap = warp.dest;
+    player.col = warp.col;
+    player.row = warp.row;
+    // Re-trigger any warp chain (e.g., door -> map -> nothing)
+    const innerWarp = warpAt(player.col, player.row);
+    if (innerWarp && innerWarp.dest !== world.currentMap) {
+      // avoid infinite loop — only chain once
+    }
+    world.transitioning = false;
+    // Spawn world creatures for the new map
+    if (typeof initWorldCreatures === "function") initWorldCreatures();
+  }, 320);

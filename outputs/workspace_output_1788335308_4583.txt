@@ -1,0 +1,50 @@
+function endBattle() {
+  // Mega-expansion: apply quirk win effects & friendship
+  enhancedEndBattleHook();
+
+  if (battle && battle.isBossBattle && typeof endBossBattle === 'function') {
+    endBossBattle();
+    return;
+  }
+
+  if (battle && battle.isTrainerBattle && battle.outcome === "won") {
+    if (battle.trainerNpc) {
+      battle.trainerNpc.defeated = true;
+      if (battle.trainerNpc.flagOnDefeat) player.flags[battle.trainerNpc.flagOnDefeat] = true;
+      if (battle.trainerNpc.givesBadge) {
+        const badgeName = BADGES[battle.trainerNpc.givesBadge - 1] && BADGES[battle.trainerNpc.givesBadge - 1].name;
+        if (badgeName && !player.badges.includes(badgeName)) player.badges.push(badgeName);
+      }
+      // Prize money: sum of enemy team levels × 12 (plus leader bonus)
+      const prize = battle.enemyTeam.reduce((sum, m) => sum + m.level, 0) * 12;
+      player.money += prize;
+      if (dialogueQueueAfterBattle) {
+        dialogueQueueAfterBattle.push(`You won $${prize} in prize money!`);
+      } else {
+        dialogueQueueAfterBattle = [`You won $${prize} in prize money!`];
+      }
+      sfxBadge();
+    }
+  }
+
+  // Blackout: if the player lost (all monsters fainted), heal the party
+  // and warp back to the last visited healing center (or starting town).
+  if (battle && battle.outcome === "lost") {
+    healParty();
+    const healMap = player.lastHealMap || "mossmere";
+    const healPos = player.lastHealPos || { col: 4, row: 7 };
+    world.currentMap = healMap;
+    player.col = healPos.col;
+    player.row = healPos.row;
+    player.facing = "down";
+    // show blackout message
+    dialogueQueueAfterBattle = ["You scurried back to a safe place...", "Your monsters have been healed!"];
+  }
+
+  // clear battle-only state on party
+  player.party.forEach(m => { resetStatStages(m); });
+  battle = null;
+  game.state = GAME_STATE.OVERWORLD;
+
+  if (dialogueQueueAfterBattle) {
+    startDialogue(dialogueQueueAfterBattle);

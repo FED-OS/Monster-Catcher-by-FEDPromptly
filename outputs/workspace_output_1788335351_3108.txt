@@ -1,0 +1,4 @@
+178:  if (typeof drawParticles === "function") drawParticles(ctx);
+322:  // ---- HERO: ambient title particles (sparkles drifting) ----
+323:  if (typeof drawParticles === "function") drawParticles(ctx);
+324:  if (game.titleTime % 20 === 0 && typeof burstSparkles === "function") {

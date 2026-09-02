@@ -1,0 +1,15 @@
+91:function endBattle() {
+100:  if (battle && battle.isTrainerBattle && battle.outcome === "won") {
+122:  if (battle && battle.outcome === "lost") {
+137:  game.state = GAME_STATE.OVERWORLD;
+154:      if (battle.outcome) { endBattle(); return; }
+171:  if (battle.outcome) {
+381:  if (!battle || battle.outcome) return;
+406:    if (!battle || battle.outcome) return;
+535:  if (battle.outcome) { cb && cb(); return; }
+822:      battle.outcome = "caught";
+847:    battle.outcome = "fled";
+916:    battle.outcome = "won";
+949:      battle.outcome = "lost";
+1435:  if (battle.outcome || battle.awaitingContinue) {
+1594:    battle.outcome = "fled";

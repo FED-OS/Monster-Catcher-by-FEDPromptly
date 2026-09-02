@@ -1,0 +1,142 @@
+=== INDEX.HTML ===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monster Catcher — Verdale Region: GBA Edition v4.0 MEGA</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <div id="screen-wrap">
+    <canvas id="game" width="240" height="160"></canvas>
+    <div class="crt-overlay"></div>
+  </div>
+  <p id="hint">Arrow keys / WASD to move &middot; Z or Enter to confirm &middot; X to cancel</p>
+  <p id="brand">Verdale Region &mdash; GBA Edition v4.0 MEGA</p>
+
+  <!-- Core engine (load order matters) -->
+  <script src="js/constants.js?v=4"></script>
+  <script src="js/palettes.js?v=4"></script>
+  <script src="js/monsters.js?v=4"></script>
+  <script src="js/sprites.js?v=4"></script>
+  <script src="js/story.js?v=4"></script>
+  <script src="js/world.js?v=4"></script>
+  <script src="js/audio.js?v=4"></script>
+
+  <!-- Mega Expansion modules (depend on core) -->
+  <script src="js/elements.js?v=4"></script>
+  <script src="js/powerups.js?v=4"></script>
+  <script src="js/biomes.js?v=4"></script>
+  <script src="js/characters.js?v=4"></script>
+  <script src="js/quirks.js?v=4"></script>
+  <script src="js/dialogue.js?v=4"></script>
+  <script src="js/worldcreatures.js?v=4"></script>
+  <script src="js/boss.js?v=4"></script>
+
+  <!-- Game logic (depends on all systems) -->
+  <script src="js/player.js?v=4"></script>
+  <script src="js/battle.js?v=4"></script>
+  <script src="js/menu.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+</body>
+</html>
+=== STYLE.CSS ===
+/* Monster Catcher — Verdale Region: GBA Edition
+   Native canvas resolution: 240x160 (Game Boy Advance)
+   Displayed at 3x scale → 720x480, crisp pixelated upscaling. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  color: #c8c8d0;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+/* GBA-style handheld console frame */
+#screen-wrap {
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #6c3b8c 0%, #4a2570 50%, #3a1d58 100%);
+  box-shadow:
+    0 0 0 4px #2a1540,
+    0 0 0 6px #5a3a7a,
+    0 12px 40px rgba(0,0,0,0.7),
+    inset 0 2px 6px rgba(255,255,255,0.12);
+  position: relative;
+}
+
+/* Decorative "GBA" corner accents */
+#screen-wrap::before,
+#screen-wrap::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #b8b8c8, #5a5a6a);
+  box-shadow: inset 0 -1px 2px rgba(0,0,0,0.5);
+}
+#screen-wrap::before { top: 6px; left: 6px; }
+#screen-wrap::after  { top: 6px; right: 6px; }
+
+/* The canvas — 240x160 scaled to 720x480 (3x) */
+#game {
+  width: 720px;
+  height: 480px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  display: block;
+  background: #000;
+  border-radius: 4px;
+  /* subtle screen glare */
+  box-shadow:
+    inset 0 0 4px rgba(0,0,0,0.6),
+    inset 0 0 60px rgba(20,20,60,0.25);
+}
+
+/* CRT scanline overlay — sits on top of the canvas only */
+#screen-wrap::marker { display: none; }
+.crt-overlay {
+  pointer-events: none;
+  position: absolute;
+  top: 14px; left: 14px;
+  width: 720px; height: 480px;
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.0) 0px,
+      rgba(0,0,0,0.0) 2px,
+      rgba(0,0,0,0.12) 3px,
+      rgba(0,0,0,0.0) 4px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+#hint {
+  margin-top: 16px;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  color: #8a8aa0;
+  text-align: center;
+}
+
+#brand {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #6a4a8a;
+  text-transform: uppercase;
+}

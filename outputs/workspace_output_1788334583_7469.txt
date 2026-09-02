@@ -1,0 +1,47 @@
+js/battle.js:1041:  if (typeof getSkyColors === "function") {
+js/battle.js:1042:    const sc = getSkyColors();
+js/battle.js:1046:  const weather = (typeof getMapWeather === "function") ? getMapWeather() : "none";
+js/battle.js:1102:  const f = (typeof worldAnimFrame !== "undefined") ? worldAnimFrame : 0;
+js/main.js:112:  if (typeof screenShakeOffset === "function") {
+js/main.js:113:    const off = screenShakeOffset();
+js/main.js:135:  if (typeof getTimeTint === "function") {
+js/main.js:136:    const tint = getTimeTint();
+js/main.js:144:  if (typeof getWeatherTint === "function") {
+js/main.js:145:    const wtint = getWeatherTint();
+js/main.js:164:  const weather = (typeof getMapWeather === "function") ? getMapWeather() : "none";
+js/main.js:165:  const f = (typeof worldAnimFrame !== "undefined") ? worldAnimFrame : 0;
+js/main.js:185:  const sky = (typeof getSkyColors === "function") ? getSkyColors() : [COLOR.skyDay, COLOR.skyDay2];
+js/main.js:281:  if (typeof tickWorldAnim === "function") tickWorldAnim();
+js/main.js:290:    if (typeof tickScreenShake === "function") tickScreenShake();
+js/palettes.js:74:function getTimeTint() {
+js/palettes.js:79:function getSkyColors() {
+js/palettes.js:102:function getWeatherTint() {
+js/palettes.js:108:function getMapWeather() {
+js/world.js:522:let worldAnimFrame = 0;
+js/world.js:523:function tickWorldAnim() { worldAnimFrame++; }
+js/world.js:576:  const glow = Math.sin(worldAnimFrame / 20 + (px + py) * 0.1) > 0;
+js/world.js:591:  const pulse = (worldAnimFrame >> 3) % 2 === 0;
+js/world.js:605:  const shimmer = Math.sin(worldAnimFrame / 15 + (px + py) * 0.05);
+js/world.js:643:  const sp = (worldAnimFrame >> 4) % 4 === 0;
+js/world.js:657:  const off = (worldAnimFrame >> 3) % 16;
+js/world.js:661:  const glow = (worldAnimFrame >> 4) % 6;
+js/world.js:683:  const spark = (worldAnimFrame >> 4) % 8 === 0;
+js/world.js:694:  const off = (worldAnimFrame >> 3) % 16;
+js/world.js:714:  const glow = Math.sin(worldAnimFrame / 18 + (px + py) * 0.1);
+js/world.js:727:  const flicker = Math.sin(worldAnimFrame / 8 + (px + py) * 0.2);
+js/world.js:734:  ctx.fillRect(px, py + (worldAnimFrame >> 2) % 16, TILE, 1);
+js/world.js:759:  const pulse = (worldAnimFrame >> 3) % 2 === 0;
+js/world.js:809:  const sway = Math.sin(worldAnimFrame / 24 + (px + py) * 0.1) > 0.6 ? 1 : 0;
+js/world.js:899:  const off = (worldAnimFrame >> 3) % 16;
+js/world.js:975:  const sparkle = (worldAnimFrame >> 4) % 3;
+js/worldcreatures.js:435:let screenShake = { intensity: 0, duration: 0, timer: 0 };
+js/worldcreatures.js:438:  if (intensity > screenShake.intensity || screenShake.timer <= 0) {
+js/worldcreatures.js:439:    screenShake.intensity = intensity;
+js/worldcreatures.js:440:    screenShake.duration = duration;
+js/worldcreatures.js:441:    screenShake.timer = duration;
+js/worldcreatures.js:445:function tickScreenShake() {
+js/worldcreatures.js:446:  if (screenShake.timer > 0) screenShake.timer--;
+js/worldcreatures.js:449:function screenShakeOffset() {
+js/worldcreatures.js:450:  if (screenShake.timer <= 0) return { x: 0, y: 0 };
+js/worldcreatures.js:451:  const t = screenShake.timer / screenShake.duration;
+js/worldcreatures.js:452:  const i = screenShake.intensity * t;

@@ -1,0 +1,7 @@
+-rw-r--r-- 1 root root  65280 Sep  2 07:23 /workspace/final_battle_300.png
+-rw-r--r-- 1 root root 166756 Sep  2 07:23 /workspace/monster-catcher-desktop.zip
+-rw-r--r-- 1 root root  28801 Sep  2 07:23 /workspace/sprite_contact_sheet_300.png
+---ZIP CONTENTS---
+    66555  2026-09-02 07:21   monstercatcher/js/battle.js
+   112842  2026-09-02 07:16   monstercatcher/js/sprites.js
+    53593  2026-09-02 07:19   monstercatcher/js/world.js

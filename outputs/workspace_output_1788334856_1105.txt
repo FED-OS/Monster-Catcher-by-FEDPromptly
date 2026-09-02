@@ -1,0 +1,9 @@
+1564:  for (let row = 0; row < map.grid.length; row++) {
+1565:    for (let col = 0; col < map.grid[row].length; col++) {
+1566:      drawTile(ctx, map.grid[row][col], col * TILE, row * TILE);
+1574:function currentMapData() {
+1575:  return MAPS[world.currentMap];
+1581:  if (row < 0 || col < 0 || row >= map.grid.length || col >= map.grid[0].length) return true;
+1582:  const t = map.grid[row][col];
+1590:  return map && map.grid[row] && map.grid[row][col] === 8;
+1595:  const t = map && map.grid[row] && map.grid[row][col];

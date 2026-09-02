@@ -1,0 +1,21 @@
+function drawSaveMenu(ctx) {
+  drawPanel(ctx, 30, 50, SCREEN_W - 60, 60);
+  ctx.fillStyle = COLOR.winBorder;
+  ctx.font = "bold 8px monospace";
+  ctx.fillText("SAVE GAME", 38, 64);
+  ctx.fillStyle = COLOR.textDark;
+  ctx.font = "7px monospace";
+  ctx.fillText("Press Z to save.", 38, 78);
+  ctx.fillText("X to cancel.", 38, 90);
+  ctx.fillStyle = COLOR.winBorder;
+  ctx.fillText("Money: $" + player.money, 38, 102);
+}
+
+function drawSettingsMenu(ctx) {
+  drawPanel(ctx, 30, 50, SCREEN_W - 60, 60);
+  ctx.fillStyle = COLOR.winBorder;
+  ctx.font = "bold 8px monospace";
+  ctx.fillText("SETTINGS", 38, 64);
+  ctx.fillStyle = COLOR.textDark;
+  ctx.font = "7px monospace";
+  ctx.fillText('Sound: ' + (settings.muted ? 'OFF' : 'ON') + '  (Up/Down)', 38, 78);

@@ -1,0 +1,86 @@
+
+// ---------------------------------------------------------------
+//  FAINT / XP / LEVEL UP / EVOLUTION
+// ---------------------------------------------------------------
+function handleEnemyFainted() {
+  const defeatedName = battle.enemy.name;
+  const defeatedLevel = battle.enemy.level;
+  queueMessage(`${battle.isTrainerBattle ? "" : "Wild "}${defeatedName} fainted!`);
+  battle.shakeTimer = 6;
+
+  // Mega-expansion: apply quirk on-KO for player monster
+  applyQuirkOnKo(battle.player);
+
+  // Mega-expansion: check boss phase transition
+  checkBossPhaseAfterDamage();
+
+  // Mega-expansion: if boss battle and boss HP is 0, handle boss defeat
+  if (battle.isBossBattle && battle.enemy.hp <= 0) {
+    if (typeof handleBossDefeat === 'function') {
+      handleBossDefeat();
+      return;
+    }
+  }
+
+  if (battle.isTrainerBattle && battle.enemyIndex < battle.enemyTeam.length - 1) {
+    setTimeout(() => {
+      battle.enemyIndex++;
+      battle.enemy = battle.enemyTeam[battle.enemyIndex];
+      queueMessage(`${battle.trainerNpc.id.replace(/_/g," ")} sent out ${battle.enemy.name}!`);
+      battle.menu = "message";
+      battle.awaitingContinue = true;
+      battle.turnBusy = false;
+    }, 900);
+    return;
+  }
+
+  // XP share: give full to active, half to others
+  const events = grantExperience(battle.player, defeatedLevel);
+  player.party.forEach(m => {
+    if (m !== battle.player && m.hp > 0) {
+      grantExperience(m, Math.floor(defeatedLevel * 6));
+    }
+  });
+
+  setTimeout(() => {
+    let msg = `${battle.player.name} gained ${events.gained} XP!`;
+    queueMessage(msg);
+    if (events.leveledUp) queueMessage(`${battle.player.name} grew to Lv${battle.player.level}!`);
+    if (events.learnedMove) queueMessage(`${battle.player.name} learned ${MOVES[events.learnedMove].name}!`);
+    if (events.evolvedTo) queueMessage(`What? ${battle.player.name} is evolving! ...It evolved into ${events.evolvedTo}!`);
+    battle.outcome = "won";
+    battle.menu = "message";
+    battle.awaitingContinue = true;
+    battle.turnBusy = false;
+    sfxFaint();
+
+    if (battle.isTrainerBattle && battle.trainerNpc.defeatedDialogue) {
+      dialogueQueueAfterBattle = battle.trainerNpc.defeatedDialogue.filter(l => !l.includes("__"));
+    }
+  }, 900);
+}
+
+function handlePlayerFainted() {
+  queueMessage(`${battle.player.name} fainted!`);
+  sfxFaint();
+  const next = player.party.find(m => m.hp > 0);
+  if (next) {
+    setTimeout(() => {
+      battle.player = next;
+      resetStatStages(next);
+      queueMessage(`Go, ${next.name}!`);
+      battle.menu = "message";
+      battle.awaitingContinue = true;
+      battle.turnBusy = false;
+    }, 900);
+  } else {
+    // all fainted
+    setTimeout(() => {
+      queueMessage("You have no more monsters that can fight!");
+      battle.outcome = "lost";
+      battle.menu = "message";
+      battle.awaitingContinue = true;
+      battle.turnBusy = false;
+    }, 900);
+  }
+}

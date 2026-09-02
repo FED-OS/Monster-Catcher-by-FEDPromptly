@@ -1,0 +1,89 @@
+// ============================================================
+//  Monster Catcher — Player
+//  World state (current map), player position & movement, collision,
+//  party, bag/inventory, money, dex, save/load via localStorage.
+// ============================================================
+
+// ---- Global world/player state ----
+const world = {
+  currentMap: "mossmere",
+  transitioning: false,
+  transitionAlpha: 0
+};
+
+const player = {
+  col: 4,
+  row: 4,
+  facing: "down",
+  moving: false,
+  walkFrame: 0,   // 0=stand, 1/2=step (for animated overworld sprite)
+  walkTimer: 0,   // ticks to alternate step frames while moving
+  party: [],
+  bag: {},       // itemKey -> count
+  money: 1500,
+  balls: 5,      // legacy; bag.basicball is the source of truth but kept for compat
+  badges: [],
+  flags: {},
+  dex: { seen: {}, caught: {} },  // speciesKey -> true
+  playtime: 0,
+  starterChosen: false,
+  // Mega-expansion fields
+  heroId: "kael",          // chosen hero
+  toolBag: {},             // toolId -> count (power-up tools separate from bag)
+  equippedTools: {},       // monsterUniqueId -> [toolId, toolId, toolId]
+  friendship: {},          // speciesKey -> 0-255
+  visitedBiomes: {},       // biomeId -> true
+  stepCount: 0             // for tracking world creature spawns & random events
+};
+
+// Initialize a brand-new game (called from "New Game" on title).
+function initNewGame() {
+  player.party = [];
+  player.bag = {
+    basicball: 10,
+    potion: 5,
+    antidote: 2
+  };
+  player.money = 1500;
+  player.balls = 10;
+  player.badges = [];
+  player.flags = {};
+  player.dex = { seen: {}, caught: {} };
+  player.starterChosen = false;
+  player.lastHealMap = "mossmere";
+  player.lastHealPos = { col: 4, row: 7 };
+  world.currentMap = "mossmere";
+  player.col = 4;
+  player.row = 4;
+  player.facing = "down";
+  // Mega-expansion init
+  player.heroId = "kael";
+  player.toolBag = {};
+  player.equippedTools = {};
+  player.friendship = {};
+  player.visitedBiomes = {};
+  player.stepCount = 0;
+  game.flags = player.flags;
+  // Initialize world creatures for the starting map
+  if (typeof initWorldCreatures === "function") initWorldCreatures();
+}
+
+// ---- Movement ----
+function tryMove(dCol, dRow) {
+  if (player.moving || world.transitioning) return;
+  if (dialogue) return;
+  if (game.state !== GAME_STATE.OVERWORLD) return;
+
+  if (dCol === -1) player.facing = "left";
+  if (dCol === 1) player.facing = "right";
+  if (dRow === -1) player.facing = "up";
+  if (dRow === 1) player.facing = "down";
+===SAVE SYSTEM===
+4://  party, bag/inventory, money, dex, save/load via localStorage.
+475:function saveGame() {
+502:    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+510:function loadGame() {
+512:    const raw = localStorage.getItem(SAVE_KEY);
+553:function hasSave() {
+554:  try { return !!localStorage.getItem(SAVE_KEY); } catch (e) { return false; }
+558:  try { localStorage.removeItem(SAVE_KEY); } catch (e) {}

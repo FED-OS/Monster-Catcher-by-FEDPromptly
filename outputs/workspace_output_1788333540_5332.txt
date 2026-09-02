@@ -1,0 +1,27 @@
+527:function drawTile(ctx, tile, px, py) {
+529:    case 0: drawGrassTile(ctx, px, py); break;
+530:    case 1: drawTallGrassTile(ctx, px, py); break;
+531:    case 2: drawTreeTile(ctx, px, py); break;
+532:    case 3: drawWaterTile(ctx, px, py, false); break;
+539:    case 10: drawSignTile(ctx, px, py); break;
+540:    case 11: drawHealMatTile(ctx, px, py); break;
+541:    case 12: drawShopMatTile(ctx, px, py); break;
+542:    case 13: drawGymMatTile(ctx, px, py); break;
+543:    case 14: drawWaterTile(ctx, px, py, true); break;
+545:    case 15: drawFlowerTile(ctx, px, py); break;
+546:    case 16: drawFenceTile(ctx, px, py); break;
+547:    case 17: drawCropTile(ctx, px, py); break;
+549:    case 30: drawLavaTile(ctx, px, py); break;
+550:    case 31: drawNeonTile(ctx, px, py); break;
+551:    case 32: drawCrystalTile(ctx, px, py); break;
+552:    case 33: drawScrapTile(ctx, px, py); break;
+553:    case 34: drawDeepIceTile(ctx, px, py); break;
+554:    case 35: drawDeepWaterTile(ctx, px, py); break;
+555:    case 36: drawStormGrassTile(ctx, px, py); break;
+556:    case 37: drawMarshWaterTile(ctx, px, py); break;
+557:    case 38: drawMushroomTile(ctx, px, py); break;
+558:    case 39: drawHoloPanelTile(ctx, px, py); break;
+774:function drawGrassTile(ctx, px, py) {
+836:function drawTreeTile(ctx, px, py) {
+1205:function drawBuildings(ctx, map) {
+1233:function drawHouseBuilding(ctx, x, y, w, roofStyle) {

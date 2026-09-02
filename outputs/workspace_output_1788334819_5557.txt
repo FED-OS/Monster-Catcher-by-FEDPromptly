@@ -1,0 +1,8 @@
+785:function attemptCatch(ballKey) {
+803:    const chance = catchChance(battle.enemy, ball.catchBonus);
+808:      battle.message = `Gotcha! ${battle.enemy.name} was caught!`;
+810:      const caught = battle.enemy;
+811:      const added = addMonsterToParty(caught);
+816:      markSeen(caught.speciesKey);
+817:      player.dex.caught[caught.speciesKey] = true;
+818:      battle.outcome = "caught";

@@ -1,0 +1,155 @@
+function drawBattleBackground(ctx) {
+  const mapId = world.currentMap;
+  // sky gradient (top portion)
+  let sky1 = COLOR.skyDay, sky2 = COLOR.skyDay2;
+  // use time-of-day sky if available
+  if (typeof getSkyColors === "function") {
+    const sc = getSkyColors();
+    sky1 = sc[0]; sky2 = sc[1];
+  }
+  // weather tint fallback
+  const weather = (typeof getMapWeather === "function") ? getMapWeather() : "none";
+
+  // cave / indoor maps use dark background
+  const isCave = (mapId === "frostcave" || mapId === "lab" || mapId === "center" || mapId === "shop" || mapId === "gym" || mapId === "gymcenter");
+
+  if (isCave) {
+    ctx.fillStyle = COLOR.caveWall3;
+    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+    ctx.fillStyle = COLOR.caveWall2;
+    ctx.fillRect(0, 0, SCREEN_W, 60);
+    // rock texture
+    ctx.fillStyle = COLOR.caveWall1;
+    for (let i = 0; i < 8; i++) {
+      ctx.fillRect((i * 31) % SCREEN_W, (i * 17) % 60, 6, 4);
+    }
+    // cave floor
+    ctx.fillStyle = COLOR.caveFloor1;
+    ctx.fillRect(0, 60, SCREEN_W, SCREEN_H - 60);
+    ctx.fillStyle = COLOR.caveFloor2;
+    ctx.fillRect(0, 100, SCREEN_W, SCREEN_H - 100);
+  } else if (mapId === "frostcave" || mapId === "gymtown" || mapId === "gym") {
+    // snow/ice battlefield
+    ctx.fillStyle = sky1;
+    ctx.fillRect(0, 0, SCREEN_W, 70);
+    ctx.fillStyle = sky2;
+    ctx.fillRect(0, 0, SCREEN_W, 35);
+    // snowy ground
+    ctx.fillStyle = COLOR.snow1;
+    ctx.fillRect(0, 70, SCREEN_W, SCREEN_H - 70);
+    ctx.fillStyle = COLOR.snow2;
+    ctx.fillRect(0, 110, SCREEN_W, SCREEN_H - 110);
+    // distant ice peaks
+    ctx.fillStyle = COLOR.ice2;
+    ctx.fillRect(0, 60, SCREEN_W, 12);
+    ctx.fillStyle = COLOR.ice3;
+    ctx.fillRect(40, 50, 30, 22);
+    ctx.fillRect(120, 48, 36, 24);
+    ctx.fillRect(180, 54, 28, 18);
+  } else {
+    // ---- outdoor grassy battlefield: rich layered GBA scene ----
+    drawOutdoorBattleScene(ctx, sky1, sky2);
+  }
+
+  // weather overlay
+  if (weather === "rain") {
+    ctx.fillStyle = "rgba(80,100,160,0.12)";
+    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+  } else if (weather === "snow") {
+    ctx.fillStyle = "rgba(220,230,255,0.14)";
+    ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+  }
+}
+
+// ---- Rich layered outdoor battle scene (sky, clouds, mountains,
+//      forest, lake, foreground grass & rocks) — matches GBA ref ----
+function drawOutdoorBattleScene(ctx, sky1, sky2) {
+  const f = (typeof worldAnimFrame !== "undefined") ? worldAnimFrame : 0;
+  // SKY — vertical gradient bands
+  ctx.fillStyle = sky2;
+  ctx.fillRect(0, 0, SCREEN_W, 18);
+  ctx.fillStyle = sky1;
+  ctx.fillRect(0, 12, SCREEN_W, 30);
+  ctx.fillStyle = "#90d0f0";
+  ctx.fillRect(0, 30, SCREEN_W, 18);
+
+  // CLOUDS — soft pixel clouds drifting
+  drawBattleCloud(ctx, 20 + (f >> 3) % 8, 8, 22, 8);
+  drawBattleCloud(ctx, 120 + (f >> 4) % 6, 14, 28, 7);
+  drawBattleCloud(ctx, 200 - (f >> 3) % 8, 6, 18, 7);
+
+  // DISTANT MOUNTAINS — snow-capped peaks
+  // back ridge (lighter, hazy)
+  ctx.fillStyle = "#a8b8c8";
+  drawMountainShape(ctx, 0, 52, 90, 22, 30);
+  drawMountainShape(ctx, 70, 50, 110, 24, 50);
+  drawMountainShape(ctx, 150, 53, 100, 21, 28);
+  // snow caps on peaks
+  ctx.fillStyle = "#f0f4f8";
+  ctx.fillRect(28, 36, 10, 6);
+  ctx.fillRect(30, 34, 6, 2);
+  ctx.fillRect(110, 34, 14, 8);
+  ctx.fillRect(113, 32, 8, 2);
+  ctx.fillRect(190, 38, 10, 6);
+  // front ridge (darker, closer)
+  ctx.fillStyle = "#7888a0";
+  drawMountainShape(ctx, -10, 60, 80, 18, 20);
+  drawMountainShape(ctx, 90, 58, 100, 20, 35);
+  drawMountainShape(ctx, 180, 60, 80, 18, 22);
+
+  // LAKE — middle distance blue water band
+  ctx.fillStyle = "#4898d8";
+  ctx.fillRect(0, 62, SCREEN_W, 10);
+  ctx.fillStyle = "#68b0e8";
+  ctx.fillRect(0, 62, SCREEN_W, 4);
+  // lake shimmer
+  ctx.fillStyle = "#a8d8f8";
+  ctx.fillRect((f >> 2) % SCREEN_W, 65, 6, 1);
+  ctx.fillRect((SCREEN_W - (f >> 2) % 60), 67, 8, 1);
+  ctx.fillStyle = "#3880c8";
+  ctx.fillRect(0, 70, SCREEN_W, 2);
+
+  // DISTANT FOREST — dark green tree-line on both sides
+  ctx.fillStyle = "#287828";
+  ctx.fillRect(0, 58, 30, 14);
+  ctx.fillRect(210, 58, 30, 14);
+  // tree-line bumps
+  ctx.fillStyle = "#389038";
+  for (let i = 0; i < 6; i++) ctx.fillRect(i * 5, 56 + (i % 2), 4, 4);
+  for (let i = 0; i < 6; i++) ctx.fillRect(210 + i * 5, 56 + (i % 2), 4, 4);
+  ctx.fillStyle = "#186818";
+  for (let i = 0; i < 5; i++) ctx.fillRect(i * 6 + 2, 60, 4, 6);
+  for (let i = 0; i < 5; i++) ctx.fillRect(212 + i * 6, 60, 4, 6);
+
+  // GRASSY GROUND — foreground (where platforms sit)
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(0, 72, SCREEN_W, SCREEN_H - 72);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(0, 72, SCREEN_W, 14);
+  ctx.fillStyle = COLOR.grassDark;
+  ctx.fillRect(0, 120, SCREEN_W, SCREEN_H - 120);
+  // grass texture blades
+  ctx.fillStyle = COLOR.tallGrass1;
+  for (let i = 0; i < 16; i++) {
+    const gx = (i * 17 + 3) % SCREEN_W;
+    const gy = 100 + ((i * 11) % 40);
+    ctx.fillRect(gx, gy, 1, 3);
+    ctx.fillRect(gx + 1, gy + 1, 1, 2);
+  }
+  ctx.fillStyle = COLOR.tallGrassLite;
+  for (let i = 0; i < 8; i++) {
+    ctx.fillRect((i * 31 + 5) % SCREEN_W, 95 + ((i * 7) % 30), 1, 1);
+  }
+  // FOREGROUND ROCKS & bushes (scattered, frame the scene)
+  drawBattleRock(ctx, 4, 132, 14);
+  drawBattleRock(ctx, 220, 128, 16);
+  drawBattleBush(ctx, 60, 140, 12);
+  drawBattleBush(ctx, 180, 142, 10);
+  // tiny flowers
+  ctx.fillStyle = COLOR.flowerYellow;
+  ctx.fillRect(40, 136, 1, 1); ctx.fillRect(41, 135, 1, 1);
+  ctx.fillStyle = COLOR.flowerRed;
+  ctx.fillRect(200, 138, 1, 1); ctx.fillRect(201, 137, 1, 1);
+}
+
+// Soft pixel cloud for battle sky

@@ -1,0 +1,10 @@
+main OK
+/workspace/monstercatcher/js/player.js:645
+const SAVE_KEY = "monsterCatcher_save_v1"; // kept for old code references
+      ^
+
+SyntaxError: Identifier 'SAVE_KEY' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1464:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v20.20.2

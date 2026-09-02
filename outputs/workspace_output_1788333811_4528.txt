@@ -1,0 +1,4 @@
+  adding: monstercatcher/assets/sprites/ (stored 0%)
+  adding: monstercatcher/assets/sprites/README.md (deflated 45%)
+  adding: monstercatcher/README.md (deflated 47%)
+-rw-r--r-- 1 root root 166756 Sep  2 07:23 monster-catcher-desktop.zip

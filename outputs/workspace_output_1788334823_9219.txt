@@ -1,0 +1,46 @@
+function attemptCatch(ballKey) {
+  ballKey = ballKey || "basicball";
+  const ball = ITEMS[ballKey];
+  if (!ball || bagCount(ballKey) <= 0) {
+    queueMessage("You're out of those balls!");
+    battle.menu = "main";
+    return;
+  }
+  useItemFromBag(ballKey);
+  player.balls = bagCount("basicball");
+
+  battle.turnBusy = true;
+  battle.menu = "message";
+  battle.message = `You threw a ${ball.name}!`;
+  battle.ballAnim = 30;
+  sfxBallThrow();
+
+  setTimeout(() => {
+    const chance = catchChance(battle.enemy, ball.catchBonus);
+    const rolls = 3;
+    let successes = 0;
+    for (let i = 0; i < rolls; i++) if (Math.random() < chance) successes++;
+    if (successes >= 2 || Math.random() < chance) {
+      battle.message = `Gotcha! ${battle.enemy.name} was caught!`;
+      sfxCatch();
+      const caught = battle.enemy;
+      const added = addMonsterToParty(caught);
+      if (!added) {
+        battle.message += ` (Sent to your box!)`;
+      }
+      // record dex
+      markSeen(caught.speciesKey);
+      player.dex.caught[caught.speciesKey] = true;
+      battle.outcome = "caught";
+      battle.awaitingContinue = true;
+      battle.turnBusy = false;
+    } else {
+      battle.message = `Oh no! ${battle.enemy.name} broke free!`;
+      sfxBreakFree();
+      battle.ballAnim = 0;
+      battle.awaitingContinue = true;
+      battle.afterMessage = () => { enemyTurn(); };
+      battle.turnBusy = false;
+    }
+  }, 1400);
+}

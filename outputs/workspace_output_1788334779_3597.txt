@@ -1,0 +1,41 @@
+    queueMessage(`${effectivenessPhrase(0)}`);
+    sfxMiss();
+    setTimeout(() => cb && cb(), 600);
+    return;
+  }
+
+  // animation: shake + flash
+  battle.shakeTimer = 8;
+  battle.flashTimer = 4;
+  sfxHit();
+
+  defender.hp = Math.max(0, defender.hp - result.dmg);
+
+  let note = effectivenessPhrase(result.mult);
+  let msg = `${attacker.name} used ${move.name}!`;
+  if (result.crit) note = `A critical hit! ${note}`;
+  if (note) msg += " " + note;
+  queueMessage(msg);
+
+  // Drain
+  if (move.drain) {
+    const healed = Math.max(1, Math.floor(result.dmg * move.drain));
+    attacker.hp = Math.min(attacker.maxHp, attacker.hp + healed);
+    queueMessage(`${attacker.name} drained ${healed} HP!`);
+  }
+
+  // Recoil
+  if (move.recoil) {
+    const recoil = Math.max(1, Math.floor(result.dmg * move.recoil));
+    attacker.hp = Math.max(0, attacker.hp - recoil);
+    queueMessage(`${attacker.name} was hit by recoil!`);
+  }
+
+  // Secondary effects (status infliction, stat changes)
+  applyMoveSecondaryEffects(attacker, defender, move, isPlayer);
+
+  setTimeout(() => cb && cb(), 900);
+}
+
+function applyMoveSecondaryEffects(attacker, defender, move, isPlayer) {
+  // Burn

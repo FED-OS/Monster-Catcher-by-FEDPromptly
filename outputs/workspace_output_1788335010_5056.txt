@@ -1,0 +1,13 @@
+function tileInFrontOfPlayer() {
+  const deltas = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+  const [dc, dr] = deltas[player.facing];
+  return { col: player.col + dc, row: player.row + dr };
+}
+
+// ---- Interaction (talk to NPCs / read signs) ----
+function interact() {
+  const { col, row } = tileInFrontOfPlayer();
+  const npc = getNpcAt(col, row);
+  if (npc) {
+    // Face the player
+    npc.facing = oppositeFacing(player.facing);
