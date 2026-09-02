@@ -1,80 +1,33 @@
-# ───────────────────────────────────────────────────────────
-# FEDMON: NO MERCY — .gitignore
-# Static site, no build step. Keep this lean.
-# ───────────────────────────────────────────────────────────
+# Dependencies
+node_modules/
 
-# ── OS / editor cruft ──────────────────────────────────────
+# Electron build output
+dist/
+build/
+out/
+release/
+
+# OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 desktop.ini
 
-# ── Editors ────────────────────────────────────────────────
+# Editor files
 .vscode/
-!.vscode/extensions.json
 .idea/
 *.swp
 *.swo
 *~
-*.sublime-project
-*.sublime-workspace
 
-# ── Logs & temp ────────────────────────────────────────────
+# Logs
 *.log
-logs/
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# Temporary files
 *.tmp
 *.bak
-*.cache
-.screenshots/
-
-# ── Secrets — NEVER commit these ───────────────────────────
-.env
-.env.*
-!.env.example
-*.pem
-*.key
-*.p12
-*.pfx
-secrets/
-credentials.json
-service-account*.json
-.git-credentials
-
-# ── Node (we don't use it, but just in case) ───────────────
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-dist/
-build/
 .cache/
-
-# ── Python (used only for local static serving) ────────────
-__pycache__/
-*.py[cod]
-*$py.class
-.venv/
-venv/
-env/
-.pytest_cache/
-
-# ── Build / generated artifacts ────────────────────────────
-out/
-*.min.js
-*.min.css
-*.map
-
-# ── Misc project scratch ───────────────────────────────────
-*.zip
-*.tar.gz
-*.7z
-*.rar
-TODO.local.md
-notes.local.md
