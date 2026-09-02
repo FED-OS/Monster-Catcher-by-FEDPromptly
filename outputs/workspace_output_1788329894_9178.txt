@@ -1,0 +1,30 @@
+  inflating: assets_extracted/.browser_data/Default/DawnWebGPUCache/data_3  
+  inflating: assets_extracted/.browser_data/Default/DawnWebGPUCache/data_2  
+  inflating: assets_extracted/.browser_data/Default/DawnWebGPUCache/data_0  
+  inflating: assets_extracted/.browser_data/Default/DawnWebGPUCache/index  
+  inflating: assets_extracted/.browser_data/Default/DawnWebGPUCache/data_1  
+ extracting: assets_extracted/.browser_data/Last Version  
+  inflating: assets_extracted/.browser_data/Local State  
+   creating: assets_extracted/.browser_data/component_crx_cache/
+ extracting: assets_extracted/.browser_data/component_crx_cache/metadata.json  
+  inflating: assets_extracted/.browser_data/Variations  
+  inflating: assets_extracted/.browser_data/first_party_sets.db  
+   creating: assets_extracted/.browser_data/GraphiteDawnCache/
+  inflating: assets_extracted/.browser_data/GraphiteDawnCache/data_3  
+  inflating: assets_extracted/.browser_data/GraphiteDawnCache/data_2  
+  inflating: assets_extracted/.browser_data/GraphiteDawnCache/data_0  
+  inflating: assets_extracted/.browser_data/GraphiteDawnCache/index  
+  inflating: assets_extracted/.browser_data/GraphiteDawnCache/data_1  
+   creating: assets_extracted/.browser_data/extensions_crx_cache/
+ extracting: assets_extracted/.browser_data/extensions_crx_cache/metadata.json  
+   creating: assets_extracted/.browser_data/segmentation_platform/
+ extracting: assets_extracted/.browser_data/segmentation_platform/ukm_db-wal  
+  inflating: assets_extracted/.browser_data/segmentation_platform/ukm_db  
+  inflating: assets_extracted/.browser_data/BrowserMetrics-spare.pma  
+   creating: assets_extracted/.browser_data/GPUPersistentCache/
+   creating: assets_extracted/.browser_data/GPUPersistentCache/GPUCache/
+   creating: assets_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/
+  inflating: assets_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/cache.db  
+  inflating: assets_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/cache.db-wal  
+ extracting: assets_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/cache.journal  
+ extracting: assets_extracted/.browser_data/first_party_sets.db-journal  

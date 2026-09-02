@@ -1,0 +1,7 @@
+-rw-r--r-- 1 root root 0 Sep  2 04:50 files
+files: empty
+./extracted/files1b/index.html
+./extracted/Monster-Catcher-FEDPromptly/Monster-Catcher-by-FEDPromptly-main/index.html
+./extracted/big-archive/Monster-Catcher-by-FEDPromptly-main/index.html
+./extracted/Monster-Catcher-GBA-Edition-v3/index.html
+./game/index.html

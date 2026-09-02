@@ -1,0 +1,6 @@
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+Title: Monster Catcher — Verdale Region: GBA Edition v4.0 MEGA
+Result: Navigated to http://localhost:9090/index.html (title: Monster Catcher — Verdale Region: GBA Edition v4.0 MEGA, status: 200)
+Warning: Overlay/modal detected - consider using dismiss_overlay
+

@@ -1,0 +1,15 @@
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+Screenshot: /workspace/.screenshots/step_021.png

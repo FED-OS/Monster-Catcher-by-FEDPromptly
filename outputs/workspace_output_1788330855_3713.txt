@@ -1,0 +1,4 @@
+Result: JS result: start attempted
+Warning: Overlay/modal detected - consider using dismiss_overlay
+
+Accessibility tree:

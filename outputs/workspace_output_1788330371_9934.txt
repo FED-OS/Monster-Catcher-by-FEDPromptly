@@ -1,0 +1,2 @@
+508:    signs: { "1,7": "Verdantown — Hub of the region. Biome portals to the north!" }
+510:};

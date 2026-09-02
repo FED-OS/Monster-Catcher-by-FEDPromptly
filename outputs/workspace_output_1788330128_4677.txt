@@ -1,0 +1,715 @@
+  verdantown: {
+    name: "Verdantown",
+    grid: [
+      [2,2,2,2,8,2,2,2,2,2],
+      [2,0,0,0,9,0,0,0,9,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,1,1,0,0,0,1,1,0,2],
+      [2,1,0,0,0,0,0,1,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,2,2,2,8,2,2,2,2,2]
+    ],
+    encounters: ["rattick","breezel"],
+    rate: 0.08,
+    warps: {
+      "4,0": { dest: "route1", col: 4, row: 7 },
+      "4,1": { dest: "center", col: 4, row: 6 },  // heal center door (col 4)
+      "8,1": { dest: "shop", col: 4, row: 6 },     // shop door (col 8)
+      "4,8": { dest: "route2", col: 4, row: 0 }
+    },
+    signs: {
+      "0,1": "Verdantown — The green crossroads.",
+      "3,1": "Verdantown Healing Center",
+      "7,1": "Verdantown Mart"
+    }
+  },
+
+  center: {
+  verdantown: {
+    name: "Verdantown",
+    grid: [
+      [2,2,2,2,2,2,2,2,2,2],
+      [2,9,9,9,9,9,9,9,9,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,0,0,9,0,0,0,0,2],
+      [2,2,2,2,8,2,2,2,2,2]
+    ],
+    encounters: [],
+    rate: 0,
+    warps: {
+      "1,1": { dest: "volcano", col: 8, row: 1 },
+      "2,1": { dest: "cybercity", col: 8, row: 1 },
+      "3,1": { dest: "crystalforest", col: 8, row: 1 },
+      "4,1": { dest: "junkwaste", col: 8, row: 1 },
+      "5,1": { dest: "glacialpeaks", col: 8, row: 1 },
+      "6,1": { dest: "abyssal", col: 8, row: 1 },
+      "7,1": { dest: "stormsavanna", col: 8, row: 1 },
+      "8,1": { dest: "moonmarsh", col: 8, row: 1 },
+      "4,7": { dest: "route1", col: 4, row: 7 },
+      "4,8": { dest: "route2", col: 4, row: 0 }
+    },
+    signs: { "1,7": "Verdantown — Hub of the region. Biome portals to the north!" }
+  }
+};
+
+// ---- Global animation frame (incremented each render tick) ----
+// Used by water shimmer, tree sway, and grass rustle animations.
+let worldAnimFrame = 0;
+function tickWorldAnim() { worldAnimFrame++; }
+
+// ---- Tile rendering (GBA Edition — full textured color tiles) ----
+// Uses the rich COLOR palette from constants.js for detailed pixel-art tiles.
+function drawTile(ctx, tile, px, py) {
+  switch (tile) {
+    case 0: drawGrassTile(ctx, px, py); break;
+    case 1: drawTallGrassTile(ctx, px, py); break;
+    case 2: drawTreeTile(ctx, px, py); break;
+    case 3: drawWaterTile(ctx, px, py, false); break;
+    case 4: drawSandTile(ctx, px, py); break;
+    case 5: drawCaveFloorTile(ctx, px, py); break;
+    case 6: drawCaveWallTile(ctx, px, py); break;
+    case 7: drawSnowTile(ctx, px, py); break;
+    case 8: drawLedgeTile(ctx, px, py); break;
+    case 9: drawDoorTile(ctx, px, py); break;
+    case 10: drawSignTile(ctx, px, py); break;
+    case 11: drawHealMatTile(ctx, px, py); break;
+    case 12: drawShopMatTile(ctx, px, py); break;
+    case 13: drawGymMatTile(ctx, px, py); break;
+    case 14: drawWaterTile(ctx, px, py, true); break;
+    // Biome tiles (30-41)
+    case 30: drawLavaTile(ctx, px, py); break;
+    case 31: drawNeonTile(ctx, px, py); break;
+    case 32: drawCrystalTile(ctx, px, py); break;
+    case 33: drawScrapTile(ctx, px, py); break;
+    case 34: drawDeepIceTile(ctx, px, py); break;
+    case 35: drawDeepWaterTile(ctx, px, py); break;
+    case 36: drawStormGrassTile(ctx, px, py); break;
+    case 37: drawMarshWaterTile(ctx, px, py); break;
+    case 38: drawMushroomTile(ctx, px, py); break;
+    case 39: drawHoloPanelTile(ctx, px, py); break;
+    case 40: drawVolcanoRockTile(ctx, px, py); break;
+    case 41: drawCyberWallTile(ctx, px, py); break;
+    default: drawGrassTile(ctx, px, py); break;
+  }
+}
+
+// ============================================================
+//  MEGA EXPANSION — Biome Tile Drawing Functions
+// ============================================================
+
+// 30: Lava floor (volcano) — glowing cracks
+function drawLavaTile(ctx, px, py) {
+  ctx.fillStyle = "#381010";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#681818";
+  ctx.fillRect(px + 2, py + 2, 12, 12);
+  // Glowing cracks
+  const glow = Math.sin(worldAnimFrame / 20 + (px + py) * 0.1) > 0;
+  ctx.fillStyle = glow ? "#f86020" : "#a02810";
+  ctx.fillRect(px + 4, py + 6, 8, 1);
+  ctx.fillRect(px + 7, py + 4, 1, 8);
+  ctx.fillStyle = glow ? "#f8a030" : "#681818";
+  ctx.fillRect(px + 5, py + 10, 3, 1);
+}
+
+// 31: Neon floor (cyber city) — grid pattern
+function drawNeonTile(ctx, px, py) {
+  ctx.fillStyle = "#181828";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#202038";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  // Neon grid lines
+  const pulse = (worldAnimFrame >> 3) % 2 === 0;
+  ctx.fillStyle = pulse ? "#20d8a0" : "#0a3828";
+  ctx.fillRect(px, py + 7, TILE, 1);
+  ctx.fillRect(px + 7, py, 1, TILE);
+  ctx.fillStyle = pulse ? "#40f8c0" : "#0a3828";
+  ctx.fillRect(px + 7, py + 7, 1, 1);
+}
+
+// 32: Crystal floor (crystal forest) — shimmering facets
+function drawCrystalTile(ctx, px, py) {
+  ctx.fillStyle = "#2a1a38";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#4a2868";
+  ctx.fillRect(px + 2, py + 2, 12, 12);
+  const shimmer = Math.sin(worldAnimFrame / 15 + (px + py) * 0.05);
+  ctx.fillStyle = shimmer > 0 ? "#c080f0" : "#6838a0";
+  ctx.fillRect(px + 3, py + 3, 4, 4);
+  ctx.fillRect(px + 9, py + 9, 4, 4);
+  ctx.fillStyle = shimmer > 0.5 ? "#e0c0ff" : "#8848c0";
+  ctx.fillRect(px + 4, py + 4, 2, 2);
+}
+
+// 33: Scrap floor (junk wasteland) — rusty metal
+function drawScrapTile(ctx, px, py) {
+  ctx.fillStyle = "#4a4030";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#5a5038";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = "#6a6040";
+  ctx.fillRect(px + 3, py + 3, 3, 3);
+  ctx.fillRect(px + 10, py + 8, 3, 2);
+  // Rust spots
+  ctx.fillStyle = "#8a6038";
+  ctx.fillRect(px + 6, py + 5, 2, 2);
+  ctx.fillRect(px + 4, py + 11, 2, 1);
+  ctx.fillStyle = "#383020";
+  ctx.fillRect(px + 1, py, 14, 1);
+  ctx.fillRect(px, py + 15, 16, 1);
+}
+
+// 34: Deep ice floor (glacial peaks) — frosty blue
+function drawDeepIceTile(ctx, px, py) {
+  ctx.fillStyle = "#a8c8e8";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#c0d8f0";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  // Ice cracks
+  ctx.fillStyle = "#7898b8";
+  ctx.fillRect(px + 4, py + 2, 1, 6);
+  ctx.fillRect(px + 4, py + 8, 4, 1);
+  ctx.fillRect(px + 10, py + 6, 1, 5);
+  // Sparkle
+  const sp = (worldAnimFrame >> 4) % 4 === 0;
+  if (sp) {
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(px + 7, py + 3, 1, 1);
+    ctx.fillRect(px + 8, py + 2, 1, 1);
+    ctx.fillRect(px + 8, py + 4, 1, 1);
+    ctx.fillRect(px + 6, py + 3, 1, 1);
+  }
+}
+
+// 35: Deep water (abyssal) — dark blue, glowing spots
+function drawDeepWaterTile(ctx, px, py) {
+  ctx.fillStyle = "#081830";
+  ctx.fillRect(px, py, TILE, TILE);
+  const off = (worldAnimFrame >> 3) % 16;
+  ctx.fillStyle = "#103050";
+  ctx.fillRect(px + (off % 8), py + ((off >> 1) % 8), 2, 2);
+  // Bioluminescent spots
+  const glow = (worldAnimFrame >> 4) % 6;
+  if (glow < 2) {
+    ctx.fillStyle = "#40c0e0";
+    ctx.fillRect(px + 5, py + 5, 1, 1);
+    ctx.fillRect(px + 10, py + 9, 1, 1);
+  }
+  ctx.fillStyle = "#183850";
+  ctx.fillRect(px, py + 7, TILE, 1);
+}
+
+// 36: Storm grass (stormy savanna) — dry grass with electric tinge
+function drawStormGrassTile(ctx, px, py) {
+  ctx.fillStyle = "#788830";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#98a840";
+  ctx.fillRect(px, py, TILE, 8);
+  ctx.fillStyle = "#5a6820";
+  ctx.fillRect(px + 2, py + 4, 1, 4);
+  ctx.fillRect(px + 6, py + 3, 1, 5);
+  ctx.fillRect(px + 10, py + 4, 1, 4);
+  ctx.fillRect(px + 13, py + 3, 1, 5);
+  // Occasional electric spark
+  const spark = (worldAnimFrame >> 4) % 8 === 0;
+  if (spark) {
+    ctx.fillStyle = "#f8f820";
+    ctx.fillRect(px + 7, py + 2, 1, 1);
+  }
+}
+
+// 37: Marsh water (moonlight marsh) — dark, reflective
+function drawMarshWaterTile(ctx, px, py) {
+  ctx.fillStyle = "#283048";
+  ctx.fillRect(px, py, TILE, TILE);
+  const off = (worldAnimFrame >> 3) % 16;
+  ctx.fillStyle = "#384860";
+  ctx.fillRect(px + (off % 6), py + ((off >> 1) % 6), 3, 1);
+  // Moonlight reflection
+  ctx.fillStyle = "#a0b0d0";
+  ctx.fillRect(px + 6, py + 6, 2, 1);
+  ctx.fillRect(px + 7, py + 7, 1, 1);
+  ctx.fillStyle = "#1a2030";
+  ctx.fillRect(px, py + 12, TILE, 1);
+}
+
+// 38: Mushroom (crystal forest / marsh) — glowing cap
+function drawMushroomTile(ctx, px, py) {
+  // Base ground
+  ctx.fillStyle = "#2a1a38";
+  ctx.fillRect(px, py, TILE, TILE);
+  // Mushroom stem
+  ctx.fillStyle = "#c0b0a0";
+  ctx.fillRect(px + 7, py + 8, 2, 6);
+  // Mushroom cap (glows)
+  const glow = Math.sin(worldAnimFrame / 18 + (px + py) * 0.1);
+  ctx.fillStyle = glow > 0 ? "#e0a0f8" : "#a068d0";
+  ctx.fillRect(px + 5, py + 6, 6, 3);
+  ctx.fillRect(px + 4, py + 7, 8, 1);
+  ctx.fillStyle = glow > 0.5 ? "#f0c0ff" : "#b078e0";
+  ctx.fillRect(px + 6, py + 6, 1, 1);
+  ctx.fillRect(px + 9, py + 7, 1, 1);
+}
+
+// 39: Holo panel (cyber city variant) — flickering hologram
+function drawHoloPanelTile(ctx, px, py) {
+  ctx.fillStyle = "#101828";
+  ctx.fillRect(px, py, TILE, TILE);
+  const flicker = Math.sin(worldAnimFrame / 8 + (px + py) * 0.2);
+  ctx.fillStyle = flicker > 0 ? "#20f8c0" : "#082818";
+  ctx.fillRect(px + 2, py + 2, 12, 12);
+  ctx.fillStyle = flicker > 0.5 ? "#60ffd0" : "#103828";
+  ctx.fillRect(px + 4, py + 4, 8, 8);
+  // Scan lines
+  ctx.fillStyle = "rgba(32,248,192,0.3)";
+  ctx.fillRect(px, py + (worldAnimFrame >> 2) % 16, TILE, 1);
+}
+
+// 40: Volcano rock wall (blocked)
+function drawVolcanoRockTile(ctx, px, py) {
+  ctx.fillStyle = "#281008";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#481810";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = "#682018";
+  ctx.fillRect(px + 2, py + 2, 5, 5);
+  ctx.fillRect(px + 9, py + 3, 4, 4);
+  ctx.fillRect(px + 4, py + 10, 6, 4);
+  // Lava veins
+  ctx.fillStyle = "#a03020";
+  ctx.fillRect(px + 8, py + 2, 1, 6);
+  ctx.fillRect(px + 2, py + 9, 4, 1);
+}
+
+// 41: Cyber wall (blocked)
+function drawCyberWallTile(ctx, px, py) {
+  ctx.fillStyle = "#181828";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#282848";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  const pulse = (worldAnimFrame >> 3) % 2 === 0;
+  ctx.fillStyle = pulse ? "#40f8c0" : "#203838";
+  ctx.fillRect(px + 2, py + 2, 12, 1);
+  ctx.fillRect(px + 2, py + 13, 12, 1);
+  ctx.fillRect(px + 2, py + 2, 1, 12);
+  ctx.fillRect(px + 13, py + 2, 1, 12);
+  // Circuit pattern
+  ctx.fillStyle = pulse ? "#20d8a0" : "#1a2838";
+  ctx.fillRect(px + 5, py + 5, 2, 2);
+  ctx.fillRect(px + 9, py + 9, 2, 2);
+  ctx.fillRect(px + 6, py + 6, 4, 1);
+}
+
+// ---- 0: Grass (walkable path) ----
+// ---- 0: Grass (walkable, no encounter) — rich textured GBA grass ----
+function drawGrassTile(ctx, px, py) {
+  // base
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, TILE);
+  // lighter top-left bias
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, 6);
+  ctx.fillRect(px, py + 6, 8, 4);
+  // darker bottom-right
+  ctx.fillStyle = COLOR.grassDark;
+  ctx.fillRect(px + 8, py + 10, 8, 6);
+  ctx.fillRect(px, py + 12, 8, 4);
+  // individual grass blade clumps (deterministic per tile position)
+  const h = ((px * 7 + py * 13) >> 2);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px + 2 + (h % 4), py + 3, 1, 2);
+  ctx.fillRect(px + 11 + (h % 3), py + 5, 1, 2);
+  ctx.fillStyle = COLOR.tallGrass1;
+  ctx.fillRect(px + 5 + (h % 5), py + 8, 1, 2);
+  ctx.fillRect(px + 13 - (h % 4), py + 11, 1, 2);
+  ctx.fillStyle = COLOR.grassDeep;
+  ctx.fillRect(px + 1 + (h % 6), py + 13, 1, 1);
+  ctx.fillRect(px + 9 + (h % 4), py + 14, 1, 1);
+  // tiny highlight speck
+  ctx.fillStyle = COLOR.tallGrassLite;
+  ctx.fillRect(px + 3 + (h % 5), py + 2, 1, 1);
+}
+
+// ---- 1: Tall grass (walkable, encounters) — animated lush rustle ----
+function drawTallGrassTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.tallGrass2;
+  ctx.fillRect(px, py, TILE, TILE);
+  // ground hint at very bottom
+  ctx.fillStyle = COLOR.tallGrass3;
+  ctx.fillRect(px, py + 14, TILE, 2);
+  const sway = Math.sin(worldAnimFrame / 24 + (px + py) * 0.1) > 0.6 ? 1 : 0;
+  // blade clusters — taller, multi-shade
+  ctx.fillStyle = COLOR.tallGrass3;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 1 + i * 3;
+    ctx.fillRect(bx, py + 3 - sway, 1, 12);
+    ctx.fillRect(bx + 1, py + 4, 1, 11);
+  }
+  ctx.fillStyle = COLOR.tallGrass2;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 2 + i * 3;
+    ctx.fillRect(bx, py + 5 - sway, 1, 10);
+  }
+  ctx.fillStyle = COLOR.tallGrass1;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 1 + i * 3;
+    ctx.fillRect(bx, py + 3 - sway, 1, 3);
+    ctx.fillRect(bx + 1, py + 4, 1, 2);
+  }
+  // bright tips
+  ctx.fillStyle = COLOR.tallGrassLite;
+  ctx.fillRect(px + 2, py + 3 - sway, 1, 1);
+  ctx.fillRect(px + 11, py + 3 - sway, 1, 1);
+  ctx.fillRect(px + 14, py + 4, 1, 1);
+}
+
+// ---- 2: Tree / wall (blocked) — large rounded shaded canopy ----
+function drawTreeTile(ctx, px, py) {
+  // grass base
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, 4);
+  // trunk
+  ctx.fillStyle = COLOR.treeBark;
+  ctx.fillRect(px + 6, py + 11, 4, 5);
+  ctx.fillStyle = COLOR.treeBarkD;
+  ctx.fillRect(px + 6, py + 11, 1, 5);
+  ctx.fillRect(px + 9, py + 11, 1, 5);
+  ctx.fillStyle = "#987048";
+  ctx.fillRect(px + 7, py + 11, 2, 1);
+  // canopy — large rounded blob with multiple shade rings
+  // dark outline/base
+  ctx.fillStyle = COLOR.treeLeaf4;
+  ctx.fillRect(px + 1, py + 2, 14, 9);
+  ctx.fillRect(px + 2, py + 1, 12, 11);
+  // mid green
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px + 2, py + 3, 12, 7);
+  ctx.fillRect(px + 3, py + 2, 10, 9);
+  // light green
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 3, py + 4, 10, 5);
+  ctx.fillRect(px + 4, py + 3, 8, 7);
+  // highlight (upper-left)
+  ctx.fillStyle = COLOR.treeLeaf1;
+  ctx.fillRect(px + 4, py + 4, 7, 3);
+  ctx.fillRect(px + 5, py + 3, 5, 5);
+  // bright spot
+  ctx.fillStyle = COLOR.treeLeafLite;
+  ctx.fillRect(px + 5, py + 4, 3, 2);
+  ctx.fillRect(px + 6, py + 5, 1, 1);
+  // side bumps for rounder look
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px, py + 5, 2, 3);
+  ctx.fillRect(px + 14, py + 5, 2, 3);
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 1, py + 6, 1, 1);
+  ctx.fillRect(px + 14, py + 6, 1, 1);
+  // top bump
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px + 6, py, 4, 2);
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 7, py + 1, 2, 1);
+}
+
+// ---- 3 / 14: Water (blocked) — animated layered shimmer ----
+function drawWaterTile(ctx, px, py, deep) {
+  ctx.fillStyle = deep ? COLOR.waterDeep : COLOR.water3;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = deep ? COLOR.water3 : COLOR.water2;
+  ctx.fillRect(px, py + 2, TILE, 6);
+  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
+  ctx.fillRect(px, py + 2, TILE, 2);
+  // animated wave bands
+  const off = (worldAnimFrame >> 3) % 16;
+  ctx.fillStyle = deep ? COLOR.water3 : COLOR.water2;
+  const wy1 = py + 6 + (off > 8 ? 1 : 0);
+  ctx.fillRect(px + ((off + 0) % TILE), wy1, 4, 1);
+  ctx.fillRect(px + ((off + 8) % TILE), py + 11, 5, 1);
+  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
+  ctx.fillRect(px + ((off + 2) % TILE), py + 7, 3, 1);
+  ctx.fillRect(px + ((off + 10) % TILE), py + 12, 4, 1);
+  // foam highlights
+  ctx.fillStyle = COLOR.waterFoam;
+  ctx.fillRect(px + ((off + 3) % TILE), py + 6, 1, 1);
+  ctx.fillRect(px + ((off + 11) % TILE), py + 11, 1, 1);
+  ctx.fillRect(px + ((off + 6) % TILE), py + 8, 1, 1);
+}
+
+// ---- 4: Sand (walkable) — textured dirt path edge ----
+function drawSandTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.sandLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.sandMid;
+  ctx.fillRect(px, py + 7, TILE, 9);
+  ctx.fillStyle = COLOR.sandDark;
+  ctx.fillRect(px, py + 13, TILE, 3);
+  // pebbles & grit
+  ctx.fillStyle = COLOR.pathDark;
+  ctx.fillRect(px + 3, py + 3, 1, 1);
+  ctx.fillRect(px + 11, py + 6, 1, 1);
+  ctx.fillRect(px + 6, py + 10, 1, 1);
+  ctx.fillRect(px + 13, py + 12, 1, 1);
+  ctx.fillRect(px + 1, py + 9, 1, 1);
+  ctx.fillRect(px + 9, py + 14, 1, 1);
+  ctx.fillStyle = COLOR.pathEdge;
+  ctx.fillRect(px + 5, py + 5, 1, 1);
+  ctx.fillRect(px + 12, py + 9, 1, 1);
+  ctx.fillRect(px + 2, py + 13, 1, 1);
+}
+
+// ---- 5: Cave floor (walkable, encounters) ----
+function drawCaveFloorTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.caveFloor1;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.caveFloor2;
+  ctx.fillRect(px, py + 9, TILE, 7);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 2, py + 3, 2, 2);
+  ctx.fillRect(px + 11, py + 6, 2, 2);
+  ctx.fillRect(px + 6, py + 12, 3, 1);
+  ctx.fillStyle = COLOR.rock2;
+  ctx.fillRect(px + 8, py + 2, 1, 1);
+  ctx.fillRect(px + 4, py + 11, 1, 1);
+}
+
+// ---- 6: Cave wall / rock wall (blocked) ----
+function drawCaveWallTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.caveWall1;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.caveWall2;
+  ctx.fillRect(px, py + 1, TILE, 6);
+  ctx.fillRect(px, py + 9, TILE, 6);
+  ctx.fillStyle = COLOR.caveWall3;
+  ctx.fillRect(px, py, 1, TILE);
+  ctx.fillRect(px + 8, py, 1, TILE);
+  ctx.fillRect(px + 15, py, 1, TILE);
+  ctx.fillRect(px, py + 8, TILE, 1);
+  ctx.fillStyle = COLOR.rock2;
+  ctx.fillRect(px + 2, py + 2, 4, 1);
+  ctx.fillRect(px + 10, py + 3, 4, 1);
+  ctx.fillRect(px + 4, py + 11, 3, 1);
+}
+
+// ---- 7: Snow (walkable, encounters) ----
+function drawSnowTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.snow1;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.snow2;
+  ctx.fillRect(px, py + 8, TILE, 8);
+  const sparkle = (worldAnimFrame >> 4) % 3;
+  ctx.fillStyle = COLOR.ice1;
+  ctx.fillRect(px + 3, py + 2, 1, 1);
+  ctx.fillRect(px + 11, py + 5, 1, 1);
+  ctx.fillRect(px + 7, py + 12, 1, 1);
+  ctx.fillStyle = "#ffffff";
+  if (sparkle === 0) ctx.fillRect(px + 3, py + 2, 1, 1);
+  else if (sparkle === 1) ctx.fillRect(px + 11, py + 5, 1, 1);
+  else ctx.fillRect(px + 7, py + 12, 1, 1);
+  ctx.fillStyle = COLOR.snowShade;
+  ctx.fillRect(px, py + 14, TILE, 2);
+}
+
+// ---- 8: Ledge (one-way down) ----
+function drawLedgeTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, 10);
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, 4);
+  ctx.fillStyle = COLOR.rock1;
+  ctx.fillRect(px, py + 10, TILE, 6);
+  ctx.fillStyle = COLOR.rock2;
+  ctx.fillRect(px, py + 10, TILE, 2);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px, py + 14, TILE, 2);
+  ctx.fillStyle = COLOR.rock3;
+  ctx.fillRect(px + 3, py + 12, 2, 1);
+  ctx.fillRect(px + 10, py + 12, 3, 1);
+  ctx.fillStyle = COLOR.grassDark;
+  ctx.fillRect(px, py + 9, TILE, 2);
+}
+
+// ---- 9: Door / warp ----
+function drawDoorTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(px + 3, py + 1, 10, 15);
+  ctx.fillStyle = COLOR.doorLight;
+  ctx.fillRect(px + 4, py + 2, 8, 13);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(px + 3, py + 1, 10, 1);
+  ctx.fillRect(px + 2, py + 2, 1, 2);
+  ctx.fillRect(px + 13, py + 2, 1, 2);
+  ctx.fillStyle = "#f8d868";
+  ctx.fillRect(px + 10, py + 8, 1, 1);
+  ctx.fillStyle = COLOR.wallCream;
+  ctx.fillRect(px + 2, py + 14, 12, 2);
+}
+
+// ---- 10: Sign post ----
+function drawSignTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(px, py, TILE, 4);
+  ctx.fillStyle = COLOR.signWoodD;
+  ctx.fillRect(px + 7, py + 9, 2, 7);
+  ctx.fillStyle = COLOR.signWood;
+  ctx.fillRect(px + 3, py + 3, 10, 7);
+  ctx.fillStyle = COLOR.signWoodD;
+  ctx.fillRect(px + 3, py + 3, 10, 1);
+  ctx.fillRect(px + 3, py + 9, 10, 1);
+  ctx.fillRect(px + 3, py + 3, 1, 7);
+  ctx.fillRect(px + 12, py + 3, 1, 7);
+  ctx.fillStyle = COLOR.treeBarkD;
+  ctx.fillRect(px + 5, py + 5, 6, 1);
+  ctx.fillRect(px + 5, py + 8, 4, 1);
+}
+
+// ---- 11: Heal center mat (red cross) ----
+function drawHealMatTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.matHealW;
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 1, py + 1, 14, 1);
+  ctx.fillRect(px + 1, py + 14, 14, 1);
+  ctx.fillRect(px + 1, py + 1, 1, 14);
+  ctx.fillRect(px + 14, py + 1, 1, 14);
+  ctx.fillStyle = COLOR.matHealR;
+  ctx.fillRect(px + 7, py + 4, 2, 8);
+  ctx.fillRect(px + 4, py + 7, 8, 2);
+}
+
+// ---- 12: Shop mat (blue M) ----
+function drawShopMatTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 1, py + 1, 14, 1);
+  ctx.fillRect(px + 1, py + 14, 14, 1);
+  ctx.fillRect(px + 1, py + 1, 1, 14);
+  ctx.fillRect(px + 14, py + 1, 1, 14);
+  ctx.fillStyle = COLOR.matShopB;
+  ctx.fillRect(px + 4, py + 4, 8, 8);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(px + 5, py + 5, 6, 6);
+  ctx.fillStyle = COLOR.matShopB;
+  ctx.fillRect(px + 6, py + 6, 1, 4);
+  ctx.fillRect(px + 9, py + 6, 1, 4);
+  ctx.fillRect(px + 7, py + 7, 2, 1);
+}
+
+// ---- 13: Gym mat (special floor) ----
+function drawGymMatTile(ctx, px, py) {
+  ctx.fillStyle = COLOR.matGym2;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.matGym1;
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = COLOR.matGym2;
+  ctx.fillRect(px + 6, py + 3, 4, 2);
+  ctx.fillRect(px + 4, py + 5, 8, 2);
+  ctx.fillRect(px + 3, py + 7, 10, 2);
+  ctx.fillRect(px + 4, py + 9, 8, 2);
+  ctx.fillRect(px + 6, py + 11, 4, 2);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(px + 7, py + 7, 2, 2);
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(px + 1, py + 1, 14, 1);
+  ctx.fillRect(px + 1, py + 14, 14, 1);
+  ctx.fillRect(px + 1, py + 1, 1, 14);
+  ctx.fillRect(px + 14, py + 1, 1, 14);
+}
+
+function drawMap(ctx, map) {
+  map = map || currentMapData();
+  for (let row = 0; row < map.grid.length; row++) {
+    for (let col = 0; col < map.grid[row].length; col++) {
+      drawTile(ctx, map.grid[row][col], col * TILE, row * TILE);
+    }
+  }
+}
+
+// ---- Helpers for the current map ----
+function currentMapData() {
+  return MAPS[world.currentMap];
+}
+
+function isBlocked(col, row) {
+  const map = currentMapData();
+  if (!map) return true;
+  if (row < 0 || col < 0 || row >= map.grid.length || col >= map.grid[0].length) return true;
+  const t = map.grid[row][col];
+  // water(3,14,35), trees(2), rock walls(6), signs(10), volcano rock(40), cyber wall(41) block
+  return t === 2 || t === 3 || t === 6 || t === 10 || t === 14 || t === 35 || t === 40 || t === 41;
+}
+
+// Ledges (8) can only be stepped onto if moving downward into them.
+function isLedge(col, row) {
+  const map = currentMapData();
+  return map && map.grid[row] && map.grid[row][col] === 8;
+}
+
+function isTallGrass(col, row) {
+  const map = currentMapData();
+  const t = map && map.grid[row] && map.grid[row][col];
+  // encounter tiles: tall grass(1), cave(5), snow(7), + biome floor tiles (30-39)
+  return t === 1 || t === 5 || t === 7 || (t >= 30 && t <= 39);
+}
+
+function warpAt(col, row) {
+  const map = currentMapData();
+  const key = col + "," + row;
+  return (map.warps && map.warps[key]) || null;
+}
+
+function signAt(col, row) {
+  const map = currentMapData();
+  const key = col + "," + row;
+  return (map.signs && map.signs[key]) || null;
+}
+
+// ---- NPC drawing (GBA-style detailed humanoid overworld sprites) ----
+function drawNpcs(ctx) {
+  const npcs = getNpcsForMap(world.currentMap);
+  npcs.forEach(npc => {
+    if (npc.defeated && npc.hideOnDefeat) return;
+    const px = npc.col * TILE;
+    const py = npc.row * TILE;
+
+    // Use the new detailed humanoid sprite from sprites.js.
+    // npcPalette() converts the NPC's sprite hex into a full clothing palette.
+    if (typeof drawHumanoid === "function" && typeof npcPalette === "function") {
+      const P = npcPalette(npc.sprite);
+      // gentle idle bob for life (NPCs stand still, so walkFrame=0)
+      drawHumanoid(ctx, px, py, npc.facing || "down", 0, P);
+    } else {
+      // legacy fallback (should never trigger now)
+      ctx.fillStyle = PALETTE.black;
+      ctx.fillRect(px + 4, py + 2, 8, 12);
+      ctx.fillStyle = npc.sprite || PALETTE.light;
+      ctx.fillRect(px + 6, py + 4, 4, 4);
+    }
+
+    // exclamation indicator for undefeated trainers (gives a GBA "!" vibe)
+    if (npc.isTrainer && !npc.defeated) {
+      ctx.fillStyle = "#f8d818";
+      ctx.fillRect(px + 13, py - 3, 1, 5);
+      ctx.fillRect(px + 13, py + 3, 1, 1);
+      ctx.fillStyle = "#181820";
+      ctx.fillRect(px + 12, py - 4, 3, 1);
+      ctx.fillRect(px + 12, py + 4, 3, 1);
+    }
+  });
+}

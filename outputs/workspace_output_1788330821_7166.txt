@@ -1,0 +1,20 @@
+   • GET http://localhost:9090/assets/sprites/wyrmking.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/ironscale.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/adamantaur.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/pixiecap.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/glamora.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/monkick.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/grandfist.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/aurorion.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/voidrath.png → 404 File not found
+Console Warnings (6):
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+
+Screenshot: /workspace/.screenshots/step_048.png
+Use see-image to view: /workspace/.screenshots/step_048.png
+=== END ===

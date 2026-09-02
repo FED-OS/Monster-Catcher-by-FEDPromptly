@@ -1,0 +1,109 @@
+function drawTile(ctx, tile, px, py) {
+  switch (tile) {
+    case 0: drawGrassTile(ctx, px, py); break;
+    case 1: drawTallGrassTile(ctx, px, py); break;
+    case 2: drawTreeTile(ctx, px, py); break;
+    case 3: drawWaterTile(ctx, px, py, false); break;
+    case 4: drawSandTile(ctx, px, py); break;
+    case 5: drawCaveFloorTile(ctx, px, py); break;
+    case 6: drawCaveWallTile(ctx, px, py); break;
+    case 7: drawSnowTile(ctx, px, py); break;
+    case 8: drawLedgeTile(ctx, px, py); break;
+    case 9: drawDoorTile(ctx, px, py); break;
+    case 10: drawSignTile(ctx, px, py); break;
+    case 11: drawHealMatTile(ctx, px, py); break;
+    case 12: drawShopMatTile(ctx, px, py); break;
+    case 13: drawGymMatTile(ctx, px, py); break;
+    case 14: drawWaterTile(ctx, px, py, true); break;
+    // Biome tiles (30-41)
+    case 30: drawLavaTile(ctx, px, py); break;
+    case 31: drawNeonTile(ctx, px, py); break;
+    case 32: drawCrystalTile(ctx, px, py); break;
+    case 33: drawScrapTile(ctx, px, py); break;
+    case 34: drawDeepIceTile(ctx, px, py); break;
+    case 35: drawDeepWaterTile(ctx, px, py); break;
+    case 36: drawStormGrassTile(ctx, px, py); break;
+    case 37: drawMarshWaterTile(ctx, px, py); break;
+    case 38: drawMushroomTile(ctx, px, py); break;
+    case 39: drawHoloPanelTile(ctx, px, py); break;
+    case 40: drawVolcanoRockTile(ctx, px, py); break;
+    case 41: drawCyberWallTile(ctx, px, py); break;
+    default: drawGrassTile(ctx, px, py); break;
+  }
+}
+
+// ============================================================
+//  MEGA EXPANSION — Biome Tile Drawing Functions
+// ============================================================
+
+// 30: Lava floor (volcano) — glowing cracks
+function drawLavaTile(ctx, px, py) {
+  ctx.fillStyle = "#381010";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#681818";
+  ctx.fillRect(px + 2, py + 2, 12, 12);
+  // Glowing cracks
+  const glow = Math.sin(worldAnimFrame / 20 + (px + py) * 0.1) > 0;
+  ctx.fillStyle = glow ? "#f86020" : "#a02810";
+  ctx.fillRect(px + 4, py + 6, 8, 1);
+  ctx.fillRect(px + 7, py + 4, 1, 8);
+  ctx.fillStyle = glow ? "#f8a030" : "#681818";
+  ctx.fillRect(px + 5, py + 10, 3, 1);
+}
+
+// 31: Neon floor (cyber city) — grid pattern
+function drawNeonTile(ctx, px, py) {
+  ctx.fillStyle = "#181828";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#202038";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  // Neon grid lines
+  const pulse = (worldAnimFrame >> 3) % 2 === 0;
+  ctx.fillStyle = pulse ? "#20d8a0" : "#0a3828";
+  ctx.fillRect(px, py + 7, TILE, 1);
+  ctx.fillRect(px + 7, py, 1, TILE);
+  ctx.fillStyle = pulse ? "#40f8c0" : "#0a3828";
+  ctx.fillRect(px + 7, py + 7, 1, 1);
+}
+
+// 32: Crystal floor (crystal forest) — shimmering facets
+function drawCrystalTile(ctx, px, py) {
+  ctx.fillStyle = "#2a1a38";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#4a2868";
+  ctx.fillRect(px + 2, py + 2, 12, 12);
+  const shimmer = Math.sin(worldAnimFrame / 15 + (px + py) * 0.05);
+  ctx.fillStyle = shimmer > 0 ? "#c080f0" : "#6838a0";
+  ctx.fillRect(px + 3, py + 3, 4, 4);
+  ctx.fillRect(px + 9, py + 9, 4, 4);
+  ctx.fillStyle = shimmer > 0.5 ? "#e0c0ff" : "#8848c0";
+  ctx.fillRect(px + 4, py + 4, 2, 2);
+}
+
+// 33: Scrap floor (junk wasteland) — rusty metal
+function drawScrapTile(ctx, px, py) {
+  ctx.fillStyle = "#4a4030";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#5a5038";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  ctx.fillStyle = "#6a6040";
+  ctx.fillRect(px + 3, py + 3, 3, 3);
+  ctx.fillRect(px + 10, py + 8, 3, 2);
+  // Rust spots
+  ctx.fillStyle = "#8a6038";
+  ctx.fillRect(px + 6, py + 5, 2, 2);
+  ctx.fillRect(px + 4, py + 11, 2, 1);
+  ctx.fillStyle = "#383020";
+  ctx.fillRect(px + 1, py, 14, 1);
+  ctx.fillRect(px, py + 15, 16, 1);
+}
+
+// 34: Deep ice floor (glacial peaks) — frosty blue
+function drawDeepIceTile(ctx, px, py) {
+  ctx.fillStyle = "#a8c8e8";
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = "#c0d8f0";
+  ctx.fillRect(px + 1, py + 1, 14, 14);
+  // Ice cracks
+  ctx.fillStyle = "#7898b8";
+  ctx.fillRect(px + 4, py + 2, 1, 6);

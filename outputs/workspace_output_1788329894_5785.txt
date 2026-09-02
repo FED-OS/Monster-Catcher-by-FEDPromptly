@@ -1,0 +1,30 @@
+  inflating: game_extracted/.browser_data/Default/DawnWebGPUCache/data_2  
+  inflating: game_extracted/.browser_data/Default/DawnWebGPUCache/data_0  
+  inflating: game_extracted/.browser_data/Default/DawnWebGPUCache/index  
+  inflating: game_extracted/.browser_data/Default/DawnWebGPUCache/data_1  
+ extracting: game_extracted/.browser_data/Last Version  
+  inflating: game_extracted/.browser_data/Local State  
+   creating: game_extracted/.browser_data/component_crx_cache/
+ extracting: game_extracted/.browser_data/component_crx_cache/metadata.json  
+  inflating: game_extracted/.browser_data/Variations  
+  inflating: game_extracted/.browser_data/first_party_sets.db  
+   creating: game_extracted/.browser_data/GraphiteDawnCache/
+  inflating: game_extracted/.browser_data/GraphiteDawnCache/data_3  
+  inflating: game_extracted/.browser_data/GraphiteDawnCache/data_2  
+  inflating: game_extracted/.browser_data/GraphiteDawnCache/data_0  
+  inflating: game_extracted/.browser_data/GraphiteDawnCache/index  
+  inflating: game_extracted/.browser_data/GraphiteDawnCache/data_1  
+   creating: game_extracted/.browser_data/extensions_crx_cache/
+ extracting: game_extracted/.browser_data/extensions_crx_cache/metadata.json  
+   creating: game_extracted/.browser_data/segmentation_platform/
+ extracting: game_extracted/.browser_data/segmentation_platform/ukm_db-wal  
+  inflating: game_extracted/.browser_data/segmentation_platform/ukm_db  
+  inflating: game_extracted/.browser_data/BrowserMetrics-spare.pma  
+   creating: game_extracted/.browser_data/GPUPersistentCache/
+   creating: game_extracted/.browser_data/GPUPersistentCache/GPUCache/
+   creating: game_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/
+  inflating: game_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/cache.db  
+  inflating: game_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/cache.db-wal  
+ extracting: game_extracted/.browser_data/GPUPersistentCache/GPUCache/DDFHUTC7H3RR4ORK6UUEB74KVNJL2SO5/cache.journal  
+ extracting: game_extracted/.browser_data/first_party_sets.db-journal  
+ extracting: game_extracted/files_(2)  

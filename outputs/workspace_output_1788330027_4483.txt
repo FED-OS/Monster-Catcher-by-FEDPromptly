@@ -1,0 +1,91 @@
+function drawPlayerOverworld(ctx, px, py, facing, walkFrame, palette) {
+  const P = palette || {
+    skin: COLOR.skin, skinD: COLOR.skinShade,
+    hair: COLOR.hair, hairD: COLOR.hairShade,
+    shirt: COLOR.shirtRed, shirtD: COLOR.shirtRedD,
+    pants: COLOR.pantsBlue, pantsD: COLOR.pantsBlueD,
+    shoes: COLOR.shoes
+  };
+  drawHumanoid(ctx, px, py, facing, walkFrame, P);
+}
+
+// Generic humanoid overworld figure (used for NPCs too).
+function drawHumanoid(ctx, px, py, facing, walkFrame, P) {
+  // shadow
+  ctx.fillStyle = "rgba(0,0,0,0.25)";
+  ctx.beginPath(); ctx.ellipse(px + 8, py + 15, 6, 2, 0, 0, Math.PI * 2); ctx.fill();
+
+  // legs (animate)
+  const step = (walkFrame === 1) ? 1 : (walkFrame === 2 ? -1 : 0);
+  ctx.fillStyle = P.pants;
+  ctx.fillRect(px + 5, py + 11, 2, 3 + (facing === "down" || facing === "up" ? step : 0));
+  ctx.fillRect(px + 9, py + 11, 2, 3 - (facing === "down" || facing === "up" ? step : 0));
+  // shoes
+  ctx.fillStyle = P.shoes || P.hairD;
+  if (facing === "down" || facing === "up") {
+    ctx.fillRect(px + 5, py + 14 + step, 2, 1);
+    ctx.fillRect(px + 9, py + 14 - step, 2, 1);
+  } else {
+    ctx.fillRect(px + 6, py + 14, 2, 1);
+    ctx.fillRect(px + 9, py + 14, 2, 1);
+  }
+
+  // body / shirt
+  ctx.fillStyle = P.shirt;
+  ctx.fillRect(px + 4, py + 7, 8, 5);
+  ctx.fillStyle = P.shirtD;
+  ctx.fillRect(px + 4, py + 11, 8, 1);
+
+  // arms
+  ctx.fillStyle = P.shirt;
+  if (facing === "left") { ctx.fillRect(px + 3, py + 8, 2, 3); }
+  else if (facing === "right") { ctx.fillRect(px + 11, py + 8, 2, 3); }
+  else { ctx.fillRect(px + 3, py + 8, 2, 3); ctx.fillRect(px + 11, py + 8, 2, 3); }
+  // hands
+  ctx.fillStyle = P.skin;
+  if (facing === "left") { ctx.fillRect(px + 3, py + 10, 2, 1); }
+  else if (facing === "right") { ctx.fillRect(px + 11, py + 10, 2, 1); }
+  else { ctx.fillRect(px + 3, py + 10, 2, 1); ctx.fillRect(px + 11, py + 10, 2, 1); }
+
+  // head
+  ctx.fillStyle = P.skin;
+  ctx.fillRect(px + 5, py + 3, 6, 5);
+  ctx.fillStyle = P.skinD;
+  ctx.fillRect(px + 5, py + 7, 6, 1);
+
+  // hair (cap on top + back)
+  ctx.fillStyle = P.hair;
+  ctx.fillRect(px + 4, py + 2, 8, 2);
+  if (facing === "down") { ctx.fillRect(px + 4, py + 4, 1, 2); ctx.fillRect(px + 11, py + 4, 1, 2); }
+  if (facing === "left") { ctx.fillRect(px + 4, py + 3, 1, 4); }
+  if (facing === "right") { ctx.fillRect(px + 11, py + 3, 1, 4); }
+  if (facing === "up") { ctx.fillRect(px + 4, py + 2, 8, 4); } // back of head when up
+  ctx.fillStyle = P.hairD;
+  ctx.fillRect(px + 4, py + 3, 8, 1);
+
+  // face features
+  ctx.fillStyle = "#181820";
+  if (facing === "down") {
+    ctx.fillRect(px + 6, py + 5, 1, 1); ctx.fillRect(px + 9, py + 5, 1, 1); // eyes
+  } else if (facing === "left") {
+    ctx.fillRect(px + 5, py + 5, 1, 1);
+  } else if (facing === "right") {
+    ctx.fillRect(px + 10, py + 5, 1, 1);
+  }
+  // 'up' has no face visible
+}
+
+// NPC color presets keyed by sprite hex (falls back to a sensible humanoid).
+function npcPalette(spriteColor) {
+  const base = spriteColor || "#c8c8c8";
+  const rgb = hexToRgb(base);
+  const shade = rgbToHex(clampRgb(rgb.r - 50, rgb.g - 50, rgb.b - 50));
+  return {
+    skin: COLOR.skin, skinD: COLOR.skinShade,
+    hair: shade, hairD: rgbToHex(clampRgb(rgb.r - 80, rgb.g - 80, rgb.b - 80)),
+    shirt: base, shirtD: shade,
+    pants: rgbToHex(clampRgb(rgb.r - 30, rgb.g - 30, rgb.b - 30)),
+    pantsD: rgbToHex(clampRgb(rgb.r - 60, rgb.g - 60, rgb.b - 60)),
+    shoes: "#583818"
+  };
+}

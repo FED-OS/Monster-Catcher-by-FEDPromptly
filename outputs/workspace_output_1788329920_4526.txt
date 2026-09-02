@@ -1,0 +1,120 @@
+// ============================================================
+//  Monster Catcher — Sprite System (GBA Edition v3.0)
+//  Rich per-species pixel-art creatures drawn to an offscreen
+//  32x32 buffer then blitted, plus optional real-PNG drop-in.
+//  Also includes UI sprite helpers (balls, badges, status, tiles).
+// ============================================================
+
+const spriteImages = {}; // speciesKey -> Image (only populated if a PNG loads)
+const spriteCache  = {}; // speciesKey -> offscreen canvas (procedural art)
+
+function tryLoadSprite(speciesKey) {
+  const img = new Image();
+  img.onload  = () => { spriteImages[speciesKey] = img; };
+  img.onerror = () => { /* no PNG provided — procedural fallback used */ };
+  img.src = `assets/sprites/${speciesKey}.png`;
+}
+
+function preloadAllSprites() {
+  if (typeof SPECIES === "undefined") return;
+  Object.keys(SPECIES).forEach(tryLoadSprite);
+}
+
+// Draws a monster at (x, y) inside a size x size box.
+function drawMonsterSprite(ctx, monster, x, y, size) {
+  const key = monster && monster.speciesKey;
+  const img = key && spriteImages[key];
+  if (img) { ctx.drawImage(img, x, y, size, size); return; }
+
+  // Procedural pixel-art path: build (or fetch cached) an offscreen
+  // 32x32 canvas for this species, then blit it scaled to `size`.
+  if (key) {
+    let cv = spriteCache[key];
+    if (!cv) {
+      cv = buildSpeciesSprite(key);
+      spriteCache[key] = cv;
+    }
+    ctx.drawImage(cv, x, y, size, size);
+    return;
+  }
+  // total fallback — inline simple blob (drawProceduralMonster was removed in GBA rewrite)
+  ctx.fillStyle = "#888888";
+  ctx.beginPath(); ctx.arc(x + size/2, y + size/2, size*0.4, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = "#444444";
+  ctx.fillRect(x + size*0.35, y + size*0.45, 2, 2);
+  ctx.fillRect(x + size*0.65 - 2, y + size*0.45, 2, 2);
+}
+
+// ---------------------------------------------------------------
+//  PIXEL ART BUILDER
+//  Each species maps to a "design" function that paints onto a
+//  32x32 offscreen canvas using a small palette derived from the
+//  species color (base / shade / dark / light accents).
+// ---------------------------------------------------------------
+function buildSpeciesSprite(speciesKey) {
+  const sp = SPECIES[speciesKey] || (typeof BIOME_CREATURES !== "undefined" ? BIOME_CREATURES[speciesKey] : null) || { color: "#888888", shape: "round", type: "normal" };
+  const pal = speciesPalette(sp.color, sp.type);
+  const cv = document.createElement("canvas");
+  cv.width = 32; cv.height = 32;
+  const c = cv.getContext("2d");
+  c.imageSmoothingEnabled = false;
+
+  const design = SPECIES_DESIGNS[speciesKey] || DEFAULT_DESIGNS[sp.shape] || DEFAULT_DESIGNS.round;
+  design(c, pal, sp);
+
+  return cv;
+}
+
+// Build a 4-6 color ramp from a base hex color (+ type tint accents).
+function speciesPalette(baseHex, type) {
+  const base = hexToRgb(baseHex);
+  const shade = rgbToHex(clampRgb(base.r - 55, base.g - 55, base.b - 55));
+  const dark  = rgbToHex(clampRgb(base.r - 95, base.g - 95, base.b - 95));
+  const light = rgbToHex(clampRgb(base.r + 55, base.g + 55, base.b + 55));
+  const hl    = rgbToHex(clampRgb(base.r + 95, base.g + 95, base.b + 95));
+  // type-based belly/accent color
+  const belly = typeBellyColor(type);
+  const outline = "#181820";
+  const eye = "#181820";
+  const eyeShine = "#ffffff";
+  return { base, shade, dark, light, hl, belly, outline, eye, eyeShine };
+}
+
+function typeBellyColor(type) {
+  const t = Array.isArray(type) ? type[0] : type;
+  switch (t) {
+    case "fire":     return "#f8d088";
+    case "water":    return "#c8e8f8";
+    case "grass":    return "#e8f8c8";
+    case "electric": return "#fff8c8";
+    case "ground":   return "#e8d8a8";
+    case "flying":   return "#e8f0ff";
+    case "poison":   return "#e0c0e8";
+    case "ice":      return "#e8f8ff";
+    case "rock":     return "#d8c8a8";
+    case "bug":      return "#e8e088";
+    case "psychic":  return "#f8d8e8";
+    case "ghost":    return "#c8c0e0";
+    case "dark":     return "#584858";
+    case "dragon":   return "#c8a8f8";
+    case "steel":    return "#e0e8f0";
+    case "fairy":    return "#fce0ec";
+    case "fighting": return "#f0c8a8";
+    default:         return "#f0e8d0"; // normal
+  }
+}
+
+// ---- color helpers ----
+function hexToRgb(h) {
+  h = h.replace("#", "");
+  if (h.length === 3) h = h.split("").map(x => x + x).join("");
+  const n = parseInt(h, 16);
+  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+}
+function clampByte(v) { return Math.max(0, Math.min(255, Math.round(v))); }
+function clampRgb(r, g, b) { return { r: clampByte(r), g: clampByte(g), b: clampByte(b) }; }
+function rgbToHex({ r, g, b }) {
+  return "#" + [r, g, b].map(v => clampByte(v).toString(16).padStart(2, "0")).join("");
+}
+
+// A tiny pixel painter: sets a single pixel on the 32x32 context.

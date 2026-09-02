@@ -1,0 +1,1 @@
+1220:function drawBattlePlatform(ctx, x, y, w, h, isPlayer) {

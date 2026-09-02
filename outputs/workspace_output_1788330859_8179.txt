@@ -1,0 +1,2 @@
+js/battle.js:1866:    if (typeof gainBattleFriendship === 'function') {
+js/battle.js:1867:      gainBattleFriendship(battle.player, 2);

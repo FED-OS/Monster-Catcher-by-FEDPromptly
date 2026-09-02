@@ -1,0 +1,101 @@
+// ============================================================
+//  Monster Catcher — Monsters
+//  Species, moves, types, abilities, items, leveling, evolution,
+//  status effects, stat stages, and battle math.
+// ============================================================
+
+// ---------------------------------------------------------------
+//  STATUS CONDITIONS (applied to a monster during battle)
+// ---------------------------------------------------------------
+const STATUS = {
+  NONE:        "none",
+  BURN:        "burn",        // halves physical attack damage, ticks HP each turn
+  POISON:      "poison",      // ticks HP each turn
+  PARALYSIS:   "paralysis",   // 25% chance to skip turn, quarters speed
+  SLEEP:       "sleep",       // cannot act for 1-4 turns
+  FREEZE:      "freeze",      // cannot act until thaw (20% chance per turn)
+  CONFUSION:   "confusion",   // 33% chance to hit self, lasts 1-4 turns
+  TOXIC:       "toxic"        // escalating poison (counts as poison but worse)
+};
+
+// Human-readable labels for UI
+const STATUS_LABELS = {
+  burn: "BRN", poison: "PSN", paralysis: "PAR", sleep: "SLP",
+  freeze: "FRZ", confusion: "CNF", toxic: "TOX"
+};
+
+// ---------------------------------------------------------------
+//  MOVE CATEGORIES
+// ---------------------------------------------------------------
+const MOVE_CATEGORY = {
+  PHYSICAL: "physical",
+  SPECIAL:  "special",
+  STATUS:   "status"
+};
+
+// ---------------------------------------------------------------
+//  MOVES  (power, accuracy, type, category, PP, effects)
+// ---------------------------------------------------------------
+const MOVES = {
+  // ---- Normal ----
+  tackle:      { name: "Tackle",      power: 40,  accuracy: 100, type: "normal",   category: MOVE_CATEGORY.PHYSICAL, pp: 35 },
+  bite:        { name: "Bite",        power: 60,  accuracy: 100, type: "normal",   category: MOVE_CATEGORY.PHYSICAL, pp: 25, flinch: 10 },
+  scratch:     { name: "Scratch",     power: 40,  accuracy: 100, type: "normal",   category: MOVE_CATEGORY.PHYSICAL, pp: 35 },
+  bodyslam:    { name: "Body Slam",   power: 85,  accuracy: 100, type: "normal",   category: MOVE_CATEGORY.PHYSICAL, pp: 15, flinch: 30 },
+  quickattack: { name: "Quick Atk",   power: 40,  accuracy: 100, type: "normal",   category: MOVE_CATEGORY.PHYSICAL, pp: 30, priority: 1 },
+  hyperbeam:   { name: "Hyper Beam",  power: 150, accuracy: 90,  type: "normal",   category: MOVE_CATEGORY.SPECIAL,  pp: 5,  recharge: true },
+  growl:       { name: "Growl",       power: 0,   accuracy: 100, type: "normal",   category: MOVE_CATEGORY.STATUS,   pp: 40, stat: {target:"enemy",stat:"atk",stages:-1} },
+  tailwhip:    { name: "Tail Whip",   power: 0,   accuracy: 100, type: "normal",   category: MOVE_CATEGORY.STATUS,   pp: 30, stat: {target:"enemy",stat:"def",stages:-1} },
+  leer:        { name: "Leer",        power: 0,   accuracy: 100, type: "normal",   category: MOVE_CATEGORY.STATUS,   pp: 30, stat: {target:"enemy",stat:"def",stages:-1} },
+  focusenergy: { name: "Focus",       power: 0,   accuracy: 100, type: "normal",   category: MOVE_CATEGORY.STATUS,   pp: 30, critBoost: true },
+  rest:        { name: "Rest",        power: 0,   accuracy: 100, type: "normal",   category: MOVE_CATEGORY.STATUS,   pp: 10, restoreFullHp: true, sleepSelf: 2 },
+  recover:     { name: "Recover",     power: 0,   accuracy: 100, type: "normal",   category: MOVE_CATEGORY.STATUS,   pp: 10, healPct: 0.5 },
+
+  // ---- Fire ----
+  ember:       { name: "Ember",       power: 40,  accuracy: 100, type: "fire",     category: MOVE_CATEGORY.SPECIAL,  pp: 25, burnChance: 10 },
+  flamerush:   { name: "Flame Rush",  power: 65,  accuracy: 90,  type: "fire",     category: MOVE_CATEGORY.SPECIAL,  pp: 15, burnChance: 15 },
+  firefang:    { name: "Fire Fang",   power: 65,  accuracy: 95,  type: "fire",     category: MOVE_CATEGORY.PHYSICAL, pp: 15, burnChance: 10, flinch: 10 },
+  flameburst:  { name: "Flameburst",  power: 90,  accuracy: 90,  type: "fire",     category: MOVE_CATEGORY.SPECIAL,  pp: 10, burnChance: 10 },
+  inferno:     { name: "Inferno",     power: 100, accuracy: 75,  type: "fire",     category: MOVE_CATEGORY.SPECIAL,  pp: 10, burnChance: 100 },
+  fireworks:   { name: "Fireworks",   power: 110, accuracy: 85,  type: "fire",     category: MOVE_CATEGORY.SPECIAL,  pp: 5,  burnChance: 10 },
+=== SPECIES KEYS ===
+  tackle:      {
+  bite:        {
+  scratch:     {
+  bodyslam:    {
+  quickattack: {
+  hyperbeam:   {
+  growl:       {
+  tailwhip:    {
+  leer:        {
+  focusenergy: {
+  rest:        {
+  recover:     {
+  ember:       {
+  flamerush:   {
+  firefang:    {
+  flameburst:  {
+  inferno:     {
+  fireworks:   {
+  bubble:      {
+  aquajet:     {
+  watergun:    {
+  surf:        {
+  hydropump:   {
+  waterfall:   {
+  vinewhip:    {
+  leafblade:   {
+  absorb:      {
+  megadrain:   {
+  solarbeam:   {
+  seedbomb:    {
+  spore:       {
+  sparkbolt:   {
+  thunderjolt: {
+  thunderbolt: {
+  thunder:     {
+  voltswitch:  {
+  mudslap:     {
+  sandtomb:    {
+  earthquake:  {
+  dig:         {

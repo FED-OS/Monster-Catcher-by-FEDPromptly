@@ -1,0 +1,27 @@
+  mossmere: {
+    name: "Mossmere Hollow",
+    grid: [
+      [2,2,2,2,2,2,2,2,2,2],
+      [2,0,0,0,1,1,0,0,9,2],
+      [2,0,0,1,1,1,1,0,0,2],
+      [2,0,1,1,1,1,1,1,0,2],
+      [2,0,0,1,1,1,1,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,0,1,1,0,1,1,0,0,2],
+      [2,0,0,0,0,0,0,0,0,2],
+      [2,2,2,2,8,2,2,2,2,2]
+    ],
+    encounters: ["emberit","aquip","leafon","rattick","rattick","sparkit"],
+    rate: 0.14,
+    warps: {
+      // door at (8,1) -> lab interior
+      "8,1": { dest: "lab", col: 4, row: 6 },
+      // ledge at (4,8) -> route 1 (south exit)
+      "4,8": { dest: "route1", col: 4, row: 0 }
+    },
+    signs: {
+      "1,7": "Mossmere Hollow — A quiet village at the forest's edge."
+    }
+  },
+
+  lab: {

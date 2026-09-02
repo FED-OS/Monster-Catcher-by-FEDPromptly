@@ -1,0 +1,2 @@
+1059:function drawGymMatTile(ctx, px, py) {
+1079:function drawMap(ctx, map) {

@@ -1,0 +1,13 @@
+754:function drawGrassTile(ctx, px, py) {
+772:function drawTallGrassTile(ctx, px, py) {
+818:function drawWaterTile(ctx, px, py, deep) {
+835:function drawSandTile(ctx, px, py) {
+849:function drawCaveFloorTile(ctx, px, py) {
+864:function drawCaveWallTile(ctx, px, py) {
+882:function drawSnowTile(ctx, px, py) {
+901:function drawLedgeTile(ctx, px, py) {
+920:function drawDoorTile(ctx, px, py) {
+938:function drawSignTile(ctx, px, py) {
+958:function drawHealMatTile(ctx, px, py) {
+974:function drawShopMatTile(ctx, px, py) {
+995:function drawGymMatTile(ctx, px, py) {

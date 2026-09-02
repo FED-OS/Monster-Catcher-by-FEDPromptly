@@ -1,0 +1,5 @@
+3
+--- checking for duplicate function defs ---
+755:function drawGrassTile(ctx, px, py) {
+1079:function drawMap(ctx, map) {
+507:let worldAnimFrame = 0;

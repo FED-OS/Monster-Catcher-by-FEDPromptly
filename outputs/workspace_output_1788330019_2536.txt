@@ -1,0 +1,81 @@
+function drawMap(ctx, map) {
+  map = map || currentMapData();
+  for (let row = 0; row < map.grid.length; row++) {
+    for (let col = 0; col < map.grid[row].length; col++) {
+      drawTile(ctx, map.grid[row][col], col * TILE, row * TILE);
+    }
+  }
+}
+
+// ---- Helpers for the current map ----
+function currentMapData() {
+  return MAPS[world.currentMap];
+}
+
+function isBlocked(col, row) {
+  const map = currentMapData();
+  if (!map) return true;
+  if (row < 0 || col < 0 || row >= map.grid.length || col >= map.grid[0].length) return true;
+  const t = map.grid[row][col];
+  // water(3,14,35), trees(2), rock walls(6), signs(10), volcano rock(40), cyber wall(41) block
+  return t === 2 || t === 3 || t === 6 || t === 10 || t === 14 || t === 35 || t === 40 || t === 41;
+}
+
+// Ledges (8) can only be stepped onto if moving downward into them.
+function isLedge(col, row) {
+  const map = currentMapData();
+  return map && map.grid[row] && map.grid[row][col] === 8;
+}
+
+function isTallGrass(col, row) {
+  const map = currentMapData();
+  const t = map && map.grid[row] && map.grid[row][col];
+  // encounter tiles: tall grass(1), cave(5), snow(7), + biome floor tiles (30-39)
+  return t === 1 || t === 5 || t === 7 || (t >= 30 && t <= 39);
+}
+
+function warpAt(col, row) {
+  const map = currentMapData();
+  const key = col + "," + row;
+  return (map.warps && map.warps[key]) || null;
+}
+
+function signAt(col, row) {
+  const map = currentMapData();
+  const key = col + "," + row;
+  return (map.signs && map.signs[key]) || null;
+}
+
+// ---- NPC drawing (GBA-style detailed humanoid overworld sprites) ----
+function drawNpcs(ctx) {
+  const npcs = getNpcsForMap(world.currentMap);
+  npcs.forEach(npc => {
+    if (npc.defeated && npc.hideOnDefeat) return;
+    const px = npc.col * TILE;
+    const py = npc.row * TILE;
+
+    // Use the new detailed humanoid sprite from sprites.js.
+    // npcPalette() converts the NPC's sprite hex into a full clothing palette.
+    if (typeof drawHumanoid === "function" && typeof npcPalette === "function") {
+      const P = npcPalette(npc.sprite);
+      // gentle idle bob for life (NPCs stand still, so walkFrame=0)
+      drawHumanoid(ctx, px, py, npc.facing || "down", 0, P);
+    } else {
+      // legacy fallback (should never trigger now)
+      ctx.fillStyle = PALETTE.black;
+      ctx.fillRect(px + 4, py + 2, 8, 12);
+      ctx.fillStyle = npc.sprite || PALETTE.light;
+      ctx.fillRect(px + 6, py + 4, 4, 4);
+    }
+
+    // exclamation indicator for undefeated trainers (gives a GBA "!" vibe)
+    if (npc.isTrainer && !npc.defeated) {
+      ctx.fillStyle = "#f8d818";
+      ctx.fillRect(px + 13, py - 3, 1, 5);
+      ctx.fillRect(px + 13, py + 3, 1, 1);
+      ctx.fillStyle = "#181820";
+      ctx.fillRect(px + 12, py - 4, 3, 1);
+      ctx.fillRect(px + 12, py + 4, 3, 1);
+    }
+  });
+}
