@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="FEDMON: NO MERCY — a brutal monster-taming action RPG with adult stakes. Fight with fists. Survive with monsters. No gyms. No badges. No mercy.">
+<meta name="theme-color" content="#08060c">
+<meta property="og:title" content="FEDMON: NO MERCY">
+<meta property="og:description" content="Fight with fists. Survive with monsters. No gyms. No badges. No mercy.">
+<meta property="og:image" content="assets/social-image.png">
+<meta property="og:image:alt" content="FEDMON: NO MERCY — brutal monster-taming RPG">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FEDMON: NO MERCY">
+<meta name="twitter:description" content="Fight with fists. Survive with monsters. No gyms. No badges. No mercy.">
+<meta name="twitter:image" content="assets/social-image.png">
+<meta name="twitter:url" content="https://www.pokejumper.org/fedmon">
+<title>FEDMON: NO MERCY</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2308060c'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='900' fill='%23e23a4a' text-anchor='middle'>F</text></svg>">
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+
+<!-- grain overlay -->
+<div class="grain"></div>
+
+<!-- ============ LEFT RAIL ============ -->
+<aside class="rail">
+  <div class="readout ok"><span class="val" id="rHP">100</span><span class="lab">HP</span></div>
+  <div class="readout"><span class="val" id="rCash">$0</span><span class="lab">cash</span></div>
+  <div class="readout alert"><span class="val" id="rHeat">0</span><span class="lab">heat</span></div>
+  <div class="readout warn"><span class="val" id="rStam">85</span><span class="lab">stam</span></div>
+  <div class="progress"><i id="rProg"></i></div>
+  <div class="vert">FED<b>MON</b> // NO MERCY</div>
+</aside>
+
+<main>
+
+<!-- ============ 01 BOOT ============ -->
+<section id="boot">
+  <div class="boot-grid">
+    <div class="boot-left">
+      <div class="kicker">independent build <span class="blink"></span> 2026</div>
+      <h1 class="boot-title">
+        <span class="m1">FEDMON<span class="colon">:</span></span>
+        <span class="m2">NO MERCY</span>
+        <span class="scan"></span>
+      </h1>
+      <p class="boot-tag">
+        <b>Fight with fists.</b> Survive with monsters.<br>
+        <span class="strike">No gyms.</span> <span class="strike">No badges.</span> <b>No mercy.</b>
+      </p>
+      <div class="boot-cta">
+        <a href="#combat" class="primary" data-hot>▶ enter</a>
+        <a href="https://ko-fi.com/fedjumpergaming" target="_blank" rel="noopener" data-hot>wishlist</a>
+        <a href="https://github.com/FED-OS" target="_blank" rel="noopener" data-hot>repo</a>
+      </div>
+    </div>
+    <div class="boot-right">
+      <div class="feed" id="feed">
+        <div class="ln" style="animation-delay:.1s"><span class="k">[boot]</span> fedmon_core.dll ........ <span class="ok">OK</span></div>
+        <div class="ln" style="animation-delay:.4s"><span class="k">[load]</span> jumpmon registry ....... <span class="ok">LOADED</span></div>
+        <div class="ln" style="animation-delay:.7s"><span class="k">[load]</span> trainer_skills ......... <span class="ok">LOADED</span></div>
+        <div class="ln" style="animation-delay:1.0s"><span class="k">[fed]</span>  jurisdiction flag ..... <span class="warn">MONITORED</span></div>
+        <div class="ln" style="animation-delay:1.3s"><span class="k">[econ]</span> property_tax daemon ... <span class="err">ACTIVE</span></div>
+        <div class="ln" style="animation-delay:1.6s"><span class="k">[net]</span>  black_market node ..... <span class="warn">SYNCED</span></div>
+        <div class="ln" style="animation-delay:1.9s"><span class="k">[sys]</span>  no free healing ....... <span class="err">CONFIRMED</span></div>
+        <div class="ln" style="animation-delay:2.2s"><span class="k">[ok]</span>   press any key ........</div>
+      </div>
+      <div class="prompt">&gt; awaiting trainer input<span class="cur"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 COMBAT HUD ============ -->
+<section id="combat">
+  <div class="section-head">
+    <span class="idx">02 //</span>
+    <h2>dual <em>combat</em> system</h2>
+    <span class="rule"></span>
+    <span class="sub">You throw hands alongside your monsters. Hit the buttons below to drive the mockup.</span>
+  </div>
+  <div class="hud-wrap">
+    <canvas id="combatCanvas" width="880" height="360"></canvas>
+  </div>
+  <div class="hud-controls">
+    <button data-move="jab" data-key="Q">Q — left jab</button>
+    <button data-move="dodge" data-key="E">E — dodge roll</button>
+    <button data-move="tackle" data-key="␣">SPACE — tackle</button>
+    <button data-move="strike" data-key="1">1 — elemental strike</button>
+    <button data-move="ult" data-key="3">3 — synergy ult</button>
+  </div>
+  <div class="wanted-bar">
+    <span>wanted level</span>
+    <div class="stars" id="wantedStars">
+      <i>★</i><i>★</i><i>★</i><i>★</i><i>★</i>
+    </div>
+    <span id="wantedLbl">// clean record</span>
+  </div>
+</section>
+
+<!-- ============ 03 MECH DECK (horizontal) ============ -->
+<section id="mech">
+  <div class="section-head" style="padding:0 2rem">
+    <span class="idx">03 //</span>
+    <h2>core <em>systems</em></h2>
+    <span class="rule"></span>
+    <span class="sub">Swipe through the deck. Each card is a survival rule.</span>
+  </div>
+  <div class="mech-track" id="mechTrack">
+    <article class="snap-card" data-w="78">
+      <span class="num">01</span><span class="ic">🥊</span>
+      <h3>trainer <span class="pin">scraps</span></h3>
+      <p>You fight too. Skills cost 2x and are permanent — no relearn, no take-backs. Counter theft attempts mid-battle with a fistfight.</p>
+      <div class="meter"><i></i></div>
+      <div class="meter-lbl"><span>brutality</span><span>78%</span></div>
+    </article>
+    <article class="snap-card" data-w="62">
+      <span class="num">02</span><span class="ic">🧬</span>
+      <h3>FED <span class="pin">evolution</span></h3>
+      <p>Jumpmon → Jumpermon → FED-Jumpermon. Higher tiers level slower. Starters get a 1-turn 4th form: double the highest stat, halve the lowest.</p>
+      <div class="meter"><i></i></div>
+      <div class="meter-lbl"><span>regulation</span><span>62%</span></div>
+    </article>
+    <article class="snap-card" data-w="91">
+      <span class="num">03</span><span class="ic">🏢</span>
+      <h3>real <span class="pin">estate</span></h3>
+      <p>Buy property for proof of address. New properties cost double your income — forces backtracking. Miss payments? Foreclosure, repo, seizure.</p>
+      <div class="meter"><i></i></div>
+      <div class="meter-lbl"><span>debt risk</span><span>91%</span></div>
+    </article>
+    <article class="snap-card" data-w="84">
+      <span class="num">04</span><span class="ic">🚔</span>
+      <h3>heat & <span class="pin">arrest</span></h3>
+      <p>Fight unprovoked too often? Arrested. Cash halved, car towed, court fines double every offense. Bank your money in the PC to survive.</p>
+      <div class="meter"><i></i></div>
+      <div class="meter-lbl"><span>consequence</span><span>84%</span></div>
+    </article>
+    <article class="snap-card" data-w="55">
+      <span class="num">05</span><span class="ic">⛽</span>
+      <h3>car + <span class="pin">scooter</span></h3>
+      <p>Scooter for local mobility, battery to manage. Car for fast-travel — it physically stays where you left it. Fuel prices vary by district.</p>
+      <div class="meter"><i></i></div>
+      <div class="meter-lbl"><span>mobility</span><span>55%</span></div>
+    </article>
+    <article class="snap-card" data-w="73">
+      <span class="num">06</span><span class="ic">📱</span>
+      <h3>phone <span class="pin">apps</span></h3>
+      <p>Bounties, banking (15% wire fee), black market terminal, loan sharks. Adult life on a screen in your pocket — including the debt spiral.</p>
+      <div class="meter"><i></i></div>
+      <div class="meter-lbl"><span>utility</span><span>73%</span></div>
+    </article>
+  </div>
+  <div class="mech-hint">← drag / scroll →</div>
+</section>
+
+<!-- ============ 04 STARTERS ============ -->
+<section id="starters">
+  <div class="section-head">
+    <span class="idx">04 //</span>
+    <h2>starter <em>dossier</em></h2>
+    <span class="rule"></span>
+    <span class="sub">Three creatures. One busted crate. Pick your problem.</span>
+  </div>
+  <div class="starter-grid" id="starterGrid">
+
+    <article class="starter" data-stats="60,90,70,45,80">
+      <span class="select-tag">selected</span>
+      <span class="badge">FIRE / BRUTE</span>
+      <div class="sprite"><span class="floaty">🔥🐺</span></div>
+      <div class="body">
+        <div class="name">EMBERHOUND</div>
+        <div class="types"><span class="t-red">fire</span><span class="t-red">brute</span></div>
+        <div class="stats">
+          <div class="stat-row"><span class="n">hp</span><span class="bar"><i style="background:var(--red)" data-v="60"></i></span><span class="v">60</span></div>
+          <div class="stat-row"><span class="n">atk</span><span class="bar"><i style="background:var(--red)" data-v="90"></i></span><span class="v">90</span></div>
+          <div class="stat-row"><span class="n">def</span><span class="bar"><i style="background:var(--red)" data-v="70"></i></span><span class="v">70</span></div>
+          <div class="stat-row"><span class="n">spd</span><span class="bar"><i style="background:var(--red)" data-v="45"></i></span><span class="v">45</span></div>
+          <div class="stat-row"><span class="n">sync</span><span class="bar"><i style="background:var(--red)" data-v="80"></i></span><span class="v">80</span></div>
+        </div>
+        <div class="chain">Emberhound <span class="arr">→</span> <b>Blazehound</b> <span class="arr">→</span> <b>FED-Inferno</b></div>
+      </div>
+    </article>
+
+    <article class="starter" data-stats="80,55,90,70,65">
+      <span class="badge gold">VOLT / GUARD</span>
+      <div class="sprite"><span class="floaty">⚡🦔</span></div>
+      <div class="body">
+        <div class="name">VOLTHEDGE</div>
+        <div class="types"><span class="t-gold">volt</span><span class="t-gold">guard</span></div>
+        <div class="stats">
+          <div class="stat-row"><span class="n">hp</span><span class="bar"><i style="background:var(--gold)" data-v="80"></i></span><span class="v">80</span></div>
+          <div class="stat-row"><span class="n">atk</span><span class="bar"><i style="background:var(--gold)" data-v="55"></i></span><span class="v">55</span></div>
+          <div class="stat-row"><span class="n">def</span><span class="bar"><i style="background:var(--gold)" data-v="90"></i></span><span class="v">90</span></div>
+          <div class="stat-row"><span class="n">spd</span><span class="bar"><i style="background:var(--gold)" data-v="70"></i></span><span class="v">70</span></div>
+          <div class="stat-row"><span class="n">sync</span><span class="bar"><i style="background:var(--gold)" data-v="65"></i></span><span class="v">65</span></div>
+        </div>
+        <div class="chain">Volthedge <span class="arr">→</span> <b>Surgehedge</b> <span class="arr">→</span> <b>FED-Arclord</b></div>
+      </div>
+    </article>
+
+    <article class="starter" data-stats="50,75,60,95,85">
+      <span class="select-tag">selected</span>
+      <span class="badge blue">TOXIN / SCOUT</span>
+      <div class="sprite"><span class="floaty">🟢🦎</span></div>
+      <div class="body">
+        <div class="name">SLICKLIZ</div>
+        <div class="types"><span class="t-blue">toxin</span><span class="t-green">scout</span></div>
+        <div class="stats">
+          <div class="stat-row"><span class="n">hp</span><span class="bar"><i style="background:var(--blue)" data-v="50"></i></span><span class="v">50</span></div>
+          <div class="stat-row"><span class="n">atk</span><span class="bar"><i style="background:var(--blue)" data-v="75"></i></span><span class="v">75</span></div>
+          <div class="stat-row"><span class="n">def</span><span class="bar"><i style="background:var(--blue)" data-v="60"></i></span><span class="v">60</span></div>
+          <div class="stat-row"><span class="n">spd</span><span class="bar"><i style="background:var(--blue)" data-v="95"></i></span><span class="v">95</span></div>
+          <div class="stat-row"><span class="n">sync</span><span class="bar"><i style="background:var(--blue)" data-v="85"></i></span><span class="v">85</span></div>
+        </div>
+        <div class="chain">Slickliz <span class="arr">→</span> <b>Venomliz</b> <span class="arr">→</span> <b>FED-Plague</b></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ 05 ECONOMY TERMINAL ============ -->
+<section id="econ">
+  <div class="section-head">
+    <span class="idx">05 //</span>
+    <h2>survival <em>economy</em></h2>
+    <span class="rule"></span>
+    <span class="sub">No free healing. No free items. Every number is a threat.</span>
+  </div>
+  <div class="econ-grid">
+    <div class="receipt">
+      <h3>/// DAILY BURN</h3>
+      <div class="row"><span>hotel healing (per mon)</span><span class="amt dn">-$80</span></div>
+      <div class="row"><span>gas — district 1</span><span class="amt warn">$4.20/gal</span></div>
+      <div class="row"><span>gas — corporate zone</span><span class="amt up">$2.10/gal</span></div>
+      <div class="row"><span>creature food (per battle)</span><span class="amt dn">-$25</span></div>
+      <div class="row"><span>trainer stamina drink</span><span class="amt dn">-$15</span></div>
+      <div class="row"><span>bank wire fee</span><span class="amt warn">15%</span></div>
+      <div class="tot"><span>EST. DAILY COST</span><span class="amt dn">-$120+</span></div>
+    </div>
+    <div class="receipt">
+      <h3>/// DEBT PROTOCOL</h3>
+      <div class="row"><span>loan shark advance</span><span class="amt up">+$500</span></div>
+      <div class="row"><span>daily interest</span><span class="amt dn">-12%</span></div>
+      <div class="row"><span>missed property tax</span><span class="amt dn">FORECLOSE</span></div>
+      <div class="row"><span>arrest — cash penalty</span><span class="amt dn">-50%</span></div>
+      <div class="row"><span>car impound retrieval</span><span class="amt dn">-$200</span></div>
+      <div class="row"><span>court fine (repeat)</span><span class="amt dn">x2 each</span></div>
+      <div class="tot"><span>ROCK BOTTOM</span><span class="amt">start at $0</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 DROP / CTA ============ -->
+<section id="drop">
+  <div class="drop-inner">
+    <div class="pre">// final transmission</div>
+    <h2>no mom.<br>no prof.<br><span class="out">no mercy.</span></h2>
+    <p>Desktop · Android · Web. Built in Godot 4. No Nintendo IP, no handouts. Just fists, fuel, and a world that wants you broke. Star it before the FED does.</p>
+    <div class="drop-cta">
+      <a href="https://github.com/FED-OS" class="solid" target="_blank" rel="noopener" data-hot>⭐ star on github</a>
+      <a href="https://www.pokejumper.org/fedmon" target="_blank" rel="noopener" data-hot>🌐 play the game</a>
+      <a href="https://ko-fi.com/fedjumpergaming" target="_blank" rel="noopener" data-hot>☕ support on ko-fi</a>
+    </div>
+    <div class="drop-foot">
+      <span>FEDMON: NO MERCY · 2026</span>
+      <span>#NoNintendo · independent</span>
+      <span>press F to glitch</span>
+    </div>
+    <div class="drop-marquee">
+      <span>no gyms · no badges · no free healing · no handouts · no mercy · no gyms · no badges · no free healing · no handouts · no mercy · </span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
