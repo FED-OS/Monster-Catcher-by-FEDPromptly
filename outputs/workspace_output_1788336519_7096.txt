@@ -1,0 +1,56 @@
+=== Total species ===
+514
+=== Species keys ===
+  NONE:   BURN:   POISON:   PARALYSIS:   SLEEP:   FREEZE:   CONFUSION:   TOXIC:   burn:   freeze:   PHYSICAL:   SPECIAL:   STATUS:   tackle:   bite:   scratch:   bodyslam:   quickattack:   hyperbeam:   growl:   tailwhip:   leer:   focusenergy:   rest:   recover:   ember:   flamerush:   firefang:   flameburst:   inferno:   fireworks:   bubble:   aquajet:   watergun:   surf:   hydropump:   waterfall:   vinewhip:   leafblade:   absorb:   megadrain:   solarbeam:   seedbomb:   spore:   sparkbolt:   thunderjolt:   thunderbolt:   thunder:   voltswitch:   mudslap: 
+=== Audio SFX ===
+function sfxMove
+function sfxConfirm
+function sfxCancel
+function sfxMenu
+function sfxEncounter
+function sfxHit
+function sfxMiss
+function sfxFaint
+function sfxBallThrow
+function sfxCatch
+function sfxBreakFree
+function sfxHeal
+function sfxLevelUp
+function sfxEvolve
+function sfxBuy
+function sfxTitle
+function sfxBadge
+function sfxZoink
+function sfxWomp
+function sfxDing
+=== Electron main ===
+// ============================================================
+//  Monster Catcher — Electron Main Process
+//  Wraps the HTML5 game in a native desktop window that looks
+//  and feels like a Game Boy Advance handheld console.
+// ============================================================
+const { app, BrowserWindow, Menu } = require('electron');
+const path = require('path');
+
+// In headless / CI / virtual-display environments, disable GPU hardware
+// acceleration so the renderer falls back to software (SwiftShader).
+// On real desktops with a GPU this is a no-op and hardware accel is used.
+if (process.env.ELECTRON_DISABLE_GPU || process.argv.includes('--disable-gpu')) {
+  app.disableHardwareAcceleration();
+}
+
+let mainWindow = null;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 820,
+    height: 620,
+    minWidth: 820,
+    minHeight: 620,
+    resizable: false,
+    title: 'Monster Catcher — Verdale Region: GBA Edition',
+    backgroundColor: '#1a1a2e',
+    icon: path.join(__dirname, '..', 'assets', 'icon.png'),
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,

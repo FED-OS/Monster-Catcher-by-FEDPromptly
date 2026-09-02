@@ -1,0 +1,37 @@
+=== Total quirks ===
+10
+=== Evolution lines (species with evolvesTo) ===
+27
+=== Boss names ===
+=== Dialogue NPCs ===
+=== Constants ===
+// ============================================================
+//  Monster Catcher — Constants  (GBA Edition v3.0)
+//  Upgraded to Game Boy Advance native resolution (240x160),
+//  a rich 15-bit-style color system, and expanded game constants.
+// ============================================================
+
+// ---- GBA NATIVE RESOLUTION ----
+// The real Game Boy Advance display is 240x160 px (15-bit color).
+// We render at native res and upscale via CSS (pixelated) for crispness.
+const SCREEN_W = 240;
+const SCREEN_H = 160;
+const TILE = 16;                 // 16x16 px tiles (same as before, more on screen)
+const COLS = SCREEN_W / TILE;    // 15 columns visible
+const ROWS = SCREEN_H / TILE;    // 10 rows visible
+
+// ---- CORE 4-SHADE PALETTE (kept for legacy / classic theme) ----
+// Still used as the "ink" ramp for text & UI outlines. Themes in
+// palettes.js can swap these. Default = a GBA-friendly green.
+const PALETTE = {
+  light:  "#e0f8d0",
+  mid:    "#88c070",
+  dark:   "#346856",
+  black:  "#081820"
+};
+
+// ---- GBA COLOR SYSTEM ----
+// A broad palette of named colors inspired by GBA-era pixel art
+// (Pokémon Ruby/Sapphire / FireRed era). Used by sprites, tiles, UI.
+const COLOR = {
+  // UI inks (kept compatible with PALETTE)

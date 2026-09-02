@@ -1,0 +1,124 @@
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+Title: Monster Catcher — Verdale Region: HERO Edition v5.0
+Result: Navigated to http://localhost:9090/index.html (title: Monster Catcher — Verdale Region: HERO Edition v5.0, status: 200)
+Warning: Overlay/modal detected - consider using dismiss_overlay
+
+Accessibility tree:
+Page text: Arrow keys / WASD / D-pad to move · Z or A-button to confirm · X or B-button to cancel · Controller supported VERDALE REGION — HERO EDITION V5.0
+
+Errors: Console Errors (43):
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/emberit.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/infernyx.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/pyrothorn.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/aquip.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/tidalon.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/leviathorn.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/leafon.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/florahn.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/thornheart.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/rattick.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/rattigor.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/sparkit.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/voltagon.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/stormoxen.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/digmole.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/galewing.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/breezel.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/terramole.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/toxipod.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/venomoth.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/frostip.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/glaciorn.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/pebblix.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/bouldron.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/carpox.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/silkmoth.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/mindrill.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/oraculon.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/wispup.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/spectral.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/shadepup.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/nightmere.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/drakeling.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/wyrmking.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/adamantaur.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/ironscale.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/glamora.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/pixiecap.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/monkick.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/grandfist.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/voidrath.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/assets/sprites/aurorion.png:0)
+   • Failed to load resource: the server responded with a status of 404 (File not found) (http://localhost:9090/favicon.ico:0)
+Network Errors (42):
+   • GET http://localhost:9090/assets/sprites/emberit.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/infernyx.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/pyrothorn.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/aquip.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/tidalon.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/leviathorn.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/leafon.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/florahn.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/thornheart.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/rattick.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/rattigor.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/sparkit.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/voltagon.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/stormoxen.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/digmole.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/galewing.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/breezel.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/terramole.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/toxipod.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/venomoth.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/frostip.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/glaciorn.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/pebblix.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/bouldron.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/carpox.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/silkmoth.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/mindrill.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/oraculon.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/wispup.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/spectral.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/shadepup.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/nightmere.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/drakeling.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/wyrmking.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/adamantaur.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/ironscale.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/glamora.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/pixiecap.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/monkick.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/grandfist.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/voidrath.png → 404 File not found
+   • GET http://localhost:9090/assets/sprites/aurorion.png → 404 File not found
+Console Warnings (6):
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+   • The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+
+Screenshot: /workspace/.screenshots/step_162.png
+Use see-image to view: /workspace/.screenshots/step_162.png
+=== END ===
+=== BROWSER STATE ===
+URL: http://localhost:9090/index.html
+Title: Monster Catcher — Verdale Region: HERO Edition v5.0
+Result: Pressed Escape to dismiss overlay
+Warning: Overlay/modal detected - consider using dismiss_overlay
+
+Accessibility tree:
+Page text: Arrow keys / WASD / D-pad to move · Z or A-button to confirm · X or B-button to cancel · Controller supported VERDALE REGION — HERO EDITION V5.0
+
+Screenshot: /workspace/.screenshots/step_163.png
+Use see-image to view: /workspace/.screenshots/step_163.png
+=== END ===
+Page text: Arrow keys / WASD / D-pad to move · Z or A-button to confirm · X or B-button to cancel · Controller supported VERDALE REGION — HERO EDITION V5.0
+
+Screenshot: /workspace/.screenshots/step_164.png
+Use see-image to view: /workspace/.screenshots/step_164.png
+=== END ===

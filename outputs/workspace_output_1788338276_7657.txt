@@ -1,0 +1,13 @@
+=== What's missing for a top-tier GitHub repo ===
+1. CONTRIBUTING.md - for open source credibility
+2. CHANGELOG.md - version history
+3. GitHub repo badges in README
+4. A demo GIF/animated preview
+5. In-game help/tutorial system
+6. Battle transition wipe screenshot
+7. Particles in action screenshot
+=== Let me also check game polish opportunities ===
+js/quirks.js:174:      idle:           ["I checked the source code once. Don't recommend it. There's a comment that just says 'TODO: fix everything.'", "Fun fact: my sprite is 16 pixels of pure existential crisis.", "If you save now, this victory is canon. If not, it's a dream."],
+=== Check for any rough edges ===
+js/gamepad.js:47:  console.log("Gamepad connected:", e.gamepad.id);
+js/gamepad.js:57:  console.log("Gamepad disconnected:", e.gamepad.id);

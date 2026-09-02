@@ -1,0 +1,4 @@
+Species entries (baseHp): 42
+Moves (pp entries): 102
+Evolution lines: 22
+Items/powerups (name entries): 35

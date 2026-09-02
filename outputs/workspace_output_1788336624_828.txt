@@ -1,0 +1,33 @@
+# PROJECT HERO — GitHub-Ready Ultimate Upgrade
+
+## Phase 1: Particle System & Visual Juice
+- [x] Create `js/particles.js` — particle engine (sparks, embers, sparkles, hit stars, catch stars, weather ambience, level-up burst)
+- [x] Create `js/effects.js` — screen flash, battle transition wipes, hit flash, heal sparkles, floating text
+- [x] Wire particles into battle.js (attack hits, faint, catch, level-up)
+- [x] Wire particles into player.js (grass step puffs, water splashes, ambient fireflies)
+- [x] Wire particle tick/draw into main.js render loop
+
+## Phase 2: Controller Support
+- [x] Create `js/gamepad.js` — Gamepad API polling, D-pad/analog → directions, A=confirm, B=cancel
+- [x] Wire gamepad input into main.js render loop (polled every frame)
+- [x] Add controller indicator on title screen
+
+## Phase 3: Save System Upgrade
+- [x] Multiple save slots (3 slots) with slot selection on title/continue
+- [x] Auto-save on map transition and after battles
+- [x] Save slot metadata (playtime, badges, location, party lead, dex caught)
+- [x] In-game save menu upgraded with slot selection
+
+## Phase 4: UI/HUD Polish
+- [x] Improve title screen with animated particles
+- [x] Add controller indicator on title screen
+- [x] Polish menu styling and battle HUD
+- [x] Add area name popup on map entry
+
+## Phase 5: GitHub Polish
+- [x] Write comprehensive README.md (features, screenshots, controls, how to run)
+- [x] Add LICENSE file
+- [x] Add .gitignore
+- [x] Verify all JS passes node --check
+- [x] Take screenshots and create a screenshot gallery
+- [x] Package final zip deliverable

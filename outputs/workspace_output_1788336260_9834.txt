@@ -1,0 +1,1 @@
+Result: JS result: spawned fire particles: 40

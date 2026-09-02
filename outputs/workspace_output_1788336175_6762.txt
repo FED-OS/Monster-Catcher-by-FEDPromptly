@@ -1,0 +1,2 @@
+233:      if (opt === "FIGHT") { battle.menu = "fight"; battle.cursor = 0; }
+586:function executeMove(attacker, defender, moveKey, isPlayer, cb) {

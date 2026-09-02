@@ -1,0 +1,10 @@
+Title: Monster Catcher — Verdale Region: HERO Edition v5.0
+Result: JS result: undefined
+Warning: Overlay/modal detected - consider using dismiss_overlay
+
+Accessibility tree:
+Page text: Arrow keys / WASD / D-pad to move · Z or A-button to confirm · X or B-button to cancel · Controller supported VERDALE REGION — HERO EDITION V5.0
+
+Screenshot: /workspace/.screenshots/step_210.png
+Use see-image to view: /workspace/.screenshots/step_210.png
+=== END ===

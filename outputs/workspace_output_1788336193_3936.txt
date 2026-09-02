@@ -1,0 +1,4 @@
+Use see-image to view: /workspace/.screenshots/step_262.png
+=== END ===
+ERROR: ValueError: invalid literal for int() with base 10: '0.5'
+Result: JS result: fight|cursor:0

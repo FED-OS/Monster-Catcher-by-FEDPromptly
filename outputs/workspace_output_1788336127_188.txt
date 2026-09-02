@@ -1,0 +1,11 @@
+Use see-image to view: /workspace/.screenshots/step_243.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_244.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_245.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_246.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_247.png
+=== END ===
+Result: JS result: message|Emberit used Scratch!

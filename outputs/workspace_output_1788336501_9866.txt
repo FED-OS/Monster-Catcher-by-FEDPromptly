@@ -1,0 +1,56 @@
+=== Map count ===
+21
+=== Elements/types ===
+  pyro: {
+    ability: {
+    mods: {
+    ultimate: {
+  cyber: {
+    ability: {
+    mods: {
+    ultimate: {
+  magic: {
+    ability: {
+    mods: {
+    ultimate: {
+      buffParty: {
+  junk: {
+    ability: {
+    mods: {
+    ultimate: {
+  frost: {
+    ability: {
+    mods: {
+=== Items ===
+19
+name: "Rocket Booster Harness"
+name: "Laser-Pointer Goggles"
+name: "Golden Chef's Hat"
+name: "Banana Launcher"
+name: "Confetti Cannon"
+name: "Spicy Meatball"
+name: "Rubber Chicken Sword"
+name: "Jetpack Umbrella"
+name: "Magnet Gloves"
+name: "Echo Whistle"
+name: "Pocket Dimension Bag"
+name: "Snack Dispenser Hat"
+name: "Caffeine Injector"
+name: "Hug Machine Belt"
+name: "Pumpkin Juice Flask"
+=== Biomes ===
+name: "Scorching Volcano Zone"
+name: "Eruption"
+name: "Ash Storm"
+name: "Neon-Cyber City"
+name: "Data Rain"
+name: "Power Surge"
+name: "Enchanted Crystal Forest"
+name: "Crystal Rain"
+name: "Magic Bloom"
+name: "Forgotten Junk Wasteland"
+name: "Trash Tornado"
+name: "Acid Rain"
+name: "Glacial Peak Mountains"
+name: "Blizzard"
+name: "Aurora Boost"

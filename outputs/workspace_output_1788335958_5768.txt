@@ -1,0 +1,1 @@
+Result: JS result: {"state":"overworld","map":"Thorne Lab","hasEnc":0,"partyLen":0,"partyFirst":null,"partyFirstHP":null}

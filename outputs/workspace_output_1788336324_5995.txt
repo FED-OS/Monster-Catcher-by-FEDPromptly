@@ -1,0 +1,6 @@
+Screenshot: /workspace/.screenshots/step_275.png
+Use see-image to view: /workspace/.screenshots/step_275.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_276.png
+=== END ===
+Result: JS result: menu|false

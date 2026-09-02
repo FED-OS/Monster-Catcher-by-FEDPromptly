@@ -1,0 +1,18 @@
+=== Element types ===
+pyro cyber magic junk frost shadow 
+=== Bosses ===
+=== Quirks ===
+name: "Snack-Obsessed"
+name: "Perpetually Sleepy"
+name: "Overly Dramatic"
+name: "Technical Obsessive"
+name: "Overconfident"
+name: "Extremely Nervous"
+name: "Compulsive Hoarder"
+name: "Fourth-Wall Breaker"
+name: "Peace-Loving Hippie"
+name: "Chaos Agent"
+=== Story ===
+name: "Frost Badge"
+name: "Verdant Badge"
+name: "Storm Badge"

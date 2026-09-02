@@ -1,0 +1,48 @@
+  adding: monstercatcher/electron/main.js (deflated 51%)
+  adding: monstercatcher/assets/ (stored 0%)
+  adding: monstercatcher/assets/sprites/ (stored 0%)
+  adding: monstercatcher/assets/sprites/README.md (deflated 45%)
+  adding: monstercatcher/README.md (deflated 58%)
+=== Zip size ===
+-rw-r--r-- 1 root root 723K Sep  2 08:09 monstercatcher-hero-edition-v5.zip
+=== Zip contents (top level) ===
+Archive:  monstercatcher-hero-edition-v5.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-09-02 08:09   monstercatcher/
+      562  2026-09-02 06:43   monstercatcher/package.json
+    30794  2026-09-02 06:42   monstercatcher/package-lock.json
+      271  2026-09-02 08:09   monstercatcher/.gitignore
+        0  2026-09-02 08:08   monstercatcher/screenshots/
+    52041  2026-09-02 08:06   monstercatcher/screenshots/07_party.png
+    60376  2026-09-02 07:56   monstercatcher/screenshots/02_save_slots.png
+    63486  2026-09-02 08:00   monstercatcher/screenshots/04_battle.png
+    64449  2026-09-02 08:08   monstercatcher/screenshots/04b_battle_menu.png
+    59186  2026-09-02 07:57   monstercatcher/screenshots/03_overworld.png
+    56240  2026-09-02 08:07   monstercatcher/screenshots/08_badges.png
+    60441  2026-09-02 08:05   monstercatcher/screenshots/05_area_popup.png
+    63762  2026-09-02 08:06   monstercatcher/screenshots/06_menu.png
+    64762  2026-09-02 07:56   monstercatcher/screenshots/01_title_screen.png
+    61312  2026-09-02 08:07   monstercatcher/screenshots/09_pokedex.png
+     1072  2026-09-02 08:09   monstercatcher/LICENSE
+     2248  2026-09-02 06:20   monstercatcher/style.css
+     1813  2026-09-02 07:38   monstercatcher/index.html
+        0  2026-09-02 07:38   monstercatcher/js/
+    19595  2026-09-02 06:20   monstercatcher/js/quirks.js
+    15696  2026-09-02 07:49   monstercatcher/js/main.js
+     3835  2026-09-02 06:20   monstercatcher/js/palettes.js
+    21835  2026-09-02 06:20   monstercatcher/js/story.js
+    11894  2026-09-02 06:20   monstercatcher/js/elements.js
+     7500  2026-09-02 06:40   monstercatcher/js/constants.js
+    19353  2026-09-02 06:20   monstercatcher/js/characters.js
+    17852  2026-09-02 06:20   monstercatcher/js/boss.js
+    69595  2026-09-02 07:48   monstercatcher/js/battle.js
+    17317  2026-09-02 06:20   monstercatcher/js/biomes.js
+    14431  2026-09-02 06:20   monstercatcher/js/dialogue.js
+   112842  2026-09-02 07:16   monstercatcher/js/sprites.js
+     7471  2026-09-02 07:52   monstercatcher/js/effects.js
+    19180  2026-09-02 06:20   monstercatcher/js/powerups.js
+    55881  2026-09-02 06:20   monstercatcher/js/monsters.js
+    39098  2026-09-02 07:50   monstercatcher/js/menu.js
+     6997  2026-09-02 07:38   monstercatcher/js/gamepad.js
+    30039  2026-09-02 07:53   monstercatcher/js/player.js

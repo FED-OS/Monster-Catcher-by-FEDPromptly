@@ -1,0 +1,98 @@
+=== Boss content ===
+// ============================================================
+//  Monster Catcher — Boss Battle: Giga-Thok the Treasure Golem
+//  Multi-phase boss with 4 phases, unique dialogue per phase,
+//  special mechanics, and 3 endings (spare / defeat / hug).
+// ============================================================
+
+// ---- Boss battle state (extends the normal battle object) ----
+// When a boss battle is active, battle.isBoss = true and we use
+// the functions in this file to drive phase transitions, special
+// mechanics, and the final choice.
+
+let bossState = null;
+
+// ---- Start the Giga-Thok boss battle ----
+function startBossBattle() {
+  const boss = BOSS_GIGA_THOK;
+  const level = boss.level || 30;
+  // Build the boss as a special monster instance with boosted HP
+  const bossMon = createBossInstance(boss, level);
+
+  markSeen("junkgolem");
+
+  if (typeof sfxBossRoar === "function") sfxBossRoar();
+
+  battle = {
+    isTrainerBattle: false,
+    isBossBattle: true,
+    trainerNpc: null,
+    enemyTeam: [bossMon],
+    enemyIndex: 0,
+    enemy: bossMon,
+    player: firstUsableParty(),
+    menu: "main",
+    cursor: 0,
+    subCursor: 0,
+    message: boss.preBattle,
+    outcome: null,
+    turnBusy: false,
+    flashTimer: 0,
+    shakeTimer: 0,
+    ballAnim: 0,
+    pendingPlayerMove: null,
+    switching: false,
+    messageQueue: [],
+    afterMessage: null,
+    awaitingContinue: true,
+    // Boss-specific
+    bossPhase: 0,
+    bossPhaseChanged: false,
+    bossEnding: null
+=== Story badges ===
+name: "Frost Badge"
+name: "Verdant Badge"
+name: "Storm Badge"
+=== Dialogue ===
+// ============================================================
+//  PROJECT HERO — Branching Dialogue & Comedy System
+//  Interactive choice branches, party banter, fourth-wall breaks,
+//  contextual location dialogue, Krax quotes, reactive dialogue.
+// ============================================================
+
+// Dialogue choice branch system. A dialogue node can present options;
+// each option routes to a follow-up sequence and may trigger a game action.
+// Format: { speaker, text, options: [ { label, goto, action } ] }
+// Actions: "stealth_minigame", "battle_intro", "lullaby_event", etc.
+
+const BRANCHING_SCENES = {
+  // ---- Discovering a Sleeping Giant Creature ----
+  sleepingGiant: {
+    id: "sleepingGiant",
+    intro: [
+      "Hero: Great. Fantastic. A six-ton apex predator blocking the only bridge out of here, and it's sleeping like a newborn kitten. Anyone have a spare air-horn?",
+      "Companion (Stage 2 Chonk): I could poke it with this very sharp stick I found.",
+      "Hero: Yes, let's poke the hyper-destructive dragon beast with a piece of a pine tree. Truly, a tactical mastermind is leading this party."
+    ],
+    options: [
+      {
+        label: "Try to sneak past by walking incredibly slowly.",
+        action: "stealth_minigame",
+        result: [
+          "(The hero tries to tip-toe. A stealth-meter UI slider pops up.)",
+          "Hero: Slowly... slowly... do NOT step on the—",
+          "(CRACK. A twig. The loudest twig in recorded history.)",
+          "Hero: ...twig."
+        ]
+      },
+      {
+        label: "Equip the Laser-Pointer Goggles and blast it awake.",
+        action: "battle_intro",
+        result: [
+          "Hero: Power tools it is. (activates Laser-Pointer Goggles)",
+          "(A flash-effect battle intro sequence begins!)",
+          "Hero: WAKE UP, SLEEPY!",
+          "(The giant creature wakes up VERY angry.)",
+          "Hero: ...I may have overcorrected."
+=== World creatures (overworld NPCs) ===
+143

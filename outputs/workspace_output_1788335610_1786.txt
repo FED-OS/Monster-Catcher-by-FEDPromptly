@@ -1,0 +1,11 @@
+        if (MOVES[mk]) m.pp[mk] = MOVES[mk].pp;
+      });
+    }
+  });
+}
+
+// Record the current location as the last healing center visited.
+// Called when the player uses a healing center so that a blackout
+// warps them back here.
+function recordHealLocation() {
+  player.lastHealMap = world.currentMap;

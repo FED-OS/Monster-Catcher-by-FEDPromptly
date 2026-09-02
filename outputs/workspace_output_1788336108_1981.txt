@@ -1,0 +1,7 @@
+Use see-image to view: /workspace/.screenshots/step_235.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_236.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_237.png
+=== END ===
+Result: JS result: main|Sparkit used Tackle!

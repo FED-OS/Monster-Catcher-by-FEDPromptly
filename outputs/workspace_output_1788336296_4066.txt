@@ -1,0 +1,4 @@
+Result: JS result: popup+heal triggered
+Screenshot: /workspace/.screenshots/step_274.png
+Use see-image to view: /workspace/.screenshots/step_274.png
+=== END ===

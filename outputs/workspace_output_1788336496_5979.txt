@@ -1,0 +1,33 @@
+=== File count ===
+23
+=== Line count ===
+15616
+=== HTML lines ===
+46 index.html
+=== CSS lines ===
+97 style.css
+=== Species count ===
+179
+=== Maps ===
+name: "Mossmere Hollow"
+name: "Thorne Lab"
+name: "Route 1"
+name: "Verdantown"
+name: "Healing Center"
+name: "Verdantown Mart"
+name: "Route 2"
+name: "Frostpeak Cave"
+name: "Icicle City"
+name: "Icicle Gym"
+name: "Icicle Healing Center"
+name: "Scorching Volcano"
+name: "Neon-Cyber City"
+name: "Enchanted Crystal Forest"
+name: "Forgotten Junk Wasteland"
+name: "Giga-Thok's Hoard"
+name: "Glacial Peak Mountains"
+name: "Abyssal Trench"
+name: "Stormy Savanna"
+name: "Moonlight Marsh"
+=== Moves count ===
+102

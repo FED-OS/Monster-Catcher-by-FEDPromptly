@@ -1,0 +1,25 @@
+Use see-image to view: /workspace/.screenshots/step_198.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_199.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_200.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_201.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_202.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_203.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_204.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_205.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_206.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_207.png
+=== END ===
+Use see-image to view: /workspace/.screenshots/step_208.png
+=== END ===
+Screenshot: /workspace/.screenshots/step_209.png
+Use see-image to view: /workspace/.screenshots/step_209.png
+=== END ===

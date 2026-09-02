@@ -1,0 +1,4 @@
+Result: JS result: menu
+Screenshot: /workspace/.screenshots/step_279.png
+Use see-image to view: /workspace/.screenshots/step_279.png
+=== END ===
