@@ -1,170 +1,143 @@
-# Contributing to Monster Catcher — Verdale Region
+# Contributing to FEDMON: NO MERCY
 
-First off — **thank you** for being interested in contributing! This is a passion project built to show that complete, polished games can be made with pure web technologies. Whether you're fixing a bug, adding a creature, improving the art, or just tightening up the docs, every contribution matters.
+Thanks for wanting to help. The project is small and indie — every contribution matters.
 
----
-
-## 🎯 Ways to Contribute
-
-### 🐛 Bug Reports
-Found a bug? Open an issue with:
-1. A clear title describing the problem
-2. Steps to reproduce (be specific — which map, which monster, which action)
-3. Expected behavior vs. actual behavior
-4. Your browser/OS and whether you're playing in-browser or via Electron
-5. Screenshots if applicable
-
-### ✨ Feature Requests
-Have an idea for a new feature? Open an issue with the `enhancement` label and describe:
-- What the feature does
-- Why it would improve the game
-- Any ideas on how it could be implemented
-
-### 🎨 Content Contributions
-The game is always hungry for more content:
-- **New creatures** — add a species entry to `js/monsters.js` and a procedural sprite design to `js/sprites.js`
-- **New moves** — add entries to the `MOVES` object in `js/monsters.js`
-- **New maps** — add a map definition to `js/world.js` and connect it via warps
-- **New dialogue** — add branching scenes to `js/dialogue.js`
-- **New quirks** — add personality quirks to `js/quirks.js`
-
-### 💻 Code Contributions
-- Performance optimizations
-- UI/UX improvements
-- New particle effects or screen effects
-- Accessibility improvements
-- Cross-browser compatibility fixes
+> **The game is brutal. The community is not.** Read the [Code of Conduct](CODE_OF_CONDUCT.md) first.
 
 ---
 
-## 🛠️ Development Setup
+## Quick start
 
 ```bash
-# Clone the repo
-git clone <your-fork-url>
-cd monstercatcher
+# 1. Fork & clone
+git clone https://github.com/FED-OS.git
+cd fedmon-no-mercy/fedmon
 
-# Run in browser (no build step needed)
-python3 -m http.server 9090
-# Open http://localhost:9090/
+# 2. Serve locally
+python3 -m http.server 8765
+# open http://localhost:8765/index.html
 
-# Or run as desktop app
-npm install
-npm start
+# 3. Make your changes to index.html / style.css / script.js
+
+# 4. Verify (no build step!)
+#    - Page renders, no console errors (F12)
+#    - Test desktop + 900px + 560px widths
+#    - prefers-reduced-motion still respected
+
+# 5. Commit & push, then open a PR using the template
 ```
 
-### Syntax Checking
-
-Before submitting, verify your changes don't break any modules:
-
-```bash
-for f in js/*.js; do node --check "$f" && echo "OK: $f" || echo "FAIL: $f"; done
-```
-
-All 22 modules must pass with zero errors.
+No `npm install`. No build. No dependencies. You edit files, refresh the browser.
 
 ---
 
-## 📋 Coding Standards
+## What you can contribute
 
-### JavaScript Style
-- **Vanilla JS only** — no frameworks, no bundlers, no transpilers. The game loads modules via `<script>` tags in `index.html`.
-- **No ES modules** — use plain `function` declarations and global variables (the game predates module adoption for maximum compatibility)
-- **2-space indentation**
-- **Descriptive names** — `spawnParticle`, `drawBattlePlatform`, `firstUsableParty` rather than `sp`, `dbp`, `fup`
-- **Comment your code** — header comments at the top of each file explaining its purpose, and inline comments for non-obvious logic
-
-### Adding a New Creature
-
-1. **Define the species** in `js/monsters.js` inside the `SPECIES` object:
-```javascript
-mycreature: {
-  name: "MyCreature",
-  type: "pyro",           // or ["pyro", "frost"] for dual-type
-  ability: "blaze",
-  baseHp: 45, baseAtk: 55, baseDef: 40, baseSpd: 65,
-  catchRate: 120,
-  xpGroup: "mediumFast",
-  moves: ["scratch", "ember"],
-  learnset: { 7: "growl", 12: "firefang" },
-  evolvesTo: "mycreature2",
-  evolveLevel: 16,
-  color: "#f87838",
-  shape: "quadruped"
-}
-```
-
-2. **Design the sprite** in `js/sprites.js` — add an entry to `SPECIES_DESIGNS64` using the procedural pixel-art system. The sprite is drawn at 64×64 resolution using `fillRect` calls on a pixel grid.
-
-3. **Add it to encounters** — add the species key to a map's `encounters` array in `js/world.js`.
-
-4. **Test** — run the game, encounter the creature in the wild, battle it, catch it, and verify it appears in the Monstrodex.
-
-### Adding a New Map
-
-1. Define the map in `js/world.js` with a tile grid, encounters, warps, and NPCs
-2. Connect it to an existing map via a warp tile
-3. Test walking to and from the new map
+| Type | How |
+|------|-----|
+| 🐛 Bug fix (page) | Open an issue first if non-trivial; small fixes can go straight to PR |
+| ✨ New section / interaction | **Open an issue or discussion first** — see "Structural changes" below |
+| 🎨 Visual polish | Allowed, but see ADR-007 — no restyled clones of prior layouts |
+| 📝 Docs | README, FAQ, ROADMAP, ADRs — PRs welcome |
+| 🔧 CI / tooling | Workflows, templates, checks |
+| ♿ Accessibility | Always welcome (ARIA, reduced-motion, keyboard nav) |
+| 🌐 Localization | Not yet wired; discuss in Discussions first |
+| 📖 Lore / design | Discussions, not PRs (creative direction is lead-maintainer-led) |
 
 ---
 
-## 🔄 Pull Request Process
+## The rules (read these)
 
-1. **Fork** the repository and create your branch from `main`:
-   ```bash
-   git checkout -b feature/my-awesome-feature
-   ```
+These are enforced in review. Violating them will get a PR closed.
 
-2. **Make your changes** following the coding standards above
-
-3. **Test thoroughly** — play the game and verify your changes work without breaking existing functionality
-
-4. **Run syntax checks** — all 22 JS modules must pass `node --check`
-
-5. **Commit with a clear message**:
-   ```bash
-   git commit -m "Add Pyrothorn evolution line with volcanic sprite design"
-   ```
-
-6. **Push and open a PR** — describe what you changed and why, and reference any related issues
-
-7. **Be patient and responsive** — we'll review your PR as soon as possible and may suggest changes
+1. **Vanilla only.** No frameworks, no npm, no build step, no CDNs for core assets. (See [ADR-001](ADR.md), [ADR-002](ADR.md).)
+2. **No reused layouts.** A visual redesign must change the *structure*, not just restyle. Document the composition change in your PR. Restyled clones of prior layouts are rejected. (See [ADR-007](ADR.md).)
+3. **No external core assets.** Grain = inline SVG; sprites = canvas/CSS; fonts = system stack.
+4. **No secrets.** Never commit API keys, tokens, personal data.
+5. **Respect accessibility.** `prefers-reduced-motion` must be honored. Custom cursor disables on coarse pointers. Test responsive breakpoints (900px, 560px).
+6. **No racially coded content.** In names, lore, locations, or discussion. (See [ADR-005](ADR.md).)
+7. **Adult themes stay in-fiction.** They don't extend to how you treat people. (See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).)
+8. **Don't delete easter eggs** (F-key glitch, console logs) without explicit approval.
+9. **Don't soften the aesthetic.** Red/black/monospace/grain is the point. No pastel rewrites.
+10. **Verify before you PR.** Open the page in a browser. Confirm no console errors. Don't claim "done" without checking.
 
 ---
 
-## 🏗️ Architecture Quick Reference
+## Structural changes (important)
 
-| Module | Responsibility |
-|--------|---------------|
-| `constants.js` | Screen dimensions, tile size, color palette, game states |
-| `palettes.js` | Theme palettes and color ramps |
-| `elements.js` | Elemental type definitions, abilities, ultimates |
-| `monsters.js` | Species data, moves, items, stats, evolution |
-| `sprites.js` | Procedural sprite rendering engine (64×64) |
-| `world.js` | Maps, tile definitions, warp connections |
-| `biomes.js` | Special biome zones with weather effects |
-| `player.js` | Player state, movement, save/load system |
-| `worldcreatures.js` | Overworld NPCs, encounters |
-| `battle.js` | Turn-based battle engine |
-| `boss.js` | Giga-Thok multi-phase boss battle |
-| `menu.js` | In-game menus |
-| `dialogue.js` | Branching dialogue system |
-| `story.js` | Main story progression |
-| `characters.js` | NPC definitions |
-| `quirks.js` | Creature personality quirks |
-| `powerups.js` | Items and equipment |
-| `particles.js` | Particle engine (v5.0) |
-| `effects.js` | Screen effects (v5.0) |
-| `gamepad.js` | Controller input (v5.0) |
-| `audio.js` | Procedural Web Audio sound effects |
-| `main.js` | Main game loop, state machine, rendering |
+If your change alters the page **composition** (adds/removes/reorders sections, changes the rail, restructures the combat HUD, changes the snap model):
+
+1. **Open an issue or discussion first.** Don't open a structural PR cold.
+2. **Get lead-maintainer sign-off** on the direction.
+3. **In the PR, describe what's structurally new** — the PR template asks for this explicitly.
+4. **Reference the relevant ADR** or propose a new one if it's a significant architectural shift.
+
+This is non-negotiable. The maintainer has rejected restyled clones before; the policy exists to prevent that churn.
 
 ---
 
-## 💬 Questions?
+## Code style
 
-Feel free to open an issue with the `question` label if you need help understanding the codebase or getting set up. We're happy to help!
+It's vanilla, so style is light:
+
+- **JS:** Wrap in an IIFE (`(function(){ 'use strict'; ... })();`). No globals leaking. Use `const`/`let`, not `var`. Comment sections with banner comments.
+- **CSS:** Use CSS custom properties (`--var`) for colors/sizes. Mobile-first where practical. No `!important` without a comment explaining why.
+- **HTML:** Semantic elements (`section`, `article`, `aside`, `nav`). Alt text on any images. ARIA where interactive elements aren't native controls.
+- **Indentation:** 2 spaces. No tabs mixed with spaces.
+
+You don't need a linter installed — CI handles syntax checks. Just write clean code.
 
 ---
 
-*Happy coding, and thanks for making the Verdale Region even better! 🌿🔥💧*
+## Commit messages
+
+- Imperative subject: `Add arrest-mechanic card to mech deck`
+- Reference issues in the body: `Closes #42` / `Refs #17`
+- One logical change per commit
+- No `@mentions` of maintainers in commit messages
+
+---
+
+## Pull request process
+
+1. **Fill out the [PR template](.github/PULL_REQUEST_TEMPLATE.md)** completely.
+2. **Self-review** your diff before requesting review.
+3. **Be responsive** to feedback. Disagreements are fine; defensiveness isn't.
+4. **Don't force-push** after review starts (it resets the conversation). Rebase cleanly instead.
+5. **CI must pass.** If a check fails, fix it — don't disable the check.
+6. A maintainer merges. You don't merge your own PR unless you're a maintainer on a routine change.
+
+---
+
+## Reporting bugs & features
+
+Use the issue templates:
+- 🐛 [Bug report](.github/ISSUE_TEMPLATE/bug_report.md)
+- ✨ [Feature request](.github/ISSUE_TEMPLATE/feature_request.md)
+- 📋 [Custom](.github/ISSUE_TEMPLATE/custom.md)
+
+One issue = one bug or one feature. Search before opening.
+
+---
+
+## Security
+
+**Do not open a public issue for security vulnerabilities.** See [SECURITY.md](SECURITY.md) for private reporting.
+
+---
+
+## Recognition
+
+Contributors with merged PRs are listed in [AUTHORS.md](AUTHORS.md) (optional — opt in via your PR).
+
+---
+
+## Questions?
+
+Open a [discussion](../../discussions). We're friendly (the game isn't).
+
+<a href='https://ko-fi.com/fedjumpergaming' target='_blank'>
+    <img height='36' style='border:0px;height:36px;' src='https://ko-fi.com/img/githubbutton_sm.svg' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+</a>
+
+*No gyms. No badges. No mercy. But a little kindness in the PRs.*

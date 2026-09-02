@@ -1,43 +1,89 @@
-# Monster Catcher — GBA Graphics Upgrade to "Nintendo Level"
+# todo
 
-## Goal
-Upgrade the existing Monster Catcher game's graphics to match the polished GBA/Pokémon-style aesthetic shown in the two reference screenshots (gba-overworld-preview.png and gba-battle-preview.png), and package it as a desktop app.
+Live task list for the FEDMON: NO MERCY repository. Maintained as work progresses.
 
-## Analysis Complete
-- Current game: ~12,800 lines, 19 JS modules, 240×160 GBA canvas, procedural pixel art
-- Target: Rich layered battle backgrounds (mountains/forest/lake), detailed shaded buildings, lush tilesets, polished monster sprites, authentic GBA UI
+> This is the project's working task tracker — not the agent's internal scratchpad. Edit via PR or direct commit for routine items.
 
-## Tasks
+---
 
-### Phase 1: Copy game to working directory & set up project
-- [x] Extract and understand existing game
-- [x] Copy game files to /workspace/monstercatcher/ working dir
-- [x] Set up Electron desktop app wrapper structure
+## ✅ Done
 
-### Phase 2: Upgrade overworld graphics (match gba-overworld-preview.png)
-- [x] Upgrade grass tiles (richer texture, multiple shades, scattered detail)
-- [x] Upgrade tree tiles (larger rounded foliage, shading, dithering)
-- [x] Upgrade path/dirt tiles (textured crossroads)
-- [x] Upgrade water tiles (animated, shoreline edges, pond bordering)
-- [x] Add building rendering (detailed houses with roofs, doors, windows, Pokémon Center with emblem, Mart, Gym, Lab)
-- [x] Upgrade flowers, fences, signs, ledges detail
-- [x] Upgrade player & NPC overworld sprites (more detail, shading)
+- [x] v2 promo page composition (fixed rail + 6 scroll-snap sections)
+- [x] Interactive canvas combat HUD
+- [x] Custom cursor + SVG grain + easter eggs
+- [x] Responsive + reduced-motion support
+- [x] GitHub issue/PR templates
+- [x] Community docs (CONTRIBUTING, CODE_OF_CONDUCT, SUPPORT, FAQ)
+- [x] Project docs (README, ROADMAP, ADR, SUMMARY)
+- [x] AI-agent guidance (CLAUDE.md, AGENTS.md)
+- [x] Meta docs (AUTHORS, MAINTAINERS, GOVERNANCE, NOTICE, COPYING, CITATIONS, PRICING)
+- [x] Build/deploy/install docs (BUILD, DEPLOYMENT, INSTALL, usage)
+- [x] CHANGELOG initialized
+- [x] CI workflows scaffolded (.github/workflows/*)
+- [x] .gitignore, LICENSE, SECURITY.md
+- [x] Ko-fi support button integrated in community docs
 
-### Phase 3: Upgrade battle graphics (match gba-battle-preview.png)
-- [x] Rich layered battle background (sky, clouds, distant mountains, forest, lake, foreground rocks)
-- [x] Detailed battle platforms (textured circular arena pads)
-- [x] Polish HP info boxes (GBA-style bordered panels, type badges)
-- [x] Upgrade monster battle sprites (drop shadows, idle bob animation, type badges)
+---
 
-### Phase 4: Upgrade monster sprites (detailed pixel art)
-- [x] Enhance procedural sprite designs for key species (starter lines + common encounters)
-- [x] Improve sprite shading/outlines for GBA-quality look
+## 🚧 In progress
 
-### Phase 5: Package as desktop app (Electron)
-- [x] Create Electron main process + package.json
-- [x] Test the app launches
-- [x] Build/verify the desktop app
+- [x] Replace `YOUR_USERNAME` placeholders with real GitHub username / Ko-fi handle across all docs
+- [x] Replace contact email in CODE_OF_CONDUCT.md with real contact
+- [x] Generate `social-image.png` (Open Graph preview) and add `og:image` meta
+- [x] Wire up wishlist → ko-fi.com/fedjumpergaming, repo → github.com/FED-OS, game → pokejumper.org/fedmon
 
-### Phase 6: Verify & deliver
-- [x] Screenshot the upgraded game (overworld + battle) and compare to targets
-- [x] Final verification and packaging
+---
+
+## 📋 Planned
+
+### Promo page
+- [ ] Add ARIA labels on combat buttons and rail readouts
+- [ ] Keyboard navigation for mech deck (arrow keys)
+- [ ] Lighthouse pass (Performance ≥ 95, Accessibility ≥ 95)
+- [ ] sitemap.xml + robots.txt for GitHub Pages
+- [ ] manifest.json + theme-color meta
+- [ ] Creature dex page (beyond the 3 starters)
+- [ ] Interactive daily-burn calculator
+- [ ] Heat-meter mini-game in the rail
+- [ ] Lore archive section
+- [ ] Wishlist capture form (Formspree or similar, no backend)
+
+### Release & community
+- [ ] First public devlog post
+- [ ] Steam wishlist page live
+- [ ] Press kit (screenshots, trailer, fact sheet)
+- [ ] Discord / community space
+- [ ] Closed pre-alpha playtest signups
+
+### Game (separate / future)
+- [ ] Core creature battle system (trainer + creature dual combat)
+- [ ] Stamina economy + no-free-healing rule
+- [ ] Fist/melee trainer skills
+- [ ] 3 starters + evolution chains
+- [ ] Property ownership + foreclosure
+- [ ] Heat & arrest system
+- [ ] Car + scooter mobility (fuel/battery)
+- [ ] Phone apps (bounties, banking, black market, loan sharks)
+
+---
+
+## 💭 Exploring
+
+- [ ] Localization framework (when? which languages?)
+- [ ] Console port feasibility
+- [ ] Profit-share model if revenue warrants (document in GOVERNANCE.md)
+- [ ] Committee governance if maintainer count grows
+
+---
+
+## Non-goals (not doing)
+
+- ❌ Free healing
+- ❌ Softening the aesthetic for mass appeal
+- ❌ Racially coded lore/names/locations
+- ❌ Microtransactions / loot boxes
+- ❌ Frameworks / build steps for the promo page
+
+---
+
+*Update this file as work moves. Strike completed items with `[x]`; don't delete them.*
