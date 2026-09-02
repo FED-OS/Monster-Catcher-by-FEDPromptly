@@ -136,6 +136,9 @@ function endBattle() {
   battle = null;
   game.state = GAME_STATE.OVERWORLD;
 
+  // ---- HERO: auto-save after battle ----
+  if (player.starterChosen) autoSave();
+
   if (dialogueQueueAfterBattle) {
     startDialogue(dialogueQueueAfterBattle);
     dialogueQueueAfterBattle = null;
@@ -628,6 +631,33 @@ function executeMove(attacker, defender, moveKey, isPlayer, cb) {
   battle.flashTimer = 4;
   sfxHit();
 
+  // ---- HERO: particle burst on hit ----
+  const targetCx = isPlayer ? 40 : 128;
+  const targetCy = isPlayer ? 100 : 36;
+  const moveType = (move.type || "normal").toLowerCase();
+  let particleColor = "#f8d818";
+  if (moveType === "fire") particleColor = "#f87838";
+  else if (moveType === "water") particleColor = "#68d0f8";
+  else if (moveType === "grass") particleColor = "#58c858";
+  else if (moveType === "electric") particleColor = "#f8d818";
+  else if (moveType === "ice") particleColor = "#98d8f8";
+  else if (moveType === "poison") particleColor = "#a040a0";
+  else if (moveType === "ghost" || moveType === "shadow") particleColor = "#7858a8";
+  else if (moveType === "psychic" || moveType === "magic") particleColor = "#f85888";
+  if (result.crit) {
+    if (typeof burstHitStars === "function") burstHitStars(targetCx, targetCy, 8, particleColor);
+    if (typeof spawnFloatingText === "function") spawnFloatingText(targetCx, targetCy - 12, "CRITICAL!", "#f83838");
+    if (typeof screenFlash === "function") screenFlash("#ffffff", 0.4, 0.08);
+  } else {
+    if (typeof burstSparks === "function") burstSparks(targetCx, targetCy, 6, particleColor);
+  }
+  // Effectiveness floating text
+  if (result.mult > 1.5 && typeof spawnFloatingText === "function") {
+    spawnFloatingText(targetCx, targetCy - 20, "SUPER EFFECTIVE!", "#f87838");
+  } else if (result.mult < 0.75 && result.mult > 0 && typeof spawnFloatingText === "function") {
+    spawnFloatingText(targetCx, targetCy - 20, "NOT VERY EFFECTIVE", "#888888");
+  }
+
   defender.hp = Math.max(0, defender.hp - result.dmg);
 
   let note = effectivenessPhrase(result.mult);
@@ -780,6 +810,10 @@ function attemptCatch(ballKey) {
     if (successes >= 2 || Math.random() < chance) {
       battle.message = `Gotcha! ${battle.enemy.name} was caught!`;
       sfxCatch();
+      // ---- HERO: catch success burst ----
+      if (typeof burstCatchSuccess === "function") burstCatchSuccess(128, 36);
+      if (typeof burstSparkles === "function") burstSparkles(128, 36, 12, "#f8f878");
+      if (typeof screenFlash === "function") screenFlash("#f8f878", 0.3, 0.04);
       const caught = battle.enemy;
       const added = addMonsterToParty(caught);
       if (!added) {
@@ -831,6 +865,10 @@ function handleEnemyFainted() {
   const defeatedLevel = battle.enemy.level;
   queueMessage(`${battle.isTrainerBattle ? "" : "Wild "}${defeatedName} fainted!`);
   battle.shakeTimer = 6;
+  // ---- HERO: faint smoke + sparkles ----
+  if (typeof burstSmoke === "function") burstSmoke(128, 36, 8, "#a8a8a8");
+  if (typeof burstSparkles === "function") burstSparkles(128, 30, 6, "#f8f878");
+  if (typeof screenFlash === "function") screenFlash("#f8f8f8", 0.2, 0.05);
 
   // Mega-expansion: apply quirk on-KO for player monster
   applyQuirkOnKo(battle.player);
@@ -869,7 +907,13 @@ function handleEnemyFainted() {
   setTimeout(() => {
     let msg = `${battle.player.name} gained ${events.gained} XP!`;
     queueMessage(msg);
-    if (events.leveledUp) queueMessage(`${battle.player.name} grew to Lv${battle.player.level}!`);
+    if (events.leveledUp) {
+      queueMessage(`${battle.player.name} grew to Lv${battle.player.level}!`);
+      // ---- HERO: level-up burst ----
+      if (typeof burstLevelUp === "function") burstLevelUp(40, 100);
+      if (typeof spawnFloatingText === "function") spawnFloatingText(40, 88, "LEVEL UP!", "#f8d838");
+      if (typeof screenFlash === "function") screenFlash("#f8d838", 0.15, 0.03);
+    }
     if (events.learnedMove) queueMessage(`${battle.player.name} learned ${MOVES[events.learnedMove].name}!`);
     if (events.evolvedTo) queueMessage(`What? ${battle.player.name} is evolving! ...It evolved into ${events.evolvedTo}!`);
     battle.outcome = "won";
@@ -887,6 +931,10 @@ function handleEnemyFainted() {
 function handlePlayerFainted() {
   queueMessage(`${battle.player.name} fainted!`);
   sfxFaint();
+  // ---- HERO: player faint smoke + sparkles ----
+  if (typeof burstSmoke === "function") burstSmoke(40, 100, 8, "#a8a8a8");
+  if (typeof burstSparkles === "function") burstSparkles(40, 94, 6, "#f8f878");
+  if (typeof screenFlash === "function") screenFlash("#f83838", 0.2, 0.05);
   const next = player.party.find(m => m.hp > 0);
   if (next) {
     setTimeout(() => {
@@ -927,6 +975,18 @@ function queueMessage(msg) {
 //  RENDER (GBA Edition — full battle scene with backgrounds,
 //  platforms, polished HP boxes, and themed terrain)
 // ---------------------------------------------------------------
+// Drop shadow beneath a battle monster (soft ellipse, grounded feel)
+function drawMonsterShadow(ctx, cx, baseY, rx, ry) {
+  ctx.fillStyle = "rgba(0,0,0,0.28)";
+  ctx.beginPath();
+  ctx.ellipse(cx, baseY, rx, ry, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "rgba(0,0,0,0.18)";
+  ctx.beginPath();
+  ctx.ellipse(cx, baseY, rx + 2, ry + 1, 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
 function drawBattle(ctx) {
   // shake offset
   let sx = 0, sy = 0;
@@ -950,9 +1010,12 @@ function drawBattle(ctx) {
 
   // ---- Enemy (top-right) on a platform ----
   drawBattlePlatform(ctx, 96, 48, 60, 16, false);
-  drawElementalAura(ctx, battle.enemy, 104, 12, 48, 48);
-  drawMonsterSprite(ctx, battle.enemy, 104, 12, 48);
-  drawStatusComicEyes(ctx, battle.enemy, 104, 12, false);
+  // idle bob (subtle vertical oscillation)
+  const eBob = Math.sin(Date.now() / 380) * 1;
+  drawMonsterShadow(ctx, 128, 60, 22, 5);
+  drawElementalAura(ctx, battle.enemy, 104, 12 + eBob, 48, 48);
+  drawMonsterSprite(ctx, battle.enemy, 104, 12 + eBob, 48);
+  drawStatusComicEyes(ctx, battle.enemy, 104, 12 + eBob, false);
 
   // ball animation
   if (battle.ballAnim > 0) {
@@ -972,9 +1035,11 @@ function drawBattle(ctx) {
 
   // ---- Player (bottom-left) on a platform ----
   drawBattlePlatform(ctx, 8, 120, 64, 18, true);
-  drawElementalAura(ctx, battle.player, 16, 80, 48, 48);
-  drawMonsterSprite(ctx, battle.player, 16, 80, 48);
-  drawStatusComicEyes(ctx, battle.player, 16, 80, true);
+  const pBob = Math.sin(Date.now() / 360 + 1.2) * 1;
+  drawMonsterShadow(ctx, 40, 124, 24, 5);
+  drawElementalAura(ctx, battle.player, 16, 80 + pBob, 48, 48);
+  drawMonsterSprite(ctx, battle.player, 16, 80 + pBob, 48);
+  drawStatusComicEyes(ctx, battle.player, 16, 80 + pBob, true);
 
   // player HP box (bottom-right)
   drawHpBox(ctx, 120, 76, battle.player.name, battle.player.hp, battle.player.maxHp, battle.player.level, battle.player, false);
@@ -999,6 +1064,9 @@ function drawBattle(ctx) {
     drawBossUI(ctx);
   }
 
+  // ---- HERO: particles in battle (drawn above sprites, below textbox) ----
+  if (typeof drawParticles === "function") drawParticles(ctx);
+
   ctx.restore();
 
   // Mega-expansion: impact frames (drawn after restore so they cover everything)
@@ -1013,6 +1081,9 @@ function drawBattle(ctx) {
   if (tickEvolutionSequence()) {
     drawEvolutionSequence(ctx);
   }
+
+  // ---- HERO: full-screen effects (flash, floating text) ----
+  if (typeof drawAllEffects === "function") drawAllEffects(ctx);
 }
 
 // ---- Battle background (themed by map terrain) ----
@@ -1065,28 +1136,8 @@ function drawBattleBackground(ctx) {
     ctx.fillRect(120, 48, 36, 24);
     ctx.fillRect(180, 54, 28, 18);
   } else {
-    // outdoor grassy battlefield
-    ctx.fillStyle = sky1;
-    ctx.fillRect(0, 0, SCREEN_W, 64);
-    ctx.fillStyle = sky2;
-    ctx.fillRect(0, 0, SCREEN_W, 32);
-    // distant hills
-    ctx.fillStyle = COLOR.grassDark;
-    ctx.fillRect(0, 56, SCREEN_W, 12);
-    ctx.fillStyle = COLOR.grassMid;
-    ctx.fillRect(20, 50, 40, 18);
-    ctx.fillRect(120, 48, 50, 20);
-    ctx.fillRect(190, 52, 40, 16);
-    // grassy ground
-    ctx.fillStyle = COLOR.grassLight;
-    ctx.fillRect(0, 64, SCREEN_W, SCREEN_H - 64);
-    ctx.fillStyle = COLOR.grassMid;
-    ctx.fillRect(0, 100, SCREEN_W, SCREEN_H - 100);
-    // grass detail
-    ctx.fillStyle = COLOR.tallGrass1;
-    for (let i = 0; i < 12; i++) {
-      ctx.fillRect((i * 21) % SCREEN_W, 110 + ((i * 13) % 30), 2, 3);
-    }
+    // ---- outdoor grassy battlefield: rich layered GBA scene ----
+    drawOutdoorBattleScene(ctx, sky1, sky2);
   }
 
   // weather overlay
@@ -1099,83 +1150,270 @@ function drawBattleBackground(ctx) {
   }
 }
 
+// ---- Rich layered outdoor battle scene (sky, clouds, mountains,
+//      forest, lake, foreground grass & rocks) — matches GBA ref ----
+function drawOutdoorBattleScene(ctx, sky1, sky2) {
+  const f = (typeof worldAnimFrame !== "undefined") ? worldAnimFrame : 0;
+  // SKY — vertical gradient bands
+  ctx.fillStyle = sky2;
+  ctx.fillRect(0, 0, SCREEN_W, 18);
+  ctx.fillStyle = sky1;
+  ctx.fillRect(0, 12, SCREEN_W, 30);
+  ctx.fillStyle = "#90d0f0";
+  ctx.fillRect(0, 30, SCREEN_W, 18);
+
+  // CLOUDS — soft pixel clouds drifting
+  drawBattleCloud(ctx, 20 + (f >> 3) % 8, 8, 22, 8);
+  drawBattleCloud(ctx, 120 + (f >> 4) % 6, 14, 28, 7);
+  drawBattleCloud(ctx, 200 - (f >> 3) % 8, 6, 18, 7);
+
+  // DISTANT MOUNTAINS — snow-capped peaks
+  // back ridge (lighter, hazy)
+  ctx.fillStyle = "#a8b8c8";
+  drawMountainShape(ctx, 0, 52, 90, 22, 30);
+  drawMountainShape(ctx, 70, 50, 110, 24, 50);
+  drawMountainShape(ctx, 150, 53, 100, 21, 28);
+  // snow caps on peaks
+  ctx.fillStyle = "#f0f4f8";
+  ctx.fillRect(28, 36, 10, 6);
+  ctx.fillRect(30, 34, 6, 2);
+  ctx.fillRect(110, 34, 14, 8);
+  ctx.fillRect(113, 32, 8, 2);
+  ctx.fillRect(190, 38, 10, 6);
+  // front ridge (darker, closer)
+  ctx.fillStyle = "#7888a0";
+  drawMountainShape(ctx, -10, 60, 80, 18, 20);
+  drawMountainShape(ctx, 90, 58, 100, 20, 35);
+  drawMountainShape(ctx, 180, 60, 80, 18, 22);
+
+  // LAKE — middle distance blue water band
+  ctx.fillStyle = "#4898d8";
+  ctx.fillRect(0, 62, SCREEN_W, 10);
+  ctx.fillStyle = "#68b0e8";
+  ctx.fillRect(0, 62, SCREEN_W, 4);
+  // lake shimmer
+  ctx.fillStyle = "#a8d8f8";
+  ctx.fillRect((f >> 2) % SCREEN_W, 65, 6, 1);
+  ctx.fillRect((SCREEN_W - (f >> 2) % 60), 67, 8, 1);
+  ctx.fillStyle = "#3880c8";
+  ctx.fillRect(0, 70, SCREEN_W, 2);
+
+  // DISTANT FOREST — dark green tree-line on both sides
+  // atmospheric haze blend (lighter green near horizon for depth)
+  ctx.fillStyle = "#389838";
+  ctx.fillRect(0, 58, 30, 14);
+  ctx.fillRect(210, 58, 30, 14);
+  // hazy tree-line (distant, lighter)
+  ctx.fillStyle = "#48a848";
+  for (let i = 0; i < 6; i++) ctx.fillRect(i * 5, 56 + (i % 2), 4, 4);
+  for (let i = 0; i < 6; i++) ctx.fillRect(210 + i * 5, 56 + (i % 2), 4, 4);
+  ctx.fillStyle = "#287828";
+  for (let i = 0; i < 5; i++) ctx.fillRect(i * 6 + 2, 60, 4, 6);
+  for (let i = 0; i < 5; i++) ctx.fillRect(212 + i * 6, 60, 4, 6);
+  // atmospheric haze band (fades distant elements into sky)
+  ctx.fillStyle = "rgba(180,210,230,0.25)";
+  ctx.fillRect(0, 58, SCREEN_W, 4);
+
+  // GRASSY GROUND — foreground (where platforms sit)
+  ctx.fillStyle = COLOR.grassMid;
+  ctx.fillRect(0, 72, SCREEN_W, SCREEN_H - 72);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(0, 72, SCREEN_W, 14);
+  ctx.fillStyle = COLOR.grassDark;
+  ctx.fillRect(0, 120, SCREEN_W, SCREEN_H - 120);
+  // grass texture blades
+  ctx.fillStyle = COLOR.tallGrass1;
+  for (let i = 0; i < 16; i++) {
+    const gx = (i * 17 + 3) % SCREEN_W;
+    const gy = 100 + ((i * 11) % 40);
+    ctx.fillRect(gx, gy, 1, 3);
+    ctx.fillRect(gx + 1, gy + 1, 1, 2);
+  }
+  ctx.fillStyle = COLOR.tallGrassLite;
+  for (let i = 0; i < 8; i++) {
+    ctx.fillRect((i * 31 + 5) % SCREEN_W, 95 + ((i * 7) % 30), 1, 1);
+  }
+  // FOREGROUND ROCKS & bushes (scattered, frame the scene)
+  drawBattleRock(ctx, 4, 132, 14);
+  drawBattleRock(ctx, 220, 128, 16);
+  drawBattleBush(ctx, 60, 140, 12);
+  drawBattleBush(ctx, 180, 142, 10);
+  // tiny flowers
+  ctx.fillStyle = COLOR.flowerYellow;
+  ctx.fillRect(40, 136, 1, 1); ctx.fillRect(41, 135, 1, 1);
+  ctx.fillStyle = COLOR.flowerRed;
+  ctx.fillRect(200, 138, 1, 1); ctx.fillRect(201, 137, 1, 1);
+}
+
+// Soft pixel cloud for battle sky
+function drawBattleCloud(ctx, x, y, w, h) {
+  ctx.fillStyle = "#f8fcff";
+  ctx.fillRect(x + 4, y, w - 8, h);
+  ctx.fillRect(x + 2, y + 2, w - 4, h - 4);
+  ctx.fillRect(x, y + 3, w, h - 6);
+  ctx.fillRect(x + 6, y - 2, 6, 3);
+  ctx.fillRect(x + w - 12, y - 1, 6, 3);
+  // shading underside
+  ctx.fillStyle = "#d8e8f8";
+  ctx.fillRect(x + 2, y + h - 2, w - 4, 2);
+}
+
+// Triangular mountain shape (filled)
+function drawMountainShape(ctx, x, baseY, w, h, peakOffset) {
+  const peakX = x + peakOffset;
+  for (let yy = 0; yy < h; yy++) {
+    const halfW = Math.floor((w / 2) * (1 - yy / h));
+    ctx.fillRect(peakX - halfW, baseY - h + yy, halfW * 2, 1);
+  }
+}
+
+// Foreground rock
+function drawBattleRock(ctx, x, y, s) {
+  ctx.fillStyle = COLOR.rockD;
+  ctx.fillRect(x, y, s, s - 2);
+  ctx.fillStyle = COLOR.rock2;
+  ctx.fillRect(x + 1, y + 1, s - 2, s - 4);
+  ctx.fillStyle = COLOR.rock1;
+  ctx.fillRect(x + 2, y + 1, s - 5, 3);
+  ctx.fillStyle = COLOR.rock3;
+  ctx.fillRect(x, y + s - 4, s, 2);
+}
+
+// Foreground bush
+function drawBattleBush(ctx, x, y, s) {
+  ctx.fillStyle = COLOR.treeLeaf4;
+  ctx.fillRect(x, y, s, s);
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(x + 1, y + 1, s - 2, s - 2);
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(x + 2, y + 1, s - 5, 3);
+  ctx.fillStyle = COLOR.treeLeaf1;
+  ctx.fillRect(x + 3, y + 2, 2, 1);
+}
+
 // ---- Battle platform (the oval shadow under each monster) ----
 function drawBattlePlatform(ctx, x, y, w, h, isPlayer) {
-  // elliptical shadow platform (GBA style)
-  ctx.fillStyle = "rgba(0,0,0,0.18)";
-  ctx.beginPath();
-  ctx.ellipse(x + w / 2, y + h / 2, w / 2, h / 2, 0, 0, Math.PI * 2);
-  ctx.fill();
-  // platform top (lighter ellipse)
+  // Textured circular arena pad (GBA style) - layered concentric ellipses with speckle texture + highlight
+  const cx = x + w / 2, cy = y + h / 2, rx = w / 2, ry = h / 2;
   const mapId = world.currentMap;
   const isCave = (mapId === "frostcave" || mapId === "lab" || mapId === "center" || mapId === "shop" || mapId === "gym" || mapId === "gymcenter");
   const isSnow = (mapId === "frostcave" || mapId === "gymtown" || mapId === "gym");
-  let platCol, platColD;
-  if (isCave && !isSnow) { platCol = COLOR.caveFloor1; platColD = COLOR.caveFloor2; }
-  else if (isSnow) { platCol = COLOR.snow2; platColD = COLOR.snowShade; }
-  else { platCol = COLOR.grassMid; platColD = COLOR.grassDark; }
-  ctx.fillStyle = platColD;
-  ctx.beginPath();
-  ctx.ellipse(x + w / 2, y + h / 2 + 2, w / 2 - 2, h / 2 - 2, 0, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.fillStyle = platCol;
-  ctx.beginPath();
-  ctx.ellipse(x + w / 2, y + h / 2, w / 2 - 3, h / 2 - 3, 0, 0, Math.PI * 2);
-  ctx.fill();
+  // pick 4-tone palette per biome
+  let colEdge, colDark, colMid, colTop;
+  if (isCave && !isSnow) { colEdge = COLOR.caveFloor2; colDark = "#5a5a6a"; colMid = COLOR.caveFloor1; colTop = "#b8b8c8"; }
+  else if (isSnow) { colEdge = COLOR.snowShade; colDark = "#c8d8e8"; colMid = COLOR.snow2; colTop = "#f8fcff"; }
+  else { colEdge = COLOR.grassDark; colDark = COLOR.grassDeep; colMid = COLOR.grassMid; colTop = COLOR.grassLight; }
+  // ground shadow (soft drop)
+  ctx.fillStyle = "rgba(0,0,0,0.22)";
+  ctx.beginPath(); ctx.ellipse(cx, cy + 2, rx, ry, 0, 0, Math.PI * 2); ctx.fill();
+  // edge ring (darkest, slightly larger for rim)
+  ctx.fillStyle = colEdge;
+  ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2); ctx.fill();
+  // dark mid ring
+  ctx.fillStyle = colDark;
+  ctx.beginPath(); ctx.ellipse(cx, cy, rx - 2, ry - 2, 0, 0, Math.PI * 2); ctx.fill();
+  // main surface
+  ctx.fillStyle = colMid;
+  ctx.beginPath(); ctx.ellipse(cx, cy, rx - 4, ry - 3, 0, 0, Math.PI * 2); ctx.fill();
+  // speckle texture on surface (deterministic clumps)
+  ctx.fillStyle = colDark;
+  const seed = (cx * 7 + cy * 13) | 0;
+  for (let i = 0; i < 14; i++) {
+    const a = ((seed + i * 37) % 628) / 100;
+    const dr = ((seed + i * 53) % 100) / 100;
+    const px = cx + Math.cos(a) * (rx - 6) * dr;
+    const py = cy + Math.sin(a) * (ry - 5) * dr;
+    ctx.fillRect(Math.round(px), Math.round(py), 1, 1);
+  }
+  // top highlight crescent (upper-left light)
+  ctx.fillStyle = colTop;
+  ctx.beginPath(); ctx.ellipse(cx - 1, cy - 1, rx - 6, ry - 5, 0, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+  // bright specular dots
+  ctx.fillStyle = (isSnow ? "#ffffff" : (isCave && !isSnow ? "#d8d8e8" : COLOR.grassLight));
+  ctx.fillRect(Math.round(cx - rx * 0.45), Math.round(cy - ry * 0.5), 1, 1);
+  ctx.fillRect(Math.round(cx - rx * 0.3), Math.round(cy - ry * 0.6), 1, 1);
+  ctx.fillRect(Math.round(cx - rx * 0.55), Math.round(cy - ry * 0.2), 1, 1);
 }
 
-// ---- GBA-style HP info box ----
+// ---- GBA-style HP info box (polished: beveled panel, type badge, gender dot) ----
 function drawHpBox(ctx, x, y, name, hp, maxHp, level, monster, isEnemy) {
-  const bw = 110, bh = 26;
-  // shadow
-  ctx.fillStyle = "rgba(0,0,0,0.3)";
-  ctx.fillRect(x + 2, y + 2, bw, bh);
-  // border
-  ctx.fillStyle = COLOR.winBorder;
+  const bw = 112, bh = 28;
+  // drop shadow
+  ctx.fillStyle = "rgba(0,0,0,0.28)";
+  ctx.fillRect(x + 2, y + 3, bw, bh);
+  // outer dark frame
+  ctx.fillStyle = "#404858";
   ctx.fillRect(x, y, bw, bh);
-  ctx.fillStyle = COLOR.winBorderLight;
-  ctx.fillRect(x, y, bw, 1);
-  ctx.fillRect(x, y, 1, bh);
-  // interior
+  // beveled light edge (top + left)
+  ctx.fillStyle = "#e8e8f0";
+  ctx.fillRect(x + 1, y + 1, bw - 2, 1);
+  ctx.fillRect(x + 1, y + 1, 1, bh - 2);
+  // beveled dark edge (bottom + right)
+  ctx.fillStyle = "#9098a8";
+  ctx.fillRect(x + 1, y + bh - 2, bw - 2, 1);
+  ctx.fillRect(x + bw - 2, y + 1, 1, bh - 2);
+  // cream interior
   ctx.fillStyle = COLOR.winBg;
-  ctx.fillRect(x + 2, y + 2, bw - 4, bh - 4);
+  ctx.fillRect(x + 3, y + 3, bw - 6, bh - 6);
+  // subtle interior shade band (bottom)
   ctx.fillStyle = COLOR.winBgDark;
-  ctx.fillRect(x + 2, y + bh - 4, bw - 4, 2);
+  ctx.fillRect(x + 3, y + bh - 6, bw - 6, 2);
 
-  // name + level
+  // name
   ctx.fillStyle = COLOR.textDark;
   ctx.font = "7px monospace";
+  ctx.textBaseline = "alphabetic";
   let label = name;
-  // truncate long names
   if (label.length > 10) label = label.slice(0, 9) + ".";
-  ctx.fillText(label, x + 6, y + 10);
-  ctx.fillText("Lv" + level, x + bw - 26, y + 10);
+  ctx.fillText(label, x + 6, y + 11);
+  // gender dot (player: male blue, enemy: female pink placeholder) - small GBA touch
+  // level (right-aligned, with Lv. styling)
+  ctx.font = "7px monospace";
+  const lvTxt = "Lv" + level;
+  ctx.fillText(lvTxt, x + bw - 6 - ctx.measureText(lvTxt).width, y + 11);
+
+  // type badge (compact) under the name on the left
+  if (monster && monster.type1 && typeof drawTypeBadge === "function") {
+    // mini type pill: 20x7
+    const tbx = x + 6, tby = y + 13;
+    const tcol = (typeof ACCENT !== "undefined" && ACCENT[monster.type1]) ? ACCENT[monster.type1] : "#888";
+    ctx.fillStyle = "#181820";
+    ctx.fillRect(tbx - 1, tby, 22, 9);
+    ctx.fillStyle = tcol;
+    ctx.fillRect(tbx, tby + 1, 20, 7);
+    ctx.fillStyle = "rgba(255,255,255,0.3)";
+    ctx.fillRect(tbx, tby + 1, 20, 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "6px monospace";
+    ctx.fillText(monster.type1.toUpperCase().slice(0, 5), tbx + 2, tby + 7);
+  }
 
   // HP bar label
   ctx.font = "6px monospace";
   ctx.fillStyle = COLOR.textDark;
-  ctx.fillText("HP", x + 6, y + 20);
+  ctx.fillText("HP", x + 32, y + 20);
 
   // HP bar
-  const barX = x + 18, barY = y + 15, barW = 70, barH = 6;
+  const barX = x + 44, barY = y + 16, barW = isEnemy ? 58 : 40, barH = 5;
   ctx.fillStyle = COLOR.hpBg;
   ctx.fillRect(barX, barY, barW, barH);
-  ctx.strokeStyle = COLOR.textDark;
-  ctx.lineWidth = 1;
-  ctx.strokeRect(barX, barY, barW, barH);
+  ctx.fillStyle = "#404858";
+  ctx.fillRect(barX, barY, barW, 1);
+  ctx.fillRect(barX, barY, 1, barH);
   const pct = Math.max(0, hp / maxHp);
   ctx.fillStyle = pct > 0.5 ? COLOR.hpGreen : (pct > 0.2 ? COLOR.hpYellow : COLOR.hpRed);
-  ctx.fillRect(barX + 1, barY + 1, Math.floor((barW - 2) * pct), barH - 2);
+  ctx.fillRect(barX + 1, barY + 1, Math.max(0, Math.floor((barW - 2) * pct)), barH - 2);
 
   // HP numbers (player only — enemy hides exact numbers like GBA)
   if (!isEnemy) {
     ctx.fillStyle = COLOR.textDark;
     ctx.font = "6px monospace";
-    ctx.fillText(`${hp}/${maxHp}`, x + bw - 32, y + 20);
+    const hpTxt = `${hp}/${maxHp}`;
+    ctx.fillText(hpTxt, x + bw - 6 - ctx.measureText(hpTxt).width, y + 20);
   }
 
   // status icon
-  if (monster) drawStatusIcon(ctx, monster.status, x + bw - 20, y + 3);
+  if (monster) drawStatusIcon(ctx, monster.status, x + bw - 18, y + 4);
 }
 
 // ---- Battle bottom textbox (GBA-style command window) ----

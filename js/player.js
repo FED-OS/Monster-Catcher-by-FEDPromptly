@@ -95,6 +95,26 @@ function tryMove(dCol, dRow) {
   player.walkTimer = 0;
   setTimeout(() => { player.moving = false; player.walkFrame = 0; }, 90); // tiny step delay for feel
 
+  // ---- HERO: step particle effects ----
+  const px = player.col * TILE + TILE / 2;
+  const py = player.row * TILE + TILE - 2;
+  const map0 = currentMapData();
+  const stepTile = (map0 && map0.grid[newRow]) ? map0.grid[newRow][newCol] : 0;
+  if (isTallGrass(newCol, newRow)) {
+    // grass rustle puff
+    if (typeof burstDust === "function") burstDust(px, py, 3, COLOR.tallGrass2);
+    if (typeof burstDust === "function") burstDust(px - 2, py, 2, COLOR.tallGrassLite);
+  } else if (stepTile === 4 || stepTile === TILE_DEEPWATER || stepTile === TILE_MARSHWATER) {
+    // water splash
+    if (typeof burstSplash === "function") burstSplash(px, py, 4, COLOR.water1);
+  } else if (map0 && map0.biome === "volcano") {
+    // ember puff on volcano ground
+    if (typeof burstEmbers === "function") burstEmbers(px, py, 2, "#f87838");
+  } else if (map0 && (map0.biome === "crystalforest" || map0.biome === "moonmarsh")) {
+    // sparkle on crystal/marsh
+    if (typeof burstSparkles === "function") burstSparkles(px, py, 2, "#a8e8f8");
+  }
+
   // Warp tile?
   const warp = warpAt(newCol, newRow);
   if (warp) {
@@ -157,6 +177,13 @@ function doWarp(warp) {
     world.transitioning = false;
     // Spawn world creatures for the new map
     if (typeof initWorldCreatures === "function") initWorldCreatures();
+    // ---- HERO: auto-save on map transition ----
+    if (player.starterChosen) autoSave();
+    // ---- HERO: show area name popup ----
+    const newMap = currentMapData();
+    if (newMap && newMap.name && typeof showAreaPopup === "function") {
+      showAreaPopup(newMap.name);
+    }
   }, 320);
 }
 
@@ -459,6 +486,9 @@ function healParty() {
       });
     }
   });
+  // ---- HERO: healing particle burst ----
+  if (typeof triggerHealPulse === "function") triggerHealPulse();
+  if (typeof screenFlash === "function") screenFlash("#48f878", 0.15, 0.03);
 }
 
 // Record the current location as the last healing center visited.
@@ -472,90 +502,210 @@ function recordHealLocation() {
 // ---- Save / Load ----
 const SAVE_KEY = "monsterCatcher_save_v1";
 
-function saveGame() {
+// ---- HERO: Multi-slot save system (v5.0) ----
+// Supports 3 save slots + auto-save. Each slot stores the full game state
+// plus metadata (playtime, badges, location, party lead) for the slot-select screen.
+const SAVE_KEY_PREFIX = "monsterCatcher_save_v5_slot_";
+const SAVE_AUTO_KEY = "monsterCatcher_save_v5_auto";
+const NUM_SAVE_SLOTS = 3;
+
+// Build the save data object (shared by all slot saves + auto-save).
+function buildSaveData() {
+  return {
+    version: 5,
+    timestamp: Date.now(),
+    currentMap: world.currentMap,
+    col: player.col,
+    row: player.row,
+    facing: player.facing,
+    party: player.party,
+    bag: player.bag,
+    money: player.money,
+    badges: player.badges,
+    flags: player.flags,
+    dex: player.dex,
+    starterChosen: player.starterChosen,
+    playtime: player.playtime,
+    box: player.box || [],
+    lastHealMap: player.lastHealMap || "mossmere",
+    lastHealPos: player.lastHealPos || { col: 4, row: 7 },
+    defeatedNpcs: NPCS.filter(n => n.defeated).map(n => n.id),
+    // Mega-expansion fields
+    heroId: player.heroId || "kael",
+    toolBag: player.toolBag || {},
+    equippedTools: player.equippedTools || {},
+    friendship: player.friendship || {},
+    visitedBiomes: player.visitedBiomes || {},
+    stepCount: player.stepCount || 0,
+    // HERO: metadata for slot display
+    meta: {
+      playtime: player.playtime || 0,
+      badges: (player.badges || []).length,
+      location: world.currentMap,
+      partyLead: (player.party && player.party[0]) ? player.party[0].name : "—",
+      partyLeadLevel: (player.party && player.party[0]) ? player.party[0].level : 0,
+      dexCaught: player.dex && player.dex.caught ? Object.keys(player.dex.caught).length : 0
+    }
+  };
+}
+
+// Save to a specific slot (0-indexed). Returns true on success.
+function saveToSlot(slot) {
   try {
-    const data = {
-      currentMap: world.currentMap,
-      col: player.col,
-      row: player.row,
-      facing: player.facing,
-      party: player.party,
-      bag: player.bag,
-      money: player.money,
-      badges: player.badges,
-      flags: player.flags,
-      dex: player.dex,
-      starterChosen: player.starterChosen,
-      playtime: player.playtime,
-      box: player.box || [],
-      lastHealMap: player.lastHealMap || "mossmere",
-      lastHealPos: player.lastHealPos || { col: 4, row: 7 },
-      defeatedNpcs: NPCS.filter(n => n.defeated).map(n => n.id),
-      // Mega-expansion fields
-      heroId: player.heroId || "kael",
-      toolBag: player.toolBag || {},
-      equippedTools: player.equippedTools || {},
-      friendship: player.friendship || {},
-      visitedBiomes: player.visitedBiomes || {},
-      stepCount: player.stepCount || 0
-    };
-    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+    const key = SAVE_KEY_PREFIX + slot;
+    const data = buildSaveData();
+    localStorage.setItem(key, JSON.stringify(data));
     return true;
   } catch (e) {
-    console.error("Save failed:", e);
+    console.error("Save to slot " + slot + " failed:", e);
     return false;
   }
+}
+
+// Load from a specific slot. Returns true on success.
+function loadFromSlot(slot) {
+  try {
+    const key = SAVE_KEY_PREFIX + slot;
+    const raw = localStorage.getItem(key);
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    applySaveData(data);
+    return true;
+  } catch (e) {
+    console.error("Load from slot " + slot + " failed:", e);
+    return false;
+  }
+}
+
+// Auto-save (silent, doesn't show messages).
+function autoSave() {
+  try {
+    const data = buildSaveData();
+    localStorage.setItem(SAVE_AUTO_KEY, JSON.stringify(data));
+  } catch (e) {
+    // silent fail for auto-save
+  }
+}
+
+// Check if a slot has a save.
+function slotHasSave(slot) {
+  try { return !!localStorage.getItem(SAVE_KEY_PREFIX + slot); } catch (e) { return false; }
+}
+
+// Get slot metadata for the slot-select screen.
+function getSlotMeta(slot) {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY_PREFIX + slot);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    return data.meta || {
+      playtime: data.playtime || 0,
+      badges: (data.badges || []).length,
+      location: data.currentMap || "—",
+      partyLead: (data.party && data.party[0]) ? data.party[0].name : "—",
+      partyLeadLevel: (data.party && data.party[0]) ? data.party[0].level : 0,
+      dexCaught: data.dex && data.dex.caught ? Object.keys(data.dex.caught).length : 0
+    };
+  } catch (e) { return null; }
+}
+
+// Delete a specific slot.
+function deleteSlot(slot) {
+  try { localStorage.removeItem(SAVE_KEY_PREFIX + slot); } catch (e) {}
+}
+
+// Apply save data to the game state (shared by loadGame and loadFromSlot).
+function applySaveData(data) {
+  world.currentMap = data.currentMap || "mossmere";
+  player.col = data.col ?? 4;
+  player.row = data.row ?? 4;
+  player.facing = data.facing || "down";
+  player.party = data.party || [];
+  player.bag = data.bag || { basicball: 10, potion: 5 };
+  player.money = data.money ?? 1500;
+  player.balls = player.bag.basicball || 0;
+  player.badges = data.badges || [];
+  player.flags = data.flags || {};
+  player.dex = data.dex || { seen: {}, caught: {} };
+  player.starterChosen = !!data.starterChosen;
+  player.playtime = data.playtime || 0;
+  player.box = data.box || [];
+  player.lastHealMap = data.lastHealMap || "mossmere";
+  player.lastHealPos = data.lastHealPos || { col: 4, row: 7 };
+  // Mega-expansion restore
+  player.heroId = data.heroId || "kael";
+  player.toolBag = data.toolBag || {};
+  player.equippedTools = data.equippedTools || {};
+  player.friendship = data.friendship || {};
+  player.visitedBiomes = data.visitedBiomes || {};
+  player.stepCount = data.stepCount || 0;
+  game.flags = player.flags;
+  // Ensure party unique IDs
+  ensurePartyUniqueIds();
+  // Restore defeated trainer flags
+  (data.defeatedNpcs || []).forEach(id => {
+    const n = NPCS.find(x => x.id === id);
+    if (n) n.defeated = true;
+  });
+}
+
+// ---- Legacy save functions (backward-compatible wrappers) ----
+// SAVE_KEY is defined above at line 495
+
+function saveGame() {
+  // Legacy: saves to slot 0 (and auto-save)
+  const ok = saveToSlot(0);
+  autoSave();
+  return ok;
 }
 
 function loadGame() {
+  // Legacy: loads from slot 0, falls back to old key, then auto-save
+  if (slotHasSave(0)) return loadFromSlot(0);
+  // Try old v1 key for backward compat
   try {
     const raw = localStorage.getItem(SAVE_KEY);
-    if (!raw) return false;
-    const data = JSON.parse(raw);
-    world.currentMap = data.currentMap || "mossmere";
-    player.col = data.col ?? 4;
-    player.row = data.row ?? 4;
-    player.facing = data.facing || "down";
-    player.party = data.party || [];
-    player.bag = data.bag || { basicball: 10, potion: 5 };
-    player.money = data.money ?? 1500;
-    player.balls = player.bag.basicball || 0;
-    player.badges = data.badges || [];
-    player.flags = data.flags || {};
-    player.dex = data.dex || { seen: {}, caught: {} };
-    player.starterChosen = !!data.starterChosen;
-    player.playtime = data.playtime || 0;
-    player.box = data.box || [];
-    player.lastHealMap = data.lastHealMap || "mossmere";
-    player.lastHealPos = data.lastHealPos || { col: 4, row: 7 };
-    // Mega-expansion restore
-    player.heroId = data.heroId || "kael";
-    player.toolBag = data.toolBag || {};
-    player.equippedTools = data.equippedTools || {};
-    player.friendship = data.friendship || {};
-    player.visitedBiomes = data.visitedBiomes || {};
-    player.stepCount = data.stepCount || 0;
-    game.flags = player.flags;
-    // Ensure party unique IDs
-    ensurePartyUniqueIds();
-    // Restore defeated trainer flags
-    (data.defeatedNpcs || []).forEach(id => {
-      const n = NPCS.find(x => x.id === id);
-      if (n) n.defeated = true;
-    });
-    return true;
-  } catch (e) {
-    console.error("Load failed:", e);
-    return false;
-  }
+    if (raw) {
+      const data = JSON.parse(raw);
+      applySaveData(data);
+      return true;
+    }
+  } catch (e) {}
+  // Try auto-save
+  try {
+    const raw = localStorage.getItem(SAVE_AUTO_KEY);
+    if (raw) {
+      const data = JSON.parse(raw);
+      applySaveData(data);
+      return true;
+    }
+  } catch (e) {}
+  return false;
 }
 
 function hasSave() {
-  try { return !!localStorage.getItem(SAVE_KEY); } catch (e) { return false; }
+  // Legacy: checks if any save exists (slot 0, old key, or auto-save)
+  if (slotHasSave(0)) return true;
+  try {
+    if (localStorage.getItem(SAVE_KEY)) return true;
+    if (localStorage.getItem(SAVE_AUTO_KEY)) return true;
+  } catch (e) {}
+  return false;
 }
 
 function deleteSave() {
+  // Legacy: deletes slot 0 + old key + auto-save
+  deleteSlot(0);
   try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+  try { localStorage.removeItem(SAVE_AUTO_KEY); } catch (e) {}
+}
+
+// ---- HERO: Check if ANY slot has a save (for title screen) ----
+function hasAnySlotSave() {
+  for (let i = 0; i < NUM_SAVE_SLOTS; i++) {
+    if (slotHasSave(i)) return true;
+  }
+  return false;
 }
 
 // ============================================================

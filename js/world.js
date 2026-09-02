@@ -44,7 +44,10 @@ const MAPS = {
     },
     signs: {
       "1,7": "Mossmere Hollow — A quiet village at the forest's edge."
-    }
+    },
+    buildings: [
+      { type: "lab", col: 7, row: 1, w: 3, roof: "red" }
+    ]
   },
 
   lab: {
@@ -117,7 +120,11 @@ const MAPS = {
       "0,1": "Verdantown — The green crossroads.",
       "3,1": "Verdantown Healing Center",
       "7,1": "Verdantown Mart"
-    }
+    },
+    buildings: [
+      { type: "center", col: 3, row: 1, w: 3 },
+      { type: "mart", col: 7, row: 1, w: 3 }
+    ]
   },
 
   center: {
@@ -235,7 +242,11 @@ const MAPS = {
     signs: {
       "3,1": "Icicle City Gym — Leader: Frostine",
       "7,1": "Icicle City Healing Center"
-    }
+    },
+    buildings: [
+      { type: "gym", col: 3, row: 1, w: 3 },
+      { type: "center", col: 7, row: 1, w: 3 }
+    ]
   },
 
   gym: {
@@ -498,7 +509,11 @@ const MAPS = {
       "4,7": { dest: "route1", col: 4, row: 7 },
       "4,8": { dest: "route2", col: 4, row: 0 }
     },
-    signs: { "1,7": "Verdantown — Hub of the region. Biome portals to the north!" }
+    signs: { "1,7": "Verdantown — Hub of the region. Biome portals to the north!" },
+    buildings: [
+      { type: "house", col: 2, row: 4, w: 3, roof: "red" },
+      { type: "house", col: 6, row: 4, w: 3, roof: "blue" }
+    ]
   }
 };
 
@@ -526,6 +541,10 @@ function drawTile(ctx, tile, px, py) {
     case 12: drawShopMatTile(ctx, px, py); break;
     case 13: drawGymMatTile(ctx, px, py); break;
     case 14: drawWaterTile(ctx, px, py, true); break;
+    // Decoration tiles (15-17)
+    case 15: drawFlowerTile(ctx, px, py); break;
+    case 16: drawFenceTile(ctx, px, py); break;
+    case 17: drawCropTile(ctx, px, py); break;
     // Biome tiles (30-41)
     case 30: drawLavaTile(ctx, px, py); break;
     case 31: drawNeonTile(ctx, px, py); break;
@@ -751,98 +770,167 @@ function drawCyberWallTile(ctx, px, py) {
 }
 
 // ---- 0: Grass (walkable path) ----
+// ---- 0: Grass (walkable, no encounter) — rich textured GBA grass ----
 function drawGrassTile(ctx, px, py) {
-  ctx.fillStyle = COLOR.grassLight;
-  ctx.fillRect(px, py, TILE, TILE);
+  // base
   ctx.fillStyle = COLOR.grassMid;
-  ctx.fillRect(px, py, TILE, 8);
-  ctx.fillStyle = COLOR.grassDark;
-  ctx.fillRect(px + 2, py + 5, 1, 2);
-  ctx.fillRect(px + 7, py + 11, 1, 2);
-  ctx.fillRect(px + 12, py + 3, 1, 2);
-  ctx.fillStyle = COLOR.tallGrass1;
-  ctx.fillRect(px + 4, py + 13, 1, 1);
-  ctx.fillRect(px + 10, py + 7, 1, 1);
+  ctx.fillRect(px, py, TILE, TILE);
+  // lighter top-left bias
   ctx.fillStyle = COLOR.grassLight;
-  ctx.fillRect(px + 13, py + 12, 1, 1);
-  ctx.fillRect(px + 1, py + 9, 1, 1);
+  ctx.fillRect(px, py, TILE, 6);
+  ctx.fillRect(px, py + 6, 8, 4);
+  // darker bottom-right
+  ctx.fillStyle = COLOR.grassDark;
+  ctx.fillRect(px + 8, py + 10, 8, 6);
+  ctx.fillRect(px, py + 12, 8, 4);
+  // individual grass blade clumps (deterministic per tile position)
+  const h = ((px * 7 + py * 13) >> 2);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px + 2 + (h % 4), py + 3, 1, 2);
+  ctx.fillRect(px + 11 + (h % 3), py + 5, 1, 2);
+  ctx.fillStyle = COLOR.tallGrass1;
+  ctx.fillRect(px + 5 + (h % 5), py + 8, 1, 2);
+  ctx.fillRect(px + 13 - (h % 4), py + 11, 1, 2);
+  ctx.fillStyle = COLOR.grassDeep;
+  ctx.fillRect(px + 1 + (h % 6), py + 13, 1, 1);
+  ctx.fillRect(px + 9 + (h % 4), py + 14, 1, 1);
+  // tiny highlight speck
+  ctx.fillStyle = COLOR.tallGrassLite;
+  ctx.fillRect(px + 3 + (h % 5), py + 2, 1, 1);
 }
 
-// ---- 1: Tall grass (walkable, encounters) — animated rustle ----
+// ---- 1: Tall grass (walkable, encounters) — animated lush rustle ----
 function drawTallGrassTile(ctx, px, py) {
-  ctx.fillStyle = COLOR.grassMid;
-  ctx.fillRect(px, py, TILE, TILE);
-  const sway = Math.sin(worldAnimFrame / 24 + (px + py) * 0.1) > 0.6 ? 1 : 0;
   ctx.fillStyle = COLOR.tallGrass2;
-  ctx.fillRect(px, py + 6, TILE, 10);
-  ctx.fillStyle = COLOR.tallGrass1;
-  for (let i = 0; i < 4; i++) {
-    const bx = px + 1 + i * 4;
-    ctx.fillRect(bx, py + 4 - sway, 1, 11);
-    ctx.fillRect(bx + 1, py + 5, 1, 9);
-  }
-  ctx.fillStyle = COLOR.grassLight;
-  ctx.fillRect(px + 2, py + 4 - sway, 1, 1);
-  ctx.fillRect(px + 10, py + 4 - sway, 1, 1);
+  ctx.fillRect(px, py, TILE, TILE);
+  // ground hint at very bottom
   ctx.fillStyle = COLOR.tallGrass3;
   ctx.fillRect(px, py + 14, TILE, 2);
+  const sway = Math.sin(worldAnimFrame / 24 + (px + py) * 0.1) > 0.6 ? 1 : 0;
+  // blade clusters — taller, multi-shade
+  ctx.fillStyle = COLOR.tallGrass3;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 1 + i * 3;
+    ctx.fillRect(bx, py + 3 - sway, 1, 12);
+    ctx.fillRect(bx + 1, py + 4, 1, 11);
+  }
+  ctx.fillStyle = COLOR.tallGrass2;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 2 + i * 3;
+    ctx.fillRect(bx, py + 5 - sway, 1, 10);
+  }
+  ctx.fillStyle = COLOR.tallGrass1;
+  for (let i = 0; i < 5; i++) {
+    const bx = px + 1 + i * 3;
+    ctx.fillRect(bx, py + 3 - sway, 1, 3);
+    ctx.fillRect(bx + 1, py + 4, 1, 2);
+  }
+  // bright tips
+  ctx.fillStyle = COLOR.tallGrassLite;
+  ctx.fillRect(px + 2, py + 3 - sway, 1, 1);
+  ctx.fillRect(px + 11, py + 3 - sway, 1, 1);
+  ctx.fillRect(px + 14, py + 4, 1, 1);
 }
 
-// ---- 2: Tree / wall (blocked) — round foliage + bark ----
+// ---- 2: Tree / wall (blocked) — large rounded shaded canopy ----
 function drawTreeTile(ctx, px, py) {
-  ctx.fillStyle = COLOR.grassLight;
-  ctx.fillRect(px, py, TILE, TILE);
+  // grass base
   ctx.fillStyle = COLOR.grassMid;
-  ctx.fillRect(px, py, TILE, 4);
-  ctx.fillStyle = COLOR.treeBark;
-  ctx.fillRect(px + 6, py + 9, 4, 7);
-  ctx.fillStyle = COLOR.treeBarkD;
-  ctx.fillRect(px + 6, py + 9, 1, 7);
-  ctx.fillRect(px + 9, py + 9, 1, 7);
-  ctx.fillStyle = COLOR.treeLeaf3;
-  ctx.fillRect(px + 2, py + 1, 12, 10);
-  ctx.fillStyle = COLOR.treeLeaf2;
-  ctx.fillRect(px + 3, py + 2, 10, 8);
-  ctx.fillStyle = COLOR.treeLeaf1;
-  ctx.fillRect(px + 4, py + 3, 8, 5);
-  ctx.fillStyle = COLOR.treeLeaf1;
-  ctx.fillRect(px + 1, py + 5, 2, 3);
-  ctx.fillRect(px + 13, py + 5, 2, 3);
-  ctx.fillRect(px + 6, py + 0, 4, 2);
-  ctx.fillStyle = "#78e068";
-  ctx.fillRect(px + 5, py + 4, 2, 1);
-  ctx.fillRect(px + 9, py + 6, 2, 1);
-}
-
-// ---- 3 / 14: Water (blocked) — animated shimmer ----
-function drawWaterTile(ctx, px, py, deep) {
-  ctx.fillStyle = deep ? COLOR.waterDeep : COLOR.water2;
   ctx.fillRect(px, py, TILE, TILE);
-  ctx.fillStyle = COLOR.water3;
-  ctx.fillRect(px, py + 4, TILE, 2);
-  ctx.fillRect(px, py + 11, TILE, 2);
-  const off = (worldAnimFrame >> 3) % 16;
-  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
-  const wy1 = py + 5 + (off > 8 ? 1 : 0);
-  ctx.fillRect(px + ((off + 0) % TILE), wy1, 4, 1);
-  ctx.fillRect(px + ((off + 8) % TILE), py + 9, 5, 1);
-  ctx.fillStyle = "#a8e8ff";
-  ctx.fillRect(px + ((off + 3) % TILE), py + 6, 1, 1);
-  ctx.fillRect(px + ((off + 11) % TILE), py + 12, 1, 1);
+  ctx.fillStyle = COLOR.grassLight;
+  ctx.fillRect(px, py, TILE, 4);
+  // tree cast shadow (soft, to the right)
+  ctx.fillStyle = "rgba(0,0,0,0.16)";
+  ctx.fillRect(px + 12, py + 11, 4, 5);
+  ctx.fillStyle = "rgba(0,0,0,0.08)";
+  ctx.fillRect(px + 14, py + 12, 2, 4);
+  // trunk
+  ctx.fillStyle = COLOR.treeBark;
+  ctx.fillRect(px + 6, py + 11, 4, 5);
+  ctx.fillStyle = COLOR.treeBarkD;
+  ctx.fillRect(px + 6, py + 11, 1, 5);
+  ctx.fillRect(px + 9, py + 11, 1, 5);
+  ctx.fillStyle = "#987048";
+  ctx.fillRect(px + 7, py + 11, 2, 1);
+  // canopy — large rounded blob with multiple shade rings
+  // dark outline/base
+  ctx.fillStyle = COLOR.treeLeaf4;
+  ctx.fillRect(px + 1, py + 2, 14, 9);
+  ctx.fillRect(px + 2, py + 1, 12, 11);
+  // mid green
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px + 2, py + 3, 12, 7);
+  ctx.fillRect(px + 3, py + 2, 10, 9);
+  // light green
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 3, py + 4, 10, 5);
+  ctx.fillRect(px + 4, py + 3, 8, 7);
+  // highlight (upper-left)
+  ctx.fillStyle = COLOR.treeLeaf1;
+  ctx.fillRect(px + 4, py + 4, 7, 3);
+  ctx.fillRect(px + 5, py + 3, 5, 5);
+  // bright spot
+  ctx.fillStyle = COLOR.treeLeafLite;
+  ctx.fillRect(px + 5, py + 4, 3, 2);
+  ctx.fillRect(px + 6, py + 5, 1, 1);
+  // side bumps for rounder look
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px, py + 5, 2, 3);
+  ctx.fillRect(px + 14, py + 5, 2, 3);
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 1, py + 6, 1, 1);
+  ctx.fillRect(px + 14, py + 6, 1, 1);
+  // top bump
+  ctx.fillStyle = COLOR.treeLeaf3;
+  ctx.fillRect(px + 6, py, 4, 2);
+  ctx.fillStyle = COLOR.treeLeaf2;
+  ctx.fillRect(px + 7, py + 1, 2, 1);
 }
 
-// ---- 4: Sand (walkable) ----
+// ---- 3 / 14: Water (blocked) — animated layered shimmer ----
+function drawWaterTile(ctx, px, py, deep) {
+  ctx.fillStyle = deep ? COLOR.waterDeep : COLOR.water3;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = deep ? COLOR.water3 : COLOR.water2;
+  ctx.fillRect(px, py + 2, TILE, 6);
+  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
+  ctx.fillRect(px, py + 2, TILE, 2);
+  // animated wave bands
+  const off = (worldAnimFrame >> 3) % 16;
+  ctx.fillStyle = deep ? COLOR.water3 : COLOR.water2;
+  const wy1 = py + 6 + (off > 8 ? 1 : 0);
+  ctx.fillRect(px + ((off + 0) % TILE), wy1, 4, 1);
+  ctx.fillRect(px + ((off + 8) % TILE), py + 11, 5, 1);
+  ctx.fillStyle = deep ? COLOR.water2 : COLOR.water1;
+  ctx.fillRect(px + ((off + 2) % TILE), py + 7, 3, 1);
+  ctx.fillRect(px + ((off + 10) % TILE), py + 12, 4, 1);
+  // foam highlights
+  ctx.fillStyle = COLOR.waterFoam;
+  ctx.fillRect(px + ((off + 3) % TILE), py + 6, 1, 1);
+  ctx.fillRect(px + ((off + 11) % TILE), py + 11, 1, 1);
+  ctx.fillRect(px + ((off + 6) % TILE), py + 8, 1, 1);
+}
+
+// ---- 4: Sand (walkable) — textured dirt path edge ----
 function drawSandTile(ctx, px, py) {
   ctx.fillStyle = COLOR.sandLight;
   ctx.fillRect(px, py, TILE, TILE);
   ctx.fillStyle = COLOR.sandMid;
-  ctx.fillRect(px, py + 8, TILE, 8);
+  ctx.fillRect(px, py + 7, TILE, 9);
+  ctx.fillStyle = COLOR.sandDark;
+  ctx.fillRect(px, py + 13, TILE, 3);
+  // pebbles & grit
   ctx.fillStyle = COLOR.pathDark;
   ctx.fillRect(px + 3, py + 3, 1, 1);
   ctx.fillRect(px + 11, py + 6, 1, 1);
-  ctx.fillRect(px + 6, py + 12, 1, 1);
-  ctx.fillRect(px + 13, py + 14, 1, 1);
-  ctx.fillRect(px + 1, py + 10, 1, 1);
+  ctx.fillRect(px + 6, py + 10, 1, 1);
+  ctx.fillRect(px + 13, py + 12, 1, 1);
+  ctx.fillRect(px + 1, py + 9, 1, 1);
+  ctx.fillRect(px + 9, py + 14, 1, 1);
+  ctx.fillStyle = COLOR.pathEdge;
+  ctx.fillRect(px + 5, py + 5, 1, 1);
+  ctx.fillRect(px + 12, py + 9, 1, 1);
+  ctx.fillRect(px + 2, py + 13, 1, 1);
 }
 
 // ---- 5: Cave floor (walkable, encounters) ----
@@ -1012,6 +1100,465 @@ function drawGymMatTile(ctx, px, py) {
   ctx.fillRect(px + 14, py + 1, 1, 14);
 }
 
+// ---- 15: Flower patch (grass + scattered flowers, deterministic) ----
+function drawFlowerTile(ctx, px, py) {
+  // base grass
+  drawGrassTile(ctx, px, py);
+  // deterministic flower placement based on tile coords
+  const seed = (px * 31 + py * 17) | 0;
+  const flowerCols = [COLOR.flowerRed, COLOR.flowerYellow, COLOR.flowerPink];
+  function drawFlower(fx, fy, col) {
+    // petals (4 dots around center)
+    ctx.fillStyle = col;
+    ctx.fillRect(fx, fy, 1, 1);
+    ctx.fillRect(fx + 2, fy, 1, 1);
+    ctx.fillRect(fx, fy + 2, 1, 1);
+    ctx.fillRect(fx + 2, fy + 2, 1, 1);
+    // center
+    ctx.fillStyle = COLOR.flowerCenter;
+    ctx.fillRect(fx + 1, fy + 1, 1, 1);
+    // stem leaf
+    ctx.fillStyle = COLOR.grassDeep;
+    ctx.fillRect(fx + 1, fy + 3, 1, 1);
+  }
+  // 2-3 flowers per tile
+  drawFlower(px + 3 + (seed % 4), py + 4 + ((seed >> 2) % 4), flowerCols[seed % 3]);
+  drawFlower(px + 9 + ((seed >> 4) % 4), py + 8 + ((seed >> 6) % 4), flowerCols[(seed >> 1) % 3]);
+  if ((seed & 1) === 0) drawFlower(px + 6 + ((seed >> 5) % 3), py + 12 + ((seed >> 7) % 2), flowerCols[(seed >> 2) % 3]);
+}
+
+// ---- 16: Wooden fence (horizontal rail on grass) ----
+function drawFenceTile(ctx, px, py) {
+  // grass base
+  drawGrassTile(ctx, px, py);
+  // two horizontal rails
+  ctx.fillStyle = COLOR.fenceWoodD;
+  ctx.fillRect(px, py + 5, TILE, 2);
+  ctx.fillRect(px, py + 10, TILE, 2);
+  ctx.fillStyle = COLOR.fenceWood;
+  ctx.fillRect(px, py + 5, TILE, 1);
+  ctx.fillRect(px, py + 10, TILE, 1);
+  ctx.fillStyle = COLOR.fenceWoodL;
+  ctx.fillRect(px, py + 5, TILE, 1);
+  // fence posts (every 8px)
+  ctx.fillStyle = COLOR.fenceWoodD;
+  ctx.fillRect(px + 1, py + 3, 2, 10);
+  ctx.fillRect(px + 9, py + 3, 2, 10);
+  ctx.fillStyle = COLOR.fenceWood;
+  ctx.fillRect(px + 1, py + 3, 1, 10);
+  ctx.fillRect(px + 9, py + 3, 1, 10);
+  // post tops (pointed)
+  ctx.fillStyle = COLOR.fenceWoodD;
+  ctx.fillRect(px + 1, py + 2, 2, 1);
+  ctx.fillRect(px + 9, py + 2, 2, 1);
+  // shadow under fence
+  ctx.fillStyle = "rgba(0,0,0,0.12)";
+  ctx.fillRect(px, py + 14, TILE, 2);
+}
+
+// ---- 17: Crop field (tilled soil rows with green stalks) ----
+function drawCropTile(ctx, px, py) {
+  // tilled soil base
+  ctx.fillStyle = COLOR.cropSoil;
+  ctx.fillRect(px, py, TILE, TILE);
+  ctx.fillStyle = COLOR.cropSoilD;
+  ctx.fillRect(px, py, TILE, 1);
+  ctx.fillRect(px, py + 15, TILE, 1);
+  // furrow rows (horizontal dark stripes)
+  ctx.fillStyle = COLOR.cropSoilD;
+  ctx.fillRect(px, py + 3, TILE, 1);
+  ctx.fillRect(px, py + 7, TILE, 1);
+  ctx.fillRect(px, py + 11, TILE, 1);
+  // crop stalks in furrows
+  const seed = (px * 13 + py * 7) | 0;
+  ctx.fillStyle = COLOR.cropStalk;
+  function stalk(sx, sy) {
+    ctx.fillRect(sx, sy, 1, 2);
+    ctx.fillRect(sx, sy, 1, 1);
+  }
+  stalk(px + 2 + (seed % 3), py + 1);
+  stalk(px + 7 + ((seed >> 2) % 3), py + 1);
+  stalk(px + 12 + ((seed >> 4) % 2), py + 1);
+  stalk(px + 3 + ((seed >> 3) % 3), py + 5);
+  stalk(px + 9 + ((seed >> 5) % 3), py + 5);
+  stalk(px + 13 - ((seed >> 6) % 3), py + 5);
+  stalk(px + 2 + ((seed >> 4) % 3), py + 9);
+  stalk(px + 8 + ((seed >> 7) % 3), py + 9);
+  stalk(px + 12 + ((seed >> 1) % 2), py + 9);
+  stalk(px + 5 + (seed % 3), py + 13);
+  stalk(px + 11 - ((seed >> 3) % 3), py + 13);
+  // grain heads (yellow) on some
+  ctx.fillStyle = COLOR.cropGrain;
+  ctx.fillRect(px + 2 + (seed % 3), py + 1, 1, 1);
+  ctx.fillRect(px + 9 + ((seed >> 5) % 3), py + 5, 1, 1);
+  ctx.fillRect(px + 8 + ((seed >> 7) % 3), py + 9, 1, 1);
+}
+
+// ============================================================
+//  BUILDING OVERLAY SYSTEM
+//  Draws detailed multi-tile buildings (houses, Pok\u00e9mon Center,
+//  Mart, Gym) on top of the tile grid. Each building is anchored
+//  at its door tile and extends upward (roof overhangs above).
+//  Buildings are listed in map metadata: buildings: [{type, col, row}]
+//  where (col,row) is the door tile. The building occupies the door
+//  tile + one tile above (walls/roof). A 3-wide building uses cols
+//  col-1..col+1; a 2-wide uses col..col+1.
+// ============================================================
+
+// Draw all buildings for a map (sorted by row so lower buildings
+// correctly overlap upper ones).
+function drawBuildings(ctx, map) {
+  map = map || currentMapData();
+  if (!map || !map.buildings) return;
+  const list = map.buildings.slice().sort((a, b) => (a.row - b.row));
+  // Pass 1: cast shadows (drawn before buildings, semi-transparent)
+  for (const b of list) {
+    const x = b.col * TILE;
+    const y = b.row * TILE;
+    const w = b.w || 3;
+    const W = w * TILE;
+    const H = 2 * TILE; // roof row + wall row
+    // ground shadow: offset down-right, elliptical-ish
+    ctx.fillStyle = "rgba(0,0,0,0.18)";
+    ctx.fillRect(x + 4, y + H - 2, W + 2, 4);
+    ctx.fillStyle = "rgba(0,0,0,0.10)";
+    ctx.fillRect(x + 6, y + H, W, 3);
+    // soft fade edge
+    ctx.fillStyle = "rgba(0,0,0,0.06)";
+    ctx.fillRect(x + 8, y + H + 2, W - 2, 2);
+  }
+  // Pass 2: buildings
+  for (const b of list) {
+    const x = b.col * TILE;
+    const y = b.row * TILE;
+    switch (b.type) {
+      case "house":    drawHouseBuilding(ctx, x, y, b.w || 3, b.roof || "red"); break;
+      case "center":   drawCenterBuilding(ctx, x, y, b.w || 3); break;
+      case "mart":     drawMartBuilding(ctx, x, y, b.w || 3); break;
+      case "gym":      drawGymBuilding(ctx, x, y, b.w || 3); break;
+      case "lab":      drawLabBuilding(ctx, x, y, b.w || 3); break;
+      default:         drawHouseBuilding(ctx, x, y, b.w || 3, b.roof || "red"); break;
+    }
+  }
+}
+
+// ---- Helper: roof colors ----
+function roofColors(style) {
+  if (style === "blue") return { lite: "#78a8e8", mid: COLOR.roofBlue, dark: COLOR.roofBlueD, edge: "#1c4890" };
+  if (style === "green") return { lite: "#78d878", mid: "#48b048", dark: "#287828", edge: "#185818" };
+  // red (default)
+  return { lite: "#e87868", mid: COLOR.roofRed, dark: COLOR.roofRedD, edge: "#801818" };
+}
+
+// ---- Generic house: 3-wide, 2-tall (roof row + wall/door row) ----
+// (x,y) = top-left of the building's footprint. The door is centered.
+function drawHouseBuilding(ctx, x, y, w, roofStyle) {
+  const W = w * TILE;
+  const rc = roofColors(roofStyle);
+  // ROOF (top tile row) — triangular peaked roof
+  // dark base band
+  ctx.fillStyle = rc.edge;
+  ctx.fillRect(x, y + 4, W, 2);
+  // roof fill
+  ctx.fillStyle = rc.dark;
+  ctx.fillRect(x, y, W, 5);
+  ctx.fillStyle = rc.mid;
+  ctx.fillRect(x + 1, y, W - 2, 4);
+  ctx.fillStyle = rc.lite;
+  ctx.fillRect(x + 2, y + 1, W - 4, 2);
+  // roof peak (center triangle) for 3-wide
+  if (w >= 3) {
+    const cx = x + W / 2;
+    ctx.fillStyle = rc.dark;
+    ctx.fillRect(cx - 4, y - 3, 8, 4);
+    ctx.fillStyle = rc.mid;
+    ctx.fillRect(cx - 3, y - 3, 6, 3);
+    ctx.fillStyle = rc.lite;
+    ctx.fillRect(cx - 2, y - 2, 4, 1);
+    // chimney
+    ctx.fillStyle = "#888070";
+    ctx.fillRect(x + W - 6, y - 4, 3, 4);
+    ctx.fillStyle = "#585048";
+    ctx.fillRect(x + W - 6, y - 4, 3, 1);
+  }
+  // roof shingle lines
+  ctx.fillStyle = rc.dark;
+  for (let i = 0; i < w; i++) {
+    ctx.fillRect(x + i * TILE + 6, y + 2, 4, 1);
+  }
+  // WALLS (bottom tile row = the door tile row)
+  const wy = y + TILE;
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(x, wy, W, TILE);
+  ctx.fillStyle = COLOR.wallCream;
+  ctx.fillRect(x + 1, wy + 1, W - 2, TILE - 2);
+  // wall base shadow
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(x, wy + TILE - 3, W, 3);
+  // door (centered)
+  const dw = 8, dh = 12;
+  const dx = x + (W - dw) / 2;
+  const dy = wy + TILE - dh - 1;
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx - 1, dy - 1, dw + 2, dh + 2);
+  ctx.fillStyle = COLOR.doorLight;
+  ctx.fillRect(dx, dy, dw, dh);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx + dw / 2, dy, 1, dh); // center seam
+  ctx.fillStyle = "#f8d868";
+  ctx.fillRect(dx + dw - 2, dy + dh / 2, 1, 1); // knob
+  // windows (left & right of door, if room)
+  if (w >= 3) {
+    drawWindow(ctx, x + 3, wy + 3);
+    drawWindow(ctx, x + W - 11, wy + 3);
+  }
+}
+
+// ---- Small blue window with lit pane ----
+function drawWindow(ctx, x, y) {
+  ctx.fillStyle = "#383840";
+  ctx.fillRect(x - 1, y - 1, 9, 9);
+  ctx.fillStyle = COLOR.windowLit;
+  ctx.fillRect(x, y, 7, 7);
+  ctx.fillStyle = "#c8a838";
+  ctx.fillRect(x, y, 7, 1);
+  ctx.fillStyle = "#383840";
+  ctx.fillRect(x + 3, y, 1, 7);
+  ctx.fillRect(x, y + 3, 7, 1);
+  // highlight
+  ctx.fillStyle = "#f8f0a0";
+  ctx.fillRect(x + 1, y + 1, 1, 1);
+}
+
+// ---- Pok\u00e9mon Center style: red roof + red cross emblem on sign ----
+function drawCenterBuilding(ctx, x, y, w) {
+  const W = w * TILE;
+  const rc = roofColors("red");
+  // ROOF
+  ctx.fillStyle = rc.edge;
+  ctx.fillRect(x, y + 5, W, 2);
+  ctx.fillStyle = rc.dark;
+  ctx.fillRect(x, y, W, 6);
+  ctx.fillStyle = rc.mid;
+  ctx.fillRect(x + 1, y, W - 2, 5);
+  ctx.fillStyle = rc.lite;
+  ctx.fillRect(x + 2, y + 1, W - 4, 2);
+  // center peak
+  if (w >= 3) {
+    const cx = x + W / 2;
+    ctx.fillStyle = rc.dark;
+    ctx.fillRect(cx - 5, y - 4, 10, 5);
+    ctx.fillStyle = rc.mid;
+    ctx.fillRect(cx - 4, y - 4, 8, 4);
+    ctx.fillStyle = rc.lite;
+    ctx.fillRect(cx - 3, y - 3, 6, 1);
+  }
+  // roof shingles
+  ctx.fillStyle = rc.dark;
+  for (let i = 0; i < w; i++) ctx.fillRect(x + i * TILE + 6, y + 3, 4, 1);
+  // WALLS (white/cream)
+  const wy = y + TILE;
+  ctx.fillStyle = "#d0d0d8";
+  ctx.fillRect(x, wy, W, TILE);
+  ctx.fillStyle = "#f0f0f4";
+  ctx.fillRect(x + 1, wy + 1, W - 2, TILE - 2);
+  ctx.fillStyle = "#d0d0d8";
+  ctx.fillRect(x, wy + TILE - 3, W, 3);
+  // door (centered, glassy blue)
+  const dw = 8, dh = 12;
+  const dx = x + (W - dw) / 2;
+  const dy = wy + TILE - dh - 1;
+  ctx.fillStyle = "#2858a8";
+  ctx.fillRect(dx - 1, dy - 1, dw + 2, dh + 2);
+  ctx.fillStyle = "#4888d8";
+  ctx.fillRect(dx, dy, dw, dh);
+  ctx.fillStyle = "#68a8f8";
+  ctx.fillRect(dx + 1, dy + 1, dw - 2, 4);
+  ctx.fillStyle = "#2858a8";
+  ctx.fillRect(dx + dw / 2, dy, 1, dh);
+  // RED CROSS emblem above door (the Pok\u00e9mon Center sign)
+  const ex = x + W / 2;
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(ex - 5, wy + 1, 10, 6);
+  ctx.fillStyle = "#383840";
+  ctx.fillRect(ex - 5, wy + 1, 10, 1);
+  ctx.fillRect(ex - 5, wy + 6, 10, 1);
+  ctx.fillRect(ex - 5, wy + 1, 1, 6);
+  ctx.fillRect(ex + 4, wy + 1, 1, 6);
+  ctx.fillStyle = COLOR.matHealR;
+  ctx.fillRect(ex - 1, wy + 2, 2, 4);
+  ctx.fillRect(ex - 2, wy + 3, 4, 2);
+  // side windows
+  if (w >= 3) {
+    drawWindow(ctx, x + 3, wy + 3);
+    drawWindow(ctx, x + W - 11, wy + 3);
+  }
+}
+
+// ---- Pok\u00e9mon Mart style: blue roof + blue shop sign ----
+function drawMartBuilding(ctx, x, y, w) {
+  const W = w * TILE;
+  const rc = roofColors("blue");
+  // ROOF
+  ctx.fillStyle = rc.edge;
+  ctx.fillRect(x, y + 5, W, 2);
+  ctx.fillStyle = rc.dark;
+  ctx.fillRect(x, y, W, 6);
+  ctx.fillStyle = rc.mid;
+  ctx.fillRect(x + 1, y, W - 2, 5);
+  ctx.fillStyle = rc.lite;
+  ctx.fillRect(x + 2, y + 1, W - 4, 2);
+  if (w >= 3) {
+    const cx = x + W / 2;
+    ctx.fillStyle = rc.dark;
+    ctx.fillRect(cx - 5, y - 4, 10, 5);
+    ctx.fillStyle = rc.mid;
+    ctx.fillRect(cx - 4, y - 4, 8, 4);
+    ctx.fillStyle = rc.lite;
+    ctx.fillRect(cx - 3, y - 3, 6, 1);
+  }
+  ctx.fillStyle = rc.dark;
+  for (let i = 0; i < w; i++) ctx.fillRect(x + i * TILE + 6, y + 3, 4, 1);
+  // WALLS
+  const wy = y + TILE;
+  ctx.fillStyle = "#d0d0d8";
+  ctx.fillRect(x, wy, W, TILE);
+  ctx.fillStyle = "#f0f0f4";
+  ctx.fillRect(x + 1, wy + 1, W - 2, TILE - 2);
+  ctx.fillStyle = "#d0d0d8";
+  ctx.fillRect(x, wy + TILE - 3, W, 3);
+  // door
+  const dw = 8, dh = 12;
+  const dx = x + (W - dw) / 2;
+  const dy = wy + TILE - dh - 1;
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx - 1, dy - 1, dw + 2, dh + 2);
+  ctx.fillStyle = COLOR.doorLight;
+  ctx.fillRect(dx, dy, dw, dh);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx + dw / 2, dy, 1, dh);
+  // BLUE MART sign above door
+  const ex = x + W / 2;
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(ex - 5, wy + 1, 10, 6);
+  ctx.fillStyle = "#383840";
+  ctx.fillRect(ex - 5, wy + 1, 10, 1);
+  ctx.fillRect(ex - 5, wy + 6, 10, 1);
+  ctx.fillRect(ex - 5, wy + 1, 1, 6);
+  ctx.fillRect(ex + 4, wy + 1, 1, 6);
+  ctx.fillStyle = COLOR.matShopB;
+  // simple "M" shape
+  ctx.fillRect(ex - 3, wy + 2, 1, 4);
+  ctx.fillRect(ex + 2, wy + 2, 1, 4);
+  ctx.fillRect(ex - 2, wy + 3, 1, 1);
+  ctx.fillRect(ex + 1, wy + 3, 1, 1);
+  ctx.fillRect(ex - 1, wy + 4, 1, 1);
+  ctx.fillRect(ex, wy + 4, 1, 1);
+  if (w >= 3) {
+    drawWindow(ctx, x + 3, wy + 3);
+    drawWindow(ctx, x + W - 11, wy + 3);
+  }
+}
+
+// ---- Gym building: purple roof + gym emblem ----
+function drawGymBuilding(ctx, x, y, w) {
+  const W = w * TILE;
+  const rc = roofColors("green");
+  ctx.fillStyle = rc.edge;
+  ctx.fillRect(x, y + 5, W, 2);
+  ctx.fillStyle = rc.dark;
+  ctx.fillRect(x, y, W, 6);
+  ctx.fillStyle = rc.mid;
+  ctx.fillRect(x + 1, y, W - 2, 5);
+  ctx.fillStyle = rc.lite;
+  ctx.fillRect(x + 2, y + 1, W - 4, 2);
+  if (w >= 3) {
+    const cx = x + W / 2;
+    ctx.fillStyle = rc.dark;
+    ctx.fillRect(cx - 5, y - 4, 10, 5);
+    ctx.fillStyle = rc.mid;
+    ctx.fillRect(cx - 4, y - 4, 8, 4);
+    ctx.fillStyle = rc.lite;
+    ctx.fillRect(cx - 3, y - 3, 6, 1);
+  }
+  // WALLS
+  const wy = y + TILE;
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(x, wy, W, TILE);
+  ctx.fillStyle = COLOR.wallCream;
+  ctx.fillRect(x + 1, wy + 1, W - 2, TILE - 2);
+  ctx.fillStyle = COLOR.wallCreamD;
+  ctx.fillRect(x, wy + TILE - 3, W, 3);
+  // door (grand, double)
+  const dw = 10, dh = 12;
+  const dx = x + (W - dw) / 2;
+  const dy = wy + TILE - dh - 1;
+  ctx.fillStyle = "#4848a8";
+  ctx.fillRect(dx - 1, dy - 1, dw + 2, dh + 2);
+  ctx.fillStyle = "#7878d8";
+  ctx.fillRect(dx, dy, dw, dh);
+  ctx.fillStyle = "#4848a8";
+  ctx.fillRect(dx + dw / 2 - 1, dy, 1, dh);
+  ctx.fillRect(dx + dw / 2, dy, 1, dh);
+  // gym badge emblem above door
+  const ex = x + W / 2;
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(ex - 4, wy + 1, 8, 5);
+  ctx.fillStyle = COLOR.matGym1;
+  ctx.fillRect(ex - 2, wy + 2, 4, 3);
+  ctx.fillStyle = "#f8f8f8";
+  ctx.fillRect(ex - 1, wy + 3, 2, 1);
+  if (w >= 3) {
+    drawWindow(ctx, x + 3, wy + 3);
+    drawWindow(ctx, x + W - 11, wy + 3);
+  }
+}
+
+// ---- Lab building (Professor's lab): white walls, flat-ish roof ----
+function drawLabBuilding(ctx, x, y, w) {
+  const W = w * TILE;
+  const rc = roofColors("red");
+  ctx.fillStyle = rc.edge;
+  ctx.fillRect(x, y + 5, W, 2);
+  ctx.fillStyle = rc.dark;
+  ctx.fillRect(x, y, W, 6);
+  ctx.fillStyle = rc.mid;
+  ctx.fillRect(x + 1, y, W - 2, 5);
+  ctx.fillStyle = rc.lite;
+  ctx.fillRect(x + 2, y + 1, W - 4, 2);
+  if (w >= 3) {
+    const cx = x + W / 2;
+    ctx.fillStyle = rc.dark;
+    ctx.fillRect(cx - 5, y - 4, 10, 5);
+    ctx.fillStyle = rc.mid;
+    ctx.fillRect(cx - 4, y - 4, 8, 4);
+    ctx.fillStyle = rc.lite;
+    ctx.fillRect(cx - 3, y - 3, 6, 1);
+  }
+  const wy = y + TILE;
+  ctx.fillStyle = "#d0d0d8";
+  ctx.fillRect(x, wy, W, TILE);
+  ctx.fillStyle = "#f0f0f4";
+  ctx.fillRect(x + 1, wy + 1, W - 2, TILE - 2);
+  ctx.fillStyle = "#d0d0d8";
+  ctx.fillRect(x, wy + TILE - 3, W, 3);
+  // wide door
+  const dw = 10, dh = 12;
+  const dx = x + (W - dw) / 2;
+  const dy = wy + TILE - dh - 1;
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx - 1, dy - 1, dw + 2, dh + 2);
+  ctx.fillStyle = COLOR.doorLight;
+  ctx.fillRect(dx, dy, dw, dh);
+  ctx.fillStyle = COLOR.doorDark;
+  ctx.fillRect(dx + dw / 2, dy, 1, dh);
+  // big windows (lab has many)
+  if (w >= 3) {
+    drawWindow(ctx, x + 2, wy + 3);
+    drawWindow(ctx, x + W - 10, wy + 3);
+  }
+}
+
 function drawMap(ctx, map) {
   map = map || currentMapData();
   for (let row = 0; row < map.grid.length; row++) {
@@ -1019,6 +1566,8 @@ function drawMap(ctx, map) {
       drawTile(ctx, map.grid[row][col], col * TILE, row * TILE);
     }
   }
+  // Overlay decorative buildings (drawn after tiles, before entities)
+  drawBuildings(ctx, map);
 }
 
 // ---- Helpers for the current map ----

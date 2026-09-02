@@ -142,11 +142,20 @@ function badgesInput(key) {
 }
 
 // ---- Save ----
+let saveSlotCursor = 0;
 function saveMenuInput(key) {
   if (key === "cancel") { menu = { type: "start", cursor: 5 }; return; }
+  if (key === "down") saveSlotCursor = (saveSlotCursor + 1) % (NUM_SAVE_SLOTS + 1);
+  if (key === "up") saveSlotCursor = (saveSlotCursor + NUM_SAVE_SLOTS) % (NUM_SAVE_SLOTS + 1);
   if (key === "confirm") {
-    const ok = saveGame();
-    menu = { type: "message", text: ok ? "Game saved!" : "Save failed!", returnTo: { type: "start", cursor: 5 } };
+    if (saveSlotCursor === NUM_SAVE_SLOTS) {
+      // Back
+      menu = { type: "start", cursor: 5 };
+      return;
+    }
+    const ok = saveToSlot(saveSlotCursor);
+    autoSave();
+    menu = { type: "message", text: ok ? "Saved to Slot " + (saveSlotCursor + 1) + "!" : "Save failed!", returnTo: { type: "start", cursor: 5 } };
   }
 }
 
@@ -498,16 +507,55 @@ function drawBadgesMenu(ctx) {
 }
 
 function drawSaveMenu(ctx) {
-  drawPanel(ctx, 30, 50, SCREEN_W - 60, 60);
+  drawPanel(ctx, 20, 30, SCREEN_W - 40, 110);
   ctx.fillStyle = COLOR.winBorder;
   ctx.font = "bold 8px monospace";
-  ctx.fillText("SAVE GAME", 38, 64);
+  ctx.fillText("SAVE GAME", 28, 44);
   ctx.fillStyle = COLOR.textDark;
-  ctx.font = "7px monospace";
-  ctx.fillText("Press Z to save.", 38, 78);
-  ctx.fillText("X to cancel.", 38, 90);
-  ctx.fillStyle = COLOR.winBorder;
-  ctx.fillText("Money: $" + player.money, 38, 102);
+  ctx.font = "6px monospace";
+  ctx.fillText("Choose a slot:", 28, 54);
+
+  for (let i = 0; i < NUM_SAVE_SLOTS; i++) {
+    const sy = 60 + i * 22;
+    const hasData = slotHasSave(i);
+    const meta = getSlotMeta(i);
+
+    // Highlight
+    if (saveSlotCursor === i) {
+      ctx.fillStyle = COLOR.winBorderLight;
+      ctx.fillRect(24, sy, SCREEN_W - 48, 20);
+      ctx.fillStyle = COLOR.shirtRed;
+      ctx.font = "bold 7px monospace";
+      ctx.fillText(">", 28, sy + 10);
+    }
+
+    ctx.fillStyle = COLOR.textDark;
+    ctx.font = "bold 7px monospace";
+    ctx.fillText("SLOT " + (i + 1), 38, sy + 10);
+
+    if (hasData && meta) {
+      ctx.font = "6px monospace";
+      ctx.fillStyle = COLOR.textShadow;
+      ctx.fillText(meta.partyLead + " Lv" + meta.partyLeadLevel + "  B:" + meta.badges, 80, sy + 10);
+    } else {
+      ctx.font = "6px monospace";
+      ctx.fillStyle = COLOR.textShadow;
+      ctx.fillText("Empty", 80, sy + 10);
+    }
+  }
+
+  // Back option
+  const backY = 60 + NUM_SAVE_SLOTS * 22;
+  if (saveSlotCursor === NUM_SAVE_SLOTS) {
+    ctx.fillStyle = COLOR.winBorderLight;
+    ctx.fillRect(24, backY, SCREEN_W - 48, 18);
+    ctx.fillStyle = COLOR.shirtRed;
+    ctx.font = "bold 7px monospace";
+    ctx.fillText(">", 28, backY + 10);
+  }
+  ctx.fillStyle = COLOR.textDark;
+  ctx.font = "bold 7px monospace";
+  ctx.fillText("BACK", 38, backY + 10);
 }
 
 function drawSettingsMenu(ctx) {
